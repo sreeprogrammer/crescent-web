@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdmissionRouteImport } from './routes/admission'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as ProgrammesRouteImport } from './routes/programmes'
+import { Route as StudentsCornerRouteImport } from './routes/students-corner'
+import { Route as UgcCornerRouteImport } from './routes/ugc-corner'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdmissionRoute = AdmissionRouteImport.update({
+  id: '/admission',
+  path: '/admission',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgrammesRoute = ProgrammesRouteImport.update({
+  id: '/programmes',
+  path: '/programmes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudentsCornerRoute = StudentsCornerRouteImport.update({
+  id: '/students-corner',
+  path: '/students-corner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UgcCornerRoute = UgcCornerRouteImport.update({
+  id: '/ugc-corner',
+  path: '/ugc-corner',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admission': typeof AdmissionRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/programmes': typeof ProgrammesRoute
+  '/students-corner': typeof StudentsCornerRoute
+  '/ugc-corner': typeof UgcCornerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admission': typeof AdmissionRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/programmes': typeof ProgrammesRoute
+  '/students-corner': typeof StudentsCornerRoute
+  '/ugc-corner': typeof UgcCornerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admission': typeof AdmissionRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/programmes': typeof ProgrammesRoute
+  '/students-corner': typeof StudentsCornerRoute
+  '/ugc-corner': typeof UgcCornerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/admission'
+    | '/contact'
+    | '/faq'
+    | '/programmes'
+    | '/students-corner'
+    | '/ugc-corner'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/admission'
+    | '/contact'
+    | '/faq'
+    | '/programmes'
+    | '/students-corner'
+    | '/ugc-corner'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/admission'
+    | '/contact'
+    | '/faq'
+    | '/programmes'
+    | '/students-corner'
+    | '/ugc-corner'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AdmissionRoute: typeof AdmissionRoute
+  ContactRoute: typeof ContactRoute
+  FaqRoute: typeof FaqRoute
+  ProgrammesRoute: typeof ProgrammesRoute
+  StudentsCornerRoute: typeof StudentsCornerRoute
+  UgcCornerRoute: typeof UgcCornerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admission': {
+      id: '/admission'
+      path: '/admission'
+      fullPath: '/admission'
+      preLoaderRoute: typeof AdmissionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programmes': {
+      id: '/programmes'
+      path: '/programmes'
+      fullPath: '/programmes'
+      preLoaderRoute: typeof ProgrammesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/students-corner': {
+      id: '/students-corner'
+      path: '/students-corner'
+      fullPath: '/students-corner'
+      preLoaderRoute: typeof StudentsCornerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ugc-corner': {
+      id: '/ugc-corner'
+      path: '/ugc-corner'
+      fullPath: '/ugc-corner'
+      preLoaderRoute: typeof UgcCornerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AdmissionRoute: AdmissionRoute,
+  ContactRoute: ContactRoute,
+  FaqRoute: FaqRoute,
+  ProgrammesRoute: ProgrammesRoute,
+  StudentsCornerRoute: StudentsCornerRoute,
+  UgcCornerRoute: UgcCornerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
