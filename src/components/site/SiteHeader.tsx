@@ -4,14 +4,12 @@ import { TopHeader } from "./TopHeader";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40">
-      <div className="hidden lg:block">
-        <TopHeader />
-      </div>
-      <MainNav />
-      <Marquee />
-    </header>
+    <>
+      <TopHeader />
+      <header className="sticky top-0 z-40">
+        <MainNav />
+        <Marquee />
+      </header>
+    </>
   );
 }
-
-export { TopHeader };
