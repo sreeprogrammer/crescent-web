@@ -47,6 +47,8 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-accent-soft: var(--accent-soft);
   --color-primary-glow: var(--primary-glow);
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
   --color-glass: var(--glass);
   --color-glass-border: var(--glass-border);
   --color-destructive: var(--destructive);
@@ -72,22 +74,24 @@
 
 :root {
   --radius: 1.5rem;
+  --navy: oklch(0.26 0.06 262);
+  --navy-foreground: oklch(0.97 0.008 250);
   --background: oklch(0.988 0.005 95);
   --foreground: oklch(0.21 0.032 258);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.21 0.032 258);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.21 0.032 258);
-  --primary: oklch(0.29 0.075 262);
+  --primary: oklch(0.45 0.16 256);
   --primary-foreground: oklch(0.985 0.005 95);
-  --primary-glow: oklch(0.46 0.115 258);
+  --primary-glow: oklch(0.62 0.16 248);
   --secondary: oklch(0.955 0.012 250);
-  --secondary-foreground: oklch(0.29 0.075 262);
+  --secondary-foreground: oklch(0.32 0.09 258);
   --muted: oklch(0.962 0.008 250);
   --muted-foreground: oklch(0.505 0.024 257);
-  --accent: oklch(0.79 0.135 78);
-  --accent-foreground: oklch(0.24 0.05 262);
-  --accent-soft: oklch(0.95 0.045 88);
+  --accent: oklch(0.68 0.15 240);
+  --accent-foreground: oklch(0.99 0.005 250);
+  --accent-soft: oklch(0.95 0.03 245);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(0.912 0.011 255);
@@ -102,7 +106,7 @@
     oklch(0.988 0.005 95) 100%
   );
   --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-glow));
-  --gradient-accent: linear-gradient(135deg, oklch(0.84 0.13 84), oklch(0.74 0.14 62));
+  --gradient-accent: linear-gradient(135deg, oklch(0.66 0.16 244), oklch(0.52 0.18 262));
   --shadow-soft: 0 1px 2px oklch(0.29 0.075 262 / 6%), 0 12px 32px -18px oklch(0.29 0.075 262 / 22%);
   --shadow-float: 0 24px 60px -28px oklch(0.29 0.075 262 / 34%);
   --shadow-glow: 0 12px 40px -12px oklch(0.46 0.115 258 / 45%);
