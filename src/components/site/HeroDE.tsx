@@ -80,7 +80,7 @@ export function HeroDE() {
                 opacity: { duration: 0.6, delay: 0.4 + i * 0.15 },
                 y: { duration: 6 + i, repeat: Infinity, ease: "easeInOut" },
               }}
-              className={`glass-panel absolute flex items-center gap-3 rounded-3xl px-4 py-3 ${card.className}`}
+              className={`glass-panel absolute z-10 flex items-center gap-3 rounded-3xl px-4 py-3 ${card.className}`}
             >
               <span className="bg-gradient-primary flex size-10 items-center justify-center rounded-2xl">
                 <card.icon className="size-5 text-primary-foreground" aria-hidden />
