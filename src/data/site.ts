@@ -74,8 +74,46 @@ export const navItems: NavItem[] = [
       { label: "Admission List", to: "/ugc-corner", hash: "admission-list" },
     ],
   },
-  { label: "FAQ", to: "/faq" },
+  {
+    label: "Gallery",
+    to: "/gallery",
+    children: [
+      { label: "Distance Education", to: "/gallery", hash: "distance-education" },
+      { label: "Campus", to: "/gallery", hash: "campus" },
+      { label: "Convocation", to: "/gallery", hash: "convocation" },
+      { label: "Job Fair", to: "/gallery", hash: "job-fair" },
+      { label: "Events", to: "/gallery", hash: "events" },
+      { label: "Faculty", to: "/gallery", hash: "faculty" },
+    ],
+  },
   { label: "Contact", to: "/contact" },
+];
+
+export const degreeProgrammes = [
+  {
+    group: "Undergraduate",
+    items: [
+      { name: "BA English", desc: "Literature, language and communication for modern careers.", duration: "3 Years" },
+      { name: "BA Islamic Studies", desc: "Classical and contemporary Islamic thought and ethics.", duration: "3 Years" },
+      { name: "BA Public Policy", desc: "Governance, economics and policy analysis fundamentals.", duration: "3 Years" },
+    ],
+  },
+  {
+    group: "Postgraduate",
+    items: [
+      { name: "MA Islamic Studies", desc: "Advanced research in Islamic sciences and civilisation.", duration: "2 Years" },
+      { name: "MCA", desc: "Software engineering, data and applied computing.", duration: "2 Years" },
+      { name: "MBA", desc: "Management, finance, analytics and leadership practice.", duration: "2 Years" },
+    ],
+  },
+];
+
+export const certificationProgrammes = [
+  {
+    name: "Mobile Application Development",
+    desc: "Build production-ready Android and iOS apps with modern cross-platform tooling.",
+    duration: "6 Months",
+  },
 ];
 
 export const ugProgrammes = [
