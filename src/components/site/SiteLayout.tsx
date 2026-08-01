@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { EnquiryFab } from "./EnquiryFab";
 import { FloatingActions } from "./FloatingActions";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
@@ -10,6 +11,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <main>{children}</main>
       <SiteFooter />
       <FloatingActions />
+      <EnquiryFab />
     </div>
   );
 }

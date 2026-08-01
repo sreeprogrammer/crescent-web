@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdmissionRouteImport } from './routes/admission'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ProgrammesRouteImport } from './routes/programmes'
 import { Route as StudentsCornerRouteImport } from './routes/students-corner'
 import { Route as UgcCornerRouteImport } from './routes/ugc-corner'
@@ -43,6 +44,11 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgrammesRoute = ProgrammesRouteImport.update({
   id: '/programmes',
   path: '/programmes',
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/admission': typeof AdmissionRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
   '/programmes': typeof ProgrammesRoute
   '/students-corner': typeof StudentsCornerRoute
   '/ugc-corner': typeof UgcCornerRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/admission': typeof AdmissionRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
   '/programmes': typeof ProgrammesRoute
   '/students-corner': typeof StudentsCornerRoute
   '/ugc-corner': typeof UgcCornerRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/admission': typeof AdmissionRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
   '/programmes': typeof ProgrammesRoute
   '/students-corner': typeof StudentsCornerRoute
   '/ugc-corner': typeof UgcCornerRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/admission'
     | '/contact'
     | '/faq'
+    | '/gallery'
     | '/programmes'
     | '/students-corner'
     | '/ugc-corner'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/admission'
     | '/contact'
     | '/faq'
+    | '/gallery'
     | '/programmes'
     | '/students-corner'
     | '/ugc-corner'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/admission'
     | '/contact'
     | '/faq'
+    | '/gallery'
     | '/programmes'
     | '/students-corner'
     | '/ugc-corner'
@@ -129,6 +141,7 @@ export interface RootRouteChildren {
   AdmissionRoute: typeof AdmissionRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
+  GalleryRoute: typeof GalleryRoute
   ProgrammesRoute: typeof ProgrammesRoute
   StudentsCornerRoute: typeof StudentsCornerRoute
   UgcCornerRoute: typeof UgcCornerRoute
@@ -171,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/programmes': {
       id: '/programmes'
       path: '/programmes'
@@ -201,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdmissionRoute: AdmissionRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
+  GalleryRoute: GalleryRoute,
   ProgrammesRoute: ProgrammesRoute,
   StudentsCornerRoute: StudentsCornerRoute,
   UgcCornerRoute: UgcCornerRoute,
