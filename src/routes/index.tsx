@@ -2,12 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { AdmissionTimeline } from "@/components/site/AdmissionTimeline";
 import { ContactSection } from "@/components/site/ContactSection";
-import { FaqSection } from "@/components/site/FaqSection";
 import { HeroDE } from "@/components/site/HeroDE";
-import { ProgrammeCards } from "@/components/site/ProgrammeCards";
+import { NewsEvents } from "@/components/site/NewsEvents";
+import { ProgrammesTabs } from "@/components/site/ProgrammesTabs";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { TestimonialsSlider } from "@/components/site/TestimonialsSlider";
 import { WhyChooseUs } from "@/components/site/WhyChooseUs";
+import { WhoWeAre } from "@/components/site/WhoWeAre";
 
 const title = "Crescent CDOE — UGC Approved Distance Education (UG & PG)";
 const description =
@@ -31,11 +32,12 @@ function Index() {
   return (
     <SiteLayout>
       <HeroDE />
-      <ProgrammeCards />
+      <WhoWeAre />
+      <ProgrammesTabs />
       <WhyChooseUs />
       <AdmissionTimeline />
+      <NewsEvents />
       <TestimonialsSlider />
-      <FaqSection />
       <ContactSection />
     </SiteLayout>
   );

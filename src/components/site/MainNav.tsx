@@ -44,17 +44,19 @@ export function MainNav() {
   return (
     <div
       className={cn(
-        "border-b bg-card/90 backdrop-blur-xl transition-shadow duration-300",
-        scrolled ? "border-border shadow-soft" : "border-transparent",
+        "supports-[backdrop-filter]:bg-card/60 border-b bg-card/85 backdrop-blur-2xl backdrop-saturate-150 transition-all duration-300",
+        "before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent",
+        "relative bg-gradient-to-b from-white/70 to-white/20",
+        scrolled ? "border-border/70 shadow-float" : "border-transparent",
       )}
     >
       <nav
         aria-label="Main"
-        className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6"
+        className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8"
       >
         <Logo />
 
-        <ul className="hidden items-center gap-0.5 xl:flex">
+        <ul className="hidden items-center gap-1 xl:flex">
           {navItems.map((item) => (
             <li
               key={item.label}
@@ -64,7 +66,7 @@ export function MainNav() {
             >
               <Link
                 to={item.to}
-                className="flex items-center gap-1 rounded-full px-3 py-2 text-[0.82rem] font-medium text-foreground/80 transition-colors hover:bg-secondary hover:text-primary"
+                className="flex items-center gap-1 rounded-full px-3.5 py-2.5 text-[0.82rem] font-medium text-foreground/80 transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary/80 hover:text-primary hover:shadow-soft"
                 activeProps={{ className: "text-primary bg-secondary" }}
                 activeOptions={{ exact: item.to === "/" }}
                 onFocus={() => setOpenMenu(item.label)}
@@ -80,7 +82,7 @@ export function MainNav() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute left-0 top-full z-50 mt-2 w-60 rounded-2xl border border-border bg-card p-2 shadow-float"
+                    className="absolute left-0 top-full z-50 mt-2 w-60 rounded-2xl border border-border/70 bg-card/85 p-2 shadow-float backdrop-blur-2xl backdrop-saturate-150"
                   >
                     {item.children.map((child) => (
                       <li key={child.label}>
