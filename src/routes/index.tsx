@@ -1,12 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { AdmissionTimeline } from "@/components/site/AdmissionTimeline";
-import { ContactSection } from "@/components/site/ContactSection";
 import { HeroDE } from "@/components/site/HeroDE";
 import { NewsEvents } from "@/components/site/NewsEvents";
 import { ProgrammesTabs } from "@/components/site/ProgrammesTabs";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { TestimonialsSlider } from "@/components/site/TestimonialsSlider";
+import { StudentReviews } from "@/components/site/StudentReviews";
 import { WhyChooseUs } from "@/components/site/WhyChooseUs";
 import { WhoWeAre } from "@/components/site/WhoWeAre";
 
@@ -37,8 +36,7 @@ function Index() {
       <WhyChooseUs />
       <AdmissionTimeline />
       <NewsEvents />
-      <TestimonialsSlider />
-      <ContactSection />
+      <StudentReviews />
     </SiteLayout>
   );
 }
