@@ -18,7 +18,7 @@ export function FloatingActions() {
   }, []);
 
   return (
-    <div className="fixed right-4 bottom-5 z-50 flex flex-col items-center gap-3 sm:right-6">
+    <div className="fixed right-5 bottom-6 z-50 flex flex-col items-center gap-3 sm:right-8">
       <a
         href={`https://wa.me/${college.whatsapp}`}
         target="_blank"
