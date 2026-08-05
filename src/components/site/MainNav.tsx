@@ -10,17 +10,19 @@ import { navItems, college } from "@/data/site";
 import { cn } from "@/lib/utils";
 import { Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, GraduationCap, Menu, ShieldCheck } from "lucide-react";
+import { ChevronDown, Menu, ShieldCheck } from "lucide-react";
 import { useEffect, useState } from "react";
+import logo from "@/assets/crescent-logo.png.asset.json";
 
 function Logo() {
   return (
     <Link to="/" className="flex items-center gap-3" aria-label={`${college.name} home`}>
-      <span className="bg-gradient-primary flex size-11 items-center justify-center rounded-2xl shadow-glow">
-        <GraduationCap className="size-6 text-primary-foreground" aria-hidden />
-      </span>
-      <span className="leading-tight">
-        <span className="font-display block text-base font-semibold">{college.name}</span>
+      <img
+        src={logo.url}
+        alt="B.S. Abdur Rahman Crescent Institute of Science & Technology"
+        className="h-11 w-auto sm:h-12"
+      />
+      <span className="hidden border-l border-border pl-3 leading-tight sm:block">
         <span className="block text-[0.62rem] tracking-[0.2em] text-muted-foreground uppercase">
           Distance Education
         </span>
