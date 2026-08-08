@@ -49,6 +49,12 @@
   --color-primary-glow: var(--primary-glow);
   --color-navy: var(--navy);
   --color-navy-foreground: var(--navy-foreground);
+  --color-footer-blue: var(--footer-blue);
+  --color-footer-foreground: var(--footer-foreground);
+  --color-footer-gold: var(--footer-gold);
+  --color-footer-gold-foreground: var(--footer-gold-foreground);
+  --color-footer-surface: var(--footer-surface);
+  --color-footer-divider: var(--footer-divider);
   --color-glass: var(--glass);
   --color-glass-border: var(--glass-border);
   --color-destructive: var(--destructive);
@@ -76,6 +82,12 @@
   --radius: 1.5rem;
   --navy: oklch(0.28 0.075 263.5);
   --navy-foreground: oklch(0.97 0.008 250);
+  --footer-blue: oklch(0.322 0.12 261.44);
+  --footer-foreground: oklch(0.99 0.004 250);
+  --footer-gold: oklch(0.809 0.167 82.31);
+  --footer-gold-foreground: oklch(0.22 0.04 80);
+  --footer-surface: oklch(1 0 0 / 8%);
+  --footer-divider: oklch(1 0 0 / 18%);
   --background: oklch(0.988 0.005 95);
   --foreground: oklch(0.21 0.032 258);
   --card: oklch(1 0 0);
@@ -200,6 +212,10 @@
 
 @utility shadow-float {
   box-shadow: var(--shadow-float);
+}
+
+@utility shadow-footer-glow {
+  box-shadow: 0 0 24px -8px var(--color-footer-gold);
 }
 
 @utility shadow-glow {
