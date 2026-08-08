@@ -22,7 +22,7 @@ export function HeroDE() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="inline-flex items-center rounded-full border border-border bg-card px-4 py-1.5 text-xs font-medium tracking-[0.16em] uppercase shadow-soft">
+          <span className="inline-flex items-center rounded-full border border-border bg-gradient-accent px-4 py-1.5 text-xs font-medium tracking-[0.16em] text-accent-foreground uppercase shadow-glow">
             Admissions open 2026–2027
           </span>
           <h1 className="mt-6 text-4xl leading-[1.08] font-semibold text-balance sm:text-5xl lg:text-6xl">
