@@ -45,7 +45,7 @@ export function SectionHeading({
             "inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-medium tracking-[0.16em] uppercase",
             tone === "invert"
               ? "border-primary-foreground/25 text-primary-foreground/80"
-              : "border-border bg-card text-muted-foreground shadow-soft",
+              : "border-border bg-gradient-accent text-accent-foreground shadow-glow",
           )}
         >
           {eyebrow}
