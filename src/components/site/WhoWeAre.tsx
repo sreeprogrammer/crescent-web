@@ -15,7 +15,7 @@ export function WhoWeAre() {
     <Section id="who-we-are">
       <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal>
-          <span className="border-border bg-card text-muted-foreground shadow-soft inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-medium tracking-[0.16em] uppercase">
+          <span className="border-border bg-gradient-accent text-accent-foreground shadow-glow inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-medium tracking-[0.16em] uppercase">
             Who We Are
           </span>
           <h2 className="font-display mt-5 text-3xl leading-[1.1] font-semibold text-balance sm:text-4xl">
