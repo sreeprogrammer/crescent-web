@@ -19,7 +19,7 @@ export function EnquiryFab() {
         <button
           type="button"
           aria-label="Open enquiry form"
-          className="bg-gradient-primary text-primary-foreground shadow-float focus-visible:outline-ring fixed top-1/2 left-0 z-50 flex -translate-y-1/2 items-center gap-2 rounded-r-2xl px-2.5 py-5 text-sm font-semibold tracking-[0.18em] uppercase transition-all duration-300 hover:px-3.5 hover:shadow-glow focus-visible:outline-2 focus-visible:outline-offset-2"
+          className="bg-gradient-primary text-primary-foreground shadow-float focus-visible:outline-ring fixed top-1/2 right-0 z-50 flex -translate-y-1/2 items-center gap-2 rounded-r-2xl px-2.5 py-5 text-sm font-semibold tracking-[0.18em] uppercase transition-all duration-300 hover:px-3.5 hover:shadow-glow focus-visible:outline-2 focus-visible:outline-offset-2"
         >
           <span className="flex flex-col items-center gap-2 [writing-mode:vertical-rl]">
             <MessageSquareText className="size-4 rotate-90" aria-hidden />
