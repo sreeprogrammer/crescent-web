@@ -68,8 +68,8 @@ export function MainNav() {
             >
               <Link
                 to={item.to}
-                className="flex items-center gap-1 rounded-full px-3.5 py-2.5 text-[0.82rem] font-medium text-foreground/80 transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary/80 hover:text-primary hover:shadow-soft"
-                activeProps={{ className: "text-primary bg-secondary" }}
+                className="flex items-center gap-1 rounded-full px-3.5 py-2.5 text-[0.82rem] font-medium text-foreground/80 transition-all duration-300 hover:-translate-y-0.5 hover:bg-card hover:text-foreground hover:shadow-soft focus-visible:bg-card focus-visible:text-foreground focus-visible:shadow-soft"
+                activeProps={{ className: "rounded-full bg-card text-foreground shadow-soft" }}
                 activeOptions={{ exact: item.to === "/" }}
                 onFocus={() => setOpenMenu(item.label)}
               >
@@ -84,14 +84,14 @@ export function MainNav() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute left-0 top-full z-50 mt-2 w-60 rounded-2xl border border-border/70 bg-card/85 p-2 shadow-float backdrop-blur-2xl backdrop-saturate-150"
+                    className="absolute left-0 top-full z-50 mt-2 w-60 rounded-2xl border border-border/70 bg-card p-2 text-foreground shadow-float"
                   >
                     {item.children.map((child) => (
                       <li key={child.label}>
                         <Link
                           to={child.to}
                           hash={child.hash}
-                          className="block rounded-xl px-3 py-2 text-sm text-foreground/80 transition-colors hover:bg-secondary hover:text-primary"
+                          className="block rounded-xl px-3 py-2 text-sm text-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:bg-muted focus-visible:text-foreground"
                         >
                           {child.label}
                         </Link>
