@@ -69,7 +69,7 @@ export function MainNav() {
               <Link
                 to={item.to}
                 className="flex items-center gap-1 rounded-full px-3.5 py-2.5 text-[0.82rem] font-medium text-foreground/80 transition-all duration-300 hover:-translate-y-0.5 hover:bg-card hover:text-foreground hover:shadow-soft focus-visible:bg-card focus-visible:text-foreground focus-visible:shadow-soft"
-                activeProps={{ className: "bg-card text-foreground shadow-soft" }}
+                activeProps={{ className: "rounded-full bg-card text-foreground shadow-soft" }}
                 activeOptions={{ exact: item.to === "/" }}
                 onFocus={() => setOpenMenu(item.label)}
               >
