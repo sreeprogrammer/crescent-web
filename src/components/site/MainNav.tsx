@@ -48,7 +48,7 @@ export function MainNav() {
       className={cn(
         "supports-[backdrop-filter]:bg-card/60 border-b bg-card/85 backdrop-blur-2xl backdrop-saturate-150 transition-all duration-300",
         "before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent",
-        "relative bg-gradient-to-b from-white/70 to-white/20",
+        "relative z-50 bg-gradient-to-b from-white/70 to-white/20",
         scrolled ? "border-border/70 shadow-float" : "border-transparent",
       )}
     >
@@ -84,7 +84,7 @@ export function MainNav() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute left-0 top-full z-50 mt-2 w-60 rounded-2xl border border-border/70 bg-card p-2 text-foreground shadow-float"
+                    className="absolute left-0 top-full z-[9999] mt-2 w-60 rounded-2xl border border-border/70 bg-card p-2 text-foreground opacity-100 shadow-float backdrop-blur-none"
                   >
                     {item.children.map((child) => (
                       <li key={child.label}>
