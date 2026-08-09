@@ -9,7 +9,7 @@ const items = [
 
 export function Marquee() {
   return (
-    <div className="group border-y border-accent/20 bg-gradient-accent text-accent-foreground">
+    <div className="group relative z-0 border-y border-accent/20 bg-gradient-accent text-accent-foreground">
       <div className="marquee-viewport mx-auto flex max-w-[100vw] overflow-hidden py-2.5 text-sm">
         {[0, 1].map((copy) => (
           <div
