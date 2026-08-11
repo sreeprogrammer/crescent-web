@@ -16,16 +16,24 @@ export function EnquiryFab() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <button
-          type="button"
-          aria-label="Open enquiry form"
-          className="bg-gradient-primary text-primary-foreground shadow-float focus-visible:outline-ring fixed top-1/2 right-0 z-50 flex -translate-y-1/2 items-center gap-2 rounded-r-2xl px-2.5 py-5 text-sm font-semibold tracking-[0.18em] uppercase transition-all duration-300 hover:px-3.5 hover:shadow-glow focus-visible:outline-2 focus-visible:outline-offset-2"
-        >
-          <span className="flex flex-col items-center gap-2 [writing-mode:vertical-rl]">
-            <MessageSquareText className="size-4 rotate-90" aria-hidden />
-            Enquiry
-          </span>
-        </button>
+ <button
+  type="button"
+  aria-label="Open enquiry form"
+  className="fixed right-0 top-[44%] z-[9999] flex -translate-y-1/2 items-center justify-center rounded-l-2xl bg-red-700 px-2.5 py-4 text-white shadow-lg transition-all duration-300 hover:bg-red-800"
+>
+  <span className="relative z-10 flex flex-col items-center gap-3">
+    <MessageSquareText
+      className="size-5 shrink-0"
+      aria-hidden
+    />
+
+    <span
+      className="[writing-mode:vertical-rl] rotate-180 text-sm font-semibold tracking-[0.08em]"
+    >
+      Enquire Now
+    </span>
+  </span>
+</button>
       </DialogTrigger>
       <DialogContent className="max-h-[90vh] overflow-y-auto rounded-[1.75rem] sm:max-w-lg">
         <DialogHeader>

@@ -1,9 +1,15 @@
+
 import review1 from "@/assets/review-1.jpg";
 import review2 from "@/assets/review-2.jpg";
 import review3 from "@/assets/review-3.jpg";
 import review4 from "@/assets/review-4.jpg";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Quote,
+  Star,
+} from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { Section, SectionHeading } from "./Section";
 
@@ -40,11 +46,18 @@ const reviews = [
 
 function Stars({ rating }: { rating: number }) {
   return (
-    <div className="flex items-center gap-0.5" aria-label={`${rating} out of 5 stars`}>
+    <div
+      className="flex items-center gap-0.5"
+      aria-label={`${rating} out of 5 stars`}
+    >
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
-          className={i < rating ? "size-4 fill-accent text-accent" : "size-4 text-border"}
+          className={
+            i < rating
+              ? "size-3.5 fill-[#d4af37] text-[#d4af37]"
+              : "size-3.5 text-[#c7c7c7]"
+          }
           aria-hidden
         />
       ))}
@@ -54,76 +67,274 @@ function Stars({ rating }: { rating: number }) {
 
 export function StudentReviews() {
   const [index, setIndex] = useState(0);
+
   const perView = 2;
   const pages = Math.ceil(reviews.length / perView);
-  const next = useCallback(() => setIndex((i) => (i + 1) % pages), [pages]);
-  const prev = () => setIndex((i) => (i - 1 + pages) % pages);
+
+  const next = useCallback(
+    () => setIndex((i) => (i + 1) % pages),
+    [pages],
+  );
+
+  const prev = () =>
+    setIndex((i) => (i - 1 + pages) % pages);
 
   useEffect(() => {
     const id = setInterval(next, 6500);
     return () => clearInterval(id);
   }, [next]);
 
-  const visible = reviews.slice(index * perView, index * perView + perView);
+  const visible = reviews.slice(
+    index * perView,
+    index * perView + perView,
+  );
 
   return (
-    <Section id="reviews" className="bg-secondary/30">
-      <SectionHeading
-        eyebrow="Student reviews"
-        title="Rated by the learners who finished"
-        description="Graduates across India share what studying with us actually felt like."
-      />
+    <Section
+      id="reviews"
+      className="!py-10 bg-[#f8f8f7]"
+    >
+      <div className="mx-auto max-w-6xl">
 
-      <div className="mx-auto mt-14 max-w-5xl">
+        {/* =========================
+            HEADING
+        ========================== */}
+        <div className="mb-6 text-center">
+          <SectionHeading
+            eyebrow="STUDENT REVIEWS"
+            title="What our learners say"
+            description="Real experiences from students who built their future with CDOE."
+          />
+        </div>
+
+        {/* =========================
+            REVIEWS
+        ========================== */}
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
-            initial={{ opacity: 0, x: 24 }}
+            initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -24 }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="grid gap-6 md:grid-cols-2"
+            exit={{ opacity: 0, x: -20 }}
+            transition={{
+              duration: 0.4,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="
+              grid
+              gap-4
+              md:grid-cols-2
+            "
           >
-            {visible.map((r) => (
-              <figure
+            {visible.map((r, i) => (
+              <motion.figure
                 key={r.name}
-                className="group rounded-[1.75rem] border border-border/60 bg-card/70 p-7 shadow-soft backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.35,
+                  delay: i * 0.08,
+                }}
+                className="
+                  group
+                  relative
+                  overflow-hidden
+                  rounded-2xl
+                  border
+                  border-[#d9dee7]
+                  bg-white
+                  px-5
+                  py-4
+                  shadow-[0_6px_24px_rgba(15,23,42,0.06)]
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:shadow-[0_12px_30px_rgba(15,23,42,0.09)]
+                "
               >
-                <div className="flex items-center gap-4">
-                  <img
-                    src={r.photo}
-                    alt={`${r.name}, ${r.programme}`}
-                    loading="lazy"
-                    width={512}
-                    height={512}
-                    className="size-14 rounded-full object-cover ring-2 ring-primary/15"
-                  />
-                  <figcaption>
-                    <span className="font-display block font-semibold">{r.name}</span>
-                    <span className="block text-sm text-muted-foreground">{r.programme}</span>
-                  </figcaption>
-                </div>
-                <div className="mt-5">
+
+                {/* Top Row */}
+                <div className="flex items-center justify-between">
+
+                  {/* Student */}
+                  <div className="flex items-center gap-3">
+
+                    <div className="relative">
+                      <img
+                        src={r.photo}
+                        alt={`${r.name}, ${r.programme}`}
+                        loading="lazy"
+                        width={512}
+                        height={512}
+                        className="
+                          size-12
+                          rounded-full
+                          object-cover
+                          border-2
+                          border-[#d4af37]
+                        "
+                      />
+
+                      {/* Quote badge */}
+                      <span
+                        className="
+                          absolute
+                          -bottom-1
+                          -right-1
+                          flex
+                          size-5
+                          items-center
+                          justify-center
+                          rounded-full
+                          bg-[#7f1d1d]
+                          text-white
+                          shadow-sm
+                        "
+                      >
+                        <Quote className="size-2.5" />
+                      </span>
+                    </div>
+
+                    <figcaption>
+                      <span
+                        className="
+                          block
+                          text-[14px]
+                          font-bold
+                          text-[#172554]
+                        "
+                      >
+                        {r.name}
+                      </span>
+
+                      <span
+                        className="
+                          mt-0.5
+                          block
+                          text-[10px]
+                          text-[#4b4b4b]
+                        "
+                      >
+                        {r.programme}
+                      </span>
+                    </figcaption>
+                  </div>
+
+                  {/* Rating */}
                   <Stars rating={r.rating} />
                 </div>
-                <blockquote className="mt-4 text-sm leading-relaxed text-pretty text-muted-foreground sm:text-base">
+
+                {/* Gold Divider */}
+                <div
+                  className="
+                    mt-3
+                    h-[2px]
+                    w-8
+                    rounded-full
+                    bg-[#d4af37]
+                    transition-all
+                    duration-300
+                    group-hover:w-14
+                  "
+                />
+
+                {/* Review */}
+                <blockquote
+                  className="
+                    mt-3
+                    text-[12px]
+                    leading-[1.6]
+                    text-[#4b4b4b]
+                  "
+                >
                   “{r.text}”
                 </blockquote>
-              </figure>
+
+                {/* Bottom Identity */}
+                <div
+                  className="
+                    mt-3
+                    flex
+                    items-center
+                    justify-between
+                    border-t
+                    border-[#e5e7eb]
+                    pt-2.5
+                  "
+                >
+                  <span
+                    className="
+                      text-[9px]
+                      font-bold
+                      tracking-[0.12em]
+                      text-[#7f1d1d]
+                    "
+                  >
+                    VERIFIED LEARNER
+                  </span>
+
+                  <span
+                    className="
+                      text-[9px]
+                      font-semibold
+                      tracking-wider
+                      text-[#172554]/45
+                    "
+                  >
+                    CDOE
+                  </span>
+                </div>
+
+                {/* Bottom Red Accent */}
+                <span
+                  className="
+                    absolute
+                    bottom-0
+                    left-0
+                    h-[2px]
+                    w-full
+                    origin-left
+                    scale-x-0
+                    bg-[#7f1d1d]
+                    transition-transform
+                    duration-300
+                    group-hover:scale-x-100
+                  "
+                />
+              </motion.figure>
             ))}
           </motion.div>
         </AnimatePresence>
 
-        <div className="mt-10 flex items-center justify-center gap-4">
+        {/* =========================
+            CONTROLS
+        ========================== */}
+        <div className="mt-5 flex items-center justify-center gap-3">
+
           <button
             type="button"
             onClick={prev}
             aria-label="Previous reviews"
-            className="flex size-10 items-center justify-center rounded-full border border-border bg-card/70 backdrop-blur transition-colors hover:bg-secondary"
+            className="
+              flex
+              size-8
+              items-center
+              justify-center
+              rounded-full
+              border
+              border-[#172554]/20
+              bg-white
+              text-[#172554]
+              transition-all
+              hover:bg-[#172554]
+              hover:text-white
+            "
           >
-            <ChevronLeft className="size-4" aria-hidden />
+            <ChevronLeft className="size-4" />
           </button>
-          <div className="flex items-center gap-2">
+
+          {/* Dots */}
+          <div className="flex items-center gap-1.5">
             {Array.from({ length: pages }).map((_, i) => (
               <button
                 key={i}
@@ -131,20 +342,41 @@ export function StudentReviews() {
                 onClick={() => setIndex(i)}
                 aria-label={`Show review set ${i + 1}`}
                 aria-current={i === index}
-                className={`h-2 rounded-full transition-all ${i === index ? "w-6 bg-primary" : "w-2 bg-border"}`}
+                className={
+                  i === index
+                    ? "h-1.5 w-7 rounded-full bg-[#7f1d1d] transition-all"
+                    : "size-1.5 rounded-full bg-[#b8b8b8] transition-all"
+                }
               />
             ))}
           </div>
+
           <button
             type="button"
             onClick={next}
             aria-label="Next reviews"
-            className="flex size-10 items-center justify-center rounded-full border border-border bg-card/70 backdrop-blur transition-colors hover:bg-secondary"
+            className="
+              flex
+              size-8
+              items-center
+              justify-center
+              rounded-full
+              border
+              border-[#172554]/20
+              bg-white
+              text-[#172554]
+              transition-all
+              hover:bg-[#172554]
+              hover:text-white
+            "
           >
-            <ChevronRight className="size-4" aria-hidden />
+            <ChevronRight className="size-4" />
           </button>
+
         </div>
+
       </div>
     </Section>
   );
 }
+

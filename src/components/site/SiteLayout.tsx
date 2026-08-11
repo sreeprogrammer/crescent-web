@@ -3,6 +3,7 @@ import { EnquiryFab } from "./EnquiryFab";
 import { FloatingActions } from "./FloatingActions";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
+import { CoursesFab } from "./CoursesFab";
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   return (
@@ -12,6 +13,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <SiteFooter />
       <FloatingActions />
       <EnquiryFab />
+      <CoursesFab />
     </div>
   );
 }

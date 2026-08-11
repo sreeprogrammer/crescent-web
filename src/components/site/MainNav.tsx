@@ -1,32 +1,44 @@
 import { Button } from "@/components/ui/button";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { navItems, college } from "@/data/site";
 import { cn } from "@/lib/utils";
 import { Link } from "@tanstack/react-router";
-import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Menu, ShieldCheck } from "lucide-react";
+import { Menu, ShieldCheck } from "lucide-react";
 import { useEffect, useState } from "react";
-import logo from "@/assets/crescent-logo.png.asset.json";
+
+import logo from "@/assets/crescent-logo.png.asset.png";
+import cdoePhoto from "@/assets/campus-1.jpg";
 
 function Logo() {
   return (
-    <Link to="/" className="flex items-center gap-3" aria-label={`${college.name} home`}>
+    <Link
+      to="/"
+      className="
+        group
+        flex
+        shrink-0
+        items-center
+        transition-transform
+        duration-300
+        hover:scale-[1.015]
+      "
+      aria-label={`${college.name} home`}
+    >
       <img
-        src={logo.url}
-        alt="B.S. Abdur Rahman Crescent Institute of Science & Technology"
-        className="h-11 w-auto sm:h-12"
+        src={logo}
+        alt={`${college.name} logo`}
+        className="
+          h-[52px]
+          w-auto
+          object-contain
+          sm:h-[55px]
+        "
       />
-      <span className="hidden border-l border-border pl-3 leading-tight sm:block">
-        <span className="block text-[0.62rem] tracking-[0.2em] text-muted-foreground uppercase">
-          Distance Education
-        </span>
-      </span>
     </Link>
   );
 }
@@ -34,146 +46,507 @@ function Logo() {
 export function MainNav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [openMenu, setOpenMenu] = useState<string | null>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
     onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    window.addEventListener("scroll", onScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (
-    <div
+    <nav
       className={cn(
-        "supports-[backdrop-filter]:bg-card/60 border-b bg-card/85 backdrop-blur-2xl backdrop-saturate-150 transition-all duration-300",
-        "before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent",
-        "relative z-50 bg-gradient-to-b from-white/70 to-white/20",
-        scrolled ? "border-border/70 shadow-float" : "border-transparent",
+        // =====================================================
+        // MAIN CONTAINER
+        // =====================================================
+        "relative z-50 mx-auto mt-3 w-[calc(100%-28px)] max-w-[1820px]",
+        "rounded-[28px]",
+        "border border-[#e6e8eb]",
+
+        // =====================================================
+        // PREMIUM GLASS BACKGROUND
+        // =====================================================
+        scrolled
+          ? "bg-white/96 backdrop-blur-2xl"
+          : "bg-[#fffdf9]/92 backdrop-blur-xl",
+
+        // =====================================================
+        // SHADOW
+        // =====================================================
+        scrolled
+          ? "shadow-[0_16px_50px_rgba(15,23,42,0.14)]"
+          : "shadow-[0_8px_30px_rgba(15,23,42,0.08)]",
+
+        // =====================================================
+        // ANIMATION
+        // =====================================================
+        "transition-all duration-500",
+
+        // =====================================================
+        // TOP GLASS HIGHLIGHT
+        // =====================================================
+        "before:pointer-events-none",
+        "before:absolute",
+        "before:inset-x-10",
+        "before:top-0",
+        "before:h-px",
+        "before:rounded-full",
+        "before:bg-gradient-to-r",
+        "before:from-transparent",
+        "before:via-[#d4af37]/70",
+        "before:to-transparent",
+
+        // =====================================================
+        // SUBTLE INNER BORDER
+        // =====================================================
+        "after:pointer-events-none",
+        "after:absolute",
+        "after:inset-[1px]",
+        "after:rounded-[27px]",
+        "after:border",
+        "after:border-white/70",
+        "after:content-['']",
       )}
     >
-      <nav
-        aria-label="Main"
-        className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8"
+      {/* =====================================================
+          VERY SUBTLE DECORATIVE BACKGROUND
+      ====================================================== */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -left-20
+          -top-20
+          size-40
+          rounded-full
+          bg-[#7f1d1d]/[0.035]
+          blur-3xl
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -right-20
+          -bottom-20
+          size-44
+          rounded-full
+          bg-[#172554]/[0.035]
+          blur-3xl
+        "
+      />
+
+      {/* =====================================================
+          HEADER CONTENT
+      ====================================================== */}
+
+      <div
+        className={cn(
+          "relative flex items-center",
+          "px-5 sm:px-6 lg:px-7",
+          scrolled
+            ? "min-h-[68px]"
+            : "min-h-[76px]",
+          "transition-all duration-500",
+        )}
       >
+
+        {/* ===================================================
+            LOGO
+        ==================================================== */}
+
         <Logo />
 
-        <ul className="hidden items-center gap-1 xl:flex">
+        {/* ===================================================
+            DESKTOP NAVIGATION
+        ==================================================== */}
+
+        <ul
+          className="
+            hidden
+            min-w-0
+            flex-1
+            items-center
+            justify-center
+            gap-0.5
+            xl:flex
+          "
+        >
           {navItems.map((item) => (
             <li
               key={item.label}
-              className="relative"
-              onMouseEnter={() => setOpenMenu(item.label)}
-              onMouseLeave={() => setOpenMenu(null)}
+              className="shrink-0"
             >
               <Link
                 to={item.to}
-                className="flex items-center gap-1 rounded-full px-3.5 py-2.5 text-[0.82rem] font-medium text-foreground/80 transition-all duration-300 hover:-translate-y-0.5 hover:bg-card hover:text-foreground hover:shadow-soft focus-visible:bg-card focus-visible:text-foreground focus-visible:shadow-soft"
-                activeProps={{ className: "rounded-full bg-card text-foreground shadow-soft" }}
-                activeOptions={{ exact: item.to === "/" }}
-                onFocus={() => setOpenMenu(item.label)}
+                activeOptions={{
+                  exact: item.to === "/",
+                }}
+                className={cn(
+                  // ===============================
+                  // BASE
+                  // ===============================
+                  "group relative flex items-center justify-center",
+                  "whitespace-nowrap",
+                  "px-3.5 py-3",
+
+                  // ===============================
+                  // FONT
+                  // ===============================
+                  "text-[0.9rem]",
+                  "font-semibold",
+                  "tracking-[-0.01em]",
+                  "text-[#3f4652]",
+
+                  // ===============================
+                  // TRANSITION
+                  // ===============================
+                  "transition-all duration-300",
+
+                  // ===============================
+                  // HOVER
+                  // ===============================
+                  "hover:text-[#7f1d1d]",
+
+                  // ===============================
+                  // UNDERLINE
+                  // ===============================
+                  "after:pointer-events-none",
+                  "after:absolute",
+                  "after:bottom-[3px]",
+                  "after:left-1/2",
+                  "after:h-[3px]",
+                  "after:w-0",
+                  "after:-translate-x-1/2",
+                  "after:rounded-full",
+                  "after:bg-[#7f1d1d]",
+                  "after:opacity-0",
+                  "after:transition-all",
+                  "after:duration-300",
+
+                  // ===============================
+                  // HOVER UNDERLINE
+                  // ===============================
+                  "hover:after:w-[55%]",
+                  "hover:after:opacity-100",
+                )}
+                activeProps={{
+                  className: cn(
+                    // ===============================
+                    // ACTIVE TEXT
+                    // ===============================
+                    "text-[#7f1d1d]",
+                    "font-bold",
+
+                    // ===============================
+                    // ACTIVE UNDERLINE
+                    // ===============================
+                    "after:w-[55%]",
+                    "after:opacity-100",
+
+                    // ===============================
+                    // GOLD MICRO GLOW
+                    // ===============================
+                    "after:shadow-[0_2px_7px_rgba(212,175,55,0.30)]",
+                  ),
+                }}
               >
                 {item.label}
-                {item.children ? <ChevronDown className="size-3.5" aria-hidden /> : null}
               </Link>
-
-              <AnimatePresence>
-                {item.children && openMenu === item.label ? (
-                  <motion.ul
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
-                    transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute left-0 top-full z-[9999] mt-2 w-60 rounded-2xl border border-border/70 bg-card p-2 text-foreground opacity-100 shadow-float backdrop-blur-none"
-                  >
-                    {item.children.map((child) => (
-                      <li key={child.label}>
-                        <Link
-                          to={child.to}
-                          hash={child.hash}
-                          className="block rounded-xl px-3 py-2 text-sm text-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:bg-muted focus-visible:text-foreground"
-                        >
-                          {child.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </motion.ul>
-                ) : null}
-              </AnimatePresence>
             </li>
           ))}
         </ul>
 
-        <div className="flex items-center gap-3">
-          <div className="hidden items-center gap-2 rounded-2xl border border-border px-3 py-1.5 md:flex">
-            <ShieldCheck className="size-5 text-primary" aria-hidden />
-            <span className="leading-tight">
-              <span className="font-display block text-sm font-semibold">CDOE</span>
-              <span className="block text-[0.6rem] tracking-[0.14em] text-muted-foreground uppercase">
-                UGC Approved
-              </span>
-            </span>
+        {/* ===================================================
+            RIGHT SIDE
+        ==================================================== */}
+
+        <div className="ml-2 flex shrink-0 items-center gap-2">
+
+          {/* =================================================
+              CDOE / CAMPUS CAPSULE
+          ================================================== */}
+
+          <div
+            className="
+              hidden
+              items-center
+              gap-2
+              rounded-full
+              border
+              border-[#e2e5e9]
+              bg-white/80
+              p-1.5
+              shadow-[0_3px_14px_rgba(15,23,42,0.06)]
+              backdrop-blur-md
+              md:flex
+            "
+          >
+            {/* IMAGE */}
+
+            <div
+              className="
+                relative
+                size-10
+                overflow-hidden
+                rounded-full
+                border
+                border-[#e2e5e9]
+                bg-[#f7f7f5]
+              "
+            >
+              <img
+                src={cdoePhoto}
+                alt="Crescent campus"
+                className="
+                  h-full
+                  w-full
+                  object-cover
+                  transition-transform
+                  duration-500
+                  hover:scale-110
+                "
+              />
+
+              {/* tiny gold overlay */}
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-0
+                  rounded-full
+                  ring-1
+                  ring-inset
+                  ring-white/70
+                "
+              />
+            </div>
+
+            {/* SHIELD */}
+
+            <div
+              className="
+                flex
+                size-9
+                items-center
+                justify-center
+                rounded-full
+                bg-[#7f1d1d]/[0.07]
+                text-[#7f1d1d]
+                transition-all
+                duration-300
+                hover:bg-[#7f1d1d]
+                hover:text-white
+              "
+              title="UGC Approved"
+            >
+              <ShieldCheck className="size-[17px]" />
+            </div>
           </div>
 
-          <Sheet open={open} onOpenChange={setOpen}>
+          {/* =================================================
+              MOBILE MENU
+          ================================================== */}
+
+          <Sheet
+            open={open}
+            onOpenChange={setOpen}
+          >
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="rounded-2xl xl:hidden">
-                <Menu className="size-5" aria-hidden />
-                <span className="sr-only">Open navigation menu</span>
+              <Button
+                variant="outline"
+                size="icon"
+                className="
+                  size-11
+                  rounded-2xl
+                  border-[#dfe3e8]
+                  bg-white/80
+                  text-[#172554]
+                  shadow-sm
+                  transition-all
+                  hover:border-[#7f1d1d]/30
+                  hover:bg-[#7f1d1d]/[0.04]
+                  hover:text-[#7f1d1d]
+                  xl:hidden
+                "
+              >
+                <Menu className="size-5" />
+
+                <span className="sr-only">
+                  Open navigation menu
+                </span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[88vw] max-w-sm overflow-y-auto bg-card">
-              <SheetTitle className="font-display text-lg">{college.name}</SheetTitle>
-              <Accordion type="single" collapsible className="mt-6 w-full">
-                {navItems.map((item) =>
-                  item.children ? (
-                    <AccordionItem key={item.label} value={item.label}>
-                      <AccordionTrigger className="text-base font-medium">
-                        {item.label}
-                      </AccordionTrigger>
-                      <AccordionContent className="space-y-1">
-                        <Link
-                          to={item.to}
-                          onClick={() => setOpen(false)}
-                          className="block rounded-xl px-3 py-2 text-sm text-primary"
-                        >
-                          Overview
-                        </Link>
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.label}
-                            to={child.to}
-                            hash={child.hash}
-                            onClick={() => setOpen(false)}
-                            className="block rounded-xl px-3 py-2 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground"
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ) : (
-                    <div key={item.label} className="border-b">
-                      <Link
-                        to={item.to}
-                        onClick={() => setOpen(false)}
-                        className="block py-4 text-base font-medium"
-                      >
-                        {item.label}
-                      </Link>
-                    </div>
-                  ),
-                )}
-              </Accordion>
-              <Button variant="hero" size="pill-lg" className="mt-8 w-full" asChild>
-                <Link to="/admission" hash="how-to-apply" onClick={() => setOpen(false)}>
+
+            <SheetContent
+              side="right"
+              className="
+                w-[88vw]
+                max-w-sm
+                overflow-y-auto
+                border-l
+                border-[#e5e7eb]
+                bg-[#fffdf9]
+              "
+            >
+              {/* MOBILE HEADER */}
+
+              <SheetTitle
+                className="
+                  pr-8
+                  font-display
+                  text-lg
+                  font-bold
+                  text-[#172554]
+                "
+              >
+                {college.name}
+              </SheetTitle>
+
+              <div className="mt-3 h-[3px] w-12 rounded-full bg-[#7f1d1d]" />
+
+              {/* MOBILE NAVIGATION */}
+
+              <nav className="mt-6 flex flex-col">
+
+                {navItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    to={item.to}
+                    activeOptions={{
+                      exact: item.to === "/",
+                    }}
+                    onClick={() => setOpen(false)}
+                    className={cn(
+                      // ==========================
+                      // BASE
+                      // ==========================
+                      "relative",
+                      "border-b border-[#e8eaed]",
+                      "px-2 py-4",
+                      "text-[15px]",
+                      "font-semibold",
+                      "text-[#454d59]",
+
+                      // ==========================
+                      // HOVER
+                      // ==========================
+                      "transition-all duration-200",
+                      "hover:translate-x-1",
+                      "hover:text-[#7f1d1d]",
+
+                      // ==========================
+                      // ACTIVE LINE
+                      // ==========================
+                      "after:pointer-events-none",
+                      "after:absolute",
+                      "after:bottom-0",
+                      "after:left-2",
+                      "after:h-[3px]",
+                      "after:w-0",
+                      "after:rounded-full",
+                      "after:bg-[#7f1d1d]",
+                      "after:opacity-0",
+                      "after:transition-all",
+                      "after:duration-300",
+                    )}
+                    activeProps={{
+                      className: cn(
+                        "font-bold",
+                        "text-[#7f1d1d]",
+                        "after:w-12",
+                        "after:opacity-100",
+                      ),
+                    }}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+
+              </nav>
+
+              {/* MOBILE APPLY */}
+
+              <Button
+                variant="hero"
+                size="pill-lg"
+                className="
+                  mt-7
+                  w-full
+                  bg-[#7f1d1d]
+                  text-white
+                  shadow-lg
+                  shadow-[#7f1d1d]/20
+                  hover:bg-[#172554]
+                "
+                asChild
+              >
+                <Link
+                  to="/admission"
+                  hash="how-to-apply"
+                  onClick={() => setOpen(false)}
+                >
                   Apply Now
                 </Link>
               </Button>
+
+              {/* MOBILE INFO */}
+
+              <div
+                className="
+                  mt-5
+                  rounded-2xl
+                  border
+                  border-[#e5e7eb]
+                  bg-white
+                  p-4
+                "
+              >
+                <div className="flex items-center gap-3">
+
+                  <div
+                    className="
+                      flex
+                      size-9
+                      items-center
+                      justify-center
+                      rounded-full
+                      bg-[#172554]/[0.06]
+                      text-[#172554]
+                    "
+                  >
+                    <ShieldCheck className="size-4" />
+                  </div>
+
+                  <div>
+                    <p className="text-xs font-bold text-[#172554]">
+                      UGC Approved
+                    </p>
+
+                    <p className="mt-0.5 text-[11px] text-[#737b87]">
+                      Recognised programmes
+                    </p>
+                  </div>
+
+                </div>
+              </div>
             </SheetContent>
           </Sheet>
+
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 }

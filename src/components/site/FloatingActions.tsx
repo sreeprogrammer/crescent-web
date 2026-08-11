@@ -1,64 +1,101 @@
 import { college } from "@/data/site";
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUp, MapPin, MessageCircle, Phone } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  ArrowUp,
+  MapPin,
+  MessageCircle,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 
 const base =
-  "flex size-12 items-center justify-center rounded-full shadow-float transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring";
+  "flex h-10 w-10 items-center justify-center rounded-md shadow-float transition-all duration-300 hover:translate-x-1 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring";
 
 export function FloatingActions() {
   const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setShowTop(window.scrollY > 400);
+    const onScroll = () => {
+      setShowTop(window.scrollY > 400);
+    };
+
     onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    window.addEventListener("scroll", onScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
+  const mapLink =
+    "https://www.google.com/maps/search/?api=1&query=B.S.+Abdur+Rahman+Crescent+Institute+of+Science+and+Technology";
+
   return (
-    <div className="fixed bottom-6 left-[68px] z-50 flex flex-col items-center gap-3 sm:left-[72px] lg:left-[75px]">
+    <>
+      {/* ================= GOOGLE MAPS ================= */}
+      <a
+        href={mapLink}
+        target="_blank"
+        rel="noreferrer noopener"
+        aria-label="Find us on Google Maps"
+        title="Find us on Google Maps"
+        className={cn(
+          base,
+          "fixed bottom-16 left-3 z-50 bg-[#4285F4] text-white",
+        )}
+      >
+        <MapPin className="size-5" />
+      </a>
+
+      {/* ================= WHATSAPP ================= */}
       <a
         href={`https://wa.me/${college.whatsapp}`}
         target="_blank"
         rel="noreferrer noopener"
         aria-label="Chat with us on WhatsApp"
-        className={cn(base, "bg-[#25D366] text-white")}
+        title="Chat with us on WhatsApp"
+        className={cn(
+          base,
+          "fixed bottom-4 left-3 z-50 bg-[#25D366] text-white",
+        )}
       >
-        <MessageCircle className="size-5" aria-hidden />
+        <MessageCircle className="size-5" />
       </a>
-      <a
-        href={`tel:${college.numbers[0].tel}`}
-        aria-label="Call the admission office"
-        className={cn(base, "bg-gradient-primary text-primary-foreground")}
-      >
-        <Phone className="size-5" aria-hidden />
-      </a>
-      <a
-        href={college.mapLink}
-        target="_blank"
-        rel="noreferrer noopener"
-        aria-label="Get directions to campus"
-        className={cn(base, "bg-card text-primary border border-border")}
-      >
-        <MapPin className="size-5" aria-hidden />
-      </a>
-      <AnimatePresence>
-        {showTop ? (
-          <motion.button
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            type="button"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            aria-label="Back to top"
-            className={cn(base, "bg-navy text-navy-foreground")}
-          >
-            <ArrowUp className="size-5" aria-hidden />
-          </motion.button>
-        ) : null}
-      </AnimatePresence>
-    </div>
+
+      {/* ================= BACK TO TOP ================= */}
+      {showTop && (
+        <motion.button
+          initial={{
+            opacity: 0,
+            scale: 0.8,
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+          }}
+          transition={{
+            duration: 0.2,
+          }}
+          type="button"
+          onClick={() =>
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            })
+          }
+          aria-label="Back to top"
+          title="Back to top"
+          className={cn(
+            base,
+            "fixed bottom-6 right-6 z-50 bg-navy text-navy-foreground",
+          )}
+        >
+          <ArrowUp className="size-4" />
+        </motion.button>
+      )}
+    </>
   );
 }

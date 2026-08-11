@@ -1,55 +1,425 @@
 import { college } from "@/data/site";
 import { Link } from "@tanstack/react-router";
+import {
+  ArrowRight,
+  BookOpen,
+  LogIn,
+  Mail,
+  Phone,
+  UserPlus,
+} from "lucide-react";
 
 export function TopHeader() {
   return (
-    <div className="bg-navy/95 text-navy-foreground backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 px-5 py-2.5 text-xs sm:px-8 lg:flex-row lg:justify-between">
-        <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1">
-          {college.numbers.slice(0, 2).map((n) => (
-            <li key={n.label}>
-              <a
-                href={`tel:${n.tel}`}
-                className="text-navy-foreground/70 transition-colors hover:text-accent"
-              >
-                {n.value}
-              </a>
-            </li>
-          ))}
-          <li>
-            <a
-              href={`mailto:${college.email}`}
-              className="text-navy-foreground/70 transition-colors hover:text-accent"
-            >
-              {college.email}
-            </a>
-          </li>
-        </ul>
+    <header
+      className="
+        relative
+        z-50
+        w-full
+        overflow-hidden
+        bg-[#741b1b]
+        text-white
+      "
+    >
+      {/* =====================================================
+          PREMIUM GOLD TOP LINE
+      ====================================================== */}
 
-        <div className="flex items-center gap-1.5">
+      <div
+        className="
+          absolute
+          left-0
+          right-0
+          top-0
+          h-[2px]
+          bg-gradient-to-r
+          from-transparent
+          via-[#d1ad5b]
+          to-transparent
+        "
+      />
+
+      {/* =====================================================
+          SUBTLE GOLD GLOW
+      ====================================================== */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -right-20
+          -top-20
+          size-40
+          rounded-full
+          bg-[#d1ad5b]/10
+          blur-3xl
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -bottom-20
+          -left-20
+          size-40
+          rounded-full
+          bg-[#4b1111]/40
+          blur-3xl
+        "
+      />
+
+      {/* =====================================================
+          MAIN CONTAINER
+      ====================================================== */}
+
+      <div
+        className="
+          relative
+          mx-auto
+          flex
+          min-h-[52px]
+          max-w-[1900px]
+          items-center
+          justify-between
+          gap-4
+          px-4
+          sm:px-6
+          lg:px-10
+          xl:px-12
+        "
+      >
+        {/* ===================================================
+            LEFT SIDE
+        ==================================================== */}
+
+        <div className="flex min-w-0 items-center gap-5">
+
+          {/* PHONE */}
+
+          {college.numbers.slice(0, 1).map((n) => (
+            <a
+              key={n.tel}
+              href={`tel:${n.tel}`}
+              className="
+                group
+                hidden
+                items-center
+                gap-2
+                text-xs
+                font-medium
+                text-white/80
+                transition-colors
+                duration-200
+                sm:flex
+                hover:text-white
+              "
+            >
+              <span
+                className="
+                  flex
+                  size-6
+                  items-center
+                  justify-center
+                  rounded-full
+                  bg-white/[0.08]
+                  text-[#d1ad5b]
+                  transition-all
+                  duration-200
+                  group-hover:bg-[#d1ad5b]
+                  group-hover:text-[#741b1b]
+                "
+              >
+                <Phone className="size-3" />
+              </span>
+
+              <span>{n.value}</span>
+            </a>
+          ))}
+
+          {/* DIVIDER */}
+
+          <span
+            className="
+              hidden
+              h-4
+              w-px
+              bg-[#d1ad5b]/25
+              sm:block
+            "
+          />
+
+          {/* EMAIL */}
+
+          <a
+            href={`mailto:${college.email}`}
+            className="
+              group
+              hidden
+              items-center
+              gap-2
+              text-xs
+              font-medium
+              text-white/80
+              transition-colors
+              duration-200
+              md:flex
+              hover:text-white
+            "
+          >
+            <span
+              className="
+                flex
+                size-6
+                items-center
+                justify-center
+                rounded-full
+                bg-white/[0.08]
+                text-[#d1ad5b]
+                transition-all
+                duration-200
+                group-hover:bg-[#d1ad5b]
+                group-hover:text-[#741b1b]
+              "
+            >
+              <Mail className="size-3" />
+            </span>
+
+            <span>{college.email}</span>
+          </a>
+        </div>
+
+        {/* ===================================================
+            RIGHT SIDE
+        ==================================================== */}
+
+        <div className="flex shrink-0 items-center gap-1.5">
+
+          {/* =================================================
+              LMS LOGIN
+          ================================================== */}
+
+          <Link
+            to="/admission"
+            hash="lms-login"
+            className="
+              group
+              flex
+              items-center
+              gap-2
+              rounded-full
+              border
+              border-[#172554]/40
+              bg-[#172554]
+              px-3
+              py-1.5
+              text-xs
+              font-semibold
+              text-white
+              shadow-[0_4px_12px_rgba(0,0,0,0.15)]
+              transition-all
+              duration-300
+              hover:-translate-y-0.5
+              hover:bg-[#102044]
+              hover:shadow-[0_6px_16px_rgba(0,0,0,0.22)]
+            "
+          >
+            <BookOpen
+              className="
+                size-3.5
+                text-[#d1ad5b]
+                transition-transform
+                duration-300
+                group-hover:scale-110
+              "
+            />
+
+            <span className="hidden sm:inline">
+              LMS Login
+            </span>
+
+            <span className="sm:hidden">
+              LMS
+            </span>
+          </Link>
+
+          {/* DIVIDER */}
+
+          <span
+            className="
+              mx-1
+              hidden
+              h-5
+              w-px
+              bg-white/20
+              sm:block
+            "
+          />
+
+          {/* =================================================
+              LOGIN
+          ================================================== */}
+
           <Link
             to="/admission"
             hash="applicant-login"
-            className="rounded-full px-3.5 py-1.5 font-medium text-navy-foreground/80 transition-colors hover:bg-white/10 hover:text-accent"
+            className="
+              group
+              flex
+              items-center
+              gap-2
+              rounded-full
+              border
+              border-white/10
+              bg-white/[0.06]
+              px-3
+              py-1.5
+              text-xs
+              font-semibold
+              text-white/85
+              backdrop-blur-md
+              transition-all
+              duration-300
+              hover:-translate-y-0.5
+              hover:border-white/20
+              hover:bg-white/[0.12]
+              hover:text-white
+              sm:px-4
+            "
           >
-            Login
+            <span
+              className="
+                flex
+                size-5
+                items-center
+                justify-center
+                rounded-full
+                bg-white/10
+                text-[#d1ad5b]
+                transition-all
+                duration-300
+                group-hover:bg-[#d1ad5b]
+                group-hover:text-[#741b1b]
+              "
+            >
+              <LogIn className="size-3" />
+            </span>
+
+            <span>Login</span>
           </Link>
+
+          {/* =================================================
+              SIGN UP
+          ================================================== */}
+
           <Link
             to="/admission"
             hash="new-registration"
-            className="rounded-full px-3.5 py-1.5 font-medium text-navy-foreground/80 transition-colors hover:bg-white/10 hover:text-accent"
+            className="
+              group
+              hidden
+              items-center
+              gap-2
+              rounded-full
+              border
+              border-[#d1ad5b]/35
+              bg-[#d1ad5b]/[0.07]
+              px-3
+              py-1.5
+              text-xs
+              font-semibold
+              text-[#f0d995]
+              transition-all
+              duration-300
+              hover:-translate-y-0.5
+              hover:border-[#d1ad5b]/60
+              hover:bg-[#d1ad5b]/15
+              hover:text-white
+              sm:flex
+              sm:px-4
+            "
           >
-            Sign Up
+            <span
+              className="
+                flex
+                size-5
+                items-center
+                justify-center
+                rounded-full
+                bg-[#d1ad5b]/15
+                text-[#d1ad5b]
+                transition-all
+                duration-300
+                group-hover:bg-[#d1ad5b]
+                group-hover:text-[#741b1b]
+              "
+            >
+              <UserPlus className="size-3" />
+            </span>
+
+            <span>Sign Up</span>
           </Link>
+
+          {/* =================================================
+              APPLY NOW
+          ================================================== */}
+
           <Link
             to="/admission"
             hash="how-to-apply"
-            className="bg-gradient-accent rounded-full px-4 py-1.5 font-semibold text-accent-foreground shadow-soft transition-transform hover:-translate-y-0.5"
+            className="
+              group
+              ml-1
+              flex
+              items-center
+              gap-1.5
+              rounded-full
+              bg-[#d1ad5b]
+              px-4
+              py-2
+              text-xs
+              font-bold
+              text-[#4b1111]
+              shadow-[0_5px_16px_rgba(209,173,91,0.25)]
+              transition-all
+              duration-300
+              hover:-translate-y-0.5
+              hover:bg-[#e2c477]
+              hover:shadow-[0_8px_20px_rgba(209,173,91,0.35)]
+              sm:px-5
+            "
           >
-            Apply Now
+            <span>Apply Now</span>
+
+            <ArrowRight
+              className="
+                size-3.5
+                transition-transform
+                duration-300
+                group-hover:translate-x-0.5
+              "
+            />
           </Link>
         </div>
       </div>
-    </div>
+
+      {/* =====================================================
+          BOTTOM GOLD ACCENT
+      ====================================================== */}
+
+      <div
+        className="
+          absolute
+          bottom-0
+          left-0
+          right-0
+          h-px
+          bg-gradient-to-r
+          from-transparent
+          via-[#d1ad5b]/40
+          to-transparent
+        "
+      />
+    </header>
   );
 }

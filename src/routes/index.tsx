@@ -3,13 +3,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { AdmissionTimeline } from "@/components/site/AdmissionTimeline";
 import { HeroDE } from "@/components/site/HeroDE";
 import { NewsEvents } from "@/components/site/NewsEvents";
-import { ProgrammesTabs } from "@/components/site/ProgrammesTabs";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { StudentReviews } from "@/components/site/StudentReviews";
 import { WhyChooseUs } from "@/components/site/WhyChooseUs";
 import { WhoWeAre } from "@/components/site/WhoWeAre";
 
-const title = "Crescent CDOE — UGC Approved Distance Education (UG & PG)";
+const title = "B.S. Abdur Rahman Crescent Institute of Science and Technology";
 const description =
   "Apply online for UGC approved UG and PG distance education programmes — B.A., B.Com., BBA, BCA, B.Sc., M.A., M.Com., MBA, MCA and M.Sc. Flexible learning and free counselling.";
 
@@ -32,7 +31,6 @@ function Index() {
     <SiteLayout>
       <HeroDE />
       <WhoWeAre />
-      <ProgrammesTabs />
       <WhyChooseUs />
       <AdmissionTimeline />
       <NewsEvents />
