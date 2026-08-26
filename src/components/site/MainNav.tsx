@@ -12,7 +12,6 @@ import { Menu, ShieldCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import logo from "@/assets/crescent-logo.png.asset.png";
-import cdoePhoto from "@/assets/campus-1.jpg";
 
 function Logo() {
   return (
@@ -21,6 +20,7 @@ function Logo() {
       className="
         group
         flex
+        min-w-0
         shrink-0
         items-center
         transition-transform
@@ -33,10 +33,13 @@ function Logo() {
         src={logo}
         alt={`${college.name} logo`}
         className="
-          h-[52px]
+          h-[42px]
           w-auto
+          max-w-[205px]
           object-contain
-          sm:h-[55px]
+          sm:h-[50px]
+          sm:max-w-none
+          lg:h-[52px]
         "
       />
     </Link>
@@ -69,8 +72,9 @@ export function MainNav() {
         // =====================================================
         // MAIN CONTAINER
         // =====================================================
-        "relative z-50 mx-auto mt-3 w-[calc(100%-28px)] max-w-[1820px]",
-        "rounded-[28px]",
+        "relative z-50 mx-auto w-[calc(100%-12px)] max-w-[1820px]",
+        "mt-1.5 sm:mt-3",
+        "rounded-[18px] sm:rounded-[24px] lg:rounded-[28px]",
         "border border-[#e6e8eb]",
 
         // =====================================================
@@ -84,8 +88,8 @@ export function MainNav() {
         // SHADOW
         // =====================================================
         scrolled
-          ? "shadow-[0_16px_50px_rgba(15,23,42,0.14)]"
-          : "shadow-[0_8px_30px_rgba(15,23,42,0.08)]",
+          ? "shadow-[0_12px_35px_rgba(15,23,42,0.13)] lg:shadow-[0_16px_50px_rgba(15,23,42,0.14)]"
+          : "shadow-[0_6px_22px_rgba(15,23,42,0.07)] lg:shadow-[0_8px_30px_rgba(15,23,42,0.08)]",
 
         // =====================================================
         // ANIMATION
@@ -97,7 +101,7 @@ export function MainNav() {
         // =====================================================
         "before:pointer-events-none",
         "before:absolute",
-        "before:inset-x-10",
+        "before:inset-x-5 sm:before:inset-x-10",
         "before:top-0",
         "before:h-px",
         "before:rounded-full",
@@ -112,26 +116,29 @@ export function MainNav() {
         "after:pointer-events-none",
         "after:absolute",
         "after:inset-[1px]",
-        "after:rounded-[27px]",
+        "after:rounded-[17px] sm:after:rounded-[23px] lg:after:rounded-[27px]",
         "after:border",
         "after:border-white/70",
         "after:content-['']",
       )}
     >
       {/* =====================================================
-          VERY SUBTLE DECORATIVE BACKGROUND
+          DECORATIVE BACKGROUND
       ====================================================== */}
 
       <div
         className="
           pointer-events-none
           absolute
-          -left-20
-          -top-20
-          size-40
+          -left-16
+          -top-16
+          size-32
           rounded-full
           bg-[#7f1d1d]/[0.035]
           blur-3xl
+          sm:-left-20
+          sm:-top-20
+          sm:size-40
         "
       />
 
@@ -139,12 +146,15 @@ export function MainNav() {
         className="
           pointer-events-none
           absolute
-          -right-20
-          -bottom-20
-          size-44
+          -bottom-16
+          -right-16
+          size-32
           rounded-full
           bg-[#172554]/[0.035]
           blur-3xl
+          sm:-bottom-20
+          sm:-right-20
+          sm:size-44
         "
       />
 
@@ -154,15 +164,23 @@ export function MainNav() {
 
       <div
         className={cn(
-          "relative flex items-center",
-          "px-5 sm:px-6 lg:px-7",
+          "relative flex w-full items-center justify-between",
+          "px-3 sm:px-5 lg:px-6 xl:px-7",
+
+          // MOBILE
           scrolled
-            ? "min-h-[68px]"
-            : "min-h-[76px]",
+            ? "min-h-[58px]"
+            : "min-h-[62px]",
+
+          // TABLET
+          "sm:min-h-[68px]",
+
+          // DESKTOP
+          "lg:min-h-[76px]",
+
           "transition-all duration-500",
         )}
       >
-
         {/* ===================================================
             LOGO
         ==================================================== */}
@@ -195,34 +213,16 @@ export function MainNav() {
                   exact: item.to === "/",
                 }}
                 className={cn(
-                  // ===============================
-                  // BASE
-                  // ===============================
                   "group relative flex items-center justify-center",
                   "whitespace-nowrap",
                   "px-3.5 py-3",
-
-                  // ===============================
-                  // FONT
-                  // ===============================
                   "text-[0.9rem]",
                   "font-semibold",
                   "tracking-[-0.01em]",
                   "text-[#3f4652]",
-
-                  // ===============================
-                  // TRANSITION
-                  // ===============================
                   "transition-all duration-300",
-
-                  // ===============================
-                  // HOVER
-                  // ===============================
                   "hover:text-[#7f1d1d]",
 
-                  // ===============================
-                  // UNDERLINE
-                  // ===============================
                   "after:pointer-events-none",
                   "after:absolute",
                   "after:bottom-[3px]",
@@ -236,29 +236,15 @@ export function MainNav() {
                   "after:transition-all",
                   "after:duration-300",
 
-                  // ===============================
-                  // HOVER UNDERLINE
-                  // ===============================
                   "hover:after:w-[55%]",
                   "hover:after:opacity-100",
                 )}
                 activeProps={{
                   className: cn(
-                    // ===============================
-                    // ACTIVE TEXT
-                    // ===============================
                     "text-[#7f1d1d]",
                     "font-bold",
-
-                    // ===============================
-                    // ACTIVE UNDERLINE
-                    // ===============================
                     "after:w-[55%]",
                     "after:opacity-100",
-
-                    // ===============================
-                    // GOLD MICRO GLOW
-                    // ===============================
                     "after:shadow-[0_2px_7px_rgba(212,175,55,0.30)]",
                   ),
                 }}
@@ -267,95 +253,71 @@ export function MainNav() {
               </Link>
             </li>
           ))}
+
+          {/* FAQ */}
+
+          <li className="shrink-0">
+            <Link
+              to="/faq"
+              activeOptions={{
+                exact: true,
+              }}
+              className={cn(
+                "group relative flex items-center justify-center",
+                "whitespace-nowrap",
+                "px-3.5 py-3",
+                "text-[0.9rem]",
+                "font-semibold",
+                "tracking-[-0.01em]",
+                "text-[#3f4652]",
+                "transition-all duration-300",
+                "hover:text-[#7f1d1d]",
+
+                "after:pointer-events-none",
+                "after:absolute",
+                "after:bottom-[3px]",
+                "after:left-1/2",
+                "after:h-[3px]",
+                "after:w-0",
+                "after:-translate-x-1/2",
+                "after:rounded-full",
+                "after:bg-[#7f1d1d]",
+                "after:opacity-0",
+                "after:transition-all",
+                "after:duration-300",
+
+                "hover:after:w-[55%]",
+                "hover:after:opacity-100",
+              )}
+              activeProps={{
+                className: cn(
+                  "text-[#7f1d1d]",
+                  "font-bold",
+                  "after:w-[55%]",
+                  "after:opacity-100",
+                  "after:shadow-[0_2px_7px_rgba(212,175,55,0.30)]",
+                ),
+              }}
+            >
+              FAQ
+            </Link>
+          </li>
         </ul>
 
         {/* ===================================================
             RIGHT SIDE
         ==================================================== */}
 
-        <div className="ml-2 flex shrink-0 items-center gap-2">
-
-          {/* =================================================
-              CDOE / CAMPUS CAPSULE
-          ================================================== */}
-
-          <div
-            className="
-              hidden
-              items-center
-              gap-2
-              rounded-full
-              border
-              border-[#e2e5e9]
-              bg-white/80
-              p-1.5
-              shadow-[0_3px_14px_rgba(15,23,42,0.06)]
-              backdrop-blur-md
-              md:flex
-            "
-          >
-            {/* IMAGE */}
-
-            <div
-              className="
-                relative
-                size-10
-                overflow-hidden
-                rounded-full
-                border
-                border-[#e2e5e9]
-                bg-[#f7f7f5]
-              "
-            >
-              <img
-                src={cdoePhoto}
-                alt="Crescent campus"
-                className="
-                  h-full
-                  w-full
-                  object-cover
-                  transition-transform
-                  duration-500
-                  hover:scale-110
-                "
-              />
-
-              {/* tiny gold overlay */}
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  inset-0
-                  rounded-full
-                  ring-1
-                  ring-inset
-                  ring-white/70
-                "
-              />
-            </div>
-
-            {/* SHIELD */}
-
-            <div
-              className="
-                flex
-                size-9
-                items-center
-                justify-center
-                rounded-full
-                bg-[#7f1d1d]/[0.07]
-                text-[#7f1d1d]
-                transition-all
-                duration-300
-                hover:bg-[#7f1d1d]
-                hover:text-white
-              "
-              title="UGC Approved"
-            >
-              <ShieldCheck className="size-[17px]" />
-            </div>
-          </div>
-
+        <div
+          className="
+            ml-2
+            flex
+            shrink-0
+            items-center
+            gap-1.5
+            sm:gap-2
+          "
+        >
           {/* =================================================
               MOBILE MENU
           ================================================== */}
@@ -369,20 +331,33 @@ export function MainNav() {
                 variant="outline"
                 size="icon"
                 className="
-                  size-11
-                  rounded-2xl
+                  size-9
+                  rounded-xl
                   border-[#dfe3e8]
                   bg-white/80
                   text-[#172554]
                   shadow-sm
                   transition-all
+
                   hover:border-[#7f1d1d]/30
                   hover:bg-[#7f1d1d]/[0.04]
                   hover:text-[#7f1d1d]
+
+                  sm:size-10
+                  sm:rounded-xl
+
+                  lg:size-11
+                  lg:rounded-2xl
+
                   xl:hidden
                 "
               >
-                <Menu className="size-5" />
+                <Menu
+                  className="
+                    size-[18px]
+                    sm:size-5
+                  "
+                />
 
                 <span className="sr-only">
                   Open navigation menu
@@ -390,10 +365,14 @@ export function MainNav() {
               </Button>
             </SheetTrigger>
 
+            {/* =================================================
+                MOBILE SHEET
+            ================================================== */}
+
             <SheetContent
               side="right"
               className="
-                w-[88vw]
+                w-[86vw]
                 max-w-sm
                 overflow-y-auto
                 border-l
@@ -409,18 +388,26 @@ export function MainNav() {
                   font-display
                   text-lg
                   font-bold
+                  leading-tight
                   text-[#172554]
                 "
               >
                 {college.name}
               </SheetTitle>
 
-              <div className="mt-3 h-[3px] w-12 rounded-full bg-[#7f1d1d]" />
+              <div
+                className="
+                  mt-3
+                  h-[3px]
+                  w-12
+                  rounded-full
+                  bg-[#7f1d1d]
+                "
+              />
 
               {/* MOBILE NAVIGATION */}
 
-              <nav className="mt-6 flex flex-col">
-
+              <nav className="mt-5 flex flex-col">
                 {navItems.map((item) => (
                   <Link
                     key={item.label}
@@ -430,26 +417,16 @@ export function MainNav() {
                     }}
                     onClick={() => setOpen(false)}
                     className={cn(
-                      // ==========================
-                      // BASE
-                      // ==========================
                       "relative",
                       "border-b border-[#e8eaed]",
-                      "px-2 py-4",
+                      "px-2 py-3.5",
                       "text-[15px]",
                       "font-semibold",
                       "text-[#454d59]",
-
-                      // ==========================
-                      // HOVER
-                      // ==========================
                       "transition-all duration-200",
                       "hover:translate-x-1",
                       "hover:text-[#7f1d1d]",
 
-                      // ==========================
-                      // ACTIVE LINE
-                      // ==========================
                       "after:pointer-events-none",
                       "after:absolute",
                       "after:bottom-0",
@@ -475,6 +452,51 @@ export function MainNav() {
                   </Link>
                 ))}
 
+                {/* MOBILE FAQ */}
+
+                <Link
+                  to="/faq"
+                  activeOptions={{
+                    exact: true,
+                  }}
+                  onClick={() => setOpen(false)}
+                  className={cn(
+                    "relative",
+                    "border-b border-[#e8eaed]",
+                    "px-2 py-3.5",
+                    "text-[15px]",
+                    "font-semibold",
+                    "text-[#454d59]",
+                    "transition-all duration-200",
+                    "hover:translate-x-1",
+                    "hover:text-[#7f1d1d]",
+
+                    "after:pointer-events-none",
+                    "after:absolute",
+                    "after:bottom-0",
+                    "after:left-2",
+                    "after:h-[3px]",
+                    "after:w-0",
+                    "after:rounded-full",
+                    "after:bg-[#7f1d1d]",
+                    "after:opacity-0",
+                    "after:transition-all",
+                    "after:duration-300",
+
+                    "hover:after:w-12",
+                    "hover:after:opacity-100",
+                  )}
+                  activeProps={{
+                    className: cn(
+                      "font-bold",
+                      "text-[#7f1d1d]",
+                      "after:w-12",
+                      "after:opacity-100",
+                    ),
+                  }}
+                >
+                  FAQ
+                </Link>
               </nav>
 
               {/* MOBILE APPLY */}
@@ -483,7 +505,7 @@ export function MainNav() {
                 variant="hero"
                 size="pill-lg"
                 className="
-                  mt-7
+                  mt-6
                   w-full
                   bg-[#7f1d1d]
                   text-white
@@ -515,11 +537,11 @@ export function MainNav() {
                 "
               >
                 <div className="flex items-center gap-3">
-
                   <div
                     className="
                       flex
                       size-9
+                      shrink-0
                       items-center
                       justify-center
                       rounded-full
@@ -539,12 +561,10 @@ export function MainNav() {
                       Recognised programmes
                     </p>
                   </div>
-
                 </div>
               </div>
             </SheetContent>
           </Sheet>
-
         </div>
       </div>
     </nav>

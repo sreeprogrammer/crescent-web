@@ -9,8 +9,13 @@ export function SiteLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
-      <main>{children}</main>
+
+      <main className="m-0 p-0">
+        {children}
+      </main>
+
       <SiteFooter />
+
       <FloatingActions />
       <EnquiryFab />
       <CoursesFab />
@@ -28,17 +33,108 @@ export function PageHero({
   description: string;
 }) {
   return (
-    <section className="bg-gradient-hero border-b border-border px-4 py-16 sm:px-6 md:py-20">
-      <div className="mx-auto max-w-4xl text-center">
-        <span className="inline-flex items-center rounded-full border border-border bg-card px-4 py-1.5 text-xs font-medium tracking-[0.16em] uppercase shadow-soft">
+    <section
+      className="
+        relative
+        m-0
+        overflow-hidden
+        border-b
+        border-[#1d355f]/10
+        bg-gradient-hero
+        px-5
+        py-8
+        sm:px-8
+        sm:py-10
+        md:py-12
+        lg:py-14
+      "
+    >
+      {/* Decorative glow */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -left-24
+          -top-24
+          size-64
+          rounded-full
+          bg-[#8f1d1d]/8
+          blur-3xl
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -right-24
+          -bottom-24
+          size-72
+          rounded-full
+          bg-[#d4af37]/10
+          blur-3xl
+        "
+      />
+
+      <div className="relative mx-auto max-w-5xl text-center">
+
+        {/* Eyebrow */}
+        <span
+          className="
+            inline-flex
+            items-center
+            rounded-full
+            border
+            border-[#d4af37]/30
+            bg-white/60
+            px-4
+            py-1.5
+            text-[10px]
+            font-bold
+            uppercase
+            tracking-[0.2em]
+            text-[#8f1d1d]
+            shadow-sm
+            backdrop-blur
+          "
+        >
           {eyebrow}
         </span>
-        <h1 className="mt-6 text-3xl leading-tight font-semibold text-balance sm:text-5xl">
+
+        {/* Title */}
+        <h1
+          className="
+            mx-auto
+            mt-3
+            max-w-4xl
+            font-display
+            text-3xl
+            font-bold
+            leading-[1.05]
+            tracking-tight
+            text-[#17243d]
+            sm:text-4xl
+            md:text-5xl
+          "
+        >
           {title}
         </h1>
-        <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-pretty text-muted-foreground">
+
+        {/* Description */}
+        <p
+          className="
+            mx-auto
+            mt-3
+            max-w-2xl
+            text-sm
+            leading-6
+            text-[#667085]
+            sm:text-base
+          "
+        >
           {description}
         </p>
+
       </div>
     </section>
   );

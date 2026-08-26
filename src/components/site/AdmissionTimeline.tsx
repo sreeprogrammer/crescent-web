@@ -1,190 +1,295 @@
+import {
+  CheckCircle2,
+  CreditCard,
+  FileCheck2,
+  FileUp,
+  GraduationCap,
+  Laptop2,
+  Send,
+} from "lucide-react";
+import { motion } from "framer-motion";
 
 import { admissionSteps } from "@/data/site";
 import { Reveal } from "./Reveal";
-import { Section, SectionHeading } from "./Section";
+import { Section } from "./Section";
+
+const stepIcons = [
+  Send,
+  FileUp,
+  FileCheck2,
+  CreditCard,
+  GraduationCap,
+  Laptop2,
+];
 
 export function AdmissionTimeline() {
   return (
     <Section
       id="how-to-apply"
-      className="!py-10 bg-[#f8f8f7]"
+      className="relative overflow-hidden !py-5 sm:!py-7"
     >
-      <div className="mx-auto max-w-6xl">
+      {/* Background decoration */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -left-24 top-10 size-52 rounded-full bg-[#7f1d1d]/5 blur-3xl" />
+        <div className="absolute -right-24 bottom-5 size-56 rounded-full bg-[#172554]/7 blur-3xl" />
+      </div>
 
-        {/* Heading */}
-        <div className="mb-7 text-center">
-          <SectionHeading
-            eyebrow="ADMISSION PROCESS"
-            title="Your journey starts here"
-            description="Six simple steps from application to your first lesson — completely online."
-          />
-        </div>
+      <div className="mx-auto max-w-7xl px-3 sm:px-5">
 
-        {/* Timeline */}
+        {/* ================= HEADING ================= */}
+        <Reveal>
+          <div className="mx-auto mb-5 max-w-3xl text-center">
+
+            <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-[#d4af37]/35 bg-[#172554]/5 px-3 py-1">
+              <span className="size-1.5 rounded-full bg-[#7f1d1d]" />
+
+              <span className="text-[9px] font-bold tracking-[0.2em] text-[#7f1d1d]">
+                ADMISSION PROCESS
+              </span>
+
+              <span className="size-1.5 rounded-full bg-[#d4af37]" />
+            </div>
+
+            <h2 className="text-2xl font-extrabold tracking-tight text-[#172554] sm:text-3xl lg:text-[36px]">
+              Your journey starts{" "}
+              <span className="text-[#8f1d1d]">here.</span>
+            </h2>
+
+            <p className="mx-auto mt-1 max-w-xl text-xs leading-relaxed text-slate-500 sm:text-sm">
+              Six simple steps from application to your first lesson —
+              completely online.
+            </p>
+          </div>
+        </Reveal>
+
+        {/* ================= TIMELINE ================= */}
         <div className="relative">
 
-          {/* Desktop connecting line */}
-          <div
-            className="
-              absolute
-              left-[8.33%]
-              right-[8.33%]
-              top-[21px]
-              hidden
-              h-[2px]
-              bg-[#d4af37]/50
-              lg:block
-            "
-          />
+          {/* Desktop line */}
+          <div className="absolute left-[8%] right-[8%] top-[39px] hidden lg:block">
+            <div className="h-[2px] bg-[#d4af37]/25" />
 
-          <ol
-            className="
-              grid
-              grid-cols-1
-              gap-4
-              sm:grid-cols-2
-              lg:grid-cols-6
-              lg:gap-2
-            "
-          >
-            {admissionSteps.map((s, i) => (
-              <li key={s.step}>
-                <Reveal delay={i * 0.06}>
-                  <div
-                    className="
-                      group
-                      relative
-                      h-full
-                      px-3
-                      py-3
-                      text-center
-                    "
-                  >
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.1 }}
+              className="
+                absolute
+                inset-0
+                origin-left
+                bg-gradient-to-r
+                from-[#7f1d1d]
+                via-[#d4af37]
+                to-[#172554]
+              "
+            />
+          </div>
 
-                    {/* Step Circle */}
-                    <div className="relative z-10 mx-auto mb-4 flex justify-center">
-                      <span
-                        className="
-                          flex
-                          size-[44px]
-                          items-center
-                          justify-center
-                          rounded-full
-                          border-[3px]
-                          border-[#d4af37]
-                          bg-[#172554]
-                          text-[14px]
-                          font-bold
-                          text-white
-                          shadow-[0_4px_14px_rgba(23,37,84,0.18)]
-                          transition-all
-                          duration-300
-                          group-hover:scale-110
-                          group-hover:bg-[#7f1d1d]
-                        "
-                      >
-                        {String(s.step).padStart(2, "0")}
-                      </span>
-                    </div>
+          <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6 lg:gap-2">
 
-                    {/* Small Gold Marker */}
-                    <div
+            {admissionSteps.map((step, index) => {
+              const Icon = stepIcons[index] ?? CheckCircle2;
+
+              return (
+                <li key={step.step}>
+                  <Reveal delay={index * 0.05}>
+
+                    <motion.div
+                      whileHover={{ y: -5 }}
+                      transition={{ duration: 0.25 }}
                       className="
-                        mx-auto
-                        mb-2
-                        h-[3px]
-                        w-7
-                        rounded-full
-                        bg-[#d4af37]
+                        group
+                        relative
+                        h-full
+                        overflow-hidden
+                        rounded-[1.15rem]
+                        border
+                        border-slate-200/70
+                        bg-white/65
+                        px-3
+                        py-3
+                        shadow-[0_6px_20px_rgba(23,37,84,0.06)]
+                        backdrop-blur-lg
                         transition-all
                         duration-300
-                        group-hover:w-12
-                        group-hover:bg-[#7f1d1d]
-                      "
-                    />
-
-                    {/* Title */}
-                    <h3
-                      className="
-                        text-[14px]
-                        font-bold
-                        leading-tight
-                        text-[#172554]
-                        transition-colors
-                        duration-300
-                        group-hover:text-[#7f1d1d]
+                        hover:border-[#d4af37]/60
+                        hover:shadow-[0_12px_30px_rgba(23,37,84,0.12)]
                       "
                     >
-                      {s.title}
-                    </h3>
 
-                    {/* Description */}
-                    <p
-                      className="
-                        mx-auto
-                        mt-1.5
-                        max-w-[155px]
-                        text-[11.5px]
-                        leading-[1.45]
-                        text-[#4b4b4b]
-                      "
-                    >
-                      {s.body}
-                    </p>
+                      {/* Top gradient */}
+                      <div
+                        className="
+                          absolute
+                          inset-x-0
+                          top-0
+                          h-[2px]
+                          bg-gradient-to-r
+                          from-[#7f1d1d]
+                          via-[#d4af37]
+                          to-[#172554]
+                        "
+                      />
 
-                    {/* Bottom number */}
-                    <span
-                      className="
-                        mt-2
-                        block
-                        text-[9px]
-                        font-semibold
-                        tracking-[0.2em]
-                        text-[#7f1d1d]/45
-                      "
-                    >
-                      STEP {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                </Reveal>
-              </li>
-            ))}
+                      {/* Number background */}
+                      <span
+                        className="
+                          pointer-events-none
+                          absolute
+                          right-2
+                          top-1
+                          text-5xl
+                          font-black
+                          leading-none
+                          text-[#172554]/[0.035]
+                        "
+                      >
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+
+                      {/* Icon + Step */}
+                      <div className="relative z-10 mb-2.5 flex items-center justify-between">
+
+                        <div
+                          className="
+                            flex
+                            size-9
+                            items-center
+                            justify-center
+                            rounded-xl
+                            border
+                            border-[#d4af37]/40
+                            bg-[#172554]
+                            text-white
+                            shadow-[0_5px_12px_rgba(23,37,84,0.16)]
+                            transition-all
+                            duration-300
+                            group-hover:bg-[#7f1d1d]
+                            group-hover:scale-105
+                          "
+                        >
+                          <Icon className="size-4" />
+                        </div>
+
+                        <span
+                          className="
+                            rounded-full
+                            bg-[#7f1d1d]/5
+                            px-2
+                            py-0.5
+                            text-[8px]
+                            font-bold
+                            tracking-[0.12em]
+                            text-[#7f1d1d]
+                          "
+                        >
+                          STEP {String(index + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+
+                      {/* Accent */}
+                      <div className="mb-1.5 flex items-center gap-1">
+                        <span className="h-[2px] w-5 rounded-full bg-[#7f1d1d] transition-all group-hover:w-8" />
+                        <span className="size-1 rounded-full bg-[#d4af37]" />
+                      </div>
+
+                      {/* Title */}
+                      <h3
+                        className="
+                          text-[13px]
+                          font-extrabold
+                          leading-tight
+                          text-[#172554]
+                          group-hover:text-[#7f1d1d]
+                        "
+                      >
+                        {step.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="mt-1.5 text-[10.5px] leading-[1.45] text-slate-500">
+                        {step.body}
+                      </p>
+
+                      {/* Bottom */}
+                      <div className="mt-2.5 flex items-center gap-1 border-t border-slate-100 pt-2">
+
+                        <CheckCircle2
+                          className="size-3 text-[#d4af37]"
+                        />
+
+                        <span className="text-[8px] font-semibold tracking-wide text-slate-400">
+                          NEXT STEP
+                        </span>
+
+                      </div>
+
+                    </motion.div>
+
+                  </Reveal>
+                </li>
+              );
+            })}
           </ol>
         </div>
 
-        {/* Bottom strip */}
-        <div
-          className="
-            mt-6
-            flex
-            items-center
-            justify-center
-            gap-2
-            text-center
-          "
-        >
-          <span className="h-px w-10 bg-[#d4af37]" />
-
-          <span
+        {/* ================= COMPACT BOTTOM BAR ================= */}
+        <Reveal delay={0.2}>
+          <div
             className="
-              rounded-full
-              bg-[#172554]
+              relative
+              mt-4
+              overflow-hidden
+              rounded-xl
+              bg-gradient-to-r
+              from-[#172554]
+              via-[#202f61]
+              to-[#7f1d1d]
               px-4
-              py-1.5
-              text-[10px]
-              font-semibold
-              tracking-[0.12em]
-              text-white
+              py-2.5
+              shadow-[0_8px_24px_rgba(23,37,84,0.12)]
             "
           >
-            SIMPLE • DIGITAL • SUPPORTED
-          </span>
+            <div className="relative flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-center">
 
-          <span className="h-px w-10 bg-[#d4af37]" />
-        </div>
+              <div className="flex items-center gap-1.5">
+                <GraduationCap className="size-3.5 text-[#d4af37]" />
+
+                <span className="text-[10px] font-bold text-white">
+                  READY TO BEGIN?
+                </span>
+              </div>
+
+              <span className="hidden size-1 rounded-full bg-[#d4af37] sm:block" />
+
+              <span className="text-[9px] font-medium text-white/65">
+                SIMPLE
+              </span>
+
+              <span className="text-[#d4af37]">•</span>
+
+              <span className="text-[9px] font-medium text-white/65">
+                DIGITAL
+              </span>
+
+              <span className="text-[#d4af37]">•</span>
+
+              <span className="text-[9px] font-medium text-white/65">
+                SUPPORTED
+              </span>
+
+              <span className="hidden size-1 rounded-full bg-[#d4af37] sm:block" />
+
+              <span className="text-[9px] font-bold tracking-wide text-[#f2cf67]">
+                100% ONLINE
+              </span>
+
+            </div>
+          </div>
+        </Reveal>
 
       </div>
     </Section>
   );
 }
-

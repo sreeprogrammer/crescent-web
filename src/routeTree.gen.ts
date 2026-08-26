@@ -12,12 +12,26 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdmissionRouteImport } from './routes/admission'
+import { Route as BaIslamicStudiesRouteImport } from './routes/ba-islamic-studies'
+import { Route as CdoeTeamRouteImport } from './routes/cdoe-team'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DatacenterRouteImport } from './routes/datacenter'
+import { Route as ExecutionTeamRouteImport } from './routes/execution-team'
+import { Route as FacilitiesRouteImport } from './routes/facilities'
+import { Route as FacultyRouteImport } from './routes/faculty'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as LmsRouteImport } from './routes/lms'
+import { Route as LmsLoginRouteImport } from './routes/lms-login'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as NewRegistrationRouteImport } from './routes/new-registration'
 import { Route as ProgrammesRouteImport } from './routes/programmes'
 import { Route as StudentsCornerRouteImport } from './routes/students-corner'
+import { Route as StudioRouteImport } from './routes/studio'
+import { Route as TechnicalRouteImport } from './routes/technical'
 import { Route as UgcCornerRouteImport } from './routes/ugc-corner'
+import { Route as VisionaryTeamRouteImport } from './routes/visionary-team'
+import { Route as BaIslamicStudiesPeopleRouteImport } from './routes/ba-islamic-studies.people'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,9 +48,39 @@ const AdmissionRoute = AdmissionRouteImport.update({
   path: '/admission',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BaIslamicStudiesRoute = BaIslamicStudiesRouteImport.update({
+  id: '/ba-islamic-studies',
+  path: '/ba-islamic-studies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CdoeTeamRoute = CdoeTeamRouteImport.update({
+  id: '/cdoe-team',
+  path: '/cdoe-team',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DatacenterRoute = DatacenterRouteImport.update({
+  id: '/datacenter',
+  path: '/datacenter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExecutionTeamRoute = ExecutionTeamRouteImport.update({
+  id: '/execution-team',
+  path: '/execution-team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FacilitiesRoute = FacilitiesRouteImport.update({
+  id: '/facilities',
+  path: '/facilities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FacultyRoute = FacultyRouteImport.update({
+  id: '/faculty',
+  path: '/faculty',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -49,6 +93,26 @@ const GalleryRoute = GalleryRouteImport.update({
   path: '/gallery',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LmsRoute = LmsRouteImport.update({
+  id: '/lms',
+  path: '/lms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LmsLoginRoute = LmsLoginRouteImport.update({
+  id: '/lms-login',
+  path: '/lms-login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewRegistrationRoute = NewRegistrationRouteImport.update({
+  id: '/new-registration',
+  path: '/new-registration',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgrammesRoute = ProgrammesRouteImport.update({
   id: '/programmes',
   path: '/programmes',
@@ -59,45 +123,107 @@ const StudentsCornerRoute = StudentsCornerRouteImport.update({
   path: '/students-corner',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudioRoute = StudioRouteImport.update({
+  id: '/studio',
+  path: '/studio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TechnicalRoute = TechnicalRouteImport.update({
+  id: '/technical',
+  path: '/technical',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const UgcCornerRoute = UgcCornerRouteImport.update({
   id: '/ugc-corner',
   path: '/ugc-corner',
   getParentRoute: () => rootRouteImport,
+} as any)
+const VisionaryTeamRoute = VisionaryTeamRouteImport.update({
+  id: '/visionary-team',
+  path: '/visionary-team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BaIslamicStudiesPeopleRoute = BaIslamicStudiesPeopleRouteImport.update({
+  id: '/people',
+  path: '/people',
+  getParentRoute: () => BaIslamicStudiesRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admission': typeof AdmissionRoute
+  '/ba-islamic-studies': typeof BaIslamicStudiesRouteWithChildren
+  '/cdoe-team': typeof CdoeTeamRoute
   '/contact': typeof ContactRoute
+  '/datacenter': typeof DatacenterRoute
+  '/execution-team': typeof ExecutionTeamRoute
+  '/facilities': typeof FacilitiesRoute
+  '/faculty': typeof FacultyRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
+  '/lms': typeof LmsRoute
+  '/lms-login': typeof LmsLoginRoute
+  '/login': typeof LoginRoute
+  '/new-registration': typeof NewRegistrationRoute
   '/programmes': typeof ProgrammesRoute
   '/students-corner': typeof StudentsCornerRoute
+  '/studio': typeof StudioRoute
+  '/technical': typeof TechnicalRoute
   '/ugc-corner': typeof UgcCornerRoute
+  '/visionary-team': typeof VisionaryTeamRoute
+  '/ba-islamic-studies/people': typeof BaIslamicStudiesPeopleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admission': typeof AdmissionRoute
+  '/ba-islamic-studies': typeof BaIslamicStudiesRouteWithChildren
+  '/cdoe-team': typeof CdoeTeamRoute
   '/contact': typeof ContactRoute
+  '/datacenter': typeof DatacenterRoute
+  '/execution-team': typeof ExecutionTeamRoute
+  '/facilities': typeof FacilitiesRoute
+  '/faculty': typeof FacultyRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
+  '/lms': typeof LmsRoute
+  '/lms-login': typeof LmsLoginRoute
+  '/login': typeof LoginRoute
+  '/new-registration': typeof NewRegistrationRoute
   '/programmes': typeof ProgrammesRoute
   '/students-corner': typeof StudentsCornerRoute
+  '/studio': typeof StudioRoute
+  '/technical': typeof TechnicalRoute
   '/ugc-corner': typeof UgcCornerRoute
+  '/visionary-team': typeof VisionaryTeamRoute
+  '/ba-islamic-studies/people': typeof BaIslamicStudiesPeopleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admission': typeof AdmissionRoute
+  '/ba-islamic-studies': typeof BaIslamicStudiesRouteWithChildren
+  '/cdoe-team': typeof CdoeTeamRoute
   '/contact': typeof ContactRoute
+  '/datacenter': typeof DatacenterRoute
+  '/execution-team': typeof ExecutionTeamRoute
+  '/facilities': typeof FacilitiesRoute
+  '/faculty': typeof FacultyRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
+  '/lms': typeof LmsRoute
+  '/lms-login': typeof LmsLoginRoute
+  '/login': typeof LoginRoute
+  '/new-registration': typeof NewRegistrationRoute
   '/programmes': typeof ProgrammesRoute
   '/students-corner': typeof StudentsCornerRoute
+  '/studio': typeof StudioRoute
+  '/technical': typeof TechnicalRoute
   '/ugc-corner': typeof UgcCornerRoute
+  '/visionary-team': typeof VisionaryTeamRoute
+  '/ba-islamic-studies/people': typeof BaIslamicStudiesPeopleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -105,46 +231,101 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admission'
+    | '/ba-islamic-studies'
+    | '/cdoe-team'
     | '/contact'
+    | '/datacenter'
+    | '/execution-team'
+    | '/facilities'
+    | '/faculty'
     | '/faq'
     | '/gallery'
+    | '/lms'
+    | '/lms-login'
+    | '/login'
+    | '/new-registration'
     | '/programmes'
     | '/students-corner'
+    | '/studio'
+    | '/technical'
     | '/ugc-corner'
+    | '/visionary-team'
+    | '/ba-islamic-studies/people'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/admission'
+    | '/ba-islamic-studies'
+    | '/cdoe-team'
     | '/contact'
+    | '/datacenter'
+    | '/execution-team'
+    | '/facilities'
+    | '/faculty'
     | '/faq'
     | '/gallery'
+    | '/lms'
+    | '/lms-login'
+    | '/login'
+    | '/new-registration'
     | '/programmes'
     | '/students-corner'
+    | '/studio'
+    | '/technical'
     | '/ugc-corner'
+    | '/visionary-team'
+    | '/ba-islamic-studies/people'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/admission'
+    | '/ba-islamic-studies'
+    | '/cdoe-team'
     | '/contact'
+    | '/datacenter'
+    | '/execution-team'
+    | '/facilities'
+    | '/faculty'
     | '/faq'
     | '/gallery'
+    | '/lms'
+    | '/lms-login'
+    | '/login'
+    | '/new-registration'
     | '/programmes'
     | '/students-corner'
+    | '/studio'
+    | '/technical'
     | '/ugc-corner'
+    | '/visionary-team'
+    | '/ba-islamic-studies/people'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AdmissionRoute: typeof AdmissionRoute
+  BaIslamicStudiesRoute: typeof BaIslamicStudiesRouteWithChildren
+  CdoeTeamRoute: typeof CdoeTeamRoute
   ContactRoute: typeof ContactRoute
+  DatacenterRoute: typeof DatacenterRoute
+  ExecutionTeamRoute: typeof ExecutionTeamRoute
+  FacilitiesRoute: typeof FacilitiesRoute
+  FacultyRoute: typeof FacultyRoute
   FaqRoute: typeof FaqRoute
   GalleryRoute: typeof GalleryRoute
+  LmsRoute: typeof LmsRoute
+  LmsLoginRoute: typeof LmsLoginRoute
+  LoginRoute: typeof LoginRoute
+  NewRegistrationRoute: typeof NewRegistrationRoute
   ProgrammesRoute: typeof ProgrammesRoute
   StudentsCornerRoute: typeof StudentsCornerRoute
+  StudioRoute: typeof StudioRoute
+  TechnicalRoute: typeof TechnicalRoute
   UgcCornerRoute: typeof UgcCornerRoute
+  VisionaryTeamRoute: typeof VisionaryTeamRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -170,11 +351,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdmissionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ba-islamic-studies': {
+      id: '/ba-islamic-studies'
+      path: '/ba-islamic-studies'
+      fullPath: '/ba-islamic-studies'
+      preLoaderRoute: typeof BaIslamicStudiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cdoe-team': {
+      id: '/cdoe-team'
+      path: '/cdoe-team'
+      fullPath: '/cdoe-team'
+      preLoaderRoute: typeof CdoeTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/datacenter': {
+      id: '/datacenter'
+      path: '/datacenter'
+      fullPath: '/datacenter'
+      preLoaderRoute: typeof DatacenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/execution-team': {
+      id: '/execution-team'
+      path: '/execution-team'
+      fullPath: '/execution-team'
+      preLoaderRoute: typeof ExecutionTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/facilities': {
+      id: '/facilities'
+      path: '/facilities'
+      fullPath: '/facilities'
+      preLoaderRoute: typeof FacilitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faculty': {
+      id: '/faculty'
+      path: '/faculty'
+      fullPath: '/faculty'
+      preLoaderRoute: typeof FacultyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -191,6 +414,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GalleryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lms': {
+      id: '/lms'
+      path: '/lms'
+      fullPath: '/lms'
+      preLoaderRoute: typeof LmsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lms-login': {
+      id: '/lms-login'
+      path: '/lms-login'
+      fullPath: '/lms-login'
+      preLoaderRoute: typeof LmsLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/new-registration': {
+      id: '/new-registration'
+      path: '/new-registration'
+      fullPath: '/new-registration'
+      preLoaderRoute: typeof NewRegistrationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/programmes': {
       id: '/programmes'
       path: '/programmes'
@@ -205,6 +456,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudentsCornerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/studio': {
+      id: '/studio'
+      path: '/studio'
+      fullPath: '/studio'
+      preLoaderRoute: typeof StudioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/technical': {
+      id: '/technical'
+      path: '/technical'
+      fullPath: '/technical'
+      preLoaderRoute: typeof TechnicalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ugc-corner': {
       id: '/ugc-corner'
       path: '/ugc-corner'
@@ -212,19 +477,57 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UgcCornerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/visionary-team': {
+      id: '/visionary-team'
+      path: '/visionary-team'
+      fullPath: '/visionary-team'
+      preLoaderRoute: typeof VisionaryTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ba-islamic-studies/people': {
+      id: '/ba-islamic-studies/people'
+      path: '/people'
+      fullPath: '/ba-islamic-studies/people'
+      preLoaderRoute: typeof BaIslamicStudiesPeopleRouteImport
+      parentRoute: typeof BaIslamicStudiesRoute
+    }
   }
 }
+
+interface BaIslamicStudiesRouteChildren {
+  BaIslamicStudiesPeopleRoute: typeof BaIslamicStudiesPeopleRoute
+}
+
+const BaIslamicStudiesRouteChildren: BaIslamicStudiesRouteChildren = {
+  BaIslamicStudiesPeopleRoute: BaIslamicStudiesPeopleRoute,
+}
+
+const BaIslamicStudiesRouteWithChildren =
+  BaIslamicStudiesRoute._addFileChildren(BaIslamicStudiesRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AdmissionRoute: AdmissionRoute,
+  BaIslamicStudiesRoute: BaIslamicStudiesRouteWithChildren,
+  CdoeTeamRoute: CdoeTeamRoute,
   ContactRoute: ContactRoute,
+  DatacenterRoute: DatacenterRoute,
+  ExecutionTeamRoute: ExecutionTeamRoute,
+  FacilitiesRoute: FacilitiesRoute,
+  FacultyRoute: FacultyRoute,
   FaqRoute: FaqRoute,
   GalleryRoute: GalleryRoute,
+  LmsRoute: LmsRoute,
+  LmsLoginRoute: LmsLoginRoute,
+  LoginRoute: LoginRoute,
+  NewRegistrationRoute: NewRegistrationRoute,
   ProgrammesRoute: ProgrammesRoute,
   StudentsCornerRoute: StudentsCornerRoute,
+  StudioRoute: StudioRoute,
+  TechnicalRoute: TechnicalRoute,
   UgcCornerRoute: UgcCornerRoute,
+  VisionaryTeamRoute: VisionaryTeamRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

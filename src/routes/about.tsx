@@ -51,7 +51,7 @@ const sections = [
     ],
     icon: Compass,
     image: campus1,
-    href: "/about/visionary-team",
+    href: "/visionary-team",
     accent: "red",
   },
   {
@@ -68,7 +68,7 @@ const sections = [
     ],
     icon: Users,
     image: campus2,
-    href: "/about/execution-team",
+    href: "/execution-team",
     accent: "blue",
   },
   {
@@ -85,7 +85,7 @@ const sections = [
     ],
     icon: Building2,
     image: convocation,
-    href: "/about/cdoe-team",
+    href: "/cdoe-team",
     accent: "gold",
   },
   {
@@ -102,7 +102,7 @@ const sections = [
     ],
     icon: Wrench,
     image: campus1,
-    href: "/about/facilities",
+    href: "/facilities",
     accent: "grey",
   },
 ];
@@ -111,26 +111,27 @@ function AboutPage() {
   return (
     <SiteLayout>
       <main className="overflow-hidden bg-white">
-
         {/* =========================================================
-            HERO / INTRO
+            HERO
         ========================================================== */}
 
         <section className="relative border-b border-[#d9d9d9] bg-[#f6f5f2]">
           {/* Decorative background */}
+
           <div className="pointer-events-none absolute inset-0 overflow-hidden">
             <div className="absolute -right-24 -top-24 size-72 rounded-full bg-[#7f1d1d]/5 blur-3xl" />
+
             <div className="absolute -bottom-24 left-10 size-72 rounded-full bg-[#172554]/5 blur-3xl" />
           </div>
 
           <div className="relative mx-auto max-w-[1500px] px-5 py-8 sm:px-8 lg:px-12 lg:py-10">
+            {/* TOP LABEL */}
 
-            {/* small top label */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="mb-5 flex items-center gap-3"
+              className="mb-5 flex flex-wrap items-center gap-3"
             >
               <span className="h-[2px] w-10 bg-[#b8860b]" />
 
@@ -143,10 +144,11 @@ function AboutPage() {
               </span>
             </motion.div>
 
-            {/* Main hero */}
-            <div className="grid items-stretch gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+            {/* HERO GRID */}
 
-              {/* LEFT CONTENT */}
+            <div className="grid items-stretch gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+              {/* LEFT */}
+
               <motion.div
                 initial={{ opacity: 0, x: -25 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -155,6 +157,7 @@ function AboutPage() {
               >
                 <div className="flex items-center gap-2 text-[#172554]">
                   <ShieldCheck className="size-4" />
+
                   <span className="text-xs font-bold uppercase tracking-[0.18em]">
                     Academic Excellence
                   </span>
@@ -170,17 +173,19 @@ function AboutPage() {
 
                 <p className="mt-4 max-w-2xl text-sm leading-6 text-[#5b5d62] sm:text-[15px]">
                   Our Centre for Distance and Online Education brings the
-                  university's academic standards to learners wherever they
-                  are — combining experienced leadership, digital learning
-                  and dedicated student support.
+                  university&apos;s academic standards to learners wherever
+                  they are — combining experienced leadership, digital
+                  learning and dedicated student support.
                 </p>
 
-                {/* mini stats */}
+                {/* STATS */}
+
                 <div className="mt-6 grid grid-cols-3 border-y border-[#e3e0db] py-4">
                   <div className="border-r border-[#e3e0db] pr-3">
                     <p className="font-serif text-xl font-bold text-[#7f1d1d]">
                       01
                     </p>
+
                     <p className="mt-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#777]">
                       Academic Vision
                     </p>
@@ -190,6 +195,7 @@ function AboutPage() {
                     <p className="font-serif text-xl font-bold text-[#172554]">
                       04
                     </p>
+
                     <p className="mt-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#777]">
                       Core Teams
                     </p>
@@ -199,11 +205,14 @@ function AboutPage() {
                     <p className="font-serif text-xl font-bold text-[#b8860b]">
                       24/7
                     </p>
+
                     <p className="mt-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#777]">
                       Digital Access
                     </p>
                   </div>
                 </div>
+
+                {/* TAGS */}
 
                 <div className="mt-5 flex flex-wrap gap-2">
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-[#7f1d1d] px-3 py-1.5 text-[11px] font-semibold text-white">
@@ -219,6 +228,7 @@ function AboutPage() {
               </motion.div>
 
               {/* RIGHT IMAGE */}
+
               <motion.div
                 initial={{ opacity: 0, x: 25 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -231,15 +241,14 @@ function AboutPage() {
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 hover:scale-105"
                 />
 
-                {/* image overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#111827]/85 via-[#111827]/15 to-transparent" />
 
-                {/* gold vertical accent */}
                 <div className="absolute left-0 top-0 h-full w-1 bg-[#b8860b]" />
 
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <div className="mb-2 flex items-center gap-2">
                     <Landmark className="size-4 text-[#e4bd5b]" />
+
                     <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#e4bd5b]">
                       Our Campus
                     </span>
@@ -280,12 +289,11 @@ function AboutPage() {
         </section>
 
         {/* =========================================================
-            PREMIUM CONTENT GRID
+            CONTENT GRID
         ========================================================== */}
 
         <section className="bg-[#f2f1ee]">
           <div className="mx-auto max-w-[1500px] px-5 py-7 sm:px-8 lg:px-12 lg:py-9">
-
             <div className="grid gap-4 lg:grid-cols-2">
               {sections.map((section, index) => {
                 const Icon = section.icon;
@@ -311,16 +319,19 @@ function AboutPage() {
                     }}
                     className="group relative overflow-hidden rounded-[22px] border border-[#d8d5d0] bg-white shadow-[0_8px_25px_rgba(0,0,0,0.055)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_38px_rgba(0,0,0,0.11)]"
                   >
-                    {/* top accent */}
+                    {/* TOP ACCENT */}
+
                     <div
                       className="absolute left-0 right-0 top-0 h-1"
-                      style={{ backgroundColor: accent }}
+                      style={{
+                        backgroundColor: accent,
+                      }}
                     />
 
-                    <div className="grid min-h-[265px] grid-cols-[0.9fr_1.1fr]">
-
+                    <div className="grid min-h-[265px] grid-cols-1 sm:grid-cols-[0.9fr_1.1fr]">
                       {/* IMAGE */}
-                      <div className="relative overflow-hidden">
+
+                      <div className="relative min-h-[220px] overflow-hidden sm:min-h-0">
                         <img
                           src={section.image}
                           alt={section.title}
@@ -329,7 +340,6 @@ function AboutPage() {
 
                         <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-black/10 to-black/45" />
 
-                        {/* number */}
                         <div className="absolute left-4 top-4 flex size-10 items-center justify-center rounded-full bg-white/90 font-serif text-sm font-bold shadow-lg backdrop-blur">
                           <span style={{ color: accent }}>
                             {section.number}
@@ -338,12 +348,14 @@ function AboutPage() {
                       </div>
 
                       {/* CONTENT */}
-                      <div className="flex flex-col p-5 sm:p-6">
 
+                      <div className="flex flex-col p-5 sm:p-6">
                         <div className="flex items-center justify-between">
                           <span
                             className="text-[9px] font-bold uppercase tracking-[0.2em]"
-                            style={{ color: accent }}
+                            style={{
+                              color: accent,
+                            }}
                           >
                             {section.eyebrow}
                           </span>
@@ -367,7 +379,8 @@ function AboutPage() {
                           {section.description}
                         </p>
 
-                        {/* compact items */}
+                        {/* ITEMS */}
+
                         <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-1.5">
                           {section.items.map((item) => (
                             <div
@@ -376,25 +389,34 @@ function AboutPage() {
                             >
                               <span
                                 className="mt-1.5 size-1 shrink-0 rounded-full"
-                                style={{ backgroundColor: accent }}
+                                style={{
+                                  backgroundColor: accent,
+                                }}
                               />
+
                               {item}
                             </div>
                           ))}
                         </div>
 
-                        {/* DETAIL LINK */}
+                        {/* VIEW DETAILS */}
+
                         <div className="mt-auto pt-4">
                           <Link
                             to={section.href}
                             className="group/link inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.13em] transition-all duration-200"
-                            style={{ color: accent }}
+                            style={{
+                              color: accent,
+                            }}
                           >
                             <span className="relative">
                               View details
+
                               <span
                                 className="absolute -bottom-1 left-0 h-[1px] w-0 transition-all duration-300 group-hover/link:w-full"
-                                style={{ backgroundColor: accent }}
+                                style={{
+                                  backgroundColor: accent,
+                                }}
                               />
                             </span>
 
@@ -428,6 +450,7 @@ function AboutPage() {
             <div>
               <div className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#e4bd5b]" />
+
                 <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#e4bd5b]">
                   Our commitment
                 </span>
@@ -448,7 +471,6 @@ function AboutPage() {
             </Link>
           </div>
         </section>
-
       </main>
     </SiteLayout>
   );

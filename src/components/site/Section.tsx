@@ -12,7 +12,13 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className={cn("relative px-5 py-20 sm:px-8 md:py-28 lg:py-32", className)}>
+    <section
+      id={id}
+      className={cn(
+        "relative px-5 py-20 sm:px-8 md:py-28 lg:py-32",
+        className,
+      )}
+    >
       <div className="mx-auto w-full max-w-7xl">{children}</div>
     </section>
   );
@@ -42,7 +48,7 @@ export function SectionHeading({
       {eyebrow ? (
         <span
           className={cn(
-            "inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-medium tracking-[0.16em] uppercase",
+            "inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-medium uppercase tracking-[0.16em]",
             tone === "invert"
               ? "border-primary-foreground/25 text-primary-foreground/80"
               : "border-border bg-gradient-accent text-accent-foreground shadow-glow",
@@ -51,14 +57,18 @@ export function SectionHeading({
           {eyebrow}
         </span>
       ) : null}
+
       <h2 className="mt-5 text-3xl leading-[1.1] font-semibold text-balance sm:text-4xl md:text-5xl">
         {title}
       </h2>
+
       {description ? (
         <p
           className={cn(
             "mt-5 text-base leading-relaxed text-pretty sm:text-lg",
-            tone === "invert" ? "text-primary-foreground/70" : "text-muted-foreground",
+            tone === "invert"
+              ? "text-primary-foreground/70"
+              : "text-muted-foreground",
           )}
         >
           {description}

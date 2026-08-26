@@ -8,7 +8,6 @@ import { Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
-  Award,
   CheckCircle2,
   Users,
 } from "lucide-react";
@@ -27,21 +26,6 @@ const features = [
   "Online Admission",
 ];
 
-const cards = [
-  {
-    icon: Award,
-    value: "UGC",
-    label: "Approved programmes",
-    className: "left-5 top-5 sm:left-7 sm:top-7",
-  },
-  {
-    icon: Users,
-    value: "Apply Now",
-    label: "Crescent Education",
-    className: "right-5 bottom-5 sm:right-7 sm:bottom-7",
-  },
-];
-
 export function HeroDE() {
   const [currentImage, setCurrentImage] = useState(0);
 
@@ -56,7 +40,8 @@ export function HeroDE() {
   return (
     <section
       className="
-        relative overflow-hidden
+        relative
+        overflow-hidden
         bg-[#f8f7f3]
         px-4
         pt-8
@@ -69,15 +54,18 @@ export function HeroDE() {
         lg:pb-9
       "
     >
-      {/* ===================================================== */}
-      {/* SOFT BACKGROUND DETAILS */}
-      {/* ===================================================== */}
+      {/* =====================================================
+          SOFT BACKGROUND DETAILS
+      ====================================================== */}
 
       <div className="pointer-events-none absolute inset-0">
         <div
           className="
-            absolute -left-32 top-10
-            h-72 w-72
+            absolute
+            -left-32
+            top-10
+            h-72
+            w-72
             rounded-full
             bg-[#8f1d1d]/[0.035]
             blur-3xl
@@ -86,8 +74,11 @@ export function HeroDE() {
 
         <div
           className="
-            absolute -right-32 bottom-0
-            h-80 w-80
+            absolute
+            -right-32
+            bottom-0
+            h-80
+            w-80
             rounded-full
             bg-[#1d355f]/[0.045]
             blur-3xl
@@ -95,13 +86,14 @@ export function HeroDE() {
         />
       </div>
 
-      {/* ===================================================== */}
-      {/* MAIN HERO */}
-      {/* ===================================================== */}
+      {/* =====================================================
+          MAIN HERO
+      ====================================================== */}
 
       <div
         className="
-          relative z-10
+          relative
+          z-10
           mx-auto
           grid
           max-w-[1450px]
@@ -112,13 +104,19 @@ export function HeroDE() {
           xl:gap-12
         "
       >
-        {/* ================================================= */}
-        {/* LEFT CONTENT */}
-        {/* ================================================= */}
+        {/* =================================================
+            LEFT CONTENT
+        ================================================== */}
 
         <motion.div
-          initial={{ opacity: 0, x: -22 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{
+            opacity: 0,
+            x: -22,
+          }}
+          animate={{
+            opacity: 1,
+            x: 0,
+          }}
           transition={{
             duration: 0.7,
             ease: [0.16, 1, 0.3, 1],
@@ -131,7 +129,9 @@ export function HeroDE() {
             lg:py-2
           "
         >
-          {/* EYEBROW */}
+          {/* =================================================
+              CRESCENT DISTANCE EDUCATION
+          ================================================== */}
 
           <div className="mb-4 flex items-center gap-3">
             <span
@@ -145,71 +145,101 @@ export function HeroDE() {
 
             <span
               className="
-                text-[10px]
-                font-bold
+                text-[16px]
+                font-extrabold
                 uppercase
-                tracking-[0.28em]
+                tracking-[0.18em]
                 text-[#8a6728]
-                sm:text-[11px]
+                sm:text-[18px]
+                lg:text-[20px]
               "
             >
               Crescent Distance Education
             </span>
           </div>
 
-          {/* ADMISSION BADGE */}
+          {/* =================================================
+              ADMISSIONS OPEN
+              CENTER + POPUP + BLINK
+          ================================================== */}
 
-          <div
-            className="
-              mb-5
-              inline-flex
-              w-fit
-              items-center
-              gap-2
-              rounded-full
-              border
-              border-[#8f1d1d]/20
-              bg-[#8f1d1d]
-              px-4
-              py-2
-              shadow-[0_8px_24px_rgba(143,29,29,0.16)]
-            "
-          >
-            <span
+          <div className="mb-5 flex w-full justify-center">
+            <motion.div
+              initial={{
+                opacity: 0,
+                scale: 0.7,
+                y: -10,
+              }}
+              animate={{
+                opacity: [0.75, 1, 0.75],
+                scale: [1, 1.08, 1],
+                y: [0, 0, 0],
+              }}
+              transition={{
+                duration: 1.8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
               className="
-                size-1.5
+                inline-flex
+                items-center
+                gap-2.5
                 rounded-full
-                bg-[#d9b45f]
-              "
-            />
-
-            <span
-              className="
-                text-[10px]
-                font-bold
-                uppercase
-                tracking-[0.12em]
-                text-white
-                sm:text-[11px]
+                border
+                border-[#b08a3e]/40
+                bg-[#b08a3e]
+                px-5
+                py-2
+                shadow-[0_8px_25px_rgba(176,138,62,0.28)]
               "
             >
-              Admissions Open 2026–2027
-            </span>
+              <motion.span
+                animate={{
+                  opacity: [1, 0.3, 1],
+                  scale: [1, 0.75, 1],
+                }}
+                transition={{
+                  duration: 1.2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="
+                  size-2
+                  rounded-full
+                  bg-white
+                "
+              />
+
+              <span
+                className="
+                  text-[12px]
+                  font-extrabold
+                  uppercase
+                  tracking-[0.12em]
+                  text-white
+                  sm:text-[13px]
+                "
+              >
+                Admissions Open 2026–2027
+              </span>
+            </motion.div>
           </div>
 
-          {/* MAIN HEADING */}
+          {/* =================================================
+              MAIN HEADING
+          ================================================== */}
 
           <h1
             className="
               max-w-[650px]
-              text-[42px]
-              leading-[0.98]
+              text-[28px]
+              leading-[1.05]
               font-extrabold
-              tracking-[-0.045em]
+              tracking-[-0.04em]
               text-[#172033]
-              sm:text-[50px]
-              lg:text-[54px]
-              xl:text-[60px]
+              sm:text-[32px]
+              lg:text-[36px]
+              xl:text-[40px]
             "
           >
             Empowering Your
@@ -230,15 +260,42 @@ export function HeroDE() {
             </span>
           </h1>
 
-          {/* DECORATIVE LINE */}
+          {/* =================================================
+              DECORATIVE LINE
+          ================================================== */}
 
           <div className="my-5 flex items-center gap-2">
-            <span className="h-[4px] w-12 rounded-full bg-[#951f23]" />
-            <span className="h-[4px] w-5 rounded-full bg-[#b08a3e]" />
-            <span className="h-[4px] w-2 rounded-full bg-[#1d355f]" />
+            <span
+              className="
+                h-[4px]
+                w-12
+                rounded-full
+                bg-[#951f23]
+              "
+            />
+
+            <span
+              className="
+                h-[4px]
+                w-5
+                rounded-full
+                bg-[#b08a3e]
+              "
+            />
+
+            <span
+              className="
+                h-[4px]
+                w-2
+                rounded-full
+                bg-[#1d355f]
+              "
+            />
           </div>
 
-          {/* DESCRIPTION */}
+          {/* =================================================
+              DESCRIPTION
+          ================================================== */}
 
           <p
             className="
@@ -255,7 +312,9 @@ export function HeroDE() {
             and expert student support.
           </p>
 
-          {/* FEATURES */}
+          {/* =================================================
+              FEATURES
+          ================================================== */}
 
           <div
             className="
@@ -299,7 +358,9 @@ export function HeroDE() {
             ))}
           </div>
 
-          {/* BUTTONS */}
+          {/* =================================================
+              BUTTONS
+          ================================================== */}
 
           <div
             className="
@@ -335,6 +396,7 @@ export function HeroDE() {
                 hash="how-to-apply"
               >
                 Apply Now
+
                 <ArrowRight className="ml-1 size-4" />
               </Link>
             </Button>
@@ -369,9 +431,9 @@ export function HeroDE() {
           </div>
         </motion.div>
 
-        {/* ================================================= */}
-        {/* RIGHT IMAGE */}
-        {/* ================================================= */}
+        {/* =================================================
+            RIGHT IMAGE
+        ================================================== */}
 
         <motion.div
           initial={{
@@ -395,7 +457,9 @@ export function HeroDE() {
             lg:pl-1
           "
         >
-          {/* OUTER PREMIUM FRAME */}
+          {/* =================================================
+              OUTER PREMIUM FRAME
+          ================================================== */}
 
           <div
             className="
@@ -410,7 +474,9 @@ export function HeroDE() {
               sm:p-2.5
             "
           >
-            {/* INNER IMAGE */}
+            {/* =================================================
+                INNER IMAGE
+            ================================================== */}
 
             <div
               className="
@@ -485,7 +551,9 @@ export function HeroDE() {
                 "
               />
 
-              {/* IMAGE BOTTOM CONTENT */}
+              {/* =================================================
+                  IMAGE BOTTOM CONTENT
+              ================================================== */}
 
               <div
                 className="
@@ -505,15 +573,15 @@ export function HeroDE() {
                 <div>
                   <p
                     className="
-                      text-[9px]
+                      text-[14px]
                       font-bold
                       uppercase
-                      tracking-[0.25em]
+                      tracking-[0.20em]
                       text-[#d9b45f]
-                      sm:text-[10px]
+                      sm:text-[15px]
                     "
                   >
-                    Crescent Education
+                    Crescent Distance Education
                   </p>
 
                   <h2
@@ -556,9 +624,9 @@ export function HeroDE() {
               </div>
             </div>
 
-            {/* ================================================= */}
-            {/* UGC FLOATING CARD */}
-            {/* ================================================= */}
+            {/* =================================================
+                UGC FLOATING CARD
+            ================================================== */}
 
             <motion.div
               initial={{
@@ -602,20 +670,30 @@ export function HeroDE() {
                 sm:py-3
               "
             >
+              {/* PHOTO */}
+
               <span
                 className="
                   flex
-                  size-9
+                  size-10
                   shrink-0
-                  items-center
-                  justify-center
+                  overflow-hidden
                   rounded-full
+                  border
+                  border-[#d9b45f]/40
                   bg-[#1d355f]
-                  text-[#d9b45f]
-                  sm:size-10
+                  sm:size-11
                 "
               >
-                <Award className="size-5" />
+                <img
+                  src={heroImg1}
+                  alt="Crescent campus"
+                  className="
+                    h-full
+                    w-full
+                    object-cover
+                  "
+                />
               </span>
 
               <span>
@@ -645,9 +723,9 @@ export function HeroDE() {
               </span>
             </motion.div>
 
-            {/* ================================================= */}
-            {/* APPLY FLOATING CARD */}
-            {/* ================================================= */}
+            {/* =================================================
+                APPLY FLOATING CARD
+            ================================================== */}
 
             <motion.div
               initial={{
