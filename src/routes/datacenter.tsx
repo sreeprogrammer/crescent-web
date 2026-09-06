@@ -1,341 +1,537 @@
-import { SiteLayout } from "@/components/site/SiteLayout";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
+import { motion } from "framer-motion";
 import {
   ArrowLeft,
-  ArrowUpRight,
+  ArrowRight,
   CheckCircle2,
-  CloudCog,
-  Gauge,
-  LifeBuoy,
+  Database,
+  HardDrive,
+  Laptop,
+  LockKeyhole,
   Network,
   Server,
-  Settings2,
   ShieldCheck,
+  Sparkles,
 } from "lucide-react";
-import { motion } from "framer-motion";
 
-const title = "Datacenter — Crescent Distance Education";
+import campus1 from "@/assets/campus-1.jpg";
+import { SiteLayout } from "@/components/site/SiteLayout";
+
+const title = "Datacenter — Center for Online Education";
 
 const description =
-  "Dedicated data center and server infrastructure supporting secure, scalable and reliable online education.";
+  "Explore the dedicated data center and server infrastructure supporting secure, scalable and reliable online education.";
 
 export const Route = createFileRoute("/datacenter")({
   head: () => ({
     meta: [
       { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
+      {
+        name: "description",
+        content: description,
+      },
+      {
+        property: "og:title",
+        content: title,
+      },
+      {
+        property: "og:description",
+        content: description,
+      },
+      {
+        property: "og:type",
+        content: "website",
+      },
     ],
   }),
   component: DatacenterPage,
 });
 
-const features = [
+const circularFont = {
+  fontFamily:
+    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
+};
+
+/* =========================================================
+   QUICK NAVIGATION
+========================================================= */
+
+function DatacenterQuickLinks() {
+  const links = [
+    {
+      number: "01",
+      title: "Overview",
+      description: "Explore our online education facilities",
+      icon: Sparkles,
+      href: "/facilities",
+      accent: "#8F1D1D",
+    },
+    {
+      number: "02",
+      title: "Studio",
+      description: "High-quality educational content",
+      icon: Laptop,
+      href: "/studio",
+      accent: "#6B4C9A",
+    },
+    {
+      number: "03",
+      title: "LMS",
+      description: "Digital learning management system",
+      icon: Network,
+      href: "/lms",
+      accent: "#2F6F4E",
+    },
+    {
+      number: "04",
+      title: "Datacenter",
+      description: "Secure and reliable data infrastructure",
+      icon: Database,
+      href: "/datacenter",
+      accent: "#B08A24",
+    },
+  ];
+
+  return (
+    <section
+      style={circularFont}
+      className="relative bg-[#F5F1E9] px-5 pb-5 pt-3 sm:px-8 lg:px-12"
+    >
+      <div className="mx-auto w-full max-w-7xl">
+
+        <div className="mb-5 h-[3px] w-full rounded-full bg-gradient-to-r from-[#2F6F4E] via-[#B08A24] to-[#6B4C9A]" />
+
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {links.map((item, index) => {
+            const Icon = item.icon;
+
+            return (
+              <motion.div
+                key={item.number}
+                initial={{
+                  opacity: 0,
+                  y: 6,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.05,
+                }}
+                className="min-w-0"
+              >
+                <Link
+                  to={item.href}
+                  className="
+                    group
+                    relative
+                    flex
+                    h-[96px]
+                    min-h-[96px]
+                    w-full
+                    items-center
+                    overflow-hidden
+                    rounded-[1.1rem]
+                    border
+                    border-[#D9D4CA]
+                    bg-white
+                    px-4
+                    py-3.5
+                    shadow-[0_6px_18px_rgba(31,35,43,0.05)]
+                    transition-all
+                    duration-300
+                    hover:-translate-y-0.5
+                    hover:shadow-[0_10px_25px_rgba(31,35,43,0.09)]
+                  "
+                >
+                  <div
+                    className="absolute left-0 right-0 top-0 h-[3px]"
+                    style={{
+                      backgroundColor: item.accent,
+                    }}
+                  />
+
+                  <div className="flex w-full items-center gap-3">
+
+                    <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-[#17234B] transition-transform duration-300 group-hover:scale-105">
+                      <Icon
+                        className="size-4"
+                        style={{
+                          color: item.accent,
+                        }}
+                      />
+                    </div>
+
+                    <div className="min-w-0 flex-1">
+                      <div className="flex min-w-0 items-center gap-1.5">
+                        <span
+                          className="shrink-0 text-[8px] font-bold tracking-[0.12em]"
+                          style={{
+                            color: item.accent,
+                          }}
+                        >
+                          {item.number}
+                        </span>
+
+                        <h3 className="min-w-0 truncate text-[11px] font-bold text-[#20242B]">
+                          {item.title}
+                        </h3>
+                      </div>
+
+                      <p className="mt-0.5 truncate text-[9px] font-medium text-[#737782]">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    <ArrowRight
+                      className="
+                        size-3.5
+                        shrink-0
+                        text-[#B9BDC5]
+                        transition-all
+                        duration-300
+                        group-hover:translate-x-1
+                      "
+                    />
+                  </div>
+                </Link>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =========================================================
+   DATA CENTER FEATURES
+========================================================= */
+
+const datacenterFeatures = [
   {
     number: "01",
-    title: "Lightning-fast Speed",
-    text: "With a dedicated data center and server, our online education department can enjoy unparalleled speed and performance for all their digital needs.",
-    icon: Gauge,
-    accent: "#7f1d1d",
+    title: "Lightning-fast speed",
+    accent: "#6B4C9A",
+    iconBg: "#6B4C9A",
+    icon: HardDrive,
+    text:
+      "With a dedicated data center and server, our online education department can enjoy unparalleled speed and performance for all their digital needs.",
   },
   {
     number: "02",
-    title: "Robust Security",
-    text: "Our dedicated data center and server provide top-of-the-line security measures to ensure the safety and privacy of sensitive educational information.",
+    title: "Robust security",
+    accent: "#8F1D1D",
+    iconBg: "#8F1D1D",
     icon: ShieldCheck,
-    accent: "#172554",
+    text:
+      "When it comes to sensitive educational data, security is paramount. Our dedicated data center and server provide top-of-the-line security measures to ensure the safety and privacy of all information.",
   },
   {
     number: "03",
     title: "Scalability",
-    text: "As our online education department grows, our dedicated data center and server can easily scale up to accommodate increasing amounts of data and users.",
-    icon: CloudCog,
-    accent: "#b8860b",
+    accent: "#2F6F4E",
+    iconBg: "#2F6F4E",
+    icon: Network,
+    text:
+      "As our online education department grows, our dedicated data center and server can easily scale up to accommodate increasing amounts of data and users.",
   },
   {
     number: "04",
     title: "Customizability",
-    text: "Dedicated resources provide greater control over configuration and customization, making it easier to tailor digital infrastructure to unique needs.",
-    icon: Settings2,
-    accent: "#7f1d1d",
+    accent: "#B08A24",
+    iconBg: "#B08A24",
+    icon: Sparkles,
+    text:
+      "With dedicated resources, our online education department has greater control over the configuration and customization of their digital infrastructure, making it easier to tailor their solutions to meet their unique needs.",
   },
   {
     number: "05",
     title: "Reliability",
-    text: "Our dedicated infrastructure provides dependable, high-performance technology that supports online education when it matters most.",
+    accent: "#30265F",
+    iconBg: "#30265F",
     icon: Server,
-    accent: "#172554",
+    text:
+      "With a dedicated data center and server, our online education department can count on dependable, high-performance technology that won't let them down when they need it most.",
   },
   {
     number: "06",
-    title: "24/7 Support",
-    text: "Round-the-clock technical support ensures that infrastructure issues are addressed promptly and efficiently whenever assistance is needed.",
-    icon: LifeBuoy,
-    accent: "#b8860b",
+    title: "24/7 support",
+    accent: "#427D76",
+    iconBg: "#427D76",
+    icon: LockKeyhole,
+    text:
+      "Our dedicated server and data center come with round-the-clock technical support to ensure that any issues are addressed promptly and efficiently. Students and faculty can rest assured that they'll have access to help whenever they need it.",
   },
 ];
+
+/* =========================================================
+   DATACENTER PAGE
+========================================================= */
 
 function DatacenterPage() {
   return (
     <SiteLayout>
-      <main className="min-h-screen overflow-hidden bg-[#f2f1ee]">
+      <main
+        style={circularFont}
+        className="min-h-screen overflow-hidden bg-[#F5F1E9]"
+      >
 
-        {/* =========================================================
-            MINIMAL HERO
-        ========================================================== */}
+        {/* =================================================
+            QUICK LINKS
+        ================================================= */}
 
-        <section className="relative overflow-hidden bg-[#172554]">
-          <div className="pointer-events-none absolute inset-0">
-            <div className="absolute -right-32 -top-32 size-[300px] rounded-full bg-[#7f1d1d]/30 blur-3xl" />
-            <div className="absolute -bottom-32 -left-32 size-[280px] rounded-full bg-[#b8860b]/10 blur-3xl" />
+        <DatacenterQuickLinks />
+
+        {/* =================================================
+            MAIN SECTION
+        ================================================= */}
+
+        <section className="relative border-b border-[#dedbd6] bg-[#f5f3f0]">
+
+          {/* BACKGROUND ACCENTS */}
+
+          <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            <div className="absolute -right-24 -top-24 size-72 rounded-full bg-[#B08A24]/5 blur-3xl" />
+
+            <div className="absolute -bottom-24 left-0 size-64 rounded-full bg-[#30265F]/5 blur-3xl" />
+
+            <div className="absolute left-1/2 top-1/2 size-52 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#2F6F4E]/5 blur-3xl" />
           </div>
 
-          <div className="relative mx-auto max-w-[1500px] px-5 py-5 sm:px-8 lg:px-12 lg:py-6">
+          <div className="relative mx-auto max-w-[1400px] px-5 py-5 sm:px-8 lg:px-10 lg:py-6">
 
-            {/* Back */}
-
-            <motion.div
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.45 }}
-            >
-              <Link
-                to="/facilities"
-                className="group inline-flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.16em] text-white/55 transition-colors hover:text-[#e4bd5b]"
-              >
-                <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-1" />
-                Back to Facilities
-              </Link>
-            </motion.div>
-
-            {/* Header */}
+            {/* =================================================
+                LABEL
+            ================================================= */}
 
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.08 }}
-              className="mt-5 flex items-center justify-between gap-5"
+              initial={{
+                opacity: 0,
+                y: 8,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.45,
+              }}
+              className="mb-3 flex items-center gap-2"
             >
-              <div className="min-w-0">
+              <span className="h-[2px] w-7 bg-[#B08A24]" />
 
-                <div className="mb-2 flex items-center gap-2">
-                  <span className="h-[2px] w-7 bg-[#e4bd5b]" />
-
-                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#e4bd5b]">
-                    Digital Infrastructure
-                  </span>
-                </div>
-
-                <h1 className="font-serif text-3xl font-bold leading-none tracking-[-0.03em] text-white sm:text-4xl lg:text-[3.2rem]">
-                  Dedicated{" "}
-                  <span className="text-[#e4bd5b]">
-                    Datacenter
-                  </span>
-                </h1>
-
-                <p className="mt-3 max-w-2xl text-xs leading-5 text-white/60 sm:text-sm">
-                  Secure, scalable and reliable infrastructure built to
-                  support the digital learning ecosystem of Crescent
-                  Distance Education.
-                </p>
-
-              </div>
-
-              {/* Small Icon */}
-
-              <div className="hidden shrink-0 sm:flex size-14 items-center justify-center rounded-2xl border border-[#e4bd5b]/25 bg-white/5 text-[#e4bd5b] backdrop-blur-sm">
-                <Server className="size-6" />
-              </div>
+              <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-[#111111]">
+                Center for Online Education
+              </span>
             </motion.div>
 
-            {/* Mini Stats */}
+            {/* =================================================
+                HERO
+            ================================================= */}
 
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: 0.18 }}
-              className="mt-5 flex max-w-xl border-t border-white/10 pt-3"
-            >
-              <div className="flex-1 border-r border-white/10">
-                <p className="font-serif text-lg font-bold text-[#e4bd5b]">
-                  06
-                </p>
-                <p className="mt-0.5 text-[7px] font-bold uppercase tracking-[0.15em] text-white/40">
-                  Capabilities
-                </p>
-              </div>
+            <div className="grid items-stretch gap-5 lg:grid-cols-[1.08fr_0.92fr]">
 
-              <div className="flex-1 border-r border-white/10 pl-4">
-                <p className="font-serif text-lg font-bold text-white">
-                  24/7
-                </p>
-                <p className="mt-0.5 text-[7px] font-bold uppercase tracking-[0.15em] text-white/40">
-                  Support
-                </p>
-              </div>
-
-              <div className="flex-1 pl-4">
-                <p className="font-serif text-lg font-bold text-[#e4bd5b]">
-                  Secure
-                </p>
-                <p className="mt-0.5 text-[7px] font-bold uppercase tracking-[0.15em] text-white/40">
-                  Infrastructure
-                </p>
-              </div>
-            </motion.div>
-
-          </div>
-        </section>
-
-        {/* =========================================================
-            FACILITIES NAV
-        ========================================================== */}
-
-        <section className="border-b border-[#d9d6d0] bg-white">
-          <div className="mx-auto max-w-[1500px] overflow-x-auto px-5 sm:px-8 lg:px-12">
-
-            <nav className="flex min-w-max items-center gap-1 py-2">
-
-              <Link
-                to="/facilities"
-                className="rounded-full px-4 py-2 text-[8px] font-bold uppercase tracking-[0.14em] text-[#66686d] transition-all hover:bg-[#f2f1ee] hover:text-[#7f1d1d]"
-              >
-                Facilities
-              </Link>
-
-              <Link
-                to="/studio"
-                className="rounded-full px-4 py-2 text-[8px] font-bold uppercase tracking-[0.14em] text-[#66686d] transition-all hover:bg-[#f2f1ee] hover:text-[#7f1d1d]"
-              >
-                Studio
-              </Link>
-
-              <Link
-                to="/lms"
-                className="rounded-full px-4 py-2 text-[8px] font-bold uppercase tracking-[0.14em] text-[#66686d] transition-all hover:bg-[#f2f1ee] hover:text-[#7f1d1d]"
-              >
-                LMS
-              </Link>
-
-              <Link
-                to="/datacenter"
-                className="rounded-full bg-[#7f1d1d] px-4 py-2 text-[8px] font-bold uppercase tracking-[0.14em] text-white"
-              >
-                Datacenter
-              </Link>
-
-            </nav>
-          </div>
-        </section>
-
-        {/* =========================================================
-            MAIN CONTENT
-        ========================================================== */}
-
-        <section className="bg-[#f2f1ee]">
-
-          <div className="mx-auto max-w-[1500px] px-5 py-6 sm:px-8 lg:px-12 lg:py-8">
-
-            {/* Section Heading */}
-
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="mb-4 flex items-end justify-between gap-5"
-            >
-              <div>
-
-                <div className="flex items-center gap-2">
-                  <span className="h-[2px] w-7 bg-[#b8860b]" />
-
-                  <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-[#7f1d1d]">
-                    Infrastructure
-                  </span>
-                </div>
-
-                <h2 className="mt-1.5 font-serif text-2xl font-bold tracking-[-0.025em] text-[#25262a] sm:text-3xl">
-                  Built for dependable learning
-                </h2>
-
-              </div>
-
-              <p className="hidden max-w-sm text-right text-[11px] leading-5 text-[#777] md:block">
-                Reliable infrastructure keeps our digital education
-                environment fast, secure and ready to scale.
-              </p>
-            </motion.div>
-
-            {/* =====================================================
-                IMAGE + FEATURES
-            ====================================================== */}
-
-            <div className="grid gap-4 lg:grid-cols-[0.72fr_1.28fr]">
-
-              {/* IMAGE */}
+              {/* LEFT CONTENT */}
 
               <motion.div
-                initial={{ opacity: 0, x: -15 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55 }}
-                className="relative min-h-[300px] overflow-hidden rounded-[20px] bg-[#172554] shadow-[0_8px_25px_rgba(0,0,0,0.07)] lg:min-h-[500px]"
+                initial={{
+                  opacity: 0,
+                  x: -15,
+                }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                transition={{
+                  duration: 0.55,
+                }}
+                className="
+                  relative
+                  flex
+                  flex-col
+                  justify-center
+                  overflow-hidden
+                  rounded-[16px]
+                  border
+                  border-[#dedbd6]
+                  bg-white
+                  px-5
+                  py-5
+                  shadow-[0_5px_18px_rgba(0,0,0,0.04)]
+                  sm:px-7
+                  lg:px-8
+                "
               >
 
-                <img
-                  src="https://distance.crescent-institute.edu.in/img/facilities/Server.jpg"
-                  alt="Crescent Distance Education Datacenter"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-                />
+                {/* COLOUR STRIPE */}
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#111827]/90 via-[#111827]/10 to-transparent" />
+                <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#B08A24] via-[#6B4C9A] to-[#2F6F4E]" />
 
-                {/* Number */}
+                <div className="flex items-center gap-2 text-[#111111]">
+                  <Server className="size-3.5 text-[#B08A24]" />
 
-                <div className="absolute left-4 top-4 flex size-9 items-center justify-center rounded-full border border-white/25 bg-white/90 font-serif text-xs font-bold text-[#7f1d1d] shadow-lg">
-                  01
+                  <span className="text-[8px] font-bold uppercase tracking-[0.16em]">
+                    Dedicated Data Center
+                  </span>
                 </div>
 
-                {/* Image Content */}
+                <h1 className="mt-3 max-w-3xl text-2xl font-bold leading-[1.08] tracking-[-0.02em] text-[#111111] sm:text-3xl lg:text-[2.4rem]">
+                  Powerful{" "}
+                  <span className="text-[#B08A24]">
+                    infrastructure
+                  </span>{" "}
+                  for reliable online learning.
+                </h1>
 
-                <div className="absolute bottom-5 left-5 right-5">
+                <p className="mt-3 max-w-2xl text-[11px] leading-5 text-[#111111] sm:text-xs">
+                  Our dedicated data center and server provide the speed,
+                  security, scalability, customizability and reliability
+                  required to support the evolving needs of our online
+                  education department.
+                </p>
 
-                  <div className="mb-1.5 flex items-center gap-2">
-                    <Server className="size-3 text-[#e4bd5b]" />
+                {/* STATS */}
 
-                    <span className="text-[8px] font-bold uppercase tracking-[0.17em] text-[#e4bd5b]">
-                      Dedicated Infrastructure
-                    </span>
+                <div className="mt-4 grid grid-cols-3 border-y border-[#dedbd6] py-3">
+
+                  <div className="border-r border-[#dedbd6] pr-3">
+                    <p className="font-serif text-lg font-bold text-[#B08A24]">
+                      06
+                    </p>
+
+                    <p className="mt-0.5 text-[8px] font-semibold uppercase tracking-wider text-[#111111]">
+                      Features
+                    </p>
                   </div>
 
-                  <h3 className="max-w-sm font-serif text-xl font-bold leading-tight text-white sm:text-2xl">
-                    Powering a connected learning ecosystem.
-                  </h3>
+                  <div className="border-r border-[#dedbd6] px-3">
+                    <p className="font-serif text-lg font-bold text-[#2F6F4E]">
+                      24/7
+                    </p>
 
-                  <p className="mt-2 max-w-sm text-[11px] leading-5 text-white/60">
-                    High-performance infrastructure designed to support
-                    students, faculty and digital learning services.
-                  </p>
+                    <p className="mt-0.5 text-[8px] font-semibold uppercase tracking-wider text-[#111111]">
+                      Support
+                    </p>
+                  </div>
 
+                  <div className="pl-3">
+                    <p className="font-serif text-lg font-bold text-[#6B4C9A]">
+                      100%
+                    </p>
+
+                    <p className="mt-0.5 text-[8px] font-semibold uppercase tracking-wider text-[#111111]">
+                      Secure
+                    </p>
+                  </div>
+                </div>
+
+                {/* TAGS */}
+
+                <div className="mt-3 flex flex-wrap gap-2">
+
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#B08A24] px-2.5 py-1 text-[8px] font-semibold text-white">
+                    <Server className="size-3" />
+                    High Performance
+                  </span>
+
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#2F6F4E] px-2.5 py-1 text-[8px] font-semibold text-white">
+                    <ShieldCheck className="size-3" />
+                    Secure Infrastructure
+                  </span>
+
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#6B4C9A] px-2.5 py-1 text-[8px] font-semibold text-white">
+                    <Network className="size-3" />
+                    Scalable
+                  </span>
                 </div>
               </motion.div>
 
-              {/* FEATURES */}
+              {/* RIGHT IMAGE */}
 
-              <div className="grid gap-3 sm:grid-cols-2">
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  x: 15,
+                }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                transition={{
+                  duration: 0.6,
+                }}
+                className="
+                  relative
+                  min-h-[260px]
+                  overflow-hidden
+                  rounded-[16px]
+                  shadow-[0_10px_25px_rgba(0,0,0,0.1)]
+                "
+              >
+                <img
+                  src={campus1}
+                  alt="Data center and server infrastructure"
+                  className="
+                    absolute
+                    inset-0
+                    h-full
+                    w-full
+                    object-cover
+                    transition-transform
+                    duration-700
+                    hover:scale-105
+                  "
+                />
 
-                {features.map((feature, index) => {
+                <div className="absolute inset-0 bg-gradient-to-t from-[#17234B]/95 via-[#30265F]/25 to-transparent" />
+
+                <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#B08A24] via-[#6B4C9A] to-[#2F6F4E]" />
+
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+
+                  <div className="mb-1.5 flex items-center gap-2">
+                    <Database className="size-3.5 text-[#D8B84C]" />
+
+                    <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-white">
+                      Data Center
+                    </span>
+                  </div>
+
+                  <h2 className="max-w-md font-serif text-xl font-bold leading-tight text-white">
+                    Secure infrastructure powering digital education.
+                  </h2>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* =================================================
+                FEATURES
+            ================================================= */}
+
+            <div className="mt-5">
+
+              <div className="mb-3 flex items-center gap-2">
+                <span className="h-[2px] w-6 bg-gradient-to-r from-[#B08A24] to-[#2F6F4E]" />
+
+                <span className="text-[8px] font-bold uppercase tracking-[0.15em] text-[#111111]">
+                  Data Center Features
+                </span>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+
+                {datacenterFeatures.map((feature, index) => {
                   const Icon = feature.icon;
 
                   return (
                     <motion.article
-                      key={feature.number}
+                      key={feature.title}
                       initial={{
                         opacity: 0,
-                        y: 15,
+                        y: 8,
                       }}
                       whileInView={{
                         opacity: 1,
@@ -343,255 +539,133 @@ function DatacenterPage() {
                       }}
                       viewport={{
                         once: true,
-                        amount: 0.1,
                       }}
                       transition={{
-                        duration: 0.45,
+                        duration: 0.35,
                         delay: index * 0.04,
                       }}
-                      className="group relative overflow-hidden rounded-[17px] border border-[#d8d5d0] bg-white p-4 shadow-[0_5px_18px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+                      className="
+                        group
+                        relative
+                        overflow-hidden
+                        rounded-[14px]
+                        border
+                        border-[#dedbd6]
+                        bg-white
+                        px-4
+                        py-3.5
+                        shadow-[0_5px_18px_rgba(0,0,0,0.04)]
+                        transition-all
+                        duration-300
+                        hover:-translate-y-0.5
+                        hover:shadow-[0_8px_22px_rgba(0,0,0,0.08)]
+                      "
                     >
 
-                      {/* Accent */}
+                      {/* COLOUR STRIPE */}
 
                       <div
-                        className="absolute left-0 right-0 top-0 h-[3px]"
+                        className="absolute left-0 top-0 h-full w-[3px]"
                         style={{
                           backgroundColor: feature.accent,
                         }}
                       />
 
-                      {/* Icon + Number */}
+                      {/* GOLD HOVER LINE */}
 
-                      <div className="flex items-center justify-between">
+                      <div className="absolute bottom-0 left-3 right-3 h-[2px] origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100" />
+
+                      <div className="mb-2 flex items-start gap-2.5">
+
+                        {/* ICON */}
 
                         <div
-                          className="flex size-8 items-center justify-center rounded-lg"
+                          className="flex size-7 shrink-0 items-center justify-center rounded-lg"
                           style={{
-                            backgroundColor: `${feature.accent}12`,
-                            color: feature.accent,
+                            backgroundColor: feature.iconBg,
                           }}
                         >
-                          <Icon className="size-3.5" />
+                          <Icon className="size-3.5 text-white" />
                         </div>
 
-                        <span
-                          className="font-serif text-xs font-bold"
-                          style={{
-                            color: feature.accent,
-                          }}
-                        >
-                          {feature.number}
-                        </span>
+                        {/* TITLE */}
 
+                        <div className="min-w-0">
+                          <span
+                            className="text-[8px] font-bold uppercase tracking-[0.1em]"
+                            style={{
+                              color: feature.accent,
+                            }}
+                          >
+                            {feature.number}
+                          </span>
+
+                          <h3 className="mt-0.5 text-xs font-bold leading-4.5 text-[#111111]">
+                            {feature.title}
+                          </h3>
+                        </div>
                       </div>
 
-                      {/* Title */}
-
-                      <h3 className="mt-3 font-serif text-[15px] font-bold leading-tight text-[#25262a]">
-                        {feature.title}
-                      </h3>
-
-                      {/* Text */}
-
-                      <p className="mt-2 text-[10.5px] leading-5 text-[#66686d]">
+                      <p className="text-[10px] leading-4.5 text-[#111111]">
                         {feature.text}
                       </p>
-
-                      {/* Label */}
-
-                      <div className="mt-3 flex items-center gap-1.5">
-
-                        <CheckCircle2
-                          className="size-3"
-                          style={{
-                            color: feature.accent,
-                          }}
-                        />
-
-                        <span className="text-[7px] font-bold uppercase tracking-[0.12em] text-[#999]">
-                          Infrastructure Ready
-                        </span>
-
-                      </div>
-
                     </motion.article>
                   );
                 })}
-
               </div>
             </div>
 
-            {/* =====================================================
-                STATEMENT
-            ====================================================== */}
+            {/* =================================================
+                BOTTOM NAVIGATION
+            ================================================= */}
 
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="mt-4 rounded-[17px] bg-[#172554] px-4 py-4 sm:px-5"
-            >
-
-              <div className="flex items-center gap-3">
-
-                <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#e4bd5b] text-[#172554]">
-                  <ShieldCheck className="size-4" />
-                </div>
-
-                <div>
-
-                  <p className="text-[8px] font-bold uppercase tracking-[0.17em] text-[#e4bd5b]">
-                    Secure digital foundation
-                  </p>
-
-                  <p className="mt-0.5 font-serif text-xs font-bold leading-5 text-white sm:text-sm">
-                    Fast performance, dependable infrastructure and
-                    continuous support for a secure online learning experience.
-                  </p>
-
-                </div>
-
-              </div>
-
-            </motion.div>
-
-            {/* =====================================================
-                QUICK NAVIGATION
-            ====================================================== */}
-
-            <div className="mt-4 grid gap-3 sm:grid-cols-3">
-
-              {/* Facilities */}
-
-              <Link
-                to="/facilities"
-                className="group flex items-center justify-between rounded-[16px] border border-[#d8d5d0] bg-white p-3.5 shadow-[0_4px_15px_rgba(0,0,0,0.035)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-              >
-
-                <div className="flex items-center gap-3">
-
-                  <div className="flex size-8 items-center justify-center rounded-lg bg-[#7f1d1d]/8">
-                    <Network className="size-3.5 text-[#7f1d1d]" />
-                  </div>
-
-                  <div>
-                    <p className="text-[7px] font-bold uppercase tracking-[0.14em] text-[#999]">
-                      Explore
-                    </p>
-
-                    <p className="font-serif text-xs font-bold text-[#25262a]">
-                      Facilities
-                    </p>
-                  </div>
-
-                </div>
-
-                <ArrowUpRight className="size-3.5 text-[#7f1d1d] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-
-              </Link>
-
-              {/* Studio */}
-
-              <Link
-                to="/studio"
-                className="group flex items-center justify-between rounded-[16px] border border-[#d8d5d0] bg-white p-3.5 shadow-[0_4px_15px_rgba(0,0,0,0.035)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-              >
-
-                <div className="flex items-center gap-3">
-
-                  <div className="flex size-8 items-center justify-center rounded-lg bg-[#b8860b]/10">
-                    <Settings2 className="size-3.5 text-[#b8860b]" />
-                  </div>
-
-                  <div>
-                    <p className="text-[7px] font-bold uppercase tracking-[0.14em] text-[#999]">
-                      Explore
-                    </p>
-
-                    <p className="font-serif text-xs font-bold text-[#25262a]">
-                      Studio
-                    </p>
-                  </div>
-
-                </div>
-
-                <ArrowUpRight className="size-3.5 text-[#b8860b] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-
-              </Link>
-
-              {/* LMS */}
+            <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-[#dedbd6] pt-4">
 
               <Link
                 to="/lms"
-                className="group flex items-center justify-between rounded-[16px] border border-[#d8d5d0] bg-white p-3.5 shadow-[0_4px_15px_rgba(0,0,0,0.035)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                className="
+                  group
+                  relative
+                  inline-flex
+                  items-center
+                  gap-1.5
+                  text-[10px]
+                  font-semibold
+                  text-[#111111]
+                "
               >
+                <ArrowLeft className="size-3.5 text-[#2F6F4E]" />
 
-                <div className="flex items-center gap-3">
+                Back to LMS
 
-                  <div className="flex size-8 items-center justify-center rounded-lg bg-[#172554]/8">
-                    <Server className="size-3.5 text-[#172554]" />
-                  </div>
-
-                  <div>
-                    <p className="text-[7px] font-bold uppercase tracking-[0.14em] text-[#999]">
-                      Explore
-                    </p>
-
-                    <p className="font-serif text-xs font-bold text-[#25262a]">
-                      LMS
-                    </p>
-                  </div>
-
-                </div>
-
-                <ArrowUpRight className="size-3.5 text-[#172554] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-
+                <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
 
-            </div>
+              <Link
+                to="/facilities"
+                className="
+                  group
+                  relative
+                  inline-flex
+                  items-center
+                  gap-1.5
+                  text-[10px]
+                  font-semibold
+                  text-[#111111]
+                "
+              >
+                Back to Facilities
 
+                <ArrowRight className="size-3.5 text-[#B08A24]" />
+
+                <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100" />
+              </Link>
+            </div>
           </div>
         </section>
-
-        {/* =========================================================
-            MINIMAL BOTTOM CTA
-        ========================================================== */}
-
-        <section className="bg-[#3f4146]">
-
-          <div className="mx-auto flex max-w-[1500px] items-center justify-between gap-5 px-5 py-5 sm:px-8 lg:px-12">
-
-            <div>
-
-              <div className="flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-[#e4bd5b]" />
-
-                <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-[#e4bd5b]">
-                  Digital Infrastructure
-                </span>
-              </div>
-
-              <h2 className="mt-1.5 font-serif text-base font-bold leading-tight text-white sm:text-lg">
-                Reliable technology behind every digital learning experience.
-              </h2>
-
-            </div>
-
-            <Link
-              to="/facilities"
-              className="hidden shrink-0 items-center gap-2 rounded-full bg-[#e4bd5b] px-4 py-2 text-[8px] font-bold uppercase tracking-[0.08em] text-[#172554] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white sm:inline-flex"
-            >
-              All Facilities
-              <ArrowUpRight className="size-3.5" />
-            </Link>
-
-          </div>
-
-        </section>
-
       </main>
     </SiteLayout>
   );
 }
+
+export default DatacenterPage;

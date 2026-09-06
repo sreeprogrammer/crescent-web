@@ -13,6 +13,20 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
+/* =========================================================
+   FONT
+   SAME FONT STYLE AS ABOUT / WHO WE ARE
+========================================================= */
+
+const circularFont = {
+  fontFamily:
+    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
+};
+
+/* =========================================================
+   HERO IMAGES
+========================================================= */
+
 const heroImages = [
   heroImg1,
   heroImg2,
@@ -20,11 +34,19 @@ const heroImages = [
   heroImg4,
 ];
 
+/* =========================================================
+   FEATURES
+========================================================= */
+
 const features = [
   "UGC Approved",
   "Flexible Learning",
   "Online Admission",
 ];
+
+/* =========================================================
+   HERO
+========================================================= */
 
 export function HeroDE() {
   const [currentImage, setCurrentImage] = useState(0);
@@ -39,8 +61,10 @@ export function HeroDE() {
 
   return (
     <section
+      style={circularFont}
       className="
         relative
+        w-full
         overflow-hidden
         bg-[#f8f7f3]
         px-4
@@ -59,6 +83,7 @@ export function HeroDE() {
       ====================================================== */}
 
       <div className="pointer-events-none absolute inset-0">
+
         <div
           className="
             absolute
@@ -84,6 +109,7 @@ export function HeroDE() {
             blur-3xl
           "
         />
+
       </div>
 
       {/* =====================================================
@@ -96,6 +122,7 @@ export function HeroDE() {
           z-10
           mx-auto
           grid
+          w-full
           max-w-[1450px]
           items-center
           gap-8
@@ -104,6 +131,7 @@ export function HeroDE() {
           xl:gap-12
         "
       >
+
         {/* =================================================
             LEFT CONTENT
         ================================================== */}
@@ -124,46 +152,68 @@ export function HeroDE() {
           className="
             flex
             min-w-0
+            w-full
             flex-col
             justify-center
             lg:py-2
           "
         >
+
           {/* =================================================
               CRESCENT DISTANCE EDUCATION
           ================================================== */}
 
-          <div className="mb-4 flex items-center gap-3">
+          <div
+            className="
+              mb-4
+              flex
+              w-full
+              min-w-0
+              items-center
+              gap-2
+              overflow-hidden
+              sm:gap-3
+            "
+          >
+
             <span
               className="
                 h-[3px]
-                w-10
+                w-8
+                shrink-0
                 rounded-full
-                bg-[#b08a3e]
+                bg-[#0F5C4D]
+                sm:w-10
               "
             />
 
             <span
               className="
-                text-[16px]
-                font-extrabold
+                block
+                min-w-0
+                flex-1
+                whitespace-nowrap
+                text-[11px]
+                font-bold
                 uppercase
-                tracking-[0.18em]
-                text-[#8a6728]
+                tracking-[0.10em]
+                text-[#0F5C4D]
                 sm:text-[18px]
+                sm:tracking-[0.18em]
                 lg:text-[20px]
               "
             >
               Crescent Distance Education
             </span>
+
           </div>
 
           {/* =================================================
               ADMISSIONS OPEN
-              CENTER + POPUP + BLINK
           ================================================== */}
 
           <div className="mb-5 flex w-full justify-center">
+
             <motion.div
               initial={{
                 opacity: 0,
@@ -182,17 +232,19 @@ export function HeroDE() {
               }}
               className="
                 inline-flex
+                max-w-full
                 items-center
                 gap-2.5
                 rounded-full
                 border
-                border-[#b08a3e]/40
-                bg-[#b08a3e]
+                border-[#D4AF37]/40
+                bg-[#D4AF37]
                 px-5
                 py-2
-                shadow-[0_8px_25px_rgba(176,138,62,0.28)]
+                shadow-[0_8px_25px_rgba(212,175,55,0.28)]
               "
             >
+
               <motion.span
                 animate={{
                   opacity: [1, 0.3, 1],
@@ -205,6 +257,7 @@ export function HeroDE() {
                 }}
                 className="
                   size-2
+                  shrink-0
                   rounded-full
                   bg-white
                 "
@@ -212,8 +265,9 @@ export function HeroDE() {
 
               <span
                 className="
+                  whitespace-nowrap
                   text-[12px]
-                  font-extrabold
+                  font-bold
                   uppercase
                   tracking-[0.12em]
                   text-white
@@ -222,7 +276,9 @@ export function HeroDE() {
               >
                 Admissions Open 2026–2027
               </span>
+
             </motion.div>
+
           </div>
 
           {/* =================================================
@@ -233,10 +289,10 @@ export function HeroDE() {
             className="
               max-w-[650px]
               text-[28px]
+              font-bold
               leading-[1.05]
-              font-extrabold
               tracking-[-0.04em]
-              text-[#172033]
+              text-[#111111]
               sm:text-[32px]
               lg:text-[36px]
               xl:text-[40px]
@@ -245,17 +301,17 @@ export function HeroDE() {
             Empowering Your
             <br />
 
-            <span className="text-[#172033]">
+            <span className="text-[#111111]">
               Future Through
             </span>{" "}
 
-            <span className="text-[#951f23]">
+            <span className="text-[#8f1d1d]">
               Distance
             </span>
 
             <br />
 
-            <span className="text-[#951f23]">
+            <span className="text-[#8f1d1d]">
               Education
             </span>
           </h1>
@@ -265,12 +321,13 @@ export function HeroDE() {
           ================================================== */}
 
           <div className="my-5 flex items-center gap-2">
+
             <span
               className="
                 h-[4px]
                 w-12
                 rounded-full
-                bg-[#951f23]
+                bg-[#8f1d1d]
               "
             />
 
@@ -279,7 +336,7 @@ export function HeroDE() {
                 h-[4px]
                 w-5
                 rounded-full
-                bg-[#b08a3e]
+                bg-[#B08A24]
               "
             />
 
@@ -291,6 +348,7 @@ export function HeroDE() {
                 bg-[#1d355f]
               "
             />
+
           </div>
 
           {/* =================================================
@@ -300,11 +358,12 @@ export function HeroDE() {
           <p
             className="
               max-w-[620px]
-              text-[15px]
-              leading-[1.65]
+              text-[13px]
               font-medium
-              text-[#566274]
-              sm:text-[16px]
+              leading-6
+              text-[#111111]
+              sm:text-[13px]
+              lg:text-[14px]
             "
           >
             Join UGC Approved Undergraduate and Postgraduate
@@ -326,6 +385,7 @@ export function HeroDE() {
               gap-y-2.5
             "
           >
+
             {features.map((feature) => (
               <div
                 key={feature}
@@ -336,10 +396,11 @@ export function HeroDE() {
                   whitespace-nowrap
                 "
               >
+
                 <CheckCircle2
                   className="
                     size-[17px]
-                    text-[#951f23]
+                    text-[#8f1d1d]
                   "
                   strokeWidth={2}
                 />
@@ -348,14 +409,16 @@ export function HeroDE() {
                   className="
                     text-[12px]
                     font-semibold
-                    text-[#4b5563]
+                    text-[#111111]
                     sm:text-[13px]
                   "
                 >
                   {feature}
                 </span>
+
               </div>
             ))}
+
           </div>
 
           {/* =================================================
@@ -371,6 +434,7 @@ export function HeroDE() {
               gap-3
             "
           >
+
             <Button
               asChild
               size="pill-lg"
@@ -378,17 +442,17 @@ export function HeroDE() {
                 h-12
                 rounded-full
                 border-0
-                bg-[#951f23]
+                bg-[#8f1d1d]
                 px-6
                 text-sm
                 font-bold
                 text-white
-                shadow-[0_10px_24px_rgba(149,31,35,0.20)]
+                shadow-[0_10px_24px_rgba(143,29,29,0.20)]
                 transition-all
                 duration-300
                 hover:-translate-y-1
                 hover:bg-[#7f181c]
-                hover:shadow-[0_14px_30px_rgba(149,31,35,0.25)]
+                hover:shadow-[0_14px_30px_rgba(143,29,29,0.25)]
               "
             >
               <Link
@@ -409,26 +473,28 @@ export function HeroDE() {
                 h-12
                 rounded-full
                 border
-                border-[#1d355f]/20
+                border-[#111111]/20
                 bg-white
                 px-6
                 text-sm
                 font-semibold
-                text-[#1d355f]
+                text-[#111111]
                 shadow-sm
                 transition-all
                 duration-300
                 hover:-translate-y-1
-                hover:border-[#b08a3e]/50
+                hover:border-[#B08A24]/50
                 hover:bg-[#fffdf8]
-                hover:text-[#951f23]
+                hover:text-[#8f1d1d]
               "
             >
               <Link to="/programmes">
                 Explore Courses
               </Link>
             </Button>
+
           </div>
+
         </motion.div>
 
         {/* =================================================
@@ -454,9 +520,11 @@ export function HeroDE() {
           className="
             relative
             min-w-0
+            w-full
             lg:pl-1
           "
         >
+
           {/* =================================================
               OUTER PREMIUM FRAME
           ================================================== */}
@@ -464,9 +532,10 @@ export function HeroDE() {
           <div
             className="
               relative
+              w-full
               rounded-[2rem]
               border
-              border-[#b08a3e]/30
+              border-[#B08A24]/30
               bg-[#1d355f]/[0.04]
               p-2
               shadow-[0_20px_55px_rgba(29,53,95,0.14)]
@@ -474,6 +543,7 @@ export function HeroDE() {
               sm:p-2.5
             "
           >
+
             {/* =================================================
                 INNER IMAGE
             ================================================== */}
@@ -481,7 +551,8 @@ export function HeroDE() {
             <div
               className="
                 relative
-                h-[330px]
+                h-[300px]
+                w-full
                 overflow-hidden
                 rounded-[1.65rem]
                 bg-[#1d355f]
@@ -491,7 +562,9 @@ export function HeroDE() {
                 sm:rounded-[1.85rem]
               "
             >
+
               <AnimatePresence mode="wait">
+
                 <motion.img
                   key={currentImage}
                   src={heroImages[currentImage]}
@@ -522,9 +595,12 @@ export function HeroDE() {
                     ease: "easeOut",
                   }}
                 />
+
               </AnimatePresence>
 
-              {/* NAVY IMAGE OVERLAY */}
+              {/* =================================================
+                  NAVY IMAGE OVERLAY
+              ================================================== */}
 
               <div
                 className="
@@ -538,7 +614,9 @@ export function HeroDE() {
                 "
               />
 
-              {/* GOLD INNER BORDER */}
+              {/* =================================================
+                  INNER BORDER
+              ================================================== */}
 
               <div
                 className="
@@ -558,26 +636,28 @@ export function HeroDE() {
               <div
                 className="
                   absolute
-                  bottom-5
-                  left-5
-                  right-5
+                  bottom-4
+                  left-4
+                  right-4
                   flex
                   items-end
                   justify-between
-                  gap-4
+                  gap-3
                   sm:bottom-7
                   sm:left-7
                   sm:right-7
                 "
               >
-                <div>
+
+                <div className="min-w-0">
+
                   <p
                     className="
-                      text-[14px]
+                      text-[12px]
                       font-bold
                       uppercase
                       tracking-[0.20em]
-                      text-[#d9b45f]
+                      text-[#B08A24]
                       sm:text-[15px]
                     "
                   >
@@ -587,7 +667,7 @@ export function HeroDE() {
                   <h2
                     className="
                       mt-1
-                      text-xl
+                      text-lg
                       font-bold
                       tracking-[-0.02em]
                       text-white
@@ -596,11 +676,13 @@ export function HeroDE() {
                   >
                     Your Future Starts Here
                   </h2>
+
                 </div>
 
                 {/* SLIDER INDICATORS */}
 
                 <div className="hidden items-center gap-1.5 sm:flex">
+
                   {heroImages.map((_, i) => (
                     <button
                       key={i}
@@ -614,14 +696,17 @@ export function HeroDE() {
                         duration-300
                         ${
                           i === currentImage
-                            ? "w-7 bg-[#d9b45f]"
+                            ? "w-7 bg-[#B08A24]"
                             : "w-1.5 bg-white/50 hover:bg-white"
                         }
                       `}
                     />
                   ))}
+
                 </div>
+
               </div>
+
             </div>
 
             {/* =================================================
@@ -650,10 +735,11 @@ export function HeroDE() {
               }}
               className="
                 absolute
-                left-5
-                top-5
+                left-4
+                top-4
                 z-20
                 flex
+                max-w-[calc(100%-2rem)]
                 items-center
                 gap-3
                 rounded-2xl
@@ -670,17 +756,18 @@ export function HeroDE() {
                 sm:py-3
               "
             >
+
               {/* PHOTO */}
 
               <span
                 className="
                   flex
-                  size-10
+                  size-9
                   shrink-0
                   overflow-hidden
                   rounded-full
                   border
-                  border-[#d9b45f]/40
+                  border-[#B08A24]/40
                   bg-[#1d355f]
                   sm:size-11
                 "
@@ -696,13 +783,14 @@ export function HeroDE() {
                 />
               </span>
 
-              <span>
+              <span className="min-w-0">
+
                 <span
                   className="
                     block
                     text-sm
                     font-bold
-                    text-[#172033]
+                    text-[#111111]
                     sm:text-base
                   "
                 >
@@ -714,13 +802,15 @@ export function HeroDE() {
                     block
                     text-[10px]
                     font-medium
-                    text-[#667085]
+                    text-[#111111]/65
                     sm:text-xs
                   "
                 >
                   Approved programmes
                 </span>
+
               </span>
+
             </motion.div>
 
             {/* =================================================
@@ -749,10 +839,11 @@ export function HeroDE() {
               }}
               className="
                 absolute
-                bottom-5
-                right-5
+                bottom-4
+                right-4
                 z-20
                 flex
+                max-w-[calc(100%-2rem)]
                 items-center
                 gap-3
                 rounded-2xl
@@ -769,6 +860,7 @@ export function HeroDE() {
                 sm:py-3
               "
             >
+
               <span
                 className="
                   flex
@@ -777,7 +869,7 @@ export function HeroDE() {
                   items-center
                   justify-center
                   rounded-full
-                  bg-[#951f23]
+                  bg-[#8f1d1d]
                   text-white
                   sm:size-10
                 "
@@ -785,14 +877,15 @@ export function HeroDE() {
                 <Users className="size-5" />
               </span>
 
-              <span>
+              <span className="min-w-0">
+
                 <span
                   className="
                     block
                     text-sm
                     font-bold
                     capitalize
-                    text-[#172033]
+                    text-[#111111]
                     sm:text-base
                   "
                 >
@@ -804,16 +897,21 @@ export function HeroDE() {
                     block
                     text-[10px]
                     font-medium
-                    text-[#667085]
+                    text-[#111111]/65
                     sm:text-xs
                   "
                 >
                   Crescent Education
                 </span>
+
               </span>
+
             </motion.div>
+
           </div>
+
         </motion.div>
+
       </div>
     </section>
   );

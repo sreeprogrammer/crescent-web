@@ -1,1001 +1,476 @@
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowUpRight, Quote, Sparkles } from "lucide-react";
+import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import {
+  ArrowLeft,
+  Award,
+  BookOpen,
+  GraduationCap,
+  Users,
+} from "lucide-react";
 
-const title = "Execution Team — Crescent Distance Education";
+import campusPhoto from "@/assets/campus-1.jpg";
 
-const description =
-  "Meet the academic and administrative team responsible for executing the vision of Crescent Distance and Online Education.";
+const circularFont = {
+  fontFamily:
+    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
+};
 
-export const Route = createFileRoute("/execution-team")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-    ],
-  }),
-  component: ExecutionTeamPage,
-});
+const director = {
+  name: "Dr.A.Jaya",
+  role: "Professor & Director",
+  image: campusPhoto,
+  description:
+    "The Centre for Distance and Online Education committed to provide quality education through Online and Distance mode. We understand that each student has unique needs and learning styles. Our OL and ODL programs are designed to cater to all types of learners, whether you prefer to learn in a traditional classroom setting or from the comfort of your own home. Our highly qualified and experienced faculty members are dedicated to ensuring that you receive the best possible education and guidance to help you achieve your academic and career goals. We believe that education is a lifelong journey. As a director, we are committed to providing you with the necessary knowledge and skills to succeed in today's ever-changing world. We encourage you to take advantage of all the resources and opportunities available to you and to actively participate in your learning experience.",
+};
 
 const cdoeTeam = [
   {
-    number: "01",
     name: "Dr. W. Aisha Banu",
     role: "Professor & HOD CSE",
-    image:
-      "https://distance.crescent-institute.edu.in/img/execution/DR.AISHABANU.jpg",
+    image: campusPhoto,
+    accent: "green",
   },
   {
-    number: "02",
     name: "Dr. S. Thowseaf",
-    role: "Assistant Professor / CDOE",
-    secondaryRole: "Assistant Director",
-    image:
-      "https://distance.crescent-institute.edu.in/img/mba/people/thowseaf.jpg",
+    role: "Assistant Professor/CDOE",
+    extra: "Assistant Director",
+    image: campusPhoto,
+    accent: "gold",
   },
 ];
 
 const planningCommittee = [
   {
-    number: "01",
     name: "Dr. Latha Tamilselvan",
     role: "Professor & Director",
-    secondaryRole: "MIS",
-    image:
-      "https://distance.crescent-institute.edu.in/img/execution/DR.LATHATAMILSELVAN.jpg",
+    extra: "MIS",
+    image: campusPhoto,
+    accent: "violet",
   },
   {
-    number: "02",
     name: "Dr. C. Tharini",
     role: "Professor & Dean SECS",
-    image:
-      "https://distance.crescent-institute.edu.in/img/execution/Dr.C.Tharini.jpg",
+    image: campusPhoto,
+    accent: "green",
   },
   {
-    number: "03",
     name: "Dr. Sharmila Sankar",
     role: "Professor & Dean SCIMS",
-    image:
-      "https://distance.crescent-institute.edu.in/img/execution/DR.SHARMILASANKAR.jpg",
+    image: campusPhoto,
+    accent: "red",
   },
   {
-    number: "04",
     name: "Dr. Aisha Banu",
     role: "Professor & HOD CSE",
-    image:
-      "https://distance.crescent-institute.edu.in/img/execution/DR.AISHABANU.jpg",
+    image: campusPhoto,
+    accent: "gold",
   },
 ];
 
 const formerDirector = {
-  name: "Dr. V. Rhymend Uthariaraj",
+  name: "Dr.V.Rhymend Uthariaraj",
   role: "Former Director",
-  period: "2021–2023",
-  image:
-    "https://distance.crescent-institute.edu.in/img/execution/director.jpg",
+  year: "2021-2023",
+  image: campusPhoto,
 };
+
+function getAccentClasses(accent: string) {
+  switch (accent) {
+    case "green":
+      return {
+        border: "border-[#3f7d58]/20",
+        line: "bg-[#3f7d58]",
+        badge: "bg-[#3f7d58]/10",
+        icon: "text-[#3f7d58]",
+      };
+
+    case "gold":
+      return {
+        border: "border-[#d4af37]/25",
+        line: "bg-[#d4af37]",
+        badge: "bg-[#d4af37]/10",
+        icon: "text-[#a58208]",
+      };
+
+    case "violet":
+      return {
+        border: "border-[#6b4c9a]/20",
+        line: "bg-[#6b4c9a]",
+        badge: "bg-[#6b4c9a]/10",
+        icon: "text-[#6b4c9a]",
+      };
+
+    case "red":
+      return {
+        border: "border-[#8f1d1d]/20",
+        line: "bg-[#8f1d1d]",
+        badge: "bg-[#8f1d1d]/10",
+        icon: "text-[#8f1d1d]",
+      };
+
+    default:
+      return {
+        border: "border-slate-200",
+        line: "bg-[#d4af37]",
+        badge: "bg-[#d4af37]/10",
+        icon: "text-[#d4af37]",
+      };
+  }
+}
+
+export const Route = createFileRoute("/execution-team")({
+  component: ExecutionTeamPage,
+});
 
 function ExecutionTeamPage() {
   return (
     <SiteLayout>
-      <main className="min-h-screen overflow-hidden bg-[#f4efe6] text-[#25262a]">
+      <div
+        style={circularFont}
+        className="min-h-screen bg-[#f7f7f5] text-black"
+      >
+        {/* HEADER */}
+        <section className="relative overflow-hidden bg-[#f6dfe5] text-black">
+          <div className="absolute -right-20 -top-24 h-56 w-56 rounded-full bg-[#d4af37]/10 blur-3xl" />
+          <div className="absolute -bottom-24 -left-20 h-56 w-56 rounded-full bg-[#6b4c9a]/10 blur-3xl" />
 
-        {/* =====================================================
-            PREMIUM HERO
-        ====================================================== */}
-
-        <section className="relative overflow-hidden bg-[#f4efe6]">
-
-          {/* decorative glow */}
-
-          <div className="pointer-events-none absolute -right-20 -top-20 size-72 rounded-full bg-[#b28a3c]/10 blur-3xl" />
-
-          <div className="pointer-events-none absolute -bottom-24 left-1/4 size-64 rounded-full bg-[#741b1b]/5 blur-3xl" />
-
-          <div className="mx-auto max-w-[1450px] px-5 py-5 sm:px-8 lg:px-12 lg:py-7">
-
-            <Link
-              to="/about"
-              className="
-                group
-                inline-flex
-                items-center
-                gap-1.5
-                rounded-full
-                border
-                border-[#c9b78e]
-                bg-[#fffaf0]/60
-                px-3
-                py-1.5
-                text-[8px]
-                font-bold
-                uppercase
-                tracking-[0.16em]
-                text-[#665f53]
-                backdrop-blur-sm
-                transition-all
-                hover:border-[#741b1b]/30
-                hover:bg-[#741b1b]
-                hover:text-white
-              "
-            >
-              <ArrowLeft className="size-3 transition-transform group-hover:-translate-x-1" />
-              Back to About
-            </Link>
-
+          <div className="relative mx-auto max-w-7xl px-5 py-7 sm:px-8 sm:py-8">
             <motion.div
-              initial={{ opacity: 0, y: 14 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55 }}
-              className="mt-5"
+              transition={{ duration: 0.45 }}
             >
+              <a
+                href="/about"
+                className="mb-3 inline-flex items-center gap-2 text-xs font-medium text-black/70 transition-colors hover:text-[#8f1d1d]"
+              >
+                <ArrowLeft className="h-3.5 w-3.5" />
+                Back to About
+              </a>
 
-              <div className="flex items-center gap-2.5">
-
-                <span className="h-[2px] w-8 bg-[#b28a3c]" />
-
-                <span
-                  className="
-                    text-[8px]
-                    font-bold
-                    uppercase
-                    tracking-[0.22em]
-                    text-[#741b1b]
-                  "
-                >
-                  Academic Operations
-                </span>
-
-                <Sparkles className="size-3 text-[#b28a3c]" />
-
+              <div className="mb-2.5 inline-flex items-center gap-2 rounded-full bg-white/55 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-black"
+              >
+                <Users className="h-3 w-3" />
+                Execution Team
               </div>
 
-              <h1
-                className="
-                  mt-2
-                  font-serif
-                  text-[2.15rem]
-                  font-bold
-                  leading-[0.95]
-                  tracking-[-0.035em]
-                  text-[#25262a]
-                  sm:text-[2.65rem]
-                  lg:text-[3rem]
-                "
-              >
-                Execution{" "}
-                <span className="text-[#741b1b]">
-                  Team
-                </span>
+              <h1 className="text-2xl font-bold tracking-tight text-black sm:text-3xl">
+                Execution Team
               </h1>
 
-              <p
-                className="
-                  mt-2.5
-                  max-w-2xl
-                  text-[10px]
-                  leading-[1.7]
-                  text-[#706b63]
-                  sm:text-[11px]
-                "
-              >
-                The dedicated academic and administrative team working
-                together to deliver a smooth, supportive and quality
-                learning experience.
+              <p className="mt-1.5 max-w-2xl text-xs leading-5 text-black/70 sm:text-sm">
+                Centre for Distance and Online Education
               </p>
-
             </motion.div>
           </div>
-
-          {/* GOLD LINE */}
-
-          <div className="h-[2px] bg-gradient-to-r from-transparent via-[#b28a3c] to-transparent opacity-70" />
-
         </section>
 
-        {/* =====================================================
-            DIRECTOR FEATURE
-        ====================================================== */}
+        {/* QUICK NAV */}
+        <section className="border-b border-slate-200 bg-white">
+          <div className="mx-auto grid max-w-7xl grid-cols-2 gap-2.5 px-5 py-4 sm:grid-cols-4 sm:px-8">
+            <a
+              href="#director"
+              className="group rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm"
+            >
+              <div className="flex items-center gap-2">
+                <Award className="h-3.5 w-3.5 text-[#8f1d1d]" />
+                <span className="text-xs font-semibold text-black">
+                  Director
+                </span>
+              </div>
+              <div className="mt-2 h-0.5 w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-7" />
+            </a>
 
-        <section className="relative overflow-hidden bg-[#111c3b]">
+            <a
+              href="#cdoe-team"
+              className="group rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm"
+            >
+              <div className="flex items-center gap-2">
+                <Users className="h-3.5 w-3.5 text-[#3f7d58]" />
+                <span className="text-xs font-semibold text-black">
+                  CDOE Team
+                </span>
+              </div>
+              <div className="mt-2 h-0.5 w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-7" />
+            </a>
 
-          {/* background accents */}
+            <a
+              href="#planning"
+              className="group rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm"
+            >
+              <div className="flex items-center gap-2">
+                <BookOpen className="h-3.5 w-3.5 text-[#6b4c9a]" />
+                <span className="text-xs font-semibold text-black">
+                  Planning & Monitoring
+                </span>
+              </div>
+              <div className="mt-2 h-0.5 w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-7" />
+            </a>
 
-          <div className="pointer-events-none absolute -left-24 top-1/2 size-64 -translate-y-1/2 rounded-full bg-[#741b1b]/30 blur-3xl" />
+            <a
+              href="#former-director"
+              className="group rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm"
+            >
+              <div className="flex items-center gap-2">
+                <GraduationCap className="h-3.5 w-3.5 text-[#d4af37]" />
+                <span className="text-xs font-semibold text-black">
+                  Former Director
+                </span>
+              </div>
+              <div className="mt-2 h-0.5 w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-7" />
+            </a>
+          </div>
+        </section>
 
-          <div className="pointer-events-none absolute -right-20 top-0 size-72 rounded-full bg-[#b28a3c]/10 blur-3xl" />
+        {/* MAIN */}
+        <main className="mx-auto max-w-7xl px-5 py-7 sm:px-8 sm:py-9">
+          {/* DIRECTOR */}
+          <motion.section
+            id="director"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.4 }}
+            className="mb-8"
+          >
+            <div className="mb-4 flex items-center gap-2">
+              <span className="h-7 w-1 rounded-full bg-[#8f1d1d]" />
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-black/50">
+                  Leadership
+                </p>
+                <h2 className="text-xl font-bold text-black sm:text-2xl">
+                  Director
+                </h2>
+              </div>
+            </div>
 
-          <div className="mx-auto max-w-[1450px] px-5 py-6 sm:px-8 lg:px-12 lg:py-7">
+            <div className="overflow-hidden rounded-2xl border border-[#8f1d1d]/20 bg-white shadow-sm">
+              <div className="grid md:grid-cols-[1fr_310px]">
+                {/* CONTENT LEFT */}
+                <div className="order-2 p-6 sm:p-7 md:order-1">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#8f1d1d]/10">
+                      <Award className="h-5 w-5 text-[#8f1d1d]" />
+                    </div>
 
-            <div className="relative grid items-center gap-6 lg:grid-cols-[0.4fr_1fr]">
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-black/50">
+                        Professor & Director
+                      </p>
 
-              {/* DIRECTOR */}
-
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55 }}
-                className="
-                  relative
-                  flex
-                  items-center
-                  gap-4
-                  rounded-2xl
-                  border
-                  border-[#b28a3c]/25
-                  bg-white/[0.035]
-                  p-4
-                  backdrop-blur-md
-                "
-              >
-
-                <div className="relative shrink-0">
-
-                  <div
-                    className="
-                      absolute
-                      -inset-1.5
-                      rounded-full
-                      border
-                      border-[#b28a3c]/50
-                    "
-                  />
-
-                  <div
-                    className="
-                      relative
-                      size-[76px]
-                      overflow-hidden
-                      rounded-full
-                      border-2
-                      border-[#e4bd5b]
-                      bg-[#172554]
-                      shadow-[0_8px_25px_rgba(0,0,0,0.3)]
-                      sm:size-[88px]
-                    "
-                  >
-                    <img
-                      src={formerDirector.image}
-                      alt="Dr. A. Jaya"
-                      className="h-full w-full object-cover"
-                    />
+                      <h3 className="mt-0.5 text-xl font-bold leading-6 text-black sm:text-2xl">
+                        {director.name}
+                      </h3>
+                    </div>
                   </div>
 
-                </div>
+                  <div className="my-5 h-px bg-slate-100" />
 
-                <div className="min-w-0">
-
-                  <div className="flex items-center gap-2">
-                    <span className="h-px w-5 bg-[#e4bd5b]" />
-
-                    <p
-                      className="
-                        text-[7px]
-                        font-bold
-                        uppercase
-                        tracking-[0.2em]
-                        text-[#e4bd5b]
-                      "
-                    >
-                      Director
-                    </p>
-                  </div>
-
-                  <h2
-                    className="
-                      mt-1
-                      font-serif
-                      text-xl
-                      font-bold
-                      text-white
-                      sm:text-[1.35rem]
-                    "
-                  >
-                    Dr. A. Jaya
-                  </h2>
-
-                  <p
-                    className="
-                      mt-1
-                      text-[7px]
-                      uppercase
-                      tracking-[0.12em]
-                      text-white/40
-                    "
-                  >
-                    Centre for Distance & Online Education
+                  <p className="text-xs leading-6.5 text-black sm:text-sm sm:leading-7">
+                    {director.description}
                   </p>
 
+                  <div className="mt-5 h-1 w-12 bg-[#d4af37]" />
                 </div>
 
-              </motion.div>
+                {/* PHOTO RIGHT */}
+                <div className="relative order-1 h-64 overflow-hidden bg-slate-100 md:order-2 md:h-full md:min-h-[340px]">
+                  <img
+                    src={director.image}
+                    alt={director.name}
+                    className="h-full w-full object-cover"
+                  />
 
-              {/* MESSAGE */}
-
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55 }}
-                className="
-                  relative
-                  rounded-2xl
-                  border
-                  border-white/[0.08]
-                  bg-white/[0.025]
-                  p-4
-                  backdrop-blur-md
-                  sm:p-5
-                "
-              >
-
-                <Quote className="absolute right-4 top-4 size-6 text-[#b28a3c]/25" />
-
-                <p
-                  className="
-                    max-w-3xl
-                    text-[10px]
-                    leading-[1.75]
-                    text-white/65
-                    sm:text-[11px]
-                  "
-                >
-                  The Centre for Distance and Online Education is committed
-                  to providing quality education through Online and Distance
-                  mode. We understand that each student has unique needs and
-                  learning styles. Our ODL and OL programmes are designed to
-                  cater to all types of learners, whether you prefer to learn
-                  in a traditional classroom setting or from the comfort of
-                  your own home.
-                </p>
-
-                <p
-                  className="
-                    mt-2.5
-                    max-w-3xl
-                    text-[10px]
-                    leading-[1.75]
-                    text-white/65
-                    sm:text-[11px]
-                  "
-                >
-                  Our highly qualified and experienced faculty members are
-                  dedicated to ensuring that learners receive the best
-                  possible education and guidance to achieve their academic
-                  and career goals. We believe education is a lifelong
-                  journey and encourage every learner to actively participate
-                  in the learning experience.
-                </p>
-
-              </motion.div>
-
+                  <div className="absolute bottom-0 left-0 h-1 w-full bg-[#8f1d1d]" />
+                </div>
+              </div>
             </div>
-          </div>
+          </motion.section>
 
-          <div className="h-px bg-gradient-to-r from-transparent via-[#b28a3c]/50 to-transparent" />
-
-        </section>
-
-        {/* =====================================================
-            CDOE TEAM
-        ====================================================== */}
-
-        <section className="relative bg-[#f4efe6]">
-
-          <div className="mx-auto max-w-[1450px] px-5 py-7 sm:px-8 lg:px-12 lg:py-8">
-
-            <SectionHeading
-              eyebrow="CDOE Team"
-              title="Academic & Support Team"
-              description="Professionals supporting academic coordination and learner-focused delivery."
-            />
-
-            <TeamGrid members={cdoeTeam} />
-
-          </div>
-        </section>
-
-        {/* =====================================================
-            PLANNING COMMITTEE
-        ====================================================== */}
-
-        <section className="relative overflow-hidden bg-[#e9e0d1]">
-
-          <div className="pointer-events-none absolute -right-20 top-10 size-64 rounded-full bg-[#741b1b]/5 blur-3xl" />
-
-          <div className="mx-auto max-w-[1450px] px-5 py-7 sm:px-8 lg:px-12 lg:py-8">
-
-            <SectionHeading
-              eyebrow="Planning & Monitoring Committee"
-              title="Planning & Monitoring"
-              description="Academic leaders contributing to planning, quality and institutional monitoring."
-              dark
-            />
-
-            <TeamGrid members={planningCommittee} />
-
-          </div>
-        </section>
-
-        {/* =====================================================
-            FORMER DIRECTOR
-        ====================================================== */}
-
-        <section className="bg-[#f4efe6]">
-
-          <div className="mx-auto max-w-[1450px] px-5 py-7 sm:px-8 lg:px-12 lg:py-8">
-
-            <div className="mb-3 flex items-center gap-2">
-
-              <span className="h-[2px] w-7 bg-[#b28a3c]" />
-
-              <span
-                className="
-                  text-[8px]
-                  font-bold
-                  uppercase
-                  tracking-[0.2em]
-                  text-[#741b1b]
-                "
-              >
-                Former Director
-              </span>
-
+          {/* CDOE TEAM */}
+          <section id="cdoe-team" className="mb-8">
+            <div className="mb-4 flex items-center gap-2">
+              <span className="h-7 w-1 rounded-full bg-[#3f7d58]" />
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-black/50">
+                  Team
+                </p>
+                <h2 className="text-xl font-bold text-black sm:text-2xl">
+                  CDOE Team
+                </h2>
+              </div>
             </div>
 
-            <motion.article
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45 }}
-              className="
-                group
-                relative
-                flex
-                items-center
-                gap-4
-                overflow-hidden
-                rounded-2xl
-                border
-                border-[#cdbd9f]
-                bg-gradient-to-r
-                from-[#e8dfcf]
-                to-[#f0e8db]
-                p-4
-                shadow-[0_8px_24px_rgba(74,54,30,0.07)]
-                transition-all
-                duration-300
-                hover:-translate-y-0.5
-                hover:shadow-[0_14px_30px_rgba(74,54,30,0.11)]
-                sm:p-5
-              "
-            >
+            <div className="grid gap-5 md:grid-cols-2">
+              {cdoeTeam.map((person, index) => {
+                const styles = getAccentClasses(person.accent);
 
-              {/* GOLD SIDE */}
+                return (
+                  <motion.article
+                    key={person.name}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.1 }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    className={`group overflow-hidden rounded-2xl border ${styles.border} bg-white shadow-sm`}
+                  >
+                    <div className="grid sm:grid-cols-[155px_1fr]">
+                      <div className="relative h-48 overflow-hidden bg-slate-100 sm:h-full sm:min-h-[210px]">
+                        <img
+                          src={person.image}
+                          alt={person.name}
+                          className="h-full w-full object-cover"
+                        />
 
-              <div className="absolute bottom-0 left-0 top-0 w-[3px] bg-[#b28a3c]" />
+                        <div
+                          className={`absolute bottom-0 left-0 h-1 w-full ${styles.line}`}
+                        />
+                      </div>
 
-              {/* IMAGE */}
+                      <div className="p-5">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-black/50">
+                          {person.role}
+                        </p>
 
-              <div className="relative ml-1 shrink-0">
+                        <h3 className="mt-1 text-lg font-bold leading-6 text-black">
+                          {person.name}
+                        </h3>
 
-                <div className="absolute -inset-1 rounded-full border border-[#b28a3c]/40" />
+                        {person.extra && (
+                          <p className="mt-1.5 text-xs font-medium text-black/70">
+                            {person.extra}
+                          </p>
+                        )}
 
-                <div
-                  className="
-                    relative
-                    size-[68px]
-                    overflow-hidden
-                    rounded-full
-                    border-2
-                    border-[#f4efe6]
-                    bg-[#172554]
-                    shadow-md
-                    sm:size-[76px]
-                  "
-                >
+                        <div
+                          className={`mt-4 h-0.5 w-8 ${styles.line} transition-all duration-300 group-hover:w-14`}
+                        />
+                      </div>
+                    </div>
+                  </motion.article>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* PLANNING & MONITORING */}
+          <section id="planning" className="mb-8">
+            <div className="mb-4 flex items-center gap-2">
+              <span className="h-7 w-1 rounded-full bg-[#6b4c9a]" />
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-black/50">
+                  Committee
+                </p>
+                <h2 className="text-xl font-bold text-black sm:text-2xl">
+                  Planning & Monitoring Committee
+                </h2>
+              </div>
+            </div>
+
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {planningCommittee.map((person, index) => {
+                const styles = getAccentClasses(person.accent);
+
+                return (
+                  <motion.article
+                    key={`${person.name}-${index}`}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.1 }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    className={`group overflow-hidden rounded-2xl border ${styles.border} bg-white shadow-sm`}
+                  >
+                    <div className="relative h-52 overflow-hidden bg-slate-100">
+                      <img
+                        src={person.image}
+                        alt={person.name}
+                        className="h-full w-full object-cover"
+                      />
+
+                      <div
+                        className={`absolute bottom-0 left-0 h-1 w-full ${styles.line}`}
+                      />
+                    </div>
+
+                    <div className="p-4">
+                      <h3 className="text-base font-bold leading-5 text-black">
+                        {person.name}
+                      </h3>
+
+                      <p className="mt-1.5 text-xs leading-5 text-black/70">
+                        {person.role}
+                      </p>
+
+                      {person.extra && (
+                        <p className="mt-0.5 text-xs font-medium text-black">
+                          {person.extra}
+                        </p>
+                      )}
+
+                      <div
+                        className={`mt-3 h-0.5 w-7 ${styles.line} transition-all duration-300 group-hover:w-12`}
+                      />
+                    </div>
+                  </motion.article>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* FORMER DIRECTOR */}
+          <motion.section
+            id="former-director"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.4 }}
+          >
+            <div className="mb-4 flex items-center gap-2">
+              <span className="h-7 w-1 rounded-full bg-[#d4af37]" />
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-black/50">
+                  Previous Leadership
+                </p>
+                <h2 className="text-xl font-bold text-black sm:text-2xl">
+                  Former Director
+                </h2>
+              </div>
+            </div>
+
+            <div className="overflow-hidden rounded-2xl border border-[#d4af37]/25 bg-white shadow-sm">
+              <div className="grid sm:grid-cols-[190px_1fr]">
+                <div className="relative h-52 overflow-hidden bg-slate-100 sm:h-full sm:min-h-[210px]">
                   <img
                     src={formerDirector.image}
                     alt={formerDirector.name}
-                    className="
-                      h-full
-                      w-full
-                      object-cover
-                      transition-transform
-                      duration-500
-                      group-hover:scale-105
-                    "
+                    className="h-full w-full object-cover"
                   />
+
+                  <div className="absolute bottom-0 left-0 h-1 w-full bg-[#d4af37]" />
                 </div>
 
+                <div className="flex flex-col justify-center p-5 sm:p-6">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-black/50">
+                    {formerDirector.role}
+                  </p>
+
+                  <h3 className="mt-1 text-xl font-bold text-black">
+                    {formerDirector.name}
+                  </h3>
+
+                  <p className="mt-2 text-sm font-semibold text-black">
+                    {formerDirector.year}
+                  </p>
+
+                  <div className="mt-4 h-0.5 w-9 bg-[#d4af37]" />
+                </div>
               </div>
-
-              {/* DETAILS */}
-
-              <div className="min-w-0 flex-1">
-
-                <p
-                  className="
-                    text-[8px]
-                    font-bold
-                    uppercase
-                    tracking-[0.17em]
-                    text-[#741b1b]
-                  "
-                >
-                  {formerDirector.role}
-                </p>
-
-                <h3
-                  className="
-                    mt-1
-                    font-serif
-                    text-base
-                    font-bold
-                    text-[#292823]
-                    sm:text-lg
-                  "
-                >
-                  {formerDirector.name}
-                </h3>
-
-                <p
-                  className="
-                    mt-1
-                    text-[8px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.14em]
-                    text-[#a27b30]
-                  "
-                >
-                  {formerDirector.period}
-                </p>
-
-              </div>
-
-              <div
-                className="
-                  hidden
-                  size-7
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-[#741b1b]/[0.06]
-                  text-[#741b1b]
-                  transition-all
-                  group-hover:bg-[#741b1b]
-                  group-hover:text-white
-                  sm:flex
-                "
-              >
-                <ArrowUpRight className="size-3" />
-              </div>
-
-            </motion.article>
-
-          </div>
-        </section>
-
-        {/* =====================================================
-            PREMIUM FOOTER STRIP
-        ====================================================== */}
-
-        <section className="relative overflow-hidden bg-[#111c3b]">
-
-          <div className="pointer-events-none absolute left-1/3 top-0 size-40 rounded-full bg-[#b28a3c]/10 blur-3xl" />
-
-          <div
-            className="
-              relative
-              mx-auto
-              flex
-              max-w-[1450px]
-              items-center
-              justify-between
-              gap-4
-              px-5
-              py-4
-              sm:px-8
-              lg:px-12
-            "
-          >
-
-            <div>
-
-              <div className="flex items-center gap-2">
-
-                <span className="h-px w-5 bg-[#e4bd5b]" />
-
-                <p
-                  className="
-                    text-[7px]
-                    font-bold
-                    uppercase
-                    tracking-[0.2em]
-                    text-[#e4bd5b]
-                  "
-                >
-                  Academic Operations
-                </p>
-
-              </div>
-
-              <h2
-                className="
-                  mt-1
-                  font-serif
-                  text-sm
-                  font-bold
-                  text-white
-                  sm:text-base
-                "
-              >
-                People who turn vision into action.
-              </h2>
-
             </div>
-
-            <Link
-              to="/about"
-              className="
-                group
-                inline-flex
-                shrink-0
-                items-center
-                gap-1
-                rounded-full
-                border
-                border-[#e4bd5b]/40
-                bg-[#e4bd5b]
-                px-3.5
-                py-1.5
-                text-[8px]
-                font-bold
-                uppercase
-                tracking-[0.07em]
-                text-[#111c3b]
-                shadow-[0_5px_18px_rgba(228,189,91,0.15)]
-                transition-all
-                hover:-translate-y-0.5
-                hover:bg-white
-              "
-            >
-              Back to About
-
-              <ArrowUpRight
-                className="
-                  size-2.5
-                  transition-transform
-                  group-hover:translate-x-0.5
-                  group-hover:-translate-y-0.5
-                "
-              />
-            </Link>
-
-          </div>
-
-        </section>
-
-      </main>
-    </SiteLayout>
-  );
-}
-
-/* =========================================================
-   SECTION HEADING
-========================================================= */
-
-function SectionHeading({
-  eyebrow,
-  title,
-  description,
-  dark = false,
-}: {
-  eyebrow: string;
-  title: string;
-  description: string;
-  dark?: boolean;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4 }}
-      className="mb-5"
-    >
-
-      <div className="flex items-center gap-2">
-
-        <span className="h-[2px] w-7 bg-[#b28a3c]" />
-
-        <span
-          className={`
-            text-[8px]
-            font-bold
-            uppercase
-            tracking-[0.2em]
-            ${dark ? "text-[#741b1b]" : "text-[#741b1b]"}
-          `}
-        >
-          {eyebrow}
-        </span>
-
+          </motion.section>
+        </main>
       </div>
-
-      <h2
-        className={`
-          mt-1.5
-          font-serif
-          text-[1.6rem]
-          font-bold
-          tracking-[-0.025em]
-          ${dark ? "text-[#292823]" : "text-[#25262a]"}
-          sm:text-[1.85rem]
-        `}
-      >
-        {title}
-      </h2>
-
-      <p
-        className={`
-          mt-1
-          max-w-xl
-          text-[10px]
-          leading-[1.6]
-          ${dark ? "text-[#70695e]" : "text-[#77716a]"}
-          sm:text-[11px]
-        `}
-      >
-        {description}
-      </p>
-
-    </motion.div>
-  );
-}
-
-/* =========================================================
-   TEAM GRID
-========================================================= */
-
-function TeamGrid({
-  members,
-}: {
-  members: {
-    number: string;
-    name: string;
-    role: string;
-    secondaryRole?: string;
-    image: string;
-  }[];
-}) {
-  return (
-    <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
-
-      {members.map((member, index) => (
-        <motion.article
-          key={member.number + member.name}
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{
-            once: true,
-            amount: 0.08,
-          }}
-          transition={{
-            duration: 0.4,
-            delay: index * 0.035,
-          }}
-          className="
-            group
-            relative
-            overflow-hidden
-            rounded-2xl
-            border
-            border-[#cdbd9f]
-            bg-gradient-to-b
-            from-[#eee6d8]
-            to-[#e4dac9]
-            p-4
-            shadow-[0_6px_18px_rgba(71,54,29,0.06)]
-            transition-all
-            duration-300
-            hover:-translate-y-1
-            hover:border-[#b28a3c]/60
-            hover:shadow-[0_15px_32px_rgba(71,54,29,0.12)]
-          "
-        >
-
-          {/* TOP GOLD LINE */}
-
-          <div
-            className="
-              absolute
-              left-0
-              right-0
-              top-0
-              h-[2px]
-              bg-gradient-to-r
-              from-[#741b1b]
-              via-[#b28a3c]
-              to-[#741b1b]
-            "
-          />
-
-          {/* NUMBER */}
-
-          <span
-            className="
-              absolute
-              right-3
-              top-3
-              font-serif
-              text-xs
-              font-bold
-              text-[#b28a3c]/60
-            "
-          >
-            {member.number}
-          </span>
-
-          {/* PHOTO */}
-
-          <div className="flex justify-center pt-1">
-
-            <div className="relative">
-
-              <div
-                className="
-                  absolute
-                  -inset-1
-                  rounded-full
-                  border
-                  border-[#b28a3c]/40
-                "
-              />
-
-              <div
-                className="
-                  relative
-                  size-[78px]
-                  overflow-hidden
-                  rounded-full
-                  border-2
-                  border-[#f4efe6]
-                  bg-[#172554]
-                  shadow-[0_7px_18px_rgba(30,24,15,0.16)]
-                  sm:size-[84px]
-                "
-              >
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="
-                    h-full
-                    w-full
-                    object-cover
-                    transition-transform
-                    duration-600
-                    group-hover:scale-110
-                  "
-                />
-              </div>
-
-            </div>
-
-          </div>
-
-          {/* DETAILS */}
-
-          <div className="mt-3 text-center">
-
-            <span
-              className="
-                text-[7px]
-                font-bold
-                uppercase
-                tracking-[0.18em]
-                text-[#a27b30]
-              "
-            >
-              {member.number}
-            </span>
-
-            <h3
-              className="
-                mt-1
-                font-serif
-                text-[1rem]
-                font-bold
-                leading-[1.2]
-                text-[#292823]
-                sm:text-[1.05rem]
-              "
-            >
-              {member.name}
-            </h3>
-
-            <p
-              className="
-                mt-1.5
-                text-[9px]
-                font-bold
-                leading-4
-                text-[#741b1b]
-              "
-            >
-              {member.role}
-            </p>
-
-            {member.secondaryRole && (
-              <p
-                className="
-                  mt-0.5
-                  text-[8px]
-                  font-medium
-                  uppercase
-                  tracking-[0.08em]
-                  text-[#766f64]
-                "
-              >
-                {member.secondaryRole}
-              </p>
-            )}
-
-          </div>
-
-          {/* FOOTER */}
-
-          <div
-            className="
-              mt-3
-              border-t
-              border-[#cdbd9f]
-              pt-2.5
-              text-center
-            "
-          >
-            <span
-              className="
-                text-[6.5px]
-                font-bold
-                uppercase
-                tracking-[0.15em]
-                text-[#968b7a]
-              "
-            >
-              Crescent Distance Education
-            </span>
-          </div>
-
-          {/* HOVER GLOW */}
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              -bottom-10
-              left-1/2
-              size-24
-              -translate-x-1/2
-              rounded-full
-              bg-[#b28a3c]/10
-              opacity-0
-              blur-2xl
-              transition-opacity
-              duration-500
-              group-hover:opacity-100
-            "
-          />
-
-        </motion.article>
-      ))}
-
-    </div>
+    </SiteLayout>
   );
 }

@@ -16,10 +16,10 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-const title = "UGC Corner — Approvals, Compliance & Annual Reports";
+const title = "UGC Corner — Crescent Centre for Distance and Online Education";
 
 const description =
-  "AICTE approval, degree equivalence, UGC notifications, compliance documents, UGC applications, CIQA annual reports and admission lists.";
+  "UGC mandatory disclosures, regulatory approvals, compliance information and quality assurance documents of Crescent Centre for Distance and Online Education.";
 
 export const Route = createFileRoute("/ugc-corner")({
   head: () => ({
@@ -36,22 +36,45 @@ export const Route = createFileRoute("/ugc-corner")({
 });
 
 /* =========================================================
-   OFFICIAL LINKS
+   FONT
 ========================================================= */
 
-const OFFICIAL_SITE = "https://distance.crescent-institute.edu.in";
+const circularFont = {
+  fontFamily:
+    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
+};
+
+/* =========================================================
+   LOCAL PDF LINKS
+   ---------------------------------------------------------
+   Put your PDFs inside:
+
+   public/
+   └── pdf/
+       ├── ugc-mandatory-disclosure.pdf
+       ├── aicte-mandatory-disclosure.pdf
+       ├── ugc-notification.pdf
+       ├── compliance.pdf
+       ├── ugc-application.pdf
+       └── ciqa-annual-report.pdf
+
+   You can replace these files later without changing the UI.
+========================================================= */
 
 const officialLinks = {
-  admissionList: `${OFFICIAL_SITE}/admissionlist`,
+  admissionList: "/admission-list.pdf",
 
-  compliance:
-    "https://distance.crescent-institute.edu.in/img/ugc/BSACIST%2024-25-im.pdf",
+  ugcMandatoryDisclosure: "/pdf/ugc-mandatory-disclosure.pdf",
 
-  ciqaAnnualReport:
-    "https://distance.crescent-institute.edu.in/img/ugc25/annualreports/Annual%20Report%20-2024-2025.pdf",
+  aicteMandatoryDisclosure: "/pdf/aicte-mandatory-disclosure.pdf",
 
-  ugcCompliance:
-    "https://distance.crescent-institute.edu.in/img/ugc/BSACIST%2024-25-im.pdf",
+  ugcNotification: "/pdf/ugc-notification.pdf",
+
+  compliance: "/pdf/compliance.pdf",
+
+  ugcApplication: "/pdf/ugc-application.pdf",
+
+  ciqaAnnualReport: "/pdf/ciqa-annual-report.pdf",
 };
 
 /* =========================================================
@@ -64,9 +87,9 @@ const resources = [
     number: "01",
     title: "AICTE Approval",
     short: "Approval",
-    body: "Approval and regulatory information related to AICTE-approved programmes offered through the Centre for Distance and Online Education.",
+    body: "Approval and regulatory information related to programmes offered through the Centre for Distance and Online Education.",
     icon: BadgeCheck,
-    href: officialLinks.compliance,
+    href: officialLinks.aicteMandatoryDisclosure,
     type: "PDF",
     label: "View Document",
   },
@@ -76,9 +99,9 @@ const resources = [
     number: "02",
     title: "Degree Equivalence",
     short: "Equivalence",
-    body: "Regulatory information relating to recognition and equivalence of programmes offered through Open and Distance Learning.",
+    body: "Information relating to recognition and equivalence of programmes offered through Open and Distance Learning.",
     icon: ScrollText,
-    href: officialLinks.ugcCompliance,
+    href: officialLinks.ugcMandatoryDisclosure,
     type: "PDF",
     label: "View Document",
   },
@@ -88,9 +111,9 @@ const resources = [
     number: "03",
     title: "UGC Notification",
     short: "Notifications",
-    body: "UGC-DEB regulatory notifications, public notices and recognition-related information applicable to ODL programmes.",
+    body: "UGC-DEB notifications, public notices and recognition-related information applicable to ODL programmes.",
     icon: FileText,
-    href: officialLinks.ugcCompliance,
+    href: officialLinks.ugcNotification,
     type: "PDF",
     label: "View Document",
   },
@@ -114,7 +137,7 @@ const resources = [
     short: "Applications",
     body: "Regulatory application and submission-related information maintained for recognition and continuation of ODL programmes.",
     icon: FileCheck2,
-    href: officialLinks.ugcCompliance,
+    href: officialLinks.ugcApplication,
     type: "PDF",
     label: "View Document",
   },
@@ -124,7 +147,7 @@ const resources = [
     number: "06",
     title: "CIQA Annual Reports",
     short: "Quality",
-    body: "Annual reports of the Centre for Internal Quality Assurance documenting quality processes, audits and improvement activities.",
+    body: "Annual reports of the Centre for Internal Quality Assurance documenting quality processes and improvement activities.",
     icon: ClipboardList,
     href: officialLinks.ciqaAnnualReport,
     type: "PDF",
@@ -136,10 +159,10 @@ const resources = [
     number: "07",
     title: "Admission List",
     short: "Admissions",
-    body: "Programme-wise student admission information published for different academic sessions.",
+    body: "Programme-wise admission information published for different academic sessions.",
     icon: ListChecks,
     href: officialLinks.admissionList,
-    type: "WEB",
+    type: "PDF",
     label: "View Admission List",
   },
 ];
@@ -150,32 +173,23 @@ const resources = [
 
 const ugcMenuItems = [
   {
-    label: "AICTE Approval",
-    href: "#aicte-approval",
+    label: "UGC Overview",
+    href: "#ugc-overview",
   },
+
   {
-    label: "Degree Equivalence",
-    href: "#degree-equivalence",
+    label: "UGC Disclosure",
+    href: "#ugc-disclosure",
   },
+
   {
-    label: "UGC Notification »",
-    href: "#ugc-notification",
+    label: "AICTE Disclosure",
+    href: "#aicte-disclosure",
   },
+
   {
-    label: "Compliance »",
-    href: "#compliance",
-  },
-  {
-    label: "UGC Applications »",
-    href: "#ugc-applications",
-  },
-  {
-    label: "CIQA Annual Reports »",
-    href: "#ciqa-annual-reports",
-  },
-  {
-    label: "Admission List",
-    href: "#admission-list",
+    label: "Resources",
+    href: "#ugc-resources",
   },
 ];
 
@@ -186,882 +200,607 @@ const ugcMenuItems = [
 function UgcCornerPage() {
   return (
     <SiteLayout>
-      {/* =====================================================
-          HERO
-      ===================================================== */}
-
-      <section className="relative overflow-hidden bg-[#f7f4ee]">
-        {/* Background Glow */}
-
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <motion.div
-            animate={{
-              x: [0, 25, 0],
-              y: [0, -15, 0],
-              scale: [1, 1.08, 1],
-            }}
-            transition={{
-              duration: 9,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="
-              absolute
-              -left-44
-              -top-44
-              size-[360px]
-              rounded-full
-              bg-[#8f1d1d]/10
-              blur-[90px]
-            "
-          />
-
-          <motion.div
-            animate={{
-              x: [0, -25, 0],
-              y: [0, 20, 0],
-              scale: [1, 1.12, 1],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="
-              absolute
-              -right-40
-              top-0
-              size-[330px]
-              rounded-full
-              bg-[#d4af37]/10
-              blur-[90px]
-            "
-          />
-
-          <div
-            className="
-              absolute
-              left-1/2
-              top-1/2
-              size-[240px]
-              -translate-x-1/2
-              -translate-y-1/2
-              rounded-full
-              bg-[#172554]/5
-              blur-[80px]
-            "
-          />
-        </div>
-
-        <div className="relative mx-auto max-w-7xl px-5 py-7 sm:px-8 sm:py-8 lg:px-12">
-          <div className="grid items-center gap-7 lg:grid-cols-[1.25fr_0.75fr]">
-            {/* =================================================
-                LEFT CONTENT
-            ================================================= */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                x: -20,
-              }}
-              animate={{
-                opacity: 1,
-                x: 0,
-              }}
-              transition={{
-                duration: 0.55,
-                ease: "easeOut",
-              }}
-            >
-              {/* Badge */}
-
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: -8,
-                  scale: 0.95,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  scale: 1,
-                }}
-                transition={{
-                  duration: 0.45,
-                }}
-                whileHover={{
-                  scale: 1.03,
-                }}
-                className="
-                  inline-flex
-                  items-center
-                  gap-2
-                  rounded-lg
-                  border
-                  border-[#d4af37]/40
-                  bg-[#172554]
-                  px-3
-                  py-1.5
-                  shadow-[0_8px_20px_rgba(23,37,84,0.15)]
-                "
-              >
-                <motion.span
-                  animate={{
-                    scale: [1, 1.35, 1],
-                    opacity: [1, 0.6, 1],
-                  }}
-                  transition={{
-                    duration: 1.8,
-                    repeat: Infinity,
-                  }}
-                  className="size-1.5 rounded-full bg-[#d4af37]"
-                />
-
-                <span className="text-[8px] font-extrabold uppercase tracking-[0.22em] text-white">
-                  UGC • DEB • COMPLIANCE
-                </span>
-              </motion.div>
-
-              {/* Main Heading */}
-
-              <motion.h1
-                initial={{
-                  opacity: 0,
-                  y: 12,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  duration: 0.55,
-                  delay: 0.1,
-                }}
-                className="
-                  mt-3
-                  max-w-3xl
-                  text-[2rem]
-                  font-black
-                  leading-[1.02]
-                  tracking-[-0.04em]
-                  text-[#172554]
-                  sm:text-[2.45rem]
-                  lg:text-[2.9rem]
-                "
-              >
-                Approvals,
-                <span className="text-[#8f1d1d]"> compliance </span>
-                & transparency.
-              </motion.h1>
-
-              {/* Description */}
-
-              <motion.p
-                initial={{
-                  opacity: 0,
-                  y: 10,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.18,
-                }}
-                className="mt-3 max-w-2xl text-[12px] leading-5 text-slate-600 sm:text-[13px]"
-              >
-                Access important regulatory information, approvals, public
-                disclosures and quality documents related to our distance and
-                online education programmes.
-              </motion.p>
-
-              {/* Tags */}
-
-              <motion.div
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: 1,
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.25,
-                }}
-                className="mt-4 flex flex-wrap gap-1.5"
-              >
-                {[
-                  "UGC-DEB",
-                  "Public Disclosures",
-                  "Quality Assurance",
-                ].map((tag, index) => (
-                  <motion.span
-                    key={tag}
-                    initial={{
-                      opacity: 0,
-                      scale: 0.9,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      scale: 1,
-                    }}
-                    transition={{
-                      delay: 0.3 + index * 0.08,
-                    }}
-                    whileHover={{
-                      y: -2,
-                    }}
-                    className="
-                      rounded-full
-                      border
-                      border-[#172554]/15
-                      bg-white
-                      px-2.5
-                      py-1
-                      text-[8px]
-                      font-bold
-                      uppercase
-                      tracking-[0.1em]
-                      text-[#172554]
-                      shadow-sm
-                      transition-colors
-                      duration-300
-                      hover:border-[#d4af37]/60
-                      hover:bg-[#172554]
-                      hover:text-white
-                    "
-                  >
-                    {tag}
-                  </motion.span>
-                ))}
-              </motion.div>
-            </motion.div>
-
-            {/* =================================================
-                RIGHT CARD
-            ================================================= */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                x: 20,
-              }}
-              animate={{
-                opacity: 1,
-                x: 0,
-              }}
-              transition={{
-                duration: 0.65,
-                delay: 0.12,
-                ease: "easeOut",
-              }}
-              className="relative"
-            >
-              <motion.div
-                animate={{
-                  opacity: [0.5, 0.9, 0.5],
-                  scale: [1, 1.04, 1],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="
-                  absolute
-                  -inset-3
-                  rounded-[1.7rem]
-                  bg-[#d4af37]/10
-                  blur-2xl
-                "
-              />
-
-              <motion.div
-                whileHover={{
-                  y: -3,
-                }}
-                transition={{
-                  duration: 0.25,
-                }}
-                className="
-                  relative
-                  overflow-hidden
-                  rounded-[1.55rem]
-                  border
-                  border-[#d4af37]/30
-                  bg-gradient-to-br
-                  from-[#172554]
-                  via-[#19295c]
-                  to-[#241d3c]
-                  p-4
-                  text-white
-                  shadow-[0_18px_45px_rgba(23,37,84,0.2)]
-                "
-              >
-                <div className="absolute -right-14 -top-14 size-36 rounded-full bg-[#d4af37]/10 blur-3xl" />
-
-                <div className="absolute -bottom-16 -left-16 size-32 rounded-full bg-[#8f1d1d]/15 blur-3xl" />
-
-                <div className="relative">
-                  {/* Card Header */}
-
-                  <div className="flex items-center justify-between gap-3">
-                    <div>
-                      <p className="text-[7px] font-bold uppercase tracking-[0.25em] text-[#d4af37]">
-                        Regulatory Hub
-                      </p>
-
-                      <h2 className="mt-1 text-[1.15rem] font-black tracking-tight text-white">
-                        UGC Corner
-                      </h2>
-                    </div>
-
-                    <motion.div
-                      animate={{
-                        y: [0, -3, 0],
-                        rotate: [0, 1.5, 0],
-                      }}
-                      transition={{
-                        duration: 3.2,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                      whileHover={{
-                        scale: 1.08,
-                      }}
-                      className="
-                        relative
-                        flex
-                        size-10
-                        shrink-0
-                        items-center
-                        justify-center
-                        rounded-xl
-                        border
-                        border-[#d4af37]/50
-                        bg-[#8f1d1d]
-                        shadow-[0_7px_18px_rgba(143,29,29,0.35)]
-                      "
-                    >
-                      <div className="absolute inset-1 rounded-[9px] border border-white/20" />
-
-                      <GraduationCap className="relative size-5 text-[#d4af37]" />
-                    </motion.div>
-                  </div>
-
-                  {/* Stats */}
-
-                  <div className="mt-4 grid grid-cols-2 gap-2">
-                    <motion.div
-                      whileHover={{
-                        scale: 1.02,
-                      }}
-                      className="
-                        rounded-xl
-                        border
-                        border-white/10
-                        bg-white/[0.06]
-                        p-3
-                      "
-                    >
-                      <p className="text-[7px] uppercase tracking-wider text-white/45">
-                        Resources
-                      </p>
-
-                      <p className="mt-0.5 text-lg font-black text-white">
-                        07
-                      </p>
-                    </motion.div>
-
-                    <motion.div
-                      whileHover={{
-                        scale: 1.02,
-                      }}
-                      className="
-                        rounded-xl
-                        border
-                        border-white/10
-                        bg-white/[0.06]
-                        p-3
-                      "
-                    >
-                      <p className="text-[7px] uppercase tracking-wider text-white/45">
-                        Access
-                      </p>
-
-                      <p className="mt-0.5 text-xs font-bold text-white">
-                        Public
-                      </p>
-                    </motion.div>
-                  </div>
-
-                  {/* Info */}
-
-                  <motion.div
-                    animate={{
-                      borderColor: [
-                        "rgba(212,175,55,0.18)",
-                        "rgba(212,175,55,0.38)",
-                        "rgba(212,175,55,0.18)",
-                      ],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                    }}
-                    className="
-                      mt-2
-                      rounded-xl
-                      border
-                      bg-[#d4af37]/10
-                      p-3
-                    "
-                  >
-                    <p className="text-[9px] leading-4 text-white/75">
-                      Regulatory information and institutional disclosures in
-                      one place.
-                    </p>
-                  </motion.div>
-                </div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================
-          UGC QUICK NAVIGATION
-      ===================================================== */}
-
-      <section className="relative bg-[#f7f4ee] px-5 pb-2 pt-4 sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-7xl">
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 10,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.5,
-            }}
-            className="
-              overflow-hidden
-              rounded-2xl
-              border
-              border-[#d9d4c8]
-              bg-white
-              shadow-[0_8px_25px_rgba(23,37,84,0.05)]
-            "
-          >
-            <div className="flex flex-wrap items-center gap-x-1 gap-y-1 p-2">
-              {ugcMenuItems.map((item, index) => (
-                <motion.a
-                  key={item.label}
-                  href={item.href}
-                  whileHover={{
-                    y: -2,
-                  }}
-                  whileTap={{
-                    scale: 0.97,
-                  }}
-                  className="
-                    rounded-lg
-                    px-3
-                    py-2
-                    text-[9px]
-                    font-bold
-                    text-[#172554]
-                    transition-all
-                    duration-300
-                    hover:bg-[#172554]
-                    hover:text-white
-                    sm:text-[10px]
-                  "
-                >
-                  {index === 0 && (
-                    <BadgeCheck className="mr-1 inline size-3 text-[#8f1d1d]" />
-                  )}
-
-                  {item.label}
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* =====================================================
-          RESOURCES
-      ===================================================== */}
-
-      <section
-        id="ugc-resources"
-        className="
-          relative
-          overflow-hidden
-          bg-[#f7f4ee]
-          pb-9
-          pt-5
-          sm:pb-11
-          sm:pt-6
-        "
+      <main
+        style={circularFont}
+        className="min-h-screen bg-[#F5F1E9]"
       >
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-          {/* Section Header */}
+        {/* =====================================================
+            UGC OVERVIEW
+            HERO REMOVED
+        ===================================================== */}
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 12,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.5,
-            }}
-            className="
-              mb-5
-              flex
-              flex-col
-              gap-2
-              sm:flex-row
-              sm:items-end
-              sm:justify-between
-            "
-          >
-            <div>
-              <p className="text-[8px] font-bold uppercase tracking-[0.24em] text-[#8f1d1d]">
-                Official Information
+        <section
+          id="ugc-overview"
+          className="bg-[#F5F1E9] px-5 pb-5 pt-6 sm:px-8 lg:px-12"
+        >
+          <div className="mx-auto max-w-7xl">
+            <div className="border-b border-[#D9D4CA] pb-5">
+              <p className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#8F3030]">
+                Regulatory Information
               </p>
 
-              <h2 className="mt-1 text-[1.45rem] font-black tracking-tight text-[#172554] sm:text-[1.7rem]">
-                Regulatory & quality resources
+              <h1 className="mt-1.5 text-[25px] font-bold tracking-[-0.02em] text-[#20242B] sm:text-[29px]">
+                UGC Overview
+              </h1>
+
+              <div className="mt-3 h-[3px] w-20 rounded-full bg-[#B08A24]" />
+
+              <p className="mt-4 max-w-4xl text-[12px] font-medium leading-6 text-[#5E6470] sm:text-[13px]">
+                Information regarding approvals, mandatory disclosures,
+                regulatory compliance and quality assurance related to the
+                Centre for Distance and Online Education.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================
+            QUICK NAVIGATION
+        ===================================================== */}
+
+        <section className="bg-[#F5F1E9] px-5 pb-3 pt-1 sm:px-8 lg:px-12">
+          <div className="mx-auto max-w-7xl">
+            <div className="overflow-hidden rounded-2xl border border-[#D9D4CA] bg-white shadow-[0_8px_25px_rgba(32,36,43,0.05)]">
+              <div className="flex flex-wrap items-center gap-x-1 gap-y-1 p-2">
+                {ugcMenuItems.map((item, index) => (
+                  <motion.a
+                    key={item.label}
+                    href={item.href}
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="
+                      rounded-lg
+                      px-3
+                      py-2
+                      text-[9px]
+                      font-bold
+                      text-[#20242B]
+                      transition-all
+                      duration-300
+                      hover:bg-[#30265F]
+                      hover:text-white
+                      sm:text-[10px]
+                    "
+                  >
+                    {index === 0 && (
+                      <BadgeCheck className="mr-1 inline size-3 text-[#8F3030]" />
+                    )}
+
+                    {item.label}
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================
+            UGC & AICTE MANDATORY DISCLOSURES
+        ===================================================== */}
+
+        <section
+          id="ugc-disclosure"
+          className="bg-[#F5F1E9] px-5 pb-7 sm:px-8 lg:px-12"
+        >
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-5">
+              <p className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#8F3030]">
+                Mandatory Disclosure
+              </p>
+
+              <h2 className="mt-1.5 text-[21px] font-bold tracking-tight text-[#20242B] sm:text-[25px]">
+                UGC & Regulatory Documents
               </h2>
+
+              <div className="mt-3 h-[3px] w-16 rounded-full bg-[#B08A24]" />
             </div>
 
-            <p className="max-w-md text-[10px] leading-4.5 text-slate-500 sm:text-right">
-              Explore approvals, notifications, compliance records and quality
-              assurance documents.
-            </p>
-          </motion.div>
+            <div className="grid gap-5 md:grid-cols-2">
+              {/* =================================================
+                  UGC
+              ================================================= */}
 
-          {/* =================================================
-              RESOURCE CARDS
-          ================================================= */}
+              <motion.div
+                whileHover={{ y: -3 }}
+                transition={{ duration: 0.25 }}
+                className="
+                  overflow-hidden
+                  rounded-[1.5rem]
+                  border
+                  border-[#D9D4CA]
+                  bg-white
+                  p-5
+                  shadow-[0_10px_30px_rgba(32,36,43,0.06)]
+                "
+              >
+                <div className="flex items-center gap-4">
+                  <div className="flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#D9D4CA] bg-white p-2">
+                    <img
+                      src="/images/ugc-logo.webp"
+                      alt="UGC Logo"
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
 
-          <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
-            {resources.map((resource, index) => {
-              const Icon = resource.icon;
+                  <div>
+                    <p className="text-[8px] font-bold uppercase tracking-[0.2em] text-[#8F3030]">
+                      Regulatory Authority
+                    </p>
 
-              return (
-                <motion.article
-                  key={resource.id}
-                  id={resource.id}
-                  initial={{
-                    opacity: 0,
-                    y: 18,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  viewport={{
-                    once: true,
-                    margin: "-40px",
-                  }}
-                  transition={{
-                    duration: 0.4,
-                    delay: (index % 3) * 0.07,
-                  }}
-                  whileHover={{
-                    y: -5,
-                    scale: 1.012,
-                  }}
-                  className="
-                    group
-                    relative
-                    overflow-hidden
-                    rounded-[1.2rem]
-                    border
-                    border-[#d9d4c8]
-                    bg-white
-                    p-4
-                    shadow-[0_6px_20px_rgba(23,37,84,0.05)]
-                    transition-all
-                    duration-300
-                    hover:border-[#d4af37]/60
-                    hover:shadow-[0_15px_32px_rgba(23,37,84,0.11)]
-                  "
-                >
-                  {/* Top Accent */}
+                    <h3 className="mt-1 text-[18px] font-bold text-[#20242B]">
+                      UGC
+                    </h3>
 
-                  <motion.div
+                    <p className="mt-0.5 text-[10px] font-medium text-[#737782]">
+                      University Grants Commission
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-5 border-t border-[#ECE8E0] pt-4">
+                  <p className="text-[11px] font-medium leading-5 text-[#5E6470]">
+                    Mandatory disclosure and regulatory information related to
+                    Crescent Centre for Distance and Online Education.
+                  </p>
+
+                  <a
+                    href={officialLinks.ugcMandatoryDisclosure}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                      mt-4
+                      inline-flex
+                      items-center
+                      gap-2
+                      rounded-full
+                      bg-[#30265F]
+                      px-4
+                      py-2.5
+                      text-[10px]
+                      font-bold
+                      text-white
+                      transition-all
+                      duration-300
+                      hover:-translate-y-0.5
+                      hover:bg-[#3B3170]
+                    "
+                  >
+                    <FileDown className="size-3.5 text-[#D8B84C]" />
+
+                    UGC Mandatory Disclosure
+
+                    <ArrowUpRight className="size-3" />
+                  </a>
+                </div>
+              </motion.div>
+
+              {/* =================================================
+                  AICTE
+              ================================================= */}
+
+              <motion.div
+                id="aicte-disclosure"
+                whileHover={{ y: -3 }}
+                transition={{ duration: 0.25 }}
+                className="
+                  overflow-hidden
+                  rounded-[1.5rem]
+                  border
+                  border-[#D9D4CA]
+                  bg-white
+                  p-5
+                  shadow-[0_10px_30px_rgba(32,36,43,0.06)]
+                "
+              >
+                <div className="flex items-center gap-4">
+                  <div className="flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#D9D4CA] bg-white p-2">
+                    <img
+                      src="/images/aicte-logo.webp"
+                      alt="AICTE Logo"
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+
+                  <div>
+                    <p className="text-[8px] font-bold uppercase tracking-[0.2em] text-[#8F3030]">
+                      Regulatory Authority
+                    </p>
+
+                    <h3 className="mt-1 text-[18px] font-bold text-[#20242B]">
+                      All India Council for Technical Education (AICTE)
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="mt-5 border-t border-[#ECE8E0] pt-4">
+                  <p className="text-[11px] font-medium leading-5 text-[#5E6470]">
+                    Mandatory disclosure and regulatory information maintained
+                    for the institution and its approved programmes.
+                  </p>
+
+                  <a
+                    href={officialLinks.aicteMandatoryDisclosure}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                      mt-4
+                      inline-flex
+                      items-center
+                      gap-2
+                      rounded-full
+                      bg-[#30265F]
+                      px-4
+                      py-2.5
+                      text-[10px]
+                      font-bold
+                      text-white
+                      transition-all
+                      duration-300
+                      hover:-translate-y-0.5
+                      hover:bg-[#3B3170]
+                    "
+                  >
+                    <FileDown className="size-3.5 text-[#D8B84C]" />
+
+                    AICTE Mandatory Disclosure
+
+                    <ArrowUpRight className="size-3" />
+                  </a>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================
+            RESOURCES
+        ===================================================== */}
+
+        <section
+          id="ugc-resources"
+          className="
+            relative
+            overflow-hidden
+            bg-[#F7F4EE]
+            pb-9
+            pt-6
+            sm:pb-11
+          "
+        >
+          <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+            {/* Section Header */}
+
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 12,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.5,
+              }}
+              className="
+                mb-5
+                flex
+                flex-col
+                gap-2
+                sm:flex-row
+                sm:items-end
+                sm:justify-between
+              "
+            >
+              <div>
+                <p className="text-[8px] font-bold uppercase tracking-[0.24em] text-[#8F3030]">
+                  Official Information
+                </p>
+
+                <h2 className="mt-1 text-[21px] font-bold tracking-tight text-[#20242B] sm:text-[25px]">
+                  Regulatory & Quality Resources
+                </h2>
+
+                <div className="mt-3 h-[3px] w-16 rounded-full bg-[#B08A24]" />
+              </div>
+
+              <p className="max-w-md text-[10px] font-medium leading-5 text-[#737782] sm:text-right">
+                Explore approvals, notifications, compliance records and
+                quality assurance documents.
+              </p>
+            </motion.div>
+
+            {/* =================================================
+                RESOURCE CARDS
+            ================================================= */}
+
+            <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
+              {resources.map((resource, index) => {
+                const Icon = resource.icon;
+
+                return (
+                  <motion.article
+                    key={resource.id}
+                    id={resource.id}
                     initial={{
-                      scaleX: 0,
+                      opacity: 0,
+                      y: 18,
                     }}
                     whileInView={{
-                      scaleX: 1,
+                      opacity: 1,
+                      y: 0,
                     }}
                     viewport={{
                       once: true,
+                      margin: "-40px",
                     }}
                     transition={{
-                      duration: 0.7,
-                      delay: index * 0.04,
+                      duration: 0.4,
+                      delay: (index % 3) * 0.07,
+                    }}
+                    whileHover={{
+                      y: -5,
+                      scale: 1.012,
                     }}
                     className="
-                      absolute
-                      left-0
-                      right-0
-                      top-0
-                      h-[3px]
-                      origin-left
-                      bg-gradient-to-r
-                      from-[#172554]
-                      via-[#8f1d1d]
-                      to-[#d4af37]
+                      group
+                      relative
+                      overflow-hidden
+                      rounded-[1.2rem]
+                      border
+                      border-[#D9D4CA]
+                      bg-white
+                      p-4
+                      shadow-[0_6px_20px_rgba(32,36,43,0.05)]
+                      transition-all
+                      duration-300
+                      hover:border-[#B08A24]/60
+                      hover:shadow-[0_15px_32px_rgba(32,36,43,0.11)]
                     "
-                  />
+                  >
+                    {/* Top Gold Line */}
 
-                  {/* Card Top */}
-
-                  <div className="flex items-start justify-between">
-                    <motion.div
-                      whileHover={{
-                        rotate: 5,
-                        scale: 1.08,
-                      }}
-                      transition={{
-                        duration: 0.2,
-                      }}
+                    <div
                       className="
-                        flex
-                        size-9
-                        items-center
-                        justify-center
-                        rounded-xl
-                        bg-[#172554]
-                        text-white
-                        shadow-md
-                        transition-colors
-                        duration-300
-                        group-hover:bg-[#8f1d1d]
+                        absolute
+                        left-0
+                        right-0
+                        top-0
+                        h-[3px]
+                        bg-[#B08A24]
                       "
-                    >
-                      <Icon className="size-4" />
-                    </motion.div>
+                    />
 
-                    <div className="flex items-center gap-1.5">
-                      <span
+                    {/* Card Top */}
+
+                    <div className="flex items-start justify-between">
+                      <motion.div
+                        whileHover={{
+                          rotate: 5,
+                          scale: 1.08,
+                        }}
+                        transition={{
+                          duration: 0.2,
+                        }}
                         className="
-                          rounded-full
-                          bg-[#172554]/5
-                          px-2
-                          py-1
-                          text-[7px]
-                          font-bold
-                          uppercase
-                          tracking-wider
-                          text-[#172554]/60
+                          flex
+                          size-9
+                          items-center
+                          justify-center
+                          rounded-xl
+                          bg-[#30265F]
+                          text-white
+                          shadow-md
+                          transition-colors
+                          duration-300
+                          group-hover:bg-[#8F3030]
                         "
                       >
-                        {resource.type}
-                      </span>
+                        <Icon className="size-4" />
+                      </motion.div>
 
-                      <span className="text-[9px] font-black tracking-[0.16em] text-[#8f1d1d]/45">
-                        {resource.number}
-                      </span>
+                      <div className="flex items-center gap-1.5">
+                        <span
+                          className="
+                            rounded-full
+                            bg-[#30265F]/5
+                            px-2
+                            py-1
+                            text-[7px]
+                            font-bold
+                            uppercase
+                            tracking-wider
+                            text-[#30265F]/60
+                          "
+                        >
+                          {resource.type}
+                        </span>
+
+                        <span className="text-[9px] font-bold tracking-[0.16em] text-[#8F3030]/45">
+                          {resource.number}
+                        </span>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Card Content */}
+                    {/* Card Content */}
 
-                  <div className="mt-3">
-                    <span className="text-[7px] font-bold uppercase tracking-[0.18em] text-[#d4af37]">
-                      {resource.short}
-                    </span>
+                    <div className="mt-3">
+                      <span className="text-[7px] font-bold uppercase tracking-[0.18em] text-[#B08A24]">
+                        {resource.short}
+                      </span>
 
-                    <h3 className="mt-1 text-[15px] font-black text-[#172554] transition-colors duration-300 group-hover:text-[#8f1d1d]">
-                      {resource.title}
-                    </h3>
+                      <h3 className="mt-1 text-[15px] font-bold text-[#20242B] transition-colors duration-300 group-hover:text-[#8F3030]">
+                        {resource.title}
+                      </h3>
 
-                    <p className="mt-1.5 text-[10px] leading-[1.55] text-slate-500">
-                      {resource.body}
-                    </p>
-                  </div>
+                      <p className="mt-1.5 text-[10px] font-medium leading-[1.55] text-[#737782]">
+                        {resource.body}
+                      </p>
+                    </div>
 
-                  {/* Card Footer */}
+                    {/* Card Footer */}
 
-                  <div className="mt-3 flex items-center justify-between border-t border-slate-100 pt-2.5">
-                    <span className="flex items-center gap-1 text-[7px] font-bold uppercase tracking-[0.13em] text-slate-400">
-                      <CheckCircle2 className="size-3 text-[#8f1d1d]" />
-                      Official Resource
-                    </span>
+                    <div className="mt-3 flex items-center justify-between border-t border-slate-100 pt-2.5">
+                      <span className="flex items-center gap-1 text-[7px] font-bold uppercase tracking-[0.13em] text-slate-400">
+                        <CheckCircle2 className="size-3 text-[#8F3030]" />
+                        Official Resource
+                      </span>
 
-                    <motion.a
-                      href={resource.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{
-                        x: 2,
-                      }}
-                      whileTap={{
-                        scale: 0.97,
-                      }}
-                      className="
-                        flex
-                        items-center
-                        gap-1
-                        rounded-lg
-                        bg-[#172554]
-                        px-2.5
-                        py-1.5
-                        text-[9px]
-                        font-bold
-                        text-white
-                        shadow-sm
-                        transition-all
-                        duration-300
-                        hover:bg-[#8f1d1d]
-                      "
-                    >
-                      {resource.type === "PDF" ? (
-                        <FileDown className="size-3" />
-                      ) : (
-                        <ExternalLink className="size-3" />
-                      )}
+                      <motion.a
+                        href={resource.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{
+                          x: 2,
+                        }}
+                        whileTap={{
+                          scale: 0.97,
+                        }}
+                        className="
+                          flex
+                          items-center
+                          gap-1
+                          rounded-lg
+                          bg-[#30265F]
+                          px-2.5
+                          py-1.5
+                          text-[9px]
+                          font-bold
+                          text-white
+                          shadow-sm
+                          transition-all
+                          duration-300
+                          hover:bg-[#8F3030]
+                        "
+                      >
+                        {resource.type === "PDF" ? (
+                          <FileDown className="size-3" />
+                        ) : (
+                          <ExternalLink className="size-3" />
+                        )}
 
-                      {resource.label}
+                        {resource.label}
 
-                      <ArrowUpRight className="size-3" />
-                    </motion.a>
-                  </div>
-                </motion.article>
-              );
-            })}
+                        <ArrowUpRight className="size-3" />
+                      </motion.a>
+                    </div>
+                  </motion.article>
+                );
+              })}
+            </div>
+
+            {/* =================================================
+                TRUST STRIP
+            ================================================= */}
+
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 10,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.5,
+              }}
+              className="
+                mt-5
+                flex
+                flex-wrap
+                items-center
+                justify-center
+                gap-x-5
+                gap-y-2
+                rounded-xl
+                border
+                border-[#D9D4CA]
+                bg-white
+                px-4
+                py-2.5
+                shadow-sm
+              "
+            >
+              <motion.div
+                whileHover={{
+                  y: -1,
+                }}
+                className="flex items-center gap-1.5"
+              >
+                <ShieldCheck className="size-3.5 text-[#8F3030]" />
+
+                <span className="text-[8px] font-bold text-[#20242B]">
+                  Transparent
+                </span>
+              </motion.div>
+
+              <span className="hidden h-3.5 w-px bg-slate-200 sm:block" />
+
+              <motion.div
+                whileHover={{
+                  y: -1,
+                }}
+                className="flex items-center gap-1.5"
+              >
+                <BadgeCheck className="size-3.5 text-[#B08A24]" />
+
+                <span className="text-[8px] font-bold text-[#20242B]">
+                  Verified Information
+                </span>
+              </motion.div>
+
+              <span className="hidden h-3.5 w-px bg-slate-200 sm:block" />
+
+              <motion.div
+                whileHover={{
+                  y: -1,
+                }}
+                className="flex items-center gap-1.5"
+              >
+                <FileCheck2 className="size-3.5 text-[#8F3030]" />
+
+                <span className="text-[8px] font-bold text-[#20242B]">
+                  Public Disclosure
+                </span>
+              </motion.div>
+
+              <span className="hidden h-3.5 w-px bg-slate-200 sm:block" />
+
+              <motion.div
+                whileHover={{
+                  y: -1,
+                }}
+                className="flex items-center gap-1.5"
+              >
+                <GraduationCap className="size-3.5 text-[#30265F]" />
+
+                <span className="text-[8px] font-bold text-[#20242B]">
+                  UGC-DEB
+                </span>
+              </motion.div>
+            </motion.div>
+
+            {/* =================================================
+                SOURCE NOTE
+            ================================================= */}
+
+            <p className="mt-4 text-center text-[8px] font-medium leading-4 text-slate-400">
+              Regulatory documents and admission information are linked to the
+              official Crescent Centre for Distance and Online Education
+              resources.
+            </p>
           </div>
-
-          {/* =================================================
-              TRUST STRIP
-          ================================================= */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 10,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.5,
-            }}
-            className="
-              mt-5
-              flex
-              flex-wrap
-              items-center
-              justify-center
-              gap-x-5
-              gap-y-2
-              rounded-xl
-              border
-              border-[#d9d4c8]
-              bg-white
-              px-4
-              py-2.5
-              shadow-sm
-            "
-          >
-            {/* Transparent */}
-
-            <motion.div
-              whileHover={{
-                y: -1,
-              }}
-              className="flex items-center gap-1.5"
-            >
-              <ShieldCheck className="size-3.5 text-[#8f1d1d]" />
-
-              <span className="text-[8px] font-bold text-[#172554]">
-                Transparent
-              </span>
-            </motion.div>
-
-            <span className="hidden h-3.5 w-px bg-slate-200 sm:block" />
-
-            {/* Verified */}
-
-            <motion.div
-              whileHover={{
-                y: -1,
-              }}
-              className="flex items-center gap-1.5"
-            >
-              <BadgeCheck className="size-3.5 text-[#d4af37]" />
-
-              <span className="text-[8px] font-bold text-[#172554]">
-                Verified Information
-              </span>
-            </motion.div>
-
-            <span className="hidden h-3.5 w-px bg-slate-200 sm:block" />
-
-            {/* Public Disclosure */}
-
-            <motion.div
-              whileHover={{
-                y: -1,
-              }}
-              className="flex items-center gap-1.5"
-            >
-              <FileCheck2 className="size-3.5 text-[#8f1d1d]" />
-
-              <span className="text-[8px] font-bold text-[#172554]">
-                Public Disclosure
-              </span>
-            </motion.div>
-
-            <span className="hidden h-3.5 w-px bg-slate-200 sm:block" />
-
-            {/* UGC */}
-
-            <motion.div
-              whileHover={{
-                y: -1,
-              }}
-              className="flex items-center gap-1.5"
-            >
-              <GraduationCap className="size-3.5 text-[#172554]" />
-
-              <span className="text-[8px] font-bold text-[#172554]">
-                UGC-DEB
-              </span>
-            </motion.div>
-          </motion.div>
-
-          {/* Small Source Note */}
-
-          <p className="mt-4 text-center text-[8px] leading-4 text-slate-400">
-            Regulatory documents and admission information are linked to the
-            official Crescent Centre for Distance and Online Education
-            resources.
-          </p>
-        </div>
-      </section>
+        </section>
+      </main>
     </SiteLayout>
   );
 }
+
+export default UgcCornerPage;

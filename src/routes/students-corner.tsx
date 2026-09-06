@@ -1,165 +1,164 @@
-import { SiteLayout } from "@/components/site/SiteLayout";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { Link, createFileRoute } from "@tanstack/react-router";
+import { motion, AnimatePresence } from "framer-motion";
 import {
+  ArrowLeft,
   ArrowRight,
   BookOpen,
   CheckCircle2,
   FileText,
-  HeartHandshake,
-  MonitorPlay,
+  GraduationCap,
+  Headphones,
+  Mail,
+  Phone,
   ShieldCheck,
-  Users,
+  UserRound,
+  X,
 } from "lucide-react";
 
-const title = "Students Corner — LMS Login & Student Affairs";
+import campusPhoto from "@/assets/campus-1.jpg";
+import { SiteLayout } from "@/components/site/SiteLayout";
 
-const description =
-  "Access the learning management system, study material, examination updates and student affairs support for distance learners.";
+const circularFont = {
+  fontFamily:
+    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
+};
 
 export const Route = createFileRoute("/students-corner")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
   component: StudentsCornerPage,
 });
 
 function StudentsCornerPage() {
+  const [isComplaintOpen, setIsComplaintOpen] = useState(false);
+
   return (
     <SiteLayout>
-      {/* =====================================================
-          HEADER
-      ===================================================== */}
-
-      <section className="relative overflow-hidden bg-[#101b3d] text-white">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -left-32 -top-32 size-64 rounded-full bg-[#8f1d1d]/20 blur-3xl" />
-
-          <div className="absolute -right-32 top-10 size-72 rounded-full bg-[#d4af37]/10 blur-3xl" />
-        </div>
-
-        <div className="relative mx-auto flex min-h-[90px] max-w-7xl items-center justify-center px-5 py-4 sm:min-h-[100px] sm:px-8 lg:px-12">
-          <div className="text-center">
-            <p className="mb-1 text-[8px] font-black uppercase tracking-[0.3em] text-[#d4af37]">
-              Distance Education
-            </p>
-
-            <h1 className="text-2xl font-black tracking-[-0.03em] text-white sm:text-3xl lg:text-4xl">
-              Students Corner
-            </h1>
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================
-          QUICK ACCESS
-      ===================================================== */}
-
-      <section className="bg-[#f6f3ec] px-5 py-4 sm:px-8 lg:px-12">
-        <div className="mx-auto grid max-w-7xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <QuickCard
-            icon={<MonitorPlay className="size-5" />}
-            title="LMS Login"
-            text="Access learning portal"
-            href="/lms-login"
-          />
-
-          <QuickCard
-            icon={<BookOpen className="size-5" />}
-            title="Study Material"
-            text="Notes & e-books"
-            href="/lms-login"
-          />
-
-          <QuickCard
-            icon={<FileText className="size-5" />}
-            title="Examination"
-            text="Schedule & results"
-            href="/lms-login"
-          />
-
-          <QuickCard
-            icon={<HeartHandshake className="size-5" />}
-            title="Student Affairs"
-            text="Get academic support"
-            href="#student-affairs"
-          />
-        </div>
-      </section>
-
-      {/* =====================================================
-          MAIN CONTENT
-      ===================================================== */}
-
-      <section className="relative overflow-hidden bg-[#f7f4ee] px-5 py-7 sm:px-8 sm:py-8 lg:px-12">
-        <div className="pointer-events-none absolute -left-32 top-20 size-72 rounded-full bg-[#8f1d1d]/[0.04] blur-3xl" />
-
-        <div className="pointer-events-none absolute -right-32 bottom-0 size-80 rounded-full bg-[#d4af37]/[0.06] blur-3xl" />
-
-        <div className="relative mx-auto max-w-7xl">
-          {/* =================================================
-              SECTION HEADING
-          ================================================= */}
-
-          <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-[9px] font-black uppercase tracking-[0.25em] text-[#8f1d1d]">
-                Student Services
-              </p>
-
-              <h2 className="mt-1 text-xl font-black tracking-tight text-[#172554] sm:text-2xl">
-                Everything you need while you study
-              </h2>
+      <main
+        style={circularFont}
+        className="min-h-screen overflow-hidden bg-[#F5F1E9] text-[#111111]"
+      >
+        {/* HEADER */}
+        <section className="bg-[#F5F1E9]">
+          <div className="mx-auto max-w-6xl px-5 py-4 sm:px-6 sm:py-5">
+            <div className="mb-2">
+              <Link
+                to="/"
+                className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#111111]"
+              >
+                <ArrowLeft className="h-3.5 w-3.5" />
+                Back to Home
+              </Link>
             </div>
 
-            <p className="max-w-md text-[10px] leading-5 text-slate-500 sm:text-right">
-              Learning, examination and student support — organised in one
-              simple experience.
-            </p>
+            <div className="max-w-4xl">
+              <div className="mb-1.5 inline-flex items-center gap-1.5 rounded-full bg-white/70 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.08em] text-[#111111]">
+                <GraduationCap className="h-3 w-3" />
+                Student Support
+              </div>
+
+              <h1 className="text-xl font-bold leading-tight tracking-tight sm:text-2xl">
+                Students Corner
+              </h1>
+
+              <p className="mt-1 max-w-3xl text-[11px] leading-4.5 text-black/70 sm:text-xs">
+                Access learning resources, student services and grievance
+                support through one convenient space.
+              </p>
+            </div>
           </div>
+        </section>
 
-          {/* =================================================
-              MAIN CARDS
-          ================================================= */}
+        {/* QUICK ACCESS */}
+        <section className="bg-[#F5F1E9] px-5 pb-4 pt-3 sm:px-6 sm:pt-4">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-2 flex items-center gap-2">
+              <span className="h-px w-5 bg-[#B08A24]" />
+              <span className="text-[9px] font-semibold uppercase tracking-[0.12em] text-[#8f1d1d]">
+                Quick Access
+              </span>
+            </div>
 
-          <div className="grid gap-4 lg:grid-cols-2">
-            {/* =================================================
-                LMS CARD
-            ================================================= */}
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+              <QuickCard
+                number="01"
+                title="LMS Login"
+                description="Access your digital learning space"
+                icon={BookOpen}
+                accent="#30265F"
+                href="/lms-login"
+              />
 
-            <div
-              id="lms-login"
-              className="group relative overflow-hidden rounded-[1.7rem] border border-[#172554]/10 bg-white p-5 shadow-[0_10px_35px_rgba(23,37,84,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-[#d4af37]/30 hover:shadow-[0_18px_45px_rgba(23,37,84,0.11)] sm:p-6"
-            >
-              <div className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-[#d4af37]/10 blur-3xl" />
+              <QuickCard
+                number="02"
+                title="Study Material"
+                description="Access learning resources"
+                icon={FileText}
+                accent="#2F6F4E"
+                href="/lms-login"
+              />
 
-              <div className="relative">
-                <div className="flex items-start justify-between">
-                  <div className="flex size-11 items-center justify-center rounded-xl bg-[#172554] text-[#d4af37] shadow-lg">
-                    <MonitorPlay className="size-5" />
+              <QuickCard
+                number="03"
+                title="Examination"
+                description="Exam updates and information"
+                icon={GraduationCap}
+                accent="#B08A24"
+                href="/lms-login"
+              />
+
+              <QuickCard
+                number="04"
+                title="Student Affairs"
+                description="Student support and grievance"
+                icon={ShieldCheck}
+                accent="#8F1D1D"
+                href="#student-affairs"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* MAIN CONTENT */}
+        <section className="px-5 pb-6 pt-1 sm:px-6 sm:pb-8">
+          <div className="mx-auto max-w-6xl">
+            <div className="grid gap-3 lg:grid-cols-2">
+              {/* LMS LOGIN */}
+              <motion.section
+                id="lms-login"
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4 }}
+                className="relative overflow-hidden rounded-[16px] border border-[#dedbd6] bg-white p-4 shadow-[0_6px_20px_rgba(0,0,0,0.05)] sm:p-5"
+              >
+                <div className="absolute left-0 top-0 h-1 w-full bg-[#30265F]" />
+
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <div className="mb-1.5 flex items-center gap-2">
+                      <div className="flex size-8 items-center justify-center rounded-lg bg-[#30265F]">
+                        <BookOpen className="size-4 text-[#D8B84C]" />
+                      </div>
+
+                      <div>
+                        <p className="text-[8px] font-bold uppercase tracking-[0.14em] text-[#30265F]">
+                          Digital Learning
+                        </p>
+
+                        <h2 className="text-base font-bold leading-tight">
+                          LMS Login
+                        </h2>
+                      </div>
+                    </div>
+
+                    <p className="mt-2 max-w-xl text-[10px] leading-4.5 text-black/65">
+                      Access your online learning environment, academic
+                      resources and important course updates.
+                    </p>
                   </div>
-
-                  <span className="rounded-full bg-[#8f1d1d]/10 px-3 py-1 text-[8px] font-black uppercase tracking-[0.15em] text-[#8f1d1d]">
-                    Learning
-                  </span>
                 </div>
 
-                <h3 className="mt-4 text-xl font-black text-[#172554] sm:text-2xl">
-                  LMS Login
-                </h3>
-
-                <p className="mt-1.5 max-w-lg text-[11px] leading-5 text-slate-500">
-                  Access lectures, assignments, assessments, study materials
-                  and academic resources through your learning portal.
-                </p>
-
-                <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2">
                   {[
                     "Recorded lectures",
                     "Live weekend classes",
@@ -168,235 +167,478 @@ function StudentsCornerPage() {
                     "Internal marks",
                     "Exam updates & results",
                   ].map((item) => (
-                    <FeatureItem key={item} text={item} />
-                  ))}
-                </div>
-
-                <Link
-                  to="/lms-login"
-                  className="group/btn mt-5 inline-flex items-center gap-2 rounded-full bg-[#8f1d1d] px-5 py-2.5 text-[10px] font-black text-white transition-all duration-300 hover:bg-[#a52222] hover:shadow-lg"
-                >
-                  Open LMS Login
-
-                  <ArrowRight className="size-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                </Link>
-              </div>
-            </div>
-
-            {/* =================================================
-                STUDENT AFFAIRS
-            ================================================= */}
-
-            <div
-              id="student-affairs"
-              className="group relative overflow-hidden rounded-[1.7rem] bg-[#172554] p-5 text-white shadow-[0_10px_35px_rgba(23,37,84,0.13)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(23,37,84,0.20)] sm:p-6"
-            >
-              <div className="pointer-events-none absolute -right-16 -top-16 size-44 rounded-full bg-[#d4af37]/10 blur-3xl" />
-
-              <div className="relative">
-                <div className="flex items-start justify-between">
-                  <div className="flex size-11 items-center justify-center rounded-xl bg-[#8f1d1d] text-white shadow-lg">
-                    <HeartHandshake className="size-5" />
-                  </div>
-
-                  <span className="rounded-full border border-[#d4af37]/20 bg-[#d4af37]/10 px-3 py-1 text-[8px] font-black uppercase tracking-[0.15em] text-[#f0d56b]">
-                    Support
-                  </span>
-                </div>
-
-                <h3 className="mt-4 text-xl font-black sm:text-2xl">
-                  Students Grievance Redressal Cell
-                </h3>
-
-                <p className="mt-1.5 text-[11px] leading-5 text-white/60">
-                  Students having grievances on academic matters can contact
-                  the Nodal Officer in person, through the Grievance Box,
-                  online complaint form or email.
-                </p>
-
-                {/* Officer */}
-
-                <div className="mt-4 flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.05] p-3">
-                  <div className="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white/10">
-                    <img
-                      src="https://distance.crescent-institute.edu.in/img/technical/merline.jpg"
-                      alt="Ms. P. Paul Merline"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-
-                  <div>
-                    <p className="text-[10px] font-black text-white">
-                      Ms. P. Paul Merline
-                    </p>
-
-                    <p className="mt-0.5 text-[8px] leading-3.5 text-white/50">
-                      Technical Manager (LMS & Data Management)
-                    </p>
-
-                    <p className="text-[8px] font-bold text-[#d4af37]">
-                      Nodal Officer
-                    </p>
-                  </div>
-                </div>
-
-                {/* Grievance features */}
-
-                <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                  {[
-                    "Academic grievances",
-                    "Grievance Box",
-                    "Online complaint",
-                    "Student support",
-                  ].map((item) => (
                     <div
                       key={item}
-                      className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.05] px-3 py-2 text-[10px] text-white/75"
+                      className="flex items-center gap-1.5 text-[9px] font-medium text-[#111111]"
                     >
-                      <CheckCircle2 className="size-3.5 shrink-0 text-[#d4af37]" />
-
+                      <CheckCircle2 className="size-3 shrink-0 text-[#2F6F4E]" />
                       {item}
                     </div>
                   ))}
                 </div>
 
-                {/* Actions */}
-
-                <div className="mt-5 flex flex-wrap gap-2">
-                  <a
-                    href="https://distance.crescent-institute.edu.in/complaintform"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/btn inline-flex items-center gap-2 rounded-full bg-[#d4af37] px-4 py-2.5 text-[9px] font-black text-[#172554] transition-all hover:bg-[#f0d56b]"
+                <div className="mt-4">
+                  <Link
+                    to="/lms-login"
+                    className="group relative inline-flex items-center gap-1.5 rounded-lg bg-[#30265F] px-3 py-2 text-[10px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5"
                   >
+                    Login to LMS
+
+                    <ArrowRight className="size-3 transition-transform duration-300 group-hover:translate-x-0.5" />
+
+                    <span className="absolute bottom-0 left-2 right-2 h-0.5 origin-left scale-x-0 bg-[#D8B84C] transition-transform duration-300 group-hover:scale-x-100" />
+                  </Link>
+                </div>
+              </motion.section>
+
+              {/* GRIEVANCE */}
+              <motion.section
+                id="student-affairs"
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: 0.05 }}
+                className="relative overflow-hidden rounded-[16px] bg-[#17234B] p-4 text-white shadow-[0_8px_22px_rgba(23,35,75,0.16)] sm:p-5"
+              >
+                <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-[#2F6F4E] via-[#D8B84C] to-[#8F1D1D]" />
+
+                <div className="mb-3 flex items-center gap-2">
+                  <div className="flex size-8 items-center justify-center rounded-lg bg-white/10">
+                    <ShieldCheck className="size-4 text-[#D8B84C]" />
+                  </div>
+
+                  <div>
+                    <p className="text-[8px] font-bold uppercase tracking-[0.14em] text-[#D8B84C]">
+                      Student Support
+                    </p>
+
+                    <h2 className="text-base font-bold leading-tight">
+                      Student Grievance Redressal Cell
+                    </h2>
+                  </div>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-[1fr_170px]">
+                  {/* OFFICER */}
+                  <div>
+                    <p className="text-[9px] leading-4 text-white/65">
+                      For any academic or student-related grievance, learners
+                      can approach the designated Nodal Officer.
+                    </p>
+
+                    {/* MAM PROFILE - TEMPORARY PHOTO */}
+                    <div className="mt-3 flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-3">
+                      <div className="h-[76px] w-[76px] shrink-0 overflow-hidden rounded-xl border-2 border-[#D8B84C]/60 bg-white/10">
+                        <img
+                          src={campusPhoto}
+                          alt="Ms. P. Paul Merline"
+                          className="h-full w-full object-cover object-center"
+                        />
+                      </div>
+
+                      <div className="min-w-0">
+                        <p className="text-[11px] font-bold">
+                          Ms. P. Paul Merline
+                        </p>
+
+                        <p className="mt-0.5 text-[8px] leading-3.5 text-white/60">
+                          Technical Manager
+                          <br />
+                          (LMS &amp; Data Management)
+                        </p>
+
+                        <p className="mt-1 text-[8px] font-semibold text-[#D8B84C]">
+                          Nodal Officer
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* FEATURES */}
+                  <div className="grid grid-cols-2 gap-1.5">
+                    {[
+                      "Academic grievances",
+                      "Grievance Box",
+                      "Online complaint",
+                      "Student support",
+                    ].map((item, index) => (
+                      <div
+                        key={item}
+                        className="rounded-lg border border-white/10 bg-white/5 px-2 py-2"
+                      >
+                        <div className="mb-1 text-[8px] font-bold text-[#D8B84C]">
+                          0{index + 1}
+                        </div>
+
+                        <p className="text-[8px] leading-3.5 text-white/75">
+                          {item}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* ACTIONS */}
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setIsComplaintOpen(true)}
+                    className="group relative inline-flex items-center gap-1.5 rounded-lg bg-[#D8B84C] px-3 py-2 text-[9px] font-bold text-[#17234B] transition-all duration-300 hover:-translate-y-0.5"
+                  >
+                    <FileText className="size-3" />
+
                     Online Complaint Form
 
-                    <ArrowRight className="size-3.5 transition-transform group-hover/btn:translate-x-1" />
-                  </a>
+                    <span className="absolute bottom-0 left-2 right-2 h-0.5 origin-left scale-x-0 bg-[#8F1D1D] transition-transform duration-300 group-hover:scale-x-100" />
+                  </button>
 
                   <a
                     href="https://distance.crescent-institute.edu.in/img/Grievence.png"
                     target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-4 py-2.5 text-[9px] font-bold text-white/80 transition-all hover:bg-white/10 hover:text-white"
+                    rel="noreferrer"
+                    className="group relative inline-flex items-center gap-1.5 rounded-lg border border-white/20 bg-white/5 px-3 py-2 text-[9px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5"
                   >
+                    <FileText className="size-3 text-[#D8B84C]" />
+
                     UGC Letter
+
+                    <span className="absolute bottom-0 left-2 right-2 h-0.5 origin-left scale-x-0 bg-[#D8B84C] transition-transform duration-300 group-hover:scale-x-100" />
                   </a>
                 </div>
-              </div>
+              </motion.section>
+            </div>
+
+            {/* SUPPORT STRIP */}
+            <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3">
+              <SupportCard
+                icon={ShieldCheck}
+                title="Secure Learning"
+                description="Safe and reliable digital access"
+                accent="#2F6F4E"
+              />
+
+              <SupportCard
+                icon={Headphones}
+                title="Mentor Support"
+                description="Guidance whenever you need it"
+                accent="#6B4C9A"
+              />
+
+              <SupportCard
+                icon={GraduationCap}
+                title="Learner First"
+                description="Support designed around students"
+                accent="#8F1D1D"
+              />
             </div>
           </div>
+        </section>
 
-          {/* =================================================
-              BOTTOM SUPPORT STRIP
-          ================================================= */}
+        {/* COMPLAINT MODAL */}
+        <AnimatePresence>
+          {isComplaintOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[10000] flex items-center justify-center bg-[#111111]/60 px-4 py-5 backdrop-blur-sm"
+              onMouseDown={(event) => {
+                if (event.target === event.currentTarget) {
+                  setIsComplaintOpen(false);
+                }
+              }}
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.96, y: 12 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.96, y: 12 }}
+                transition={{ duration: 0.25 }}
+                className="relative max-h-[92vh] w-full max-w-xl overflow-y-auto rounded-[18px] bg-white shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
+              >
+                {/* MODAL HEADER */}
+                <div className="sticky top-0 z-10 bg-[#17234B] px-5 py-4 text-white">
+                  <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-[#2F6F4E] via-[#D8B84C] to-[#8F1D1D]" />
 
-          <div className="mt-4 grid gap-3 sm:grid-cols-3">
-            <SupportCard
-              icon={<ShieldCheck className="size-4.5" />}
-              title="Secure Learning"
-              text="Your academic information stays protected."
-            />
+                  <button
+                    type="button"
+                    onClick={() => setIsComplaintOpen(false)}
+                    aria-label="Close complaint form"
+                    className="absolute right-4 top-4 flex size-7 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+                  >
+                    <X className="size-4" />
+                  </button>
 
-            <SupportCard
-              icon={<Users className="size-4.5" />}
-              title="Mentor Support"
-              text="Get guidance throughout your programme."
-            />
+                  <div className="pr-8">
+                    <div className="mb-1 flex items-center gap-2">
+                      <ShieldCheck className="size-4 text-[#D8B84C]" />
 
-            <SupportCard
-              icon={<HeartHandshake className="size-4.5" />}
-              title="Learner First"
-              text="Support designed around your academic journey."
-            />
-          </div>
-        </div>
-      </section>
+                      <span className="text-[8px] font-bold uppercase tracking-[0.15em] text-[#D8B84C]">
+                        Student Support
+                      </span>
+                    </div>
+
+                    <h2 className="text-lg font-bold leading-tight">
+                      Students Grievance Redressal Cell
+                    </h2>
+
+                    <p className="mt-1 text-[9px] leading-4 text-white/65">
+                      Submit your grievance using the form below.
+                    </p>
+                  </div>
+                </div>
+
+                {/* FORM */}
+                <form
+                  className="space-y-3 px-5 py-5"
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    setIsComplaintOpen(false);
+                  }}
+                >
+                  {/* NAME */}
+                  <div>
+                    <label
+                      htmlFor="student-name"
+                      className="mb-1 block text-[9px] font-bold text-[#111111]"
+                    >
+                      Name of Student
+                    </label>
+
+                    <div className="relative">
+                      <UserRound className="pointer-events-none absolute left-3 top-1/2 size-3.5 -translate-y-1/2 text-[#6B4C9A]" />
+
+                      <input
+                        id="student-name"
+                        name="studentName"
+                        type="text"
+                        required
+                        placeholder="Enter your name"
+                        className="h-9 w-full rounded-lg border border-[#dedbd6] bg-[#F8F7F4] pl-9 pr-3 text-[10px] text-[#111111] outline-none transition-all placeholder:text-black/35 focus:border-[#6B4C9A] focus:bg-white focus:ring-2 focus:ring-[#6B4C9A]/10"
+                      />
+                    </div>
+                  </div>
+
+                  {/* RRN + PHONE */}
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <div>
+                      <label
+                        htmlFor="student-rrn"
+                        className="mb-1 block text-[9px] font-bold text-[#111111]"
+                      >
+                        RRN
+                      </label>
+
+                      <input
+                        id="student-rrn"
+                        name="rrn"
+                        type="text"
+                        required
+                        placeholder="Enter RRN"
+                        className="h-9 w-full rounded-lg border border-[#dedbd6] bg-[#F8F7F4] px-3 text-[10px] text-[#111111] outline-none transition-all placeholder:text-black/35 focus:border-[#2F6F4E] focus:bg-white focus:ring-2 focus:ring-[#2F6F4E]/10"
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="student-phone"
+                        className="mb-1 block text-[9px] font-bold text-[#111111]"
+                      >
+                        Phone
+                      </label>
+
+                      <div className="relative">
+                        <Phone className="pointer-events-none absolute left-3 top-1/2 size-3.5 -translate-y-1/2 text-[#8F1D1D]" />
+
+                        <input
+                          id="student-phone"
+                          name="phone"
+                          type="tel"
+                          required
+                          placeholder="Enter phone number"
+                          className="h-9 w-full rounded-lg border border-[#dedbd6] bg-[#F8F7F4] pl-9 pr-3 text-[10px] text-[#111111] outline-none transition-all placeholder:text-black/35 focus:border-[#8F1D1D] focus:bg-white focus:ring-2 focus:ring-[#8F1D1D]/10"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* EMAIL */}
+                  <div>
+                    <label
+                      htmlFor="student-email"
+                      className="mb-1 block text-[9px] font-bold text-[#111111]"
+                    >
+                      Email
+                    </label>
+
+                    <div className="relative">
+                      <Mail className="pointer-events-none absolute left-3 top-1/2 size-3.5 -translate-y-1/2 text-[#B08A24]" />
+
+                      <input
+                        id="student-email"
+                        name="email"
+                        type="email"
+                        required
+                        placeholder="Enter email address"
+                        className="h-9 w-full rounded-lg border border-[#dedbd6] bg-[#F8F7F4] pl-9 pr-3 text-[10px] text-[#111111] outline-none transition-all placeholder:text-black/35 focus:border-[#B08A24] focus:bg-white focus:ring-2 focus:ring-[#B08A24]/10"
+                      />
+                    </div>
+                  </div>
+
+                  {/* GRIEVANCE */}
+                  <div>
+                    <label
+                      htmlFor="student-grievance"
+                      className="mb-1 block text-[9px] font-bold text-[#111111]"
+                    >
+                      State Your Grievance
+                    </label>
+
+                    <textarea
+                      id="student-grievance"
+                      name="grievance"
+                      required
+                      rows={5}
+                      placeholder="State your grievance clearly..."
+                      className="w-full resize-none rounded-lg border border-[#dedbd6] bg-[#F8F7F4] px-3 py-2.5 text-[10px] leading-4 text-[#111111] outline-none transition-all placeholder:text-black/35 focus:border-[#30265F] focus:bg-white focus:ring-2 focus:ring-[#30265F]/10"
+                    />
+                  </div>
+
+                  {/* SUBMIT */}
+                  <button
+                    type="submit"
+                    className="group relative flex h-10 w-full items-center justify-center gap-2 overflow-hidden rounded-lg bg-[#17234B] text-[10px] font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
+                  >
+                    <span>Submit</span>
+
+                    <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+
+                    <span className="absolute bottom-0 left-5 right-5 h-0.5 origin-left scale-x-0 bg-[#D8B84C] transition-transform duration-300 group-hover:scale-x-100" />
+                  </button>
+
+                  {/* NOTE */}
+                  <div className="rounded-lg border-l-[3px] border-[#D8B84C] bg-[#F5F1E9] px-3 py-2.5">
+                    <p className="text-[9px] leading-4 text-[#111111]/75">
+                      <span className="font-bold text-[#8F1D1D]">
+                        Note:
+                      </span>{" "}
+                      You can also email your grievance to:{" "}
+                      <a
+                        href="mailto:cdoesupport@crescent.education"
+                        className="font-semibold text-[#30265F]"
+                      >
+                        cdoesupport@crescent.education
+                      </a>{" "}
+                      or submit your grievance in person to the Nodal Officer.
+                    </p>
+                  </div>
+                </form>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </main>
     </SiteLayout>
   );
 }
 
-/* =========================================================
-   QUICK CARD
-========================================================= */
-
+/* QUICK CARD */
 function QuickCard({
-  icon,
+  number,
   title,
-  text,
+  description,
+  icon: Icon,
+  accent,
   href,
 }: {
-  icon: React.ReactNode;
+  number: string;
   title: string;
-  text: string;
+  description: string;
+  icon: typeof GraduationCap;
+  accent: string;
   href: string;
 }) {
   return (
-    <Link
-      to={href}
-      className="group flex min-h-[72px] items-center gap-3 rounded-xl border border-[#172554]/10 bg-white px-3.5 py-3 shadow-[0_7px_22px_rgba(23,37,84,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-[#d4af37]/50 hover:shadow-[0_14px_30px_rgba(23,37,84,0.09)]"
+    <motion.div
+      initial={{ opacity: 0, y: 6 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="min-w-0"
     >
-      <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#172554] text-[#d4af37] transition-all duration-300 group-hover:bg-[#8f1d1d] group-hover:text-white">
-        {icon}
-      </span>
+      <Link
+        to={href}
+        className="group relative flex h-[88px] min-h-[88px] w-full items-center overflow-hidden rounded-[1rem] border border-[#D9D4CA] bg-white px-3.5 py-3 shadow-[0_5px_16px_rgba(31,35,43,0.05)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_9px_22px_rgba(31,35,43,0.09)]"
+      >
+        <div
+          className="absolute left-0 right-0 top-0 h-[2px]"
+          style={{ backgroundColor: accent }}
+        />
 
-      <span className="min-w-0">
-        <span className="block text-[8px] font-black uppercase tracking-[0.15em] text-[#8f1d1d]">
-          {title}
-        </span>
+        <div className="flex w-full items-center gap-2.5">
+          <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-[#17234B]">
+            <Icon className="size-3.5 text-[#D8B84C]" />
+          </div>
 
-        <span className="mt-0.5 block text-[10px] font-semibold text-[#172554]">
-          {text}
-        </span>
-      </span>
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-1.5">
+              <span
+                className="text-[8px] font-bold tracking-[0.1em]"
+                style={{ color: accent }}
+              >
+                {number}
+              </span>
 
-      <ArrowRight className="ml-auto size-3.5 shrink-0 text-[#172554]/25 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#8f1d1d]" />
-    </Link>
+              <h3 className="truncate text-[10px] font-bold text-[#20242B]">
+                {title}
+              </h3>
+            </div>
+
+            <p className="mt-0.5 truncate text-[8px] font-medium text-[#737782]">
+              {description}
+            </p>
+          </div>
+
+          <ArrowRight className="size-3 shrink-0 text-[#B9BDC5] transition-transform duration-300 group-hover:translate-x-1" />
+        </div>
+
+        <span className="absolute bottom-0 left-3 right-3 h-0.5 origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100" />
+      </Link>
+    </motion.div>
   );
 }
 
-/* =========================================================
-   FEATURE ITEM
-========================================================= */
-
-function FeatureItem({ text }: { text: string }) {
-  return (
-    <div className="flex items-center gap-2 rounded-lg bg-[#f7f4ee] px-3 py-2 text-[10px] font-medium text-[#172554]">
-      <CheckCircle2 className="size-3 shrink-0 text-[#8f1d1d]" />
-
-      {text}
-    </div>
-  );
-}
-
-/* =========================================================
-   SUPPORT CARD
-========================================================= */
-
+/* SUPPORT CARD */
 function SupportCard({
-  icon,
+  icon: Icon,
   title,
-  text,
+  description,
+  accent,
 }: {
-  icon: React.ReactNode;
+  icon: typeof ShieldCheck;
   title: string;
-  text: string;
+  description: string;
+  accent: string;
 }) {
   return (
-    <div className="flex items-center gap-3 rounded-xl border border-[#172554]/10 bg-white px-3.5 py-3 shadow-[0_7px_22px_rgba(23,37,84,0.04)]">
-      <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#d4af37]/15 text-[#8f1d1d]">
-        {icon}
+    <div className="group relative overflow-hidden rounded-xl border border-[#D9D4CA] bg-white px-3.5 py-3 shadow-[0_4px_14px_rgba(31,35,43,0.04)]">
+      <div
+        className="absolute left-0 top-0 h-full w-1"
+        style={{ backgroundColor: accent }}
+      />
+
+      <div className="flex items-center gap-2.5 pl-1">
+        <div
+          className="flex size-8 shrink-0 items-center justify-center rounded-lg"
+          style={{ backgroundColor: `${accent}15` }}
+        >
+          <Icon className="size-3.5" style={{ color: accent }} />
+        </div>
+
+        <div>
+          <h3 className="text-[10px] font-bold text-[#111111]">{title}</h3>
+          <p className="mt-0.5 text-[8px] text-black/55">{description}</p>
+        </div>
       </div>
 
-      <div>
-        <h4 className="text-[10px] font-black text-[#172554]">
-          {title}
-        </h4>
-
-        <p className="mt-0.5 text-[9px] leading-3.5 text-slate-500">
-          {text}
-        </p>
-      </div>
+      <span className="absolute bottom-0 left-3 right-3 h-0.5 origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100" />
     </div>
   );
 }

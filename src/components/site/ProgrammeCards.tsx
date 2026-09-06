@@ -1,23 +1,59 @@
+import { useState } from "react";
+
 import { Button } from "@/components/ui/button";
 import {
   certificationCourses,
   pgProgrammes,
   ugProgrammes,
 } from "@/data/site";
+import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
   BookOpen,
   CheckCircle2,
   Clock3,
+  Download,
   GraduationCap,
   Sparkles,
-  UserCheck,
+  X,
 } from "lucide-react";
 
 import { Reveal } from "./Reveal";
 import { Section, SectionHeading } from "./Section";
+
+/* =========================================================
+   PROGRAMME PHOTO
+========================================================= */
+
+import programmePhoto from "@/assets/campus-1.jpg";
+
+/* =========================================================
+   PROGRAMME BROCHURE
+========================================================= */
+
+import programmeBrochure from "@/assets/programme-brochure.pdf";
+
+/* =========================================================
+   ADMISSION PAGE FONT
+========================================================= */
+
+const circularFont = {
+  fontFamily:
+    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
+};
+
+/* =========================================================
+   PREMIUM COLOURS
+========================================================= */
+
+const NAVY = "#172554";
+const DARK_NAVY = "#0F172A";
+const BLUE = "#1E3A8A";
+const RED = "#8F1D1D";
+const YELLOW = "#D4AF37";
+const BLACK = "#111111";
 
 type Programme = {
   name: string;
@@ -63,334 +99,686 @@ function ProgrammeCard({
   index,
   type,
 }: ProgrammeCardProps) {
+  const [showBrochureForm, setShowBrochureForm] = useState(false);
+  const [brochureUnlocked, setBrochureUnlocked] = useState(false);
+
   const isPG = type === "pg";
   const isCertification = type === "certification";
 
   const programmeRoute = getProgrammeRoute(programme);
 
+  const handleBrochureSubmit = () => {
+    setBrochureUnlocked(true);
+  };
+
   return (
-    <Reveal delay={(index % 3) * 0.05}>
-      <motion.article
-        whileHover={{
-          y: -5,
-        }}
-        transition={{
-          duration: 0.28,
-          ease: [0.16, 1, 0.3, 1],
-        }}
-        className="
-          group
-          relative
-          flex
-          min-h-[214px]
-          flex-col
-          overflow-hidden
-          rounded-[1.2rem]
-          border
-          border-[#172554]/10
-          bg-white
-          p-3.5
-          shadow-[0_5px_18px_rgba(23,37,84,0.055)]
-          transition-all
-          duration-300
-          hover:border-[#d4af37]/55
-          hover:shadow-[0_16px_36px_rgba(23,37,84,0.12)]
-        "
-      >
-        {/* ================================================= */}
-        {/* PREMIUM TOP LINE */}
-        {/* ================================================= */}
-
-        <div
+    <>
+      <Reveal delay={(index % 3) * 0.05}>
+        <motion.article
+          whileHover={{
+            y: -5,
+          }}
+          transition={{
+            duration: 0.28,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+          style={circularFont}
           className="
-            absolute
-            inset-x-0
-            top-0
-            h-[3px]
-            bg-gradient-to-r
-            from-[#172554]
-            via-[#8f1d1d]
-            to-[#d4af37]
-          "
-        />
-
-        {/* ================================================= */}
-        {/* SOFT DECORATION */}
-        {/* ================================================= */}
-
-        <div
-          className="
-            pointer-events-none
-            absolute
-            -right-12
-            -top-12
-            size-28
-            rounded-full
-            bg-[#d4af37]/8
-            blur-2xl
+            group
+            relative
+            flex
+            min-h-[214px]
+            flex-col
+            overflow-hidden
+            rounded-[1.2rem]
+            border
+            border-[#172554]/10
+            bg-white
+            p-3.5
+            shadow-[0_5px_18px_rgba(15,23,42,0.055)]
             transition-all
-            duration-500
-            group-hover:bg-[#8f1d1d]/10
+            duration-300
+            hover:border-[#D4AF37]/55
+            hover:shadow-[0_16px_36px_rgba(15,23,42,0.10)]
           "
-        />
+        >
+          {/* ================================================= */}
+          {/* PREMIUM TOP LINE */}
+          {/* ================================================= */}
 
-        <div
-          className="
-            pointer-events-none
-            absolute
-            -bottom-10
-            -left-10
-            size-20
-            rounded-full
-            bg-[#172554]/[0.025]
-            blur-xl
-            opacity-0
-            transition-opacity
-            duration-500
-            group-hover:opacity-100
-          "
-        />
-
-        {/* ================================================= */}
-        {/* HEADER */}
-        {/* ================================================= */}
-
-        <div className="relative flex items-center justify-between">
-          {/* ICON */}
           <div
             className="
+              absolute
+              inset-x-0
+              top-0
+              h-[3px]
+              bg-gradient-to-r
+              from-[#172554]
+              via-[#8F1D1D]
+              to-[#D4AF37]
+            "
+          />
+
+          {/* ================================================= */}
+          {/* SOFT DECORATION */}
+          {/* ================================================= */}
+
+          <div
+            className="
+              pointer-events-none
+              absolute
+              -right-12
+              -top-12
+              size-28
+              rounded-full
+              bg-[#D4AF37]/10
+              blur-2xl
+              transition-all
+              duration-500
+            "
+          />
+
+          <div
+            className="
+              pointer-events-none
+              absolute
+              -bottom-10
+              -left-10
+              size-20
+              rounded-full
+              bg-[#172554]/[0.025]
+              blur-xl
+              opacity-0
+              transition-opacity
+              duration-500
+              group-hover:opacity-100
+            "
+          />
+
+          {/* ================================================= */}
+          {/* HEADER */}
+          {/* ================================================= */}
+
+          <div className="relative flex items-center justify-between">
+            {/* ICON */}
+
+            <div
+              className="
+                flex
+                size-9
+                items-center
+                justify-center
+                rounded-[0.7rem]
+                bg-[#172554]
+                text-[#D4AF37]
+                shadow-[0_5px_12px_rgba(23,37,84,0.15)]
+                transition-all
+                duration-300
+                group-hover:bg-[#172554]
+                group-hover:text-[#D4AF37]
+              "
+            >
+              {isCertification ? (
+                <Sparkles className="size-4" />
+              ) : (
+                <GraduationCap className="size-4" />
+              )}
+            </div>
+
+            {/* PROGRAMME TYPE */}
+
+            <span
+              className="
+                rounded-full
+                bg-[#F4F1E8]
+                px-2
+                py-1
+                text-[7px]
+                font-bold
+                uppercase
+                tracking-[0.11em]
+                text-[#111111]
+              "
+            >
+              {isCertification
+                ? "Certification"
+                : isPG
+                  ? "Postgraduate"
+                  : "Undergraduate"}
+            </span>
+          </div>
+
+          {/* ================================================= */}
+          {/* TITLE */}
+          {/* ================================================= */}
+
+          <div className="relative mt-3">
+            <h4
+              className="
+                text-[15px]
+                font-bold
+                leading-tight
+                tracking-[-0.01em]
+                text-[#111111]
+              "
+            >
+              {programme.name}
+            </h4>
+
+            <p
+              className="
+                mt-1
+                line-clamp-1
+                text-[9px]
+                font-medium
+                leading-4
+                text-[#111111]
+              "
+            >
+              {programme.full}
+            </p>
+          </div>
+
+          {/* ================================================= */}
+          {/* DETAILS + PHOTO */}
+          {/* ================================================= */}
+
+          <div className="relative mt-3 grid grid-cols-[1fr_58px] gap-2">
+            {/* LEFT SIDE */}
+
+            <div className="flex flex-col gap-1.5">
+              {/* DURATION */}
+
+              <div
+                className="
+                  rounded-[0.7rem]
+                  border
+                  border-[#172554]/10
+                  bg-[#172554]/[0.045]
+                  px-2
+                  py-2
+                  transition-all
+                  duration-300
+                  group-hover:border-[#172554]/15
+                "
+              >
+                <div className="flex items-center gap-1 text-[#172554]">
+                  <Clock3 className="size-3" />
+
+                  <span className="text-[7px] font-bold uppercase tracking-wide text-[#111111]">
+                    Duration
+                  </span>
+                </div>
+
+                <p className="mt-1 line-clamp-1 text-[9px] font-bold text-[#111111]">
+                  {programme.duration}
+                </p>
+              </div>
+
+              {/* DOWNLOAD BROCHURE */}
+
+              {!brochureUnlocked ? (
+                <button
+                  type="button"
+                  onClick={() => setShowBrochureForm(true)}
+                  className="
+                    flex
+                    w-full
+                    items-center
+                    justify-center
+                    gap-1
+                    rounded-[0.7rem]
+                    border
+                    border-[#D4AF37]/35
+                    bg-[#fffaf0]
+                    px-2
+                    py-2
+                    text-[7px]
+                    font-bold
+                    text-[#111111]
+                    transition-all
+                    duration-300
+                    hover:border-[#D4AF37]
+                    hover:bg-[#D4AF37]/10
+                  "
+                >
+                  <Download className="size-3 text-[#8F1D1D]" />
+
+                  Download Brochure
+                </button>
+              ) : (
+                <a
+                  href={programmeBrochure}
+                  download
+                  onClick={() => setShowBrochureForm(false)}
+                  className="
+                    flex
+                    w-full
+                    items-center
+                    justify-center
+                    gap-1
+                    rounded-[0.7rem]
+                    border
+                    border-[#D4AF37]
+                    bg-[#D4AF37]
+                    px-2
+                    py-2
+                    text-[7px]
+                    font-bold
+                    text-[#111111]
+                    transition-all
+                    duration-300
+                    hover:bg-[#E2C45A]
+                  "
+                >
+                  <Download className="size-3" />
+
+                  Download Brochure
+                </a>
+              )}
+            </div>
+
+            {/* ================================================= */}
+            {/* RIGHT SIDE SQUARE PHOTO */}
+            {/* ================================================= */}
+
+            <div
+              className="
+                relative
+                aspect-square
+                w-[58px]
+                overflow-hidden
+                rounded-[0.7rem]
+                border
+                border-[#D4AF37]/25
+                bg-[#F4F1E8]
+              "
+            >
+              <img
+                src={programmePhoto}
+                alt="Programme"
+                className="
+                  h-full
+                  w-full
+                  object-cover
+                  transition-transform
+                  duration-500
+                  group-hover:scale-105
+                "
+              />
+
+              {/* SUBTLE GOLD OVERLAY */}
+
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-0
+                  bg-gradient-to-t
+                  from-[#172554]/20
+                  via-transparent
+                  to-transparent
+                "
+              />
+            </div>
+          </div>
+
+          {/* ================================================= */}
+          {/* SMALL PREMIUM INDICATOR */}
+          {/* ================================================= */}
+
+          <div className="mt-2.5 flex items-center gap-1.5">
+            <CheckCircle2 className="size-3.5 text-[#8F1D1D]" />
+
+            <span className="text-[7px] font-semibold text-black/55">
+              Flexible distance learning
+            </span>
+          </div>
+
+          {/* ================================================= */}
+          {/* BUTTONS */}
+          {/* ================================================= */}
+
+          <div className="relative mt-auto flex gap-1.5 pt-3">
+            {/* EXPLORE */}
+
+            <Button
+              variant="outline"
+              size="pill"
+              className="
+                h-8
+                flex-1
+                rounded-full
+                border-[#172554]/20
+                bg-white
+                px-2
+                text-[9px]
+                font-semibold
+                text-[#111111]
+                shadow-none
+                transition-all
+                duration-300
+                hover:border-[#172554]
+                hover:bg-[#172554]
+                hover:text-white
+              "
+              asChild
+            >
+              <Link to={programmeRoute}>
+                Explore
+
+                <ArrowRight className="size-3 transition-transform duration-300 group-hover:translate-x-0.5" />
+              </Link>
+            </Button>
+
+            {/* APPLY */}
+
+            <Button
+              size="pill"
+              className="
+                h-8
+                flex-1
+                rounded-full
+                border-0
+                bg-[#8F1D1D]
+                px-2
+                text-[9px]
+                font-bold
+                text-white
+                shadow-[0_5px_12px_rgba(143,29,29,0.15)]
+                transition-all
+                duration-300
+                hover:bg-[#172554]
+                hover:shadow-[0_6px_15px_rgba(23,37,84,0.18)]
+              "
+              asChild
+            >
+              <Link
+                to="/admission"
+                hash="how-to-apply"
+              >
+                Apply Now
+
+                <ArrowRight className="size-3 transition-transform duration-300 group-hover:translate-x-0.5" />
+              </Link>
+            </Button>
+          </div>
+
+          {/* ================================================= */}
+          {/* ONLY GOLD HOVER LINE */}
+          {/* ================================================= */}
+
+          <div
+            className="
+              pointer-events-none
+              absolute
+              bottom-0
+              left-1/2
+              h-[2px]
+              w-0
+              -translate-x-1/2
+              rounded-full
+              bg-[#D4AF37]
+              transition-all
+              duration-500
+              group-hover:w-16
+            "
+          />
+        </motion.article>
+      </Reveal>
+
+      {/* =======================================================
+          BROCHURE ENQUIRY MODAL
+      ======================================================= */}
+
+      <AnimatePresence>
+        {showBrochureForm && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="
+              fixed
+              inset-0
+              z-[100]
               flex
-              size-9
               items-center
               justify-center
-              rounded-[0.7rem]
-              bg-[#172554]
-              text-[#d4af37]
-              shadow-[0_5px_12px_rgba(23,37,84,0.13)]
-              transition-all
-              duration-300
-              group-hover:bg-[#8f1d1d]
-              group-hover:text-white
-              group-hover:shadow-[0_7px_15px_rgba(143,29,29,0.18)]
+              bg-[#0B1224]/80
+              px-4
+              py-5
+              backdrop-blur-md
             "
+            onClick={() => setShowBrochureForm(false)}
           >
-            {isCertification ? (
-              <Sparkles className="size-4" />
-            ) : (
-              <GraduationCap className="size-4" />
-            )}
-          </div>
-
-          {/* PROGRAMME TYPE */}
-          <span
-            className="
-              rounded-full
-              border
-              border-[#d4af37]/35
-              bg-[#f7f4ee]
-              px-2
-              py-1
-              text-[7px]
-              font-bold
-              uppercase
-              tracking-[0.11em]
-              text-[#8f1d1d]
-            "
-          >
-            {isCertification
-              ? "Certification"
-              : isPG
-                ? "Postgraduate"
-                : "Undergraduate"}
-          </span>
-        </div>
-
-        {/* ================================================= */}
-        {/* TITLE */}
-        {/* ================================================= */}
-
-        <div className="relative mt-3">
-          <h4
-            className="
-              font-display
-              text-[15px]
-              font-bold
-              leading-tight
-              tracking-[-0.01em]
-              text-[#172554]
-              transition-colors
-              duration-300
-              group-hover:text-[#8f1d1d]
-            "
-          >
-            {programme.name}
-          </h4>
-
-          <p
-            className="
-              mt-1
-              line-clamp-1
-              text-[9px]
-              font-medium
-              leading-4
-              text-[#8f1d1d]/80
-            "
-          >
-            {programme.full}
-          </p>
-        </div>
-
-        {/* ================================================= */}
-        {/* DETAILS */}
-        {/* ================================================= */}
-
-        <div className="relative mt-3 grid grid-cols-2 gap-1.5">
-          {/* DURATION */}
-
-          <div
-            className="
-              rounded-[0.7rem]
-              border
-              border-[#172554]/6
-              bg-[#172554]/[0.045]
-              px-2
-              py-2
-              transition-all
-              duration-300
-              group-hover:border-[#172554]/10
-            "
-          >
-            <div className="flex items-center gap-1 text-[#172554]">
-              <Clock3 className="size-3" />
-
-              <span className="text-[7px] font-bold uppercase tracking-wide">
-                Duration
-              </span>
-            </div>
-
-            <p className="mt-1 line-clamp-1 text-[9px] font-bold text-[#172554]">
-              {programme.duration}
-            </p>
-          </div>
-
-          {/* ELIGIBILITY */}
-
-          <div
-            className="
-              rounded-[0.7rem]
-              border
-              border-[#d4af37]/15
-              bg-[#d4af37]/[0.07]
-              px-2
-              py-2
-              transition-all
-              duration-300
-              group-hover:border-[#d4af37]/30
-            "
-          >
-            <div className="flex items-center gap-1 text-[#8f1d1d]">
-              <UserCheck className="size-3" />
-
-              <span className="text-[7px] font-bold uppercase tracking-wide">
-                Eligibility
-              </span>
-            </div>
-
-            <p className="mt-1 line-clamp-1 text-[9px] font-bold text-[#172554]">
-              {programme.eligibility}
-            </p>
-          </div>
-        </div>
-
-        {/* ================================================= */}
-        {/* BUTTONS */}
-        {/* ================================================= */}
-
-        <div className="relative mt-auto flex gap-1.5 pt-3">
-          {/* EXPLORE */}
-
-          <Button
-            variant="outline"
-            size="pill"
-            className="
-              h-8
-              flex-1
-              rounded-full
-              border-[#172554]/15
-              bg-white
-              px-2
-              text-[9px]
-              font-semibold
-              text-[#172554]
-              shadow-none
-              transition-all
-              duration-300
-              hover:border-[#172554]
-              hover:bg-[#172554]
-              hover:text-white
-            "
-            asChild
-          >
-            <Link to={programmeRoute}>
-              Explore
-              <ArrowRight className="size-3 transition-transform duration-300 group-hover:translate-x-0.5" />
-            </Link>
-          </Button>
-
-          {/* APPLY */}
-
-          <Button
-            size="pill"
-            className="
-              h-8
-              flex-1
-              rounded-full
-              border-0
-              bg-[#8f1d1d]
-              px-2
-              text-[9px]
-              font-bold
-              text-white
-              shadow-[0_5px_12px_rgba(143,29,29,0.14)]
-              transition-all
-              duration-300
-              hover:bg-[#172554]
-              hover:shadow-[0_6px_15px_rgba(23,37,84,0.16)]
-            "
-            asChild
-          >
-            <Link
-              to="/admission"
-              hash="how-to-apply"
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 20,
+                scale: 0.96,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+              }}
+              exit={{
+                opacity: 0,
+                y: 20,
+                scale: 0.96,
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 24,
+              }}
+              className="
+                relative
+                max-h-[92vh]
+                w-full
+                max-w-lg
+                overflow-y-auto
+                rounded-[1.5rem]
+                border
+                border-white/20
+                bg-white
+                shadow-[0_30px_80px_rgba(0,0,0,0.3)]
+              "
+              onClick={(event) => event.stopPropagation()}
             >
-              Apply Now
-              <ArrowRight className="size-3 transition-transform duration-300 group-hover:translate-x-0.5" />
-            </Link>
-          </Button>
-        </div>
+              {/* ================================================= */}
+              {/* MODAL HEADER */}
+              {/* ================================================= */}
 
-        {/* ================================================= */}
-        {/* HOVER GOLD EDGE */}
-        {/* ================================================= */}
+              <div
+                className="
+                  relative
+                  overflow-hidden
+                  bg-[#172554]
+                  px-5
+                  py-5
+                "
+              >
+                {/* GOLD GLOW */}
 
-        <div
-          className="
-            pointer-events-none
-            absolute
-            bottom-0
-            left-1/2
-            h-[2px]
-            w-0
-            -translate-x-1/2
-            rounded-full
-            bg-[#d4af37]
-            transition-all
-            duration-500
-            group-hover:w-16
-          "
-        />
-      </motion.article>
-    </Reveal>
+                <div
+                  className="
+                    pointer-events-none
+                    absolute
+                    -right-10
+                    -top-10
+                    size-28
+                    rounded-full
+                    bg-[#D4AF37]/15
+                    blur-2xl
+                  "
+                />
+
+                {/* RED GLOW */}
+
+                <div
+                  className="
+                    pointer-events-none
+                    absolute
+                    -bottom-8
+                    -left-8
+                    size-24
+                    rounded-full
+                    bg-[#8F1D1D]/25
+                    blur-2xl
+                  "
+                />
+
+                {/* CLOSE */}
+
+                <button
+                  type="button"
+                  onClick={() => setShowBrochureForm(false)}
+                  aria-label="Close enquiry form"
+                  className="
+                    absolute
+                    right-3
+                    top-3
+                    flex
+                    size-8
+                    items-center
+                    justify-center
+                    rounded-full
+                    border
+                    border-white/20
+                    bg-white/10
+                    text-white
+                    transition-all
+                    duration-300
+                    hover:bg-white/20
+                  "
+                >
+                  <X className="size-4" />
+                </button>
+
+                <div className="relative">
+                  <div className="mb-2 flex items-center gap-2">
+                    <span className="h-1 w-6 rounded-full bg-[#D4AF37]" />
+
+                    <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-[#D4AF37]">
+                      Programme Brochure
+                    </span>
+                  </div>
+
+                  <h2
+                    className="text-xl font-bold text-white"
+                    style={circularFont}
+                  >
+                    Get the Programme Brochure
+                  </h2>
+
+                  <p
+                    className="mt-1 max-w-sm text-[10px] leading-4 text-white/65"
+                    style={circularFont}
+                  >
+                    Fill in your details to unlock the programme brochure.
+                  </p>
+                </div>
+              </div>
+
+              {/* ================================================= */}
+              {/* ENQUIRY FORM */}
+              {/* ================================================= */}
+
+              {!brochureUnlocked ? (
+                <div className="p-5">
+                  <EnquiryForm
+                    language="en"
+                    onSubmitted={handleBrochureSubmit}
+                  />
+                </div>
+              ) : (
+                <div className="p-5">
+                  <div
+                    className="
+                      rounded-[1rem]
+                      border
+                      border-[#D4AF37]/30
+                      bg-[#fffaf0]
+                      p-5
+                      text-center
+                    "
+                  >
+                    <div
+                      className="
+                        mx-auto
+                        flex
+                        size-12
+                        items-center
+                        justify-center
+                        rounded-full
+                        bg-[#172554]
+                        text-[#D4AF37]
+                      "
+                    >
+                      <CheckCircle2 className="size-6" />
+                    </div>
+
+                    <h3
+                      className="
+                        mt-3
+                        text-base
+                        font-bold
+                        text-[#111111]
+                      "
+                      style={circularFont}
+                    >
+                      Brochure Unlocked
+                    </h3>
+
+                    <p
+                      className="
+                        mt-1
+                        text-[9px]
+                        leading-4
+                        text-black/60
+                      "
+                      style={circularFont}
+                    >
+                      Your details have been submitted successfully.
+                    </p>
+
+                    <a
+                      href={programmeBrochure}
+                      download
+                      onClick={() => setShowBrochureForm(false)}
+                      className="
+                        mt-4
+                        inline-flex
+                        items-center
+                        justify-center
+                        gap-2
+                        rounded-full
+                        bg-[#8F1D1D]
+                        px-5
+                        py-2.5
+                        text-[9px]
+                        font-bold
+                        text-white
+                        shadow-[0_7px_18px_rgba(143,29,29,0.16)]
+                        transition-all
+                        duration-300
+                        hover:bg-[#172554]
+                      "
+                      style={circularFont}
+                    >
+                      <Download className="size-3.5" />
+
+                      Download PDF
+                    </a>
+                  </div>
+                </div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 
@@ -417,7 +805,7 @@ function ProgrammeSection({
       className="
         scroll-mt-20
         border-t
-        border-[#172554]/8
+        border-[#172554]/10
         pt-3
         first:border-t-0
       "
@@ -431,7 +819,7 @@ function ProgrammeSection({
           {/* EYEBROW */}
 
           <div className="mb-1 flex items-center gap-2">
-            <span className="h-[2px] w-7 rounded-full bg-[#8f1d1d]" />
+            <span className="h-[2px] w-7 rounded-full bg-[#172554]" />
 
             <span
               className="
@@ -439,7 +827,7 @@ function ProgrammeSection({
                 font-bold
                 uppercase
                 tracking-[0.22em]
-                text-[#d4af37]
+                text-[#8F1D1D]
               "
             >
               {type === "ug"
@@ -448,27 +836,39 @@ function ProgrammeSection({
                   ? "PG Programmes"
                   : "Professional"}
             </span>
+
+            <span className="size-1.5 rounded-full bg-[#D4AF37]" />
           </div>
 
           {/* TITLE */}
 
           <h3
             className="
-              font-display
               text-[1.15rem]
               font-bold
               leading-tight
               tracking-tight
-              text-[#172554]
+              text-[#111111]
               sm:text-[1.35rem]
             "
+            style={circularFont}
           >
             {title}
           </h3>
 
           {/* SUBTITLE */}
 
-          <p className="mt-0.5 max-w-2xl text-[8px] leading-4 text-slate-500 sm:text-[9px]">
+          <p
+            className="
+              mt-0.5
+              max-w-2xl
+              text-[8px]
+              leading-4
+              text-black/55
+              sm:text-[9px]
+            "
+            style={circularFont}
+          >
             {subtitle}
           </p>
         </div>
@@ -482,18 +882,16 @@ function ProgrammeSection({
             items-center
             gap-1
             rounded-full
-            border
-            border-[#d4af37]/25
-            bg-[#d4af37]/[0.07]
+            bg-[#F4F1E8]
             px-2
             py-1
             text-[7px]
             font-bold
-            text-[#8f1d1d]
+            text-[#111111]
             sm:flex
           "
         >
-          <BookOpen className="size-2.5" />
+          <BookOpen className="size-2.5 text-[#8F1D1D]" />
 
           {items.length} Programme
           {items.length > 1 ? "s" : ""}
@@ -534,6 +932,7 @@ export function ProgrammeCards({
         bg-white
         !py-0
       "
+      style={circularFont}
     >
       {/* ================================================= */}
       {/* MAIN HEADING */}
@@ -560,9 +959,7 @@ export function ProgrammeCards({
             : "space-y-2.5"
         }
       >
-        {/* ================================================= */}
         {/* UG */}
-        {/* ================================================= */}
 
         <ProgrammeSection
           id="ug"
@@ -572,9 +969,7 @@ export function ProgrammeCards({
           items={ugProgrammes}
         />
 
-        {/* ================================================= */}
         {/* PG */}
-        {/* ================================================= */}
 
         <ProgrammeSection
           id="pg"
@@ -584,9 +979,7 @@ export function ProgrammeCards({
           items={pgProgrammes}
         />
 
-        {/* ================================================= */}
         {/* CERTIFICATION */}
-        {/* ================================================= */}
 
         <ProgrammeSection
           id="certification"
@@ -609,11 +1002,11 @@ export function ProgrammeCards({
           rounded-[1.15rem]
           bg-gradient-to-r
           from-[#172554]
-          via-[#243b6b]
-          to-[#8f1d1d]
+          via-[#1E3A8A]
+          to-[#8F1D1D]
           px-4
           py-3
-          shadow-[0_10px_26px_rgba(23,37,84,0.12)]
+          shadow-[0_10px_26px_rgba(23,37,84,0.15)]
           sm:px-5
         "
       >
@@ -627,12 +1020,12 @@ export function ProgrammeCards({
             -top-14
             size-32
             rounded-full
-            bg-[#d4af37]/12
+            bg-[#D4AF37]/15
             blur-3xl
           "
         />
 
-        {/* MAROON GLOW */}
+        {/* RED GLOW */}
 
         <div
           className="
@@ -642,7 +1035,7 @@ export function ProgrammeCards({
             -left-12
             size-28
             rounded-full
-            bg-[#8f1d1d]/20
+            bg-[#8F1D1D]/25
             blur-3xl
           "
         />
@@ -662,7 +1055,7 @@ export function ProgrammeCards({
 
           <div>
             <div className="flex items-center gap-1.5">
-              <CheckCircle2 className="size-3 text-[#d4af37]" />
+              <CheckCircle2 className="size-3 text-[#D4AF37]" />
 
               <p
                 className="
@@ -670,7 +1063,7 @@ export function ProgrammeCards({
                   font-bold
                   uppercase
                   tracking-[0.18em]
-                  text-[#d6b66a]
+                  text-[#D4AF37]
                 "
               >
                 Admissions 2026–2027
@@ -681,7 +1074,7 @@ export function ProgrammeCards({
               Ready to start your next chapter?
             </h3>
 
-            <p className="mt-0.5 text-[8px] text-white/60">
+            <p className="mt-0.5 text-[8px] text-white/65">
               Apply online and begin your learning journey with CDOE.
             </p>
           </div>
@@ -694,16 +1087,16 @@ export function ProgrammeCards({
               shrink-0
               rounded-full
               border-0
-              bg-[#d4af37]
+              bg-[#D4AF37]
               px-4
               text-[9px]
               font-bold
-              text-[#172554]
+              text-[#111111]
               shadow-[0_7px_18px_rgba(0,0,0,0.15)]
               transition-all
               duration-300
               hover:-translate-y-0.5
-              hover:bg-[#e2c45a]
+              hover:bg-[#E2C45A]
             "
             asChild
           >
@@ -712,6 +1105,7 @@ export function ProgrammeCards({
               hash="how-to-apply"
             >
               Apply Now
+
               <ArrowRight className="size-3" />
             </Link>
           </Button>

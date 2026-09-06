@@ -2,6 +2,7 @@ import { useState, type ReactNode } from "react";
 
 import programmePhoto from "@/assets/campus-1.jpg";
 
+import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { ProgrammeCards } from "@/components/site/ProgrammeCards";
 import { SiteLayout } from "@/components/site/SiteLayout";
 
@@ -11,11 +12,23 @@ import {
   ArrowRight,
   BookOpen,
   CheckCircle2,
-  Download,
   GraduationCap,
   Sparkles,
   X,
 } from "lucide-react";
+
+/* ========================================================= */
+/* FONT */
+/* ========================================================= */
+
+const circularFont = {
+  fontFamily:
+    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
+};
+
+/* ========================================================= */
+/* PAGE SEO */
+/* ========================================================= */
 
 const title = "Programmes Offered — UG & PG Distance Education Courses";
 
@@ -37,6 +50,10 @@ export const Route = createFileRoute("/programmes")({
   component: ProgrammesPage,
 });
 
+/* ========================================================= */
+/* PROGRAMMES PAGE */
+/* ========================================================= */
+
 function ProgrammesPage() {
   const [showBrochureForm, setShowBrochureForm] = useState(false);
   const [showProgrammeDrawer, setShowProgrammeDrawer] = useState(false);
@@ -51,18 +68,21 @@ function ProgrammesPage() {
       {/* PROGRAMME HERO */}
       {/* ========================================================= */}
 
-      <section className="relative overflow-hidden bg-[#f7f4ee]">
+      <section
+        className="relative overflow-hidden bg-[#f7f4ee]"
+        style={circularFont}
+      >
         {/* TOP LINE */}
         <div className="h-[3px] bg-gradient-to-r from-[#172554] via-[#8f1d1d] to-[#d4af37]" />
 
         {/* BACKGROUND GLOW */}
-        <div className="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full bg-[#d4af37]/10 blur-3xl" />
+        <div className="pointer-events-none absolute -right-24 -top-24 size-64 rounded-full bg-[#d4af37]/10 blur-3xl" />
 
-        <div className="pointer-events-none absolute -bottom-24 -left-24 size-72 rounded-full bg-[#8f1d1d]/6 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -left-24 size-64 rounded-full bg-[#8f1d1d]/6 blur-3xl" />
 
         {/* HERO CONTAINER */}
-        <div className="relative mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-6">
-          <div className="grid items-center gap-5 lg:grid-cols-[1fr_0.88fr] lg:gap-8">
+        <div className="relative mx-auto max-w-7xl px-4 py-3.5 sm:px-6 sm:py-4 lg:px-8 lg:py-5">
+          <div className="grid items-center gap-4 lg:grid-cols-[1fr_0.88fr] lg:gap-7">
             {/* ================================================= */}
             {/* LEFT CONTENT */}
             {/* ================================================= */}
@@ -77,33 +97,36 @@ function ProgrammesPage() {
               className="min-w-0"
             >
               {/* EYEBROW */}
-              <div className="mb-2 flex items-center gap-2">
-                <span className="h-[2px] w-8 rounded-full bg-[#8f1d1d]" />
+              <div className="mb-1.5 flex items-center gap-2">
+                <span className="h-[2px] w-7 rounded-full bg-[#8f1d1d]" />
 
-                <span className="text-[8px] font-bold uppercase tracking-[0.22em] text-[#d4af37]">
+                <span className="text-[7px] font-bold uppercase tracking-[0.2em] text-[#d4af37]">
                   Programmes Offered
                 </span>
               </div>
 
               {/* TITLE */}
-              <h1 className="font-display max-w-2xl text-[1.95rem] font-bold leading-[1.02] tracking-[-0.045em] text-[#172554] sm:text-[2.4rem] lg:text-[2.85rem]">
+              <h1
+                className="font-display max-w-2xl text-[1.7rem] font-bold leading-[1.03] tracking-[-0.04em] text-[#111111] sm:text-[2rem] lg:text-[2.4rem]"
+                style={circularFont}
+              >
                 Shape Your Future With{" "}
-                <span className="relative text-[#8f1d1d]">
+                <span className="relative text-[#111111]">
                   The Right Programme
 
-                  <span className="absolute -bottom-1 left-0 h-[2px] w-12 rounded-full bg-[#d4af37]" />
+                  <span className="absolute -bottom-1 left-0 h-[2px] w-10 rounded-full bg-[#d4af37]" />
                 </span>
               </h1>
 
               {/* DESCRIPTION */}
-              <p className="mt-2.5 max-w-xl text-[11px] leading-[1.55] text-slate-500 sm:text-xs">
+              <p className="mt-2 max-w-xl text-[9px] leading-[1.5] text-[#111111] sm:text-[10px]">
                 Explore flexible undergraduate, postgraduate and professional
                 programmes designed for learners who want quality education
                 without putting their career on hold.
               </p>
 
               {/* QUICK FEATURES */}
-              <div className="mt-3 grid max-w-lg grid-cols-3 gap-1.5">
+              <div className="mt-2.5 grid max-w-lg grid-cols-3 gap-1.5">
                 <MiniFeature
                   icon={GraduationCap}
                   title="UG"
@@ -123,58 +146,31 @@ function ProgrammesPage() {
                 />
               </div>
 
-              {/* ACTION BUTTONS */}
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {/* ================================================= */}
-                {/* EXPLORE PROGRAMMES */}
-                {/* ================================================= */}
+              {/* ================================================= */}
+              {/* APPLY BUTTON ONLY */}
+              {/* ================================================= */}
 
-                <button
-                  type="button"
-                  onClick={() => setShowProgrammeDrawer(true)}
-                  className="
-                    group inline-flex items-center gap-1.5
-                    rounded-full
-                    bg-[#172554]
-                    px-3.5 py-1.5
-                    text-[9px] font-bold text-white
-                    shadow-[0_6px_16px_rgba(23,37,84,0.15)]
-                    transition-all duration-300
-                    hover:-translate-y-0.5
-                    hover:bg-[#243b6b]
-                  "
-                >
-                  Explore Programmes
-
-                  <ArrowRight
-                    className="
-                      size-2.5
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-0.5
-                    "
-                  />
-                </button>
-
-              
-
-                {/* ================================================= */}
-                {/* APPLY */}
-                {/* ================================================= */}
-
+              <div className="mt-2.5">
                 <Link
                   to="/admission"
                   hash="how-to-apply"
                   className="
-                    group inline-flex items-center gap-1.5
+                    group
+                    relative
+                    inline-flex
+                    items-center
+                    gap-1.5
                     rounded-full
                     bg-[#8f1d1d]
-                    px-3.5 py-1.5
-                    text-[9px] font-bold text-white
+                    px-3.5
+                    py-1.5
+                    text-[8px]
+                    font-bold
+                    text-white
                     shadow-[0_6px_16px_rgba(143,29,29,0.14)]
-                    transition-all duration-300
+                    transition-all
+                    duration-300
                     hover:-translate-y-0.5
-                    hover:bg-[#172554]
                   "
                 >
                   Apply Now
@@ -187,14 +183,31 @@ function ProgrammesPage() {
                       group-hover:translate-x-0.5
                     "
                   />
+
+                  {/* GOLD HOVER LINE */}
+                  <span
+                    className="
+                      absolute
+                      -bottom-1
+                      left-1/2
+                      h-[2px]
+                      w-0
+                      -translate-x-1/2
+                      rounded-full
+                      bg-[#d4af37]
+                      transition-all
+                      duration-300
+                      group-hover:w-8
+                    "
+                  />
                 </Link>
               </div>
 
               {/* TRUST LINE */}
-              <div className="mt-2.5 flex items-center gap-1.5">
+              <div className="mt-2 flex items-center gap-1.5">
                 <CheckCircle2 className="size-2.5 text-[#8f1d1d]" />
 
-                <span className="text-[7px] font-semibold tracking-wide text-slate-500">
+                <span className="text-[6px] font-semibold tracking-wide text-[#111111]">
                   Flexible learning • Career focused • Student friendly
                 </span>
               </div>
@@ -211,37 +224,39 @@ function ProgrammesPage() {
                 duration: 0.7,
                 ease: "easeOut",
               }}
-              className="relative mx-auto w-full max-w-[560px] lg:ml-auto"
+              className="relative mx-auto w-full max-w-[540px] lg:ml-auto"
             >
               {/* GOLD OUTER GLOW */}
-              <div className="absolute -inset-1 rounded-[1.35rem] bg-gradient-to-br from-[#d4af37]/40 via-transparent to-[#8f1d1d]/25 blur-[2px]" />
+              <div className="absolute -inset-1 rounded-[1.25rem] bg-gradient-to-br from-[#d4af37]/40 via-transparent to-[#8f1d1d]/25 blur-[2px]" />
 
               {/* IMAGE FRAME */}
               <div
                 className="
-                  relative overflow-hidden
-                  rounded-[1.3rem]
-                  border border-[#172554]/10
+                  relative
+                  overflow-hidden
+                  rounded-[1.2rem]
+                  border
+                  border-[#172554]/10
                   bg-white
                   p-1.5
                   shadow-[0_14px_35px_rgba(23,37,84,0.13)]
                 "
               >
-                <div className="relative overflow-hidden rounded-[1rem]">
+                <div className="relative overflow-hidden rounded-[0.95rem]">
                   <img
                     src={programmePhoto}
                     alt="Crescent Institute campus"
                     width={1200}
                     height={750}
                     className="
-                      h-[190px]
+                      h-[165px]
                       w-full
                       object-cover
                       transition-transform
                       duration-700
                       hover:scale-105
-                      sm:h-[225px]
-                      lg:h-[255px]
+                      sm:h-[195px]
+                      lg:h-[225px]
                     "
                   />
 
@@ -255,11 +270,12 @@ function ProgrammesPage() {
                         rounded-full
                         border border-white/20
                         bg-[#172554]/60
-                        px-2 py-1
-                        text-[6px]
+                        px-2
+                        py-1
+                        text-[5px]
                         font-bold
                         uppercase
-                        tracking-[0.16em]
+                        tracking-[0.15em]
                         text-white
                         backdrop-blur-md
                       "
@@ -272,27 +288,35 @@ function ProgrammesPage() {
                   <div className="absolute bottom-3 left-3 right-3">
                     <div className="flex items-end justify-between gap-2">
                       <div>
-                        <p className="text-[7px] font-bold uppercase tracking-[0.2em] text-[#d4af37]">
+                        <p className="text-[6px] font-bold uppercase tracking-[0.18em] text-[#d4af37]">
                           Crescent Education
                         </p>
 
-                        <h2 className="mt-0.5 font-display text-base font-bold leading-tight text-white sm:text-lg">
+                        <h2
+                          className="mt-0.5 font-display text-sm font-bold leading-tight text-white sm:text-base"
+                          style={circularFont}
+                        >
                           Learn. Grow. Lead.
                         </h2>
 
-                        <div className="mt-1 h-[2px] w-8 rounded-full bg-[#d4af37]" />
+                        <div className="mt-1 h-[2px] w-7 rounded-full bg-[#d4af37]" />
                       </div>
 
                       <div
                         className="
-                          flex size-8 shrink-0 items-center justify-center
+                          flex
+                          size-7
+                          shrink-0
+                          items-center
+                          justify-center
                           rounded-full
-                          border border-white/20
+                          border
+                          border-white/20
                           bg-white/10
                           backdrop-blur-md
                         "
                       >
-                        <GraduationCap className="size-3.5 text-white" />
+                        <GraduationCap className="size-3 text-white" />
                       </div>
                     </div>
                   </div>
@@ -308,27 +332,39 @@ function ProgrammesPage() {
                   duration: 0.4,
                 }}
                 className="
-                  absolute -bottom-3 left-4
-                  flex items-center gap-1.5
+                  absolute
+                  -bottom-3
+                  left-4
+                  flex
+                  items-center
+                  gap-1.5
                   rounded-xl
-                  border border-[#172554]/10
+                  border
+                  border-[#172554]/10
                   bg-white/95
-                  px-2.5 py-1.5
+                  px-2
+                  py-1.5
                   shadow-[0_8px_22px_rgba(23,37,84,0.14)]
                   backdrop-blur-xl
                   sm:left-6
                 "
               >
-                <div className="flex size-6 items-center justify-center rounded-full bg-[#8f1d1d]">
-                  <CheckCircle2 className="size-3 text-white" />
+                <div className="flex size-5 items-center justify-center rounded-full bg-[#8f1d1d]">
+                  <CheckCircle2 className="size-2.5 text-white" />
                 </div>
 
                 <div>
-                  <p className="text-[8px] font-bold text-[#172554]">
+                  <p
+                    className="text-[7px] font-bold text-[#111111]"
+                    style={circularFont}
+                  >
                     Flexible Learning
                   </p>
 
-                  <p className="text-[6px] text-slate-500">
+                  <p
+                    className="text-[5px] text-[#111111]"
+                    style={circularFont}
+                  >
                     Learn at your own pace
                   </p>
                 </div>
@@ -342,7 +378,9 @@ function ProgrammesPage() {
       {/* EXISTING PROGRAMME CARDS */}
       {/* ========================================================= */}
 
-      <ProgrammeCards withHeading={false} />
+      <div style={circularFont}>
+        <ProgrammeCards withHeading={false} />
+      </div>
 
       {/* ========================================================= */}
       {/* PROGRAMME SIDE DRAWER */}
@@ -351,9 +389,7 @@ function ProgrammesPage() {
       <AnimatePresence>
         {showProgrammeDrawer && (
           <>
-            {/* ================================================= */}
             {/* DARK BACKDROP */}
-            {/* ================================================= */}
 
             <motion.div
               key="programme-backdrop"
@@ -371,9 +407,7 @@ function ProgrammesPage() {
               onClick={closeProgrammeDrawer}
             />
 
-            {/* ================================================= */}
             {/* DRAWER */}
-            {/* ================================================= */}
 
             <motion.aside
               key="programme-drawer"
@@ -402,10 +436,9 @@ function ProgrammesPage() {
                 shadow-[-25px_0_70px_rgba(0,0,0,0.25)]
               "
               aria-label="Explore Programmes"
+              style={circularFont}
             >
-              {/* ================================================= */}
               {/* DRAWER HEADER */}
-              {/* ================================================= */}
 
               <div className="relative shrink-0 overflow-hidden bg-[#172554] px-5 py-5">
                 {/* GLOW 1 */}
@@ -436,9 +469,7 @@ function ProgrammesPage() {
                   "
                 />
 
-                {/* ================================================= */}
                 {/* CLOSE BUTTON */}
-                {/* ================================================= */}
 
                 <button
                   type="button"
@@ -478,61 +509,35 @@ function ProgrammesPage() {
                     active:scale-95
                   "
                 >
-                  <X
-                    className="size-5"
-                    strokeWidth={2.5}
-                  />
+                  <X className="size-5" strokeWidth={2.5} />
                 </button>
 
                 {/* HEADER CONTENT */}
+
                 <div className="relative z-10 pr-12">
                   <div className="mb-2 flex items-center gap-2">
                     <span className="h-[2px] w-7 rounded-full bg-[#d4af37]" />
 
-                    <span
-                      className="
-                        text-[8px]
-                        font-bold
-                        uppercase
-                        tracking-[0.22em]
-                        text-[#d4af37]
-                      "
-                    >
+                    <span className="text-[8px] font-bold uppercase tracking-[0.22em] text-[#d4af37]">
                       Programmes Offered
                     </span>
                   </div>
 
-                  <h2
-                    className="
-                      font-display
-                      text-2xl
-                      font-bold
-                      leading-tight
-                      text-white
-                    "
-                  >
+                  <h2 className="font-display text-2xl font-bold leading-tight text-white">
                     Explore Programmes
                   </h2>
 
-                  <p
-                    className="
-                      mt-1.5
-                      text-[10px]
-                      leading-4
-                      text-white/60
-                    "
-                  >
+                  <p className="mt-1.5 text-[10px] leading-4 text-white/60">
                     Select a programme to view its complete overview.
                   </p>
                 </div>
               </div>
 
-              {/* ================================================= */}
               {/* PROGRAMME LIST */}
-              {/* ================================================= */}
 
               <div className="min-h-0 flex-1 overflow-y-auto px-4 py-5">
                 {/* UG */}
+
                 <ProgrammeDrawerSection
                   title="Undergraduate"
                   count="3 Programmes"
@@ -563,6 +568,7 @@ function ProgrammesPage() {
                 </ProgrammeDrawerSection>
 
                 {/* PG */}
+
                 <ProgrammeDrawerSection
                   title="Postgraduate"
                   count="3 Programmes"
@@ -593,6 +599,7 @@ function ProgrammesPage() {
                 </ProgrammeDrawerSection>
 
                 {/* CERTIFICATE */}
+
                 <ProgrammeDrawerSection
                   title="Professional Learning"
                   count="1 Programme"
@@ -607,9 +614,7 @@ function ProgrammesPage() {
                 </ProgrammeDrawerSection>
               </div>
 
-              {/* ================================================= */}
               {/* DRAWER FOOTER */}
-              {/* ================================================= */}
 
               <div
                 className="
@@ -626,6 +631,7 @@ function ProgrammesPage() {
                   onClick={closeProgrammeDrawer}
                   className="
                     group
+                    relative
                     flex
                     w-full
                     items-center
@@ -641,7 +647,6 @@ function ProgrammesPage() {
                     shadow-[0_8px_20px_rgba(143,29,29,0.18)]
                     transition-all
                     duration-300
-                    hover:bg-[#172554]
                   "
                 >
                   Apply Now
@@ -652,6 +657,23 @@ function ProgrammesPage() {
                       transition-transform
                       duration-300
                       group-hover:translate-x-1
+                    "
+                  />
+
+                  {/* GOLD HOVER LINE */}
+                  <span
+                    className="
+                      absolute
+                      -bottom-1
+                      left-1/2
+                      h-[2px]
+                      w-0
+                      -translate-x-1/2
+                      rounded-full
+                      bg-[#d4af37]
+                      transition-all
+                      duration-300
+                      group-hover:w-12
                     "
                   />
                 </Link>
@@ -721,12 +743,14 @@ function ProgrammesPage() {
               onClick={(event) => event.stopPropagation()}
             >
               {/* MODAL HEADER */}
+
               <div className="relative overflow-hidden bg-[#172554] px-5 py-5">
                 <div className="pointer-events-none absolute -right-10 -top-10 size-28 rounded-full bg-[#8f1d1d]/40 blur-2xl" />
 
                 <div className="pointer-events-none absolute -bottom-8 -left-8 size-24 rounded-full bg-[#d4af37]/10 blur-2xl" />
 
                 {/* CLOSE */}
+
                 <button
                   type="button"
                   onClick={() => setShowBrochureForm(false)}
@@ -775,7 +799,8 @@ function ProgrammesPage() {
               </div>
 
               {/* FORM */}
-              <div className="p-5">
+
+              <div className="p-5" style={circularFont}>
                 <EnquiryForm
                   language="en"
                   onSubmitted={() => setShowBrochureForm(false)}
@@ -803,45 +828,19 @@ function ProgrammeDrawerSection({
   children: ReactNode;
 }) {
   return (
-    <div className="mb-6">
+    <div className="mb-6" style={circularFont}>
       <div className="mb-3 flex items-end justify-between gap-3">
         <div>
-          <p
-            className="
-              text-[8px]
-              font-bold
-              uppercase
-              tracking-[0.18em]
-              text-[#d4af37]
-            "
-          >
+          <p className="text-[7px] font-bold uppercase tracking-[0.17em] text-[#d4af37]">
             Programmes
           </p>
 
-          <h3
-            className="
-              mt-0.5
-              text-lg
-              font-black
-              text-[#172554]
-            "
-          >
+          <h3 className="mt-0.5 text-base font-black text-[#111111]">
             {title}
           </h3>
         </div>
 
-        <span
-          className="
-            rounded-full
-            bg-white
-            px-2.5
-            py-1
-            text-[8px]
-            font-bold
-            text-slate-500
-            shadow-sm
-          "
-        >
+        <span className="rounded-full bg-white px-2.5 py-1 text-[7px] font-bold text-[#111111] shadow-sm">
           {count}
         </span>
       </div>
@@ -882,6 +881,7 @@ function ProgrammeDrawerItem({
       to={link}
       onClick={onNavigate}
       className="group block"
+      style={circularFont}
     >
       <div
         className="
@@ -904,6 +904,7 @@ function ProgrammeDrawerItem({
         "
       >
         {/* HOVER LINE */}
+
         <div
           className="
             absolute
@@ -924,6 +925,7 @@ function ProgrammeDrawerItem({
         />
 
         {/* ICON */}
+
         <div
           className="
             flex
@@ -944,33 +946,19 @@ function ProgrammeDrawerItem({
         </div>
 
         {/* CONTENT */}
+
         <div className="min-w-0 flex-1">
-          <h4
-            className="
-              text-sm
-              font-black
-              text-[#172554]
-              transition-colors
-              duration-300
-              group-hover:text-[#8f1d1d]
-            "
-          >
+          <h4 className="text-[13px] font-black text-[#111111]">
             {title}
           </h4>
 
-          <p
-            className="
-              mt-0.5
-              text-[9px]
-              leading-4
-              text-slate-500
-            "
-          >
+          <p className="mt-0.5 text-[8px] leading-4 text-[#111111]">
             {description}
           </p>
         </div>
 
         {/* ARROW */}
+
         <div
           className="
             flex
@@ -1017,17 +1005,24 @@ function MiniFeature({
   return (
     <div
       className="
-        group flex items-center gap-1.5
+        group
+        flex
+        items-center
+        gap-1.5
         rounded-lg
-        border border-[#172554]/7
+        border
+        border-[#172554]/7
         bg-white/70
-        px-1.5 py-1.5
+        px-1.5
+        py-1.5
         shadow-[0_3px_10px_rgba(23,37,84,0.035)]
-        transition-all duration-300
+        transition-all
+        duration-300
         hover:-translate-y-0.5
         hover:border-[#d4af37]/30
         hover:shadow-[0_7px_16px_rgba(23,37,84,0.07)]
       "
+      style={circularFont}
     >
       <div
         className="
@@ -1049,11 +1044,11 @@ function MiniFeature({
       </div>
 
       <div className="min-w-0">
-        <p className="text-[8px] font-bold leading-none text-[#172554]">
+        <p className="text-[7px] font-bold leading-none text-[#111111]">
           {title}
         </p>
 
-        <p className="mt-0.5 text-[6px] font-medium leading-none text-slate-500">
+        <p className="mt-0.5 text-[5px] font-medium leading-none text-[#111111]">
           {text}
         </p>
       </div>

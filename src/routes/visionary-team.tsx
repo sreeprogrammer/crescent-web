@@ -1,709 +1,346 @@
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowUpRight, Quote, Sparkles } from "lucide-react";
+import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import {
+  ArrowLeft,
+  Award,
+  BookOpen,
+  Crown,
+  GraduationCap,
+  Landmark,
+  Users,
+} from "lucide-react";
 
-const title = "Visionary Team — Leadership | Crescent Distance Education";
+import campusPhoto from "@/assets/campus-1.jpg";
 
-const description =
-  "Meet the visionary leadership team behind Crescent Institute of Science and Technology's Distance and Online Education initiative.";
+const circularFont = {
+  fontFamily:
+    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
+};
 
-export const Route = createFileRoute("/visionary-team")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-    ],
-  }),
-  component: VisionaryTeamPage,
-});
-
-const leaders = [
+const visionaryTeam = [
   {
-    number: "01",
     name: "Alhaj Dr. B.S.Abdur Rahman",
     role: "Founder",
-    image:
-      "https://distance.crescent-institute.edu.in/img/visionary/chancellor.jpg",
-    quote:
-      "A visionary who always trusted that education can be the crucial factor in improving the socio economic status of people, went ahead in proving it by establishing many educational organizations for the poor and women. He Founded the Seethakathi Trust, Est. 1967 and All India Islamic Foundation (AIIF) Est.1979 to ensure the poor and deprived are benefited in the form of education.",
+    image: campusPhoto,
+    accent: "green",
+    description:
+      "A visionary who always trusted that education can be the crucial factor in improving the socio economic status of people, went ahead in proving it by establishing many educational organizations for the poor and women. He Founded the Seethakathi Trust, Est. 1967 and All India Islamic Foundation (AIIF) Est.1979 to ensure the poor and deprived are benefited in the form of education . A total of 12 Educational Institutions comprising of a leading Engineering University, a Women’s College, an Arabic college for men, 2 boys schools, 3 girls schools, a women nursing college, a teachers training institute, B. Ed college for women and 2 hospitals and orphanages in both urban and rural areas in the State of Tamil Nadu are his contribution to the society with the only motive of providing quality education to the poor",
   },
   {
-    number: "02",
     name: "Mr. BSA Arif Buhary Rahman",
     role: "President",
-    image:
-      "https://distance.crescent-institute.edu.in/img/visionary/Chancellor1.jpg",
-    quote:
-      "The educational institutions have a great responsibility of creating holistic human beings, who have learned enough skills to earn, life ethics and social responsibility. The initiative of offering programmes through online and distance mode will help us overcome the barrier of traditional learning and spread our wings across the globe.",
+    image: campusPhoto,
+    accent: "gold",
+    description:
+      "The educational institutions have a great responsibility of creating holistic human beings, who have learned enough skills to earn, life ethics and social responsibility. B. S. Abdur Rahman crescent Institute of Science and technology being in the education arena for more than three decades has been successful in creating graduates with good technical skills, exhibiting great leadership skills and socially responsible citizens. The limitation was that the university was not able to extend this expertise to people around the globe and people who could not attend regular classes. The initiative of offering programmes through online and distance mode will help us overcome this barrier and spread our wings across the globe. Apart from degree programmes, certification programmes of international standards will help students from rural India learn technologies that are of great demand globally.",
   },
   {
-    number: "03",
-    name: "Mrs. Qurrath Jameela",
+    name: "Mrs.Qurrath Jameela",
     role: "Chancellor",
-    image:
-      "https://distance.crescent-institute.edu.in/img/visionary/prochancellor.png",
-    quote:
-      "B. S. Abdur Rahman Crescent Institute of Science and Technology, an Institute with a profound legacy is committed to futuristic education, women empowerment and societal upliftment. Embracing the digital age, this renowned institution aims to provide holistic education.",
+    image: campusPhoto,
+    accent: "violet",
+    description:
+      "B S Abdur Rahman Crescent Institute of Science and Technology, an Institute with a profound legacy is committed to futuristic education, women empowerment and societal upliftment. Embracing the digital age, this renowned institution aims to provide holistic education and ensure that students are armed with the expertise and skills needed to flourish in a dynamic global landscape.",
+    extra:
+      "Our mission is to achieve comprehensive growth by fostering an inclusive environment where diversity is celebrated and sustained development is realized.",
   },
   {
-    number: "04",
     name: "Mr. Abdul Qadir Abdul Rahman Buhari",
     role: "Pro-Chancellor",
-    image:
-      "https://distance.crescent-institute.edu.in/img/visionary/VC-1.jpg",
-    quote:
-      "The physical presence of students in a classroom is not the only way to learn anymore. Online learning has created a disruption in today's education revolution. The Online and Distance education programmes are a boon to the people who would upskill and always be relevant in the Industry.",
+    image: campusPhoto,
+    accent: "red",
+    description:
+      "The physical presence of students in a classroom is not the only way to learn anymore. Online learning has created a disruption in today’s education revolution. More than the degree the skills of an individual is very imperative in the industry today. The change in technology every day necessitates unlearning and relearning to be an integral part of every learner. The Online and Distance education programmes are a boon to the people who would upskill and always be relevant in the Industry. The sharing of knowledge has become global. This gives the learner an edge to be a global competitor. The online and distance education of BSACIST will be a big player in creating employable graduates and also help in upgrading their skills.",
   },
   {
-    number: "05",
     name: "Dr. A. Peer Mohamed",
     role: "Vice-Chancellor i/c",
-    image:
-      "https://distance.crescent-institute.edu.in/img/visionary/additional-registrar.jpg",
-    quote:
-      "An educationist for more than three decades, I believe that there is a big need for adapting to new technologies. Online Distance education gives learners the advantage of upgrading their skill set and qualification while providing greater flexibility to learn whenever and wherever they are.",
+    image: campusPhoto,
+    accent: "navy",
+    description:
+      "An educationist for more than three decades, I believe that there is a big need for adapting to new technologies. The Online Distance education programme is an advantage to the learners both to upgrade their skill set and also to improve the qualification. This enhances the chances of better employment opportunities. This also gives a greater flexibility of learning whenever you can and wherever you are. The online and distance education courses at BSAUCIST are tailored to cater to people who are willing to upgrade their skills and seek better employment and also for people who are more willing to increase their academic qualification.",
   },
   {
-    number: "06",
-    name: "Dr. N. Raja Hussain",
+    name: "Dr. N.Raja Hussain",
     role: "Registrar",
-    image:
-      "https://distance.crescent-institute.edu.in/img/visionary/registrar.jpg",
-    quote:
-      "The introduction of flexible learning technologies and online education is vital to modern institutions. The foresight of the institution in starting online and distance education is an exemplary achievement, supported by a strong team and dedicated faculty.",
+    image: campusPhoto,
+    accent: "green",
+    description:
+      "The introduction of flexible learning technologies, the online education market is expected to grow multifold in the next few years. Adapting to the technological disruptions is very vital to all the educational institutions. The foresight of the institution in starting the online and distance education department is an exemplary achievement. The strength of the leading team and faculty are important in making all new initiatives a success. BSAUCIST has unarguably the best team and leaders which will make learning a great experience. The mentoring skills of our faculty would help every learner to have a unique experience while upgrading their qualifications and improving their knowledge.",
   },
 ];
+
+function getRoleIcon(role: string) {
+  if (role === "Founder") return Landmark;
+  if (role === "President") return Award;
+  if (role === "Chancellor") return Crown;
+  if (role === "Pro-Chancellor") return GraduationCap;
+  if (role === "Vice-Chancellor i/c") return BookOpen;
+  return Users;
+}
+
+function getAccentClasses(accent: string) {
+  switch (accent) {
+    case "green":
+      return {
+        border: "border-[#3f7d58]/20",
+        line: "bg-[#3f7d58]",
+        badge: "bg-[#3f7d58]/10",
+        icon: "text-[#3f7d58]",
+      };
+
+    case "gold":
+      return {
+        border: "border-[#d4af37]/25",
+        line: "bg-[#d4af37]",
+        badge: "bg-[#d4af37]/10",
+        icon: "text-[#a58208]",
+      };
+
+    case "violet":
+      return {
+        border: "border-[#6b4c9a]/20",
+        line: "bg-[#6b4c9a]",
+        badge: "bg-[#6b4c9a]/10",
+        icon: "text-[#6b4c9a]",
+      };
+
+    case "red":
+      return {
+        border: "border-[#8f1d1d]/20",
+        line: "bg-[#8f1d1d]",
+        badge: "bg-[#8f1d1d]/10",
+        icon: "text-[#8f1d1d]",
+      };
+
+    default:
+      return {
+        border: "border-[#1d355f]/20",
+        line: "bg-[#1d355f]",
+        badge: "bg-[#1d355f]/10",
+        icon: "text-[#1d355f]",
+      };
+  }
+}
+
+export const Route = createFileRoute("/visionary-team")({
+  component: VisionaryTeamPage,
+});
 
 function VisionaryTeamPage() {
   return (
     <SiteLayout>
-      <main className="min-h-screen overflow-hidden bg-[#f4efe6] text-[#25262a]">
+      <div
+        style={circularFont}
+        className="min-h-screen bg-[#f7f5f7] text-black"
+      >
+        {/* HEADER */}
+        <section className="relative overflow-hidden bg-[#f6dfe5] text-black">
+          <div className="absolute -right-20 -top-24 h-56 w-56 rounded-full bg-[#d4af37]/10 blur-3xl" />
+          <div className="absolute -bottom-24 -left-20 h-56 w-56 rounded-full bg-[#6b4c9a]/10 blur-3xl" />
 
-        {/* =====================================================
-            PREMIUM HERO
-        ====================================================== */}
-
-        <section className="relative overflow-hidden bg-[#f4efe6]">
-
-          {/* Decorative Glow */}
-
-          <div className="pointer-events-none absolute -right-20 -top-20 size-72 rounded-full bg-[#b28a3c]/10 blur-3xl" />
-
-          <div className="pointer-events-none absolute -bottom-24 left-1/4 size-64 rounded-full bg-[#741b1b]/5 blur-3xl" />
-
-          <div className="mx-auto max-w-[1450px] px-5 py-5 sm:px-8 lg:px-12 lg:py-7">
-
-            {/* Back */}
-
-            <Link
-              to="/about"
-              className="
-                group
-                inline-flex
-                items-center
-                gap-1.5
-                rounded-full
-                border
-                border-[#c9b78e]
-                bg-[#fffaf0]/50
-                px-3
-                py-1.5
-                text-[8px]
-                font-bold
-                uppercase
-                tracking-[0.16em]
-                text-[#665f53]
-                backdrop-blur-sm
-                transition-all
-                hover:border-[#741b1b]/30
-                hover:bg-[#741b1b]
-                hover:text-white
-              "
-            >
-              <ArrowLeft className="size-3 transition-transform group-hover:-translate-x-1" />
-              Back to About
-            </Link>
-
+          <div className="relative mx-auto max-w-7xl px-5 py-7 sm:px-8 sm:py-8">
             <motion.div
-              initial={{ opacity: 0, y: 14 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55 }}
-              className="mt-5"
+              transition={{ duration: 0.45 }}
             >
+              <a
+                href="/about"
+                className="mb-3 inline-flex items-center gap-2 text-xs font-medium text-black/70 transition-colors hover:text-[#8f1d1d]"
+              >
+                <ArrowLeft className="h-3.5 w-3.5" />
+                Back to About
+              </a>
 
-              <div className="flex items-center gap-2.5">
-
-                <span className="h-[2px] w-8 bg-[#b28a3c]" />
-
-                <span
-                  className="
-                    text-[8px]
-                    font-bold
-                    uppercase
-                    tracking-[0.22em]
-                    text-[#741b1b]
-                  "
-                >
-                  Leadership
-                </span>
-
-                <Sparkles className="size-3 text-[#b28a3c]" />
-
+              <div className="mb-2.5 inline-flex items-center gap-2 rounded-full bg-white/55 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[#8f1d1d]">
+                <Users className="h-3 w-3" />
+                Leadership
               </div>
 
-              <h1
-                className="
-                  mt-2
-                  font-serif
-                  text-[2.15rem]
-                  font-bold
-                  leading-[0.95]
-                  tracking-[-0.035em]
-                  text-[#25262a]
-                  sm:text-[2.65rem]
-                  lg:text-[3rem]
-                "
-              >
-                Visionary{" "}
-                <span className="text-[#741b1b]">
-                  Team
-                </span>
+              <h1 className="text-2xl font-bold tracking-tight text-black sm:text-3xl">
+                Visionary Team
               </h1>
 
-              <p
-                className="
-                  mt-2.5
-                  max-w-2xl
-                  text-[10px]
-                  leading-[1.7]
-                  text-[#706b63]
-                  sm:text-[11px]
-                "
-              >
-                The people whose vision, leadership and commitment continue
-                to shape the future of accessible, flexible and quality
-                education.
+              <p className="mt-1.5 max-w-2xl text-xs leading-5 text-black/70 sm:text-sm">
+                Leadership and vision driving excellence in education,
+                innovation and societal development.
               </p>
-
             </motion.div>
-
           </div>
-
-          {/* Gold divider */}
-
-          <div className="h-[2px] bg-gradient-to-r from-transparent via-[#b28a3c] to-transparent opacity-70" />
-
         </section>
 
-        {/* =====================================================
-            LEADERSHIP INTRO
-        ====================================================== */}
-
-        <section className="relative overflow-hidden bg-[#111c3b]">
-
-          <div className="pointer-events-none absolute -left-24 top-1/2 size-64 -translate-y-1/2 rounded-full bg-[#741b1b]/30 blur-3xl" />
-
-          <div className="pointer-events-none absolute -right-20 top-0 size-72 rounded-full bg-[#b28a3c]/10 blur-3xl" />
-
-          <div className="mx-auto max-w-[1450px] px-5 py-5 sm:px-8 lg:px-12 lg:py-6">
-
-            <div className="relative flex items-center gap-4">
-
-              <div
-                className="
-                  flex
-                  size-10
-                  shrink-0
-                  items-center
-                  justify-center
-                  rounded-full
-                  border
-                  border-[#e4bd5b]/30
-                  bg-[#e4bd5b]/10
-                  text-[#e4bd5b]
-                  sm:size-11
-                "
-              >
-                <Sparkles className="size-4" />
-              </div>
-
-              <div>
-
-                <p
-                  className="
-                    text-[7px]
-                    font-bold
-                    uppercase
-                    tracking-[0.2em]
-                    text-[#e4bd5b]
-                  "
-                >
-                  Leadership & Legacy
-                </p>
-
-                <h2
-                  className="
-                    mt-0.5
-                    font-serif
-                    text-base
-                    font-bold
-                    text-white
-                    sm:text-lg
-                  "
-                >
-                  Shaping the future through vision.
-                </h2>
-
-              </div>
-
-            </div>
-
-          </div>
-
-          <div className="h-px bg-gradient-to-r from-transparent via-[#b28a3c]/50 to-transparent" />
-
-        </section>
-
-        {/* =====================================================
-            LEADERS
-        ====================================================== */}
-
-        <section className="relative bg-[#f4efe6]">
-
-          <div className="mx-auto max-w-[1450px] px-5 py-7 sm:px-8 lg:px-12 lg:py-8">
-
-            <div className="mb-5 flex items-end justify-between gap-4">
-
-              <div>
-
-                <div className="flex items-center gap-2">
-
-                  <span className="h-[2px] w-7 bg-[#b28a3c]" />
-
-                  <span
-                    className="
-                      text-[8px]
-                      font-bold
-                      uppercase
-                      tracking-[0.2em]
-                      text-[#741b1b]
-                    "
-                  >
-                    Distinguished Leadership
-                  </span>
-
-                </div>
-
-                <h2
-                  className="
-                    mt-1.5
-                    font-serif
-                    text-[1.6rem]
-                    font-bold
-                    tracking-[-0.025em]
-                    text-[#25262a]
-                    sm:text-[1.85rem]
-                  "
-                >
-                  Our Visionaries
-                </h2>
-
-              </div>
-
-              <span
-                className="
-                  hidden
-                  rounded-full
-                  border
-                  border-[#cdbd9f]
-                  bg-[#eee6d8]
-                  px-3
-                  py-1
-                  text-[7px]
-                  font-bold
-                  uppercase
-                  tracking-[0.15em]
-                  text-[#8b7b60]
-                  sm:block
-                "
-              >
-                06 Leaders
-              </span>
-
-            </div>
-
-            <div className="grid gap-4 lg:grid-cols-2">
-
-              {leaders.map((leader, index) => (
-                <motion.article
-                  key={leader.number}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{
-                    once: true,
-                    amount: 0.08,
-                  }}
-                  transition={{
-                    duration: 0.45,
-                    delay: index * 0.035,
-                  }}
-                  className="
-                    group
-                    relative
-                    overflow-hidden
-                    rounded-2xl
-                    border
-                    border-[#cdbd9f]
-                    bg-gradient-to-br
-                    from-[#eee6d8]
-                    to-[#e3d8c7]
-                    p-4
-                    shadow-[0_7px_20px_rgba(71,54,29,0.06)]
-                    transition-all
-                    duration-300
-                    hover:-translate-y-1
-                    hover:border-[#b28a3c]/60
-                    hover:shadow-[0_16px_32px_rgba(71,54,29,0.12)]
-                    sm:p-5
-                  "
-                >
-
-                  {/* Top accent */}
-
-                  <div
-                    className="
-                      absolute
-                      left-0
-                      right-0
-                      top-0
-                      h-[2px]
-                      bg-gradient-to-r
-                      from-[#741b1b]
-                      via-[#b28a3c]
-                      to-[#741b1b]
-                    "
-                  />
-
-                  {/* Number */}
-
-                  <span
-                    className="
-                      absolute
-                      right-4
-                      top-3
-                      font-serif
-                      text-sm
-                      font-bold
-                      text-[#b28a3c]/60
-                    "
-                  >
-                    {leader.number}
-                  </span>
-
-                  <div className="flex gap-4">
-
-                    {/* IMAGE */}
-
-                    <div className="relative shrink-0">
-
-                      <div
-                        className="
-                          absolute
-                          -inset-1
-                          rounded-full
-                          border
-                          border-[#b28a3c]/40
-                        "
-                      />
-
-                      <div
-                        className="
-                          relative
-                          size-[82px]
-                          overflow-hidden
-                          rounded-full
-                          border-2
-                          border-[#f4efe6]
-                          bg-[#172554]
-                          shadow-[0_8px_20px_rgba(40,29,14,0.18)]
-                          sm:size-[92px]
-                        "
-                      >
-                        <img
-                          src={leader.image}
-                          alt={leader.name}
-                          className="
-                            h-full
-                            w-full
-                            object-cover
-                            transition-transform
-                            duration-700
-                            group-hover:scale-110
-                          "
-                        />
-                      </div>
-
-                    </div>
-
-                    {/* DETAILS */}
-
-                    <div className="min-w-0 flex-1">
-
-                      <p
-                        className="
-                          text-[7px]
-                          font-bold
-                          uppercase
-                          tracking-[0.18em]
-                          text-[#741b1b]
-                        "
-                      >
-                        {leader.role}
-                      </p>
-
-                      <h3
-                        className="
-                          mt-1
-                          pr-6
-                          font-serif
-                          text-[1.05rem]
-                          font-bold
-                          leading-[1.15]
-                          text-[#292823]
-                          sm:text-[1.15rem]
-                        "
-                      >
-                        {leader.name}
-                      </h3>
-
-                      <div className="mt-2 flex items-center gap-2">
-
-                        <span className="h-px w-5 bg-[#b28a3c]" />
-
-                        <span
-                          className="
-                            text-[6.5px]
-                            font-bold
-                            uppercase
-                            tracking-[0.15em]
-                            text-[#9a896b]
-                          "
-                        >
-                          Crescent Leadership
-                        </span>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                  {/* QUOTE */}
-
-                  <div
-                    className="
-                      mt-4
-                      border-t
-                      border-[#cdbd9f]
-                      pt-3
-                    "
-                  >
-
-                    <div className="flex gap-2.5">
-
-                      <Quote
-                        className="
-                          mt-0.5
-                          size-4
-                          shrink-0
-                          text-[#b28a3c]
-                        "
-                      />
-
-                      <p
-                        className="
-                          text-[9px]
-                          leading-[1.75]
-                          text-[#706a61]
-                          sm:text-[10px]
-                        "
-                      >
-                        {leader.quote}
-                      </p>
-
-                    </div>
-
-                  </div>
-
-                  {/* Bottom */}
-
-                  <div className="mt-3 flex items-center justify-between">
-
-                    <span
-                      className="
-                        text-[6.5px]
-                        font-bold
-                        uppercase
-                        tracking-[0.15em]
-                        text-[#9a9185]
-                      "
-                    >
-                      Crescent Distance Education
-                    </span>
-
-                    <span
-                      className="
-                        flex
-                        size-6
-                        items-center
-                        justify-center
-                        rounded-full
-                        bg-[#741b1b]/[0.06]
-                        text-[#741b1b]
-                        transition-all
-                        duration-300
-                        group-hover:bg-[#741b1b]
-                        group-hover:text-white
-                      "
-                    >
-                      <ArrowUpRight className="size-3" />
-                    </span>
-
-                  </div>
-
-                  {/* Hover glow */}
-
-                  <div
-                    className="
-                      pointer-events-none
-                      absolute
-                      -bottom-10
-                      right-5
-                      size-24
-                      rounded-full
-                      bg-[#b28a3c]/10
-                      opacity-0
-                      blur-2xl
-                      transition-opacity
-                      duration-500
-                      group-hover:opacity-100
-                    "
-                  />
-
-                </motion.article>
-              ))}
-
-            </div>
-
-          </div>
-
-        </section>
-
-        {/* =====================================================
-            BOTTOM STRIP
-        ====================================================== */}
-
-        <section className="relative overflow-hidden bg-[#111c3b]">
-
-          <div className="pointer-events-none absolute left-1/3 top-0 size-40 rounded-full bg-[#b28a3c]/10 blur-3xl" />
-
-          <div
-            className="
-              relative
-              mx-auto
-              flex
-              max-w-[1450px]
-              items-center
-              justify-between
-              gap-4
-              px-5
-              py-4
-              sm:px-8
-              lg:px-12
-            "
-          >
-
-            <div>
-
-              <div className="flex items-center gap-2">
-
-                <span className="h-px w-5 bg-[#e4bd5b]" />
-
-                <p
-                  className="
-                    text-[7px]
-                    font-bold
-                    uppercase
-                    tracking-[0.2em]
-                    text-[#e4bd5b]
-                  "
-                >
-                  Leadership
-                </p>
-
-              </div>
-
-              <h2
-                className="
-                  mt-1
-                  font-serif
-                  text-sm
-                  font-bold
-                  text-white
-                  sm:text-base
-                "
-              >
-                Building a future through education.
-              </h2>
-
-            </div>
-
-            <Link
-              to="/about"
-              className="
-                group
-                inline-flex
-                shrink-0
-                items-center
-                gap-1
-                rounded-full
-                border
-                border-[#e4bd5b]/40
-                bg-[#e4bd5b]
-                px-3.5
-                py-1.5
-                text-[8px]
-                font-bold
-                uppercase
-                tracking-[0.07em]
-                text-[#111c3b]
-                shadow-[0_5px_18px_rgba(228,189,91,0.15)]
-                transition-all
-                hover:-translate-y-0.5
-                hover:bg-white
-              "
+        {/* QUICK NAV */}
+        <section className="border-b border-slate-200 bg-white">
+          <div className="mx-auto grid max-w-7xl grid-cols-2 gap-2.5 px-5 py-4 sm:grid-cols-4 sm:px-8">
+            <a
+              href="#founder"
+              className="group rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm"
             >
-              Back to About
+              <div className="flex items-center gap-2">
+                <Landmark className="h-3.5 w-3.5 text-[#3f7d58]" />
+                <span className="text-xs font-semibold text-black">
+                  Founder
+                </span>
+              </div>
+              <div className="mt-2 h-0.5 w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-7" />
+            </a>
 
-              <ArrowUpRight
-                className="
-                  size-2.5
-                  transition-transform
-                  group-hover:translate-x-0.5
-                  group-hover:-translate-y-0.5
-                "
-              />
-            </Link>
+            <a
+              href="#president"
+              className="group rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm"
+            >
+              <div className="flex items-center gap-2">
+                <Award className="h-3.5 w-3.5 text-[#d4af37]" />
+                <span className="text-xs font-semibold text-black">
+                  President
+                </span>
+              </div>
+              <div className="mt-2 h-0.5 w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-7" />
+            </a>
 
+            <a
+              href="#chancellor"
+              className="group rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm"
+            >
+              <div className="flex items-center gap-2">
+                <Crown className="h-3.5 w-3.5 text-[#6b4c9a]" />
+                <span className="text-xs font-semibold text-black">
+                  Chancellor
+                </span>
+              </div>
+              <div className="mt-2 h-0.5 w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-7" />
+            </a>
+
+            <a
+              href="#administration"
+              className="group rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm"
+            >
+              <div className="flex items-center gap-2">
+                <GraduationCap className="h-3.5 w-3.5 text-[#8f1d1d]" />
+                <span className="text-xs font-semibold text-black">
+                  Administration
+                </span>
+              </div>
+              <div className="mt-2 h-0.5 w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-7" />
+            </a>
           </div>
-
         </section>
 
-      </main>
+        {/* MAIN CONTENT */}
+        <main className="mx-auto max-w-7xl px-5 py-7 sm:px-8 sm:py-9">
+          <div className="mb-6 max-w-3xl">
+            <div className="mb-1.5 flex items-center gap-2">
+              <span className="h-6 w-1 rounded-full bg-[#d4af37]" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#8f1d1d]">
+                Our Leadership
+              </span>
+            </div>
+
+            <h2 className="text-xl font-bold tracking-tight text-black sm:text-2xl">
+              Visionary Team
+            </h2>
+
+            <p className="mt-1.5 text-xs leading-5 text-black/65 sm:text-sm">
+              The leadership team guiding the institution towards accessible,
+              innovative and quality education.
+            </p>
+          </div>
+
+          <div className="space-y-5">
+            {visionaryTeam.map((person, index) => {
+              const styles = getAccentClasses(person.accent);
+              const Icon = getRoleIcon(person.role);
+
+              const isImageRight = index % 2 === 0;
+
+              const sectionId =
+                index === 0
+                  ? "founder"
+                  : index === 1
+                    ? "president"
+                    : index === 2
+                      ? "chancellor"
+                      : "administration";
+
+              return (
+                <motion.section
+                  key={person.name}
+                  id={sectionId}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.4 }}
+                  className={`group overflow-hidden rounded-2xl border ${styles.border} bg-white shadow-sm`}
+                >
+                  <div
+                    className={`grid md:grid-cols-[1fr_280px] ${
+                      !isImageRight ? "md:grid-cols-[280px_1fr]" : ""
+                    }`}
+                  >
+                    {/* CONTENT LEFT / RIGHT */}
+                    <div
+                      className={`order-2 p-5 sm:p-6 ${
+                        isImageRight ? "md:order-1" : "md:order-2"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <div
+                          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${styles.badge}`}
+                        >
+                          <Icon className={`h-4 w-4 ${styles.icon}`} />
+                        </div>
+
+                        <div>
+                          <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-black/50">
+                            {person.role}
+                          </p>
+
+                          <h3 className="mt-0.5 text-base font-bold leading-5 text-black sm:text-lg">
+                            {person.name}
+                          </h3>
+                        </div>
+                      </div>
+
+                      <div className="my-4 h-px bg-slate-100" />
+
+                      <p className="text-xs leading-6 text-black sm:text-sm sm:leading-6.5">
+                        {person.description}
+                      </p>
+
+                      {person.extra && (
+                        <p className="mt-3 text-xs font-medium leading-6 text-black sm:text-sm">
+                          {person.extra}
+                        </p>
+                      )}
+
+                      <div className="mt-4 h-0.5 w-8 bg-[#d4af37] transition-all duration-300 group-hover:w-14" />
+                    </div>
+
+                    {/* PHOTO */}
+                    <div
+                      className={`relative order-1 h-56 overflow-hidden bg-slate-100 sm:h-64 md:h-full md:min-h-[290px] ${
+                        isImageRight ? "md:order-2" : "md:order-1"
+                      }`}
+                    >
+                      <img
+                        src={person.image}
+                        alt={person.name}
+                        className="h-full w-full object-cover"
+                      />
+
+                      <div
+                        className={`absolute bottom-0 left-0 h-1 w-full ${styles.line}`}
+                      />
+                    </div>
+                  </div>
+                </motion.section>
+              );
+            })}
+          </div>
+        </main>
+      </div>
     </SiteLayout>
   );
 }

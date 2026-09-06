@@ -1,288 +1,554 @@
-import { SiteLayout } from "@/components/site/SiteLayout";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
+import { motion } from "framer-motion";
 import {
   ArrowLeft,
-  ArrowUpRight,
+  ArrowRight,
   BarChart3,
-  BookOpen,
   CheckCircle2,
+  Database,
+  Laptop,
   LockKeyhole,
-  MonitorPlay,
-  Network,
-  Settings2,
+  MessageCircle,
+  MonitorSmartphone,
   Sparkles,
-  Users,
+  Video,
 } from "lucide-react";
-import { motion } from "framer-motion";
 
-const title = "Learning Management System — Crescent CDOE";
+import campus1 from "@/assets/campus-1.jpg";
+import { SiteLayout } from "@/components/site/SiteLayout";
+
+const title = "LMS — Center for Online Education";
 
 const description =
-  "Explore the Learning Management System supporting flexible, personalized and secure online learning.";
+  "Explore the Learning Management System supporting flexible, accessible and personalized online learning.";
 
 export const Route = createFileRoute("/lms")({
   head: () => ({
     meta: [
       { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
+      {
+        name: "description",
+        content: description,
+      },
+      {
+        property: "og:title",
+        content: title,
+      },
+      {
+        property: "og:description",
+        content: description,
+      },
+      {
+        property: "og:type",
+        content: "website",
+      },
     ],
   }),
   component: LMSPage,
 });
 
-const features = [
+const circularFont = {
+  fontFamily:
+    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
+};
+
+/* =========================================================
+   QUICK NAVIGATION
+========================================================= */
+
+function LMSQuickLinks() {
+  const links = [
+    {
+      number: "01",
+      title: "Overview",
+      description: "Explore our online education facilities",
+      icon: Sparkles,
+      href: "/facilities",
+      accent: "#8F1D1D",
+    },
+    {
+      number: "02",
+      title: "Studio",
+      description: "High-quality educational content",
+      icon: Video,
+      href: "/studio",
+      accent: "#6B4C9A",
+    },
+    {
+      number: "03",
+      title: "LMS",
+      description: "Digital learning management system",
+      icon: Laptop,
+      href: "/lms",
+      accent: "#2F6F4E",
+    },
+    {
+      number: "04",
+      title: "Datacenter",
+      description: "Secure and reliable data infrastructure",
+      icon: Database,
+      href: "/datacenter",
+      accent: "#B08A24",
+    },
+  ];
+
+  return (
+    <section
+      style={circularFont}
+      className="relative bg-[#F5F1E9] px-5 pb-5 pt-3 sm:px-8 lg:px-12"
+    >
+      <div className="mx-auto w-full max-w-7xl">
+
+        <div className="mb-5 h-[3px] w-full rounded-full bg-gradient-to-r from-[#2F6F4E] via-[#B08A24] to-[#6B4C9A]" />
+
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {links.map((item, index) => {
+            const Icon = item.icon;
+
+            return (
+              <motion.div
+                key={item.number}
+                initial={{
+                  opacity: 0,
+                  y: 6,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.05,
+                }}
+                className="min-w-0"
+              >
+                <Link
+                  to={item.href}
+                  className="
+                    group
+                    relative
+                    flex
+                    h-[96px]
+                    min-h-[96px]
+                    w-full
+                    items-center
+                    overflow-hidden
+                    rounded-[1.1rem]
+                    border
+                    border-[#D9D4CA]
+                    bg-white
+                    px-4
+                    py-3.5
+                    shadow-[0_6px_18px_rgba(31,35,43,0.05)]
+                    transition-all
+                    duration-300
+                    hover:-translate-y-0.5
+                    hover:shadow-[0_10px_25px_rgba(31,35,43,0.09)]
+                  "
+                >
+                  <div
+                    className="absolute left-0 right-0 top-0 h-[3px]"
+                    style={{
+                      backgroundColor: item.accent,
+                    }}
+                  />
+
+                  <div className="flex w-full items-center gap-3">
+
+                    <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-[#17234B] transition-transform duration-300 group-hover:scale-105">
+                      <Icon
+                        className="size-4"
+                        style={{
+                          color: item.accent,
+                        }}
+                      />
+                    </div>
+
+                    <div className="min-w-0 flex-1">
+                      <div className="flex min-w-0 items-center gap-1.5">
+                        <span
+                          className="shrink-0 text-[8px] font-bold tracking-[0.12em]"
+                          style={{
+                            color: item.accent,
+                          }}
+                        >
+                          {item.number}
+                        </span>
+
+                        <h3 className="min-w-0 truncate text-[11px] font-bold text-[#20242B]">
+                          {item.title}
+                        </h3>
+                      </div>
+
+                      <p className="mt-0.5 truncate text-[9px] font-medium text-[#737782]">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    <ArrowRight
+                      className="
+                        size-3.5
+                        shrink-0
+                        text-[#B9BDC5]
+                        transition-all
+                        duration-300
+                        group-hover:translate-x-1
+                      "
+                    />
+                  </div>
+                </Link>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =========================================================
+   LMS FEATURES
+========================================================= */
+
+const lmsFeatures = [
   {
     number: "01",
     title: "Unmatched Customizability",
-    text: "Tailor the content and modules to meet the specific needs and preferences of individual learners.",
-    icon: Settings2,
-    accent: "#7f1d1d",
+    accent: "#6B4C9A",
+    iconBg: "#6B4C9A",
+    icon: Sparkles,
+    text:
+      "Tailor the content and modules to meet the specific needs and preferences of individual learner.",
   },
   {
     number: "02",
     title: "Seamless Accessibility",
-    text: "Access our LMS anytime, anywhere, and on any device to provide maximum convenience for all learners.",
-    icon: MonitorPlay,
-    accent: "#172554",
+    accent: "#2F6F4E",
+    iconBg: "#2F6F4E",
+    icon: MonitorSmartphone,
+    text:
+      "Access our LMS anytime, anywhere, and on any device to provide maximum convenience for all learners.",
   },
   {
     number: "03",
     title: "Powerful Analytics",
-    text: "Track learner progress and generate data-driven reports to measure teaching effectiveness and identify areas where additional support is needed.",
+    accent: "#B08A24",
+    iconBg: "#B08A24",
     icon: BarChart3,
-    accent: "#b8860b",
+    text:
+      "Track learner progress and generate data-driven reports to measure the effectiveness of teaching methods, make data-driven decisions, and identify areas where additional support is needed.",
   },
   {
     number: "04",
     title: "Collaborative Learning",
-    text: "Foster collaboration, teamwork, and peer-to-peer interaction, particularly useful for online and hybrid learning environments.",
-    icon: Users,
-    accent: "#7f1d1d",
+    accent: "#8F1D1D",
+    iconBg: "#8F1D1D",
+    icon: MessageCircle,
+    text:
+      "Foster collaboration, teamwork, and peer-to-peer interaction with our LMS, particularly useful for online and hybrid learning environments.",
   },
   {
     number: "05",
     title: "Versatile Instructional Materials",
-    text: "Deliver videos, interactive quizzes, discussion forums and other materials to accommodate different learning styles.",
-    icon: BookOpen,
-    accent: "#172554",
+    accent: "#30265F",
+    iconBg: "#30265F",
+    icon: Video,
+    text:
+      "Deliver an extensive range of materials, including videos, interactive quizzes, and discussion forums, to accommodate different learning styles.",
   },
   {
     number: "06",
     title: "Personalized Learning Experience",
-    text: "Personalize learning based on each student's strengths, weaknesses and interests to improve engagement and motivation.",
-    icon: Sparkles,
-    accent: "#b8860b",
+    accent: "#427D76",
+    iconBg: "#427D76",
+    icon: Laptop,
+    text:
+      "Personalize the learning experience for each individual student based on their strengths, weaknesses, and interests, to improve engagement and motivation.",
   },
   {
     number: "07",
     title: "Top-notch Security",
-    text: "Protect student data and intellectual property with a secure LMS that maintains the trust of learners, educators and administrators.",
+    accent: "#6B4C9A",
+    iconBg: "#6B4C9A",
     icon: LockKeyhole,
-    accent: "#7f1d1d",
+    text:
+      "Protect student data and intellectual property with our secure LMS, essential for maintaining the trust and confidence of learners, educators, and administrators.",
   },
   {
     number: "08",
     title: "World-class Support",
-    text: "Rely on customer support, online tutorials and technical assistance to resolve issues quickly and maximize the value of the system.",
-    icon: Network,
-    accent: "#172554",
+    accent: "#2F6F4E",
+    iconBg: "#2F6F4E",
+    icon: CheckCircle2,
+    text:
+      "Rely on our customer support, online tutorials, and technical assistance to resolve any issues quickly and maximize the value of our system.",
   },
 ];
+
+/* =========================================================
+   LMS PAGE
+========================================================= */
 
 function LMSPage() {
   return (
     <SiteLayout>
-      <main className="min-h-screen overflow-hidden bg-[#f2f1ee]">
+      <main
+        style={circularFont}
+        className="min-h-screen overflow-hidden bg-[#F5F1E9]"
+      >
 
-        {/* =========================================================
-            MINIMAL HERO
-        ========================================================== */}
-        <section className="relative overflow-hidden bg-[#172554]">
-          <div className="pointer-events-none absolute inset-0">
-            <div className="absolute -right-28 -top-28 size-[280px] rounded-full bg-[#7f1d1d]/25 blur-3xl" />
-            <div className="absolute -bottom-32 -left-24 size-[260px] rounded-full bg-[#b8860b]/10 blur-3xl" />
+        {/* =================================================
+            QUICK LINKS
+        ================================================= */}
+
+        <LMSQuickLinks />
+
+        {/* =================================================
+            MAIN SECTION
+        ================================================= */}
+
+        <section className="relative border-b border-[#dedbd6] bg-[#f5f3f0]">
+
+          {/* BACKGROUND ACCENTS */}
+
+          <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            <div className="absolute -right-24 -top-24 size-72 rounded-full bg-[#2F6F4E]/5 blur-3xl" />
+
+            <div className="absolute -bottom-24 left-0 size-64 rounded-full bg-[#6B4C9A]/5 blur-3xl" />
+
+            <div className="absolute left-1/2 top-1/2 size-52 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#B08A24]/5 blur-3xl" />
           </div>
 
-          <div className="relative mx-auto max-w-[1500px] px-5 py-6 sm:px-8 lg:px-12">
+          <div className="relative mx-auto max-w-[1400px] px-5 py-5 sm:px-8 lg:px-10 lg:py-6">
+
+            {/* =================================================
+                LABEL
+            ================================================= */}
+
             <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              initial={{
+                opacity: 0,
+                y: 8,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.45,
+              }}
+              className="mb-3 flex items-center gap-2"
             >
-              {/* BACK */}
-              <Link
-                to="/facilities"
-                className="group inline-flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.16em] text-white/55 transition-colors hover:text-[#e4bd5b]"
-              >
-                <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-1" />
-                Back to Facilities
-              </Link>
+              <span className="h-[2px] w-7 bg-[#2F6F4E]" />
 
-              <div className="mt-5 flex items-center justify-between gap-6">
-                <div>
-                  <div className="mb-2 flex items-center gap-3">
-                    <span className="h-[2px] w-7 bg-[#e4bd5b]" />
-
-                    <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#e4bd5b]">
-                      Digital Infrastructure
-                    </span>
-                  </div>
-
-                  <h1 className="font-serif text-3xl font-bold leading-none tracking-[-0.03em] text-white sm:text-4xl lg:text-[3rem]">
-                    Learning{" "}
-                    <span className="text-[#e4bd5b]">
-                      Management System
-                    </span>
-                  </h1>
-
-                  <p className="mt-3 max-w-2xl text-xs leading-5 text-white/60 sm:text-sm">
-                    A flexible digital learning environment connecting
-                    learners, content, assessment and academic support.
-                  </p>
-                </div>
-
-                {/* Small icon */}
-                <div className="hidden size-16 shrink-0 items-center justify-center rounded-full border border-[#e4bd5b]/30 bg-white/5 lg:flex">
-                  <div className="flex size-11 items-center justify-center rounded-full bg-[#e4bd5b] text-[#172554]">
-                    <MonitorPlay className="size-5" />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* =========================================================
-            FACILITIES NAV
-        ========================================================== */}
-        <section className="sticky top-0 z-30 border-b border-[#d8d5d0] bg-white/95 backdrop-blur-md">
-          <div className="mx-auto max-w-[1500px] overflow-x-auto px-5 sm:px-8 lg:px-12">
-            <nav className="flex min-w-max items-center gap-1 py-2">
-
-              <Link
-                to="/facilities"
-                className="rounded-full px-4 py-2 text-[9px] font-bold uppercase tracking-[0.14em] text-[#66686d] transition-all hover:bg-[#f2f1ee] hover:text-[#7f1d1d]"
-              >
-                Facilities
-              </Link>
-
-              <Link
-                to="/studio"
-                className="rounded-full px-4 py-2 text-[9px] font-bold uppercase tracking-[0.14em] text-[#66686d] transition-all hover:bg-[#f2f1ee] hover:text-[#7f1d1d]"
-              >
-                Studio
-              </Link>
-
-              <Link
-                to="/lms"
-                className="rounded-full bg-[#7f1d1d] px-4 py-2 text-[9px] font-bold uppercase tracking-[0.14em] text-white shadow-sm"
-              >
-                LMS
-              </Link>
-
-              <Link
-                to="/datacenter"
-                className="rounded-full px-4 py-2 text-[9px] font-bold uppercase tracking-[0.14em] text-[#66686d] transition-all hover:bg-[#f2f1ee] hover:text-[#7f1d1d]"
-              >
-                Datacenter
-              </Link>
-
-            </nav>
-          </div>
-        </section>
-
-        {/* =========================================================
-            MAIN CONTENT
-        ========================================================== */}
-        <section className="bg-[#f2f1ee]">
-          <div className="mx-auto max-w-[1500px] px-5 py-7 sm:px-8 lg:px-12 lg:py-9">
-
-            {/* SECTION HEADING */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="mb-5"
-            >
-              <div className="flex items-center gap-3">
-                <span className="h-[2px] w-7 bg-[#b8860b]" />
-
-                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#7f1d1d]">
-                  LMS Capabilities
-                </span>
-              </div>
-
-              <h2 className="mt-2 font-serif text-2xl font-bold tracking-[-0.025em] text-[#25262a] sm:text-3xl">
-                Designed around the learner
-              </h2>
-
-              <p className="mt-2 max-w-2xl text-xs leading-5 text-[#777]">
-                Technology, accessibility and learner support brought together
-                through one digital environment.
-              </p>
+              <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-[#111111]">
+                Center for Online Education
+              </span>
             </motion.div>
 
-            {/* =====================================================
-                IMAGE + FEATURES
-            ====================================================== */}
-            <div className="grid gap-4 lg:grid-cols-[0.72fr_1.28fr]">
+            {/* =================================================
+                HERO
+            ================================================= */}
 
-              {/* IMAGE */}
+            <div className="grid items-stretch gap-5 lg:grid-cols-[1.08fr_0.92fr]">
+
+              {/* LEFT CONTENT */}
+
               <motion.div
-                initial={{ opacity: 0, x: -18 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="relative min-h-[300px] overflow-hidden rounded-[22px] bg-[#172554] shadow-[0_8px_25px_rgba(0,0,0,0.07)] sm:min-h-[360px] lg:min-h-[560px]"
+                initial={{
+                  opacity: 0,
+                  x: -15,
+                }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                transition={{
+                  duration: 0.55,
+                }}
+                className="
+                  relative
+                  flex
+                  flex-col
+                  justify-center
+                  overflow-hidden
+                  rounded-[16px]
+                  border
+                  border-[#dedbd6]
+                  bg-white
+                  px-5
+                  py-5
+                  shadow-[0_5px_18px_rgba(0,0,0,0.04)]
+                  sm:px-7
+                  lg:px-8
+                "
               >
-                <img
-                  src="https://distance.crescent-institute.edu.in/img/facilities/lms.jpeg"
-                  alt="Learning Management System"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 hover:scale-105"
-                />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#111827]/90 via-[#111827]/15 to-transparent" />
+                {/* LEFT COLOUR STRIPE */}
 
-                <div className="absolute left-5 top-5 flex size-9 items-center justify-center rounded-full border border-white/25 bg-white/90 font-serif text-xs font-bold text-[#7f1d1d] shadow-lg backdrop-blur">
-                  01
+                <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#2F6F4E] via-[#B08A24] to-[#6B4C9A]" />
+
+                <div className="flex items-center gap-2 text-[#111111]">
+                  <Laptop className="size-3.5 text-[#2F6F4E]" />
+
+                  <span className="text-[8px] font-bold uppercase tracking-[0.16em]">
+                    Learning Management System
+                  </span>
                 </div>
 
-                <div className="absolute bottom-5 left-5 right-5">
-                  <div className="mb-2 flex items-center gap-2">
-                    <MonitorPlay className="size-3.5 text-[#e4bd5b]" />
+                <h1 className="mt-3 max-w-3xl text-2xl font-bold leading-[1.08] tracking-[-0.02em] text-[#111111] sm:text-3xl lg:text-[2.4rem]">
+                  A smarter{" "}
+                  <span className="text-[#2F6F4E]">
+                    learning experience
+                  </span>{" "}
+                  for every learner.
+                </h1>
 
-                    <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-[#e4bd5b]">
-                      Digital Learning
-                    </span>
+                <p className="mt-3 max-w-2xl text-[11px] leading-5 text-[#111111] sm:text-xs">
+                  Our LMS provides a flexible digital learning environment
+                  designed to support individual learners with accessible
+                  content, powerful analytics, collaboration, personalized
+                  learning and secure academic support.
+                </p>
+
+                {/* STATS */}
+
+                <div className="mt-4 grid grid-cols-3 border-y border-[#dedbd6] py-3">
+
+                  <div className="border-r border-[#dedbd6] pr-3">
+                    <p className="font-serif text-lg font-bold text-[#2F6F4E]">
+                      08
+                    </p>
+
+                    <p className="mt-0.5 text-[8px] font-semibold uppercase tracking-wider text-[#111111]">
+                      Features
+                    </p>
                   </div>
 
-                  <h3 className="max-w-sm font-serif text-2xl font-bold leading-tight text-white">
-                    Learning without boundaries.
-                  </h3>
+                  <div className="border-r border-[#dedbd6] px-3">
+                    <p className="font-serif text-lg font-bold text-[#6B4C9A]">
+                      24/7
+                    </p>
 
-                  <p className="mt-2 max-w-sm text-[11px] leading-5 text-white/60">
-                    A connected digital environment built for accessible,
-                    engaging and personalized education.
-                  </p>
+                    <p className="mt-0.5 text-[8px] font-semibold uppercase tracking-wider text-[#111111]">
+                      Access
+                    </p>
+                  </div>
+
+                  <div className="pl-3">
+                    <p className="font-serif text-lg font-bold text-[#B08A24]">
+                      360°
+                    </p>
+
+                    <p className="mt-0.5 text-[8px] font-semibold uppercase tracking-wider text-[#111111]">
+                      Learning
+                    </p>
+                  </div>
+                </div>
+
+                {/* TAGS */}
+
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#2F6F4E] px-2.5 py-1 text-[8px] font-semibold text-white">
+                    <Laptop className="size-3" />
+                    Digital Learning
+                  </span>
+
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#6B4C9A] px-2.5 py-1 text-[8px] font-semibold text-white">
+                    <Sparkles className="size-3" />
+                    Personalized
+                  </span>
+
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#B08A24] px-2.5 py-1 text-[8px] font-semibold text-white">
+                    <LockKeyhole className="size-3" />
+                    Secure
+                  </span>
                 </div>
               </motion.div>
 
-              {/* FEATURES */}
-              <div className="grid gap-3 sm:grid-cols-2">
+              {/* RIGHT IMAGE */}
 
-                {features.map((feature, index) => {
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  x: 15,
+                }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                transition={{
+                  duration: 0.6,
+                }}
+                className="
+                  relative
+                  min-h-[260px]
+                  overflow-hidden
+                  rounded-[16px]
+                  shadow-[0_10px_25px_rgba(0,0,0,0.1)]
+                "
+              >
+                <img
+                  src={campus1}
+                  alt="Learning Management System"
+                  className="
+                    absolute
+                    inset-0
+                    h-full
+                    w-full
+                    object-cover
+                    transition-transform
+                    duration-700
+                    hover:scale-105
+                  "
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-[#17234B]/90 via-[#2F6F4E]/20 to-transparent" />
+
+                <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#2F6F4E] via-[#B08A24] to-[#6B4C9A]" />
+
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+
+                  <div className="mb-1.5 flex items-center gap-2">
+                    <Laptop className="size-3.5 text-[#D8B84C]" />
+
+                    <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-white">
+                      Learning Management System
+                    </span>
+                  </div>
+
+                  <h2 className="max-w-md font-serif text-xl font-bold leading-tight text-white">
+                    Flexible technology for connected learning.
+                  </h2>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* =================================================
+                LMS FEATURES
+            ================================================= */}
+
+            <div className="mt-5">
+
+              <div className="mb-3 flex items-center gap-2">
+                <span className="h-[2px] w-6 bg-gradient-to-r from-[#2F6F4E] to-[#B08A24]" />
+
+                <span className="text-[8px] font-bold uppercase tracking-[0.15em] text-[#111111]">
+                  LMS Features
+                </span>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+
+                {lmsFeatures.map((feature, index) => {
                   const Icon = feature.icon;
 
                   return (
                     <motion.article
-                      key={feature.number}
+                      key={feature.title}
                       initial={{
                         opacity: 0,
-                        y: 16,
+                        y: 8,
                       }}
                       whileInView={{
                         opacity: 1,
@@ -290,208 +556,132 @@ function LMSPage() {
                       }}
                       viewport={{
                         once: true,
-                        amount: 0.08,
                       }}
                       transition={{
-                        duration: 0.45,
-                        delay: index * 0.035,
+                        duration: 0.35,
+                        delay: index * 0.04,
                       }}
-                      className="group relative overflow-hidden rounded-[18px] border border-[#d8d5d0] bg-white p-4 shadow-[0_5px_18px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+                      className="
+                        group
+                        relative
+                        overflow-hidden
+                        rounded-[14px]
+                        border
+                        border-[#dedbd6]
+                        bg-white
+                        px-4
+                        py-3.5
+                        shadow-[0_5px_18px_rgba(0,0,0,0.04)]
+                        transition-all
+                        duration-300
+                        hover:-translate-y-0.5
+                        hover:shadow-[0_8px_22px_rgba(0,0,0,0.08)]
+                      "
                     >
-                      {/* TOP ACCENT */}
+
+                      {/* COLOUR STRIPE */}
+
                       <div
-                        className="absolute left-0 right-0 top-0 h-[3px]"
+                        className="absolute left-0 top-0 h-full w-[3px]"
                         style={{
                           backgroundColor: feature.accent,
                         }}
                       />
 
-                      <div className="flex items-center justify-between">
+                      {/* GOLD HOVER LINE */}
+
+                      <div className="absolute bottom-0 left-3 right-3 h-[2px] origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100" />
+
+                      <div className="mb-2 flex items-start gap-2.5">
+
+                        {/* ICON */}
+
                         <div
-                          className="flex size-9 items-center justify-center rounded-xl"
+                          className="flex size-7 shrink-0 items-center justify-center rounded-lg"
                           style={{
-                            backgroundColor: `${feature.accent}12`,
-                            color: feature.accent,
+                            backgroundColor: feature.iconBg,
                           }}
                         >
-                          <Icon className="size-4" />
+                          <Icon className="size-3.5 text-white" />
                         </div>
 
-                        <span
-                          className="font-serif text-sm font-bold"
-                          style={{
-                            color: feature.accent,
-                          }}
-                        >
-                          {feature.number}
-                        </span>
+                        {/* TITLE */}
+
+                        <div className="min-w-0">
+                          <span
+                            className="text-[8px] font-bold uppercase tracking-[0.1em]"
+                            style={{
+                              color: feature.accent,
+                            }}
+                          >
+                            {feature.number}
+                          </span>
+
+                          <h3 className="mt-0.5 text-xs font-bold leading-4.5 text-[#111111]">
+                            {feature.title}
+                          </h3>
+                        </div>
                       </div>
 
-                      <h3 className="mt-3 font-serif text-[16px] font-bold leading-tight text-[#25262a]">
-                        {feature.title}
-                      </h3>
-
-                      <p className="mt-2 text-[11px] leading-5 text-[#66686d]">
+                      <p className="text-[10px] leading-4.5 text-[#111111]">
                         {feature.text}
                       </p>
-
-                      <div className="mt-3 flex items-center gap-1.5">
-                        <CheckCircle2
-                          className="size-3"
-                          style={{
-                            color: feature.accent,
-                          }}
-                        />
-
-                        <span className="text-[8px] font-bold uppercase tracking-[0.12em] text-[#999]">
-                          Learner Focused
-                        </span>
-                      </div>
                     </motion.article>
                   );
                 })}
-
               </div>
             </div>
 
-            {/* =====================================================
-                STATEMENT
-            ====================================================== */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="mt-5 rounded-[19px] bg-[#172554] px-5 py-5 sm:px-6"
-            >
-              <div className="flex items-center gap-4">
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#e4bd5b] text-[#172554]">
-                  <MonitorPlay className="size-5" />
-                </div>
+            {/* =================================================
+                BOTTOM NAVIGATION
+            ================================================= */}
 
-                <div>
-                  <p className="text-[8px] font-bold uppercase tracking-[0.18em] text-[#e4bd5b]">
-                    One connected learning environment
-                  </p>
-
-                  <p className="mt-1 font-serif text-sm font-bold leading-6 text-white sm:text-base">
-                    Empowering learners through accessible technology,
-                    meaningful interaction and personalized digital education.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* =====================================================
-                QUICK NAVIGATION
-            ====================================================== */}
-            <div className="mt-5 grid gap-3 sm:grid-cols-3">
-
-              <Link
-                to="/facilities"
-                className="group flex items-center justify-between rounded-[17px] border border-[#d8d5d0] bg-white p-4 shadow-[0_5px_18px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="flex size-9 items-center justify-center rounded-xl bg-[#7f1d1d]/8">
-                    <BookOpen className="size-4 text-[#7f1d1d]" />
-                  </div>
-
-                  <div>
-                    <p className="text-[8px] font-bold uppercase tracking-[0.15em] text-[#999]">
-                      Explore
-                    </p>
-
-                    <p className="font-serif text-sm font-bold text-[#25262a]">
-                      Facilities
-                    </p>
-                  </div>
-                </div>
-
-                <ArrowUpRight className="size-4 text-[#7f1d1d] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-              </Link>
+            <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-[#dedbd6] pt-4">
 
               <Link
                 to="/studio"
-                className="group flex items-center justify-between rounded-[17px] border border-[#d8d5d0] bg-white p-4 shadow-[0_5px_18px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                className="
+                  group
+                  relative
+                  inline-flex
+                  items-center
+                  gap-1.5
+                  text-[10px]
+                  font-semibold
+                  text-[#111111]
+                "
               >
-                <div className="flex items-center gap-3">
-                  <div className="flex size-9 items-center justify-center rounded-xl bg-[#b8860b]/10">
-                    <Sparkles className="size-4 text-[#b8860b]" />
-                  </div>
+                <ArrowLeft className="size-3.5 text-[#6B4C9A]" />
+                Back to Studio
 
-                  <div>
-                    <p className="text-[8px] font-bold uppercase tracking-[0.15em] text-[#999]">
-                      Explore
-                    </p>
-
-                    <p className="font-serif text-sm font-bold text-[#25262a]">
-                      Studio
-                    </p>
-                  </div>
-                </div>
-
-                <ArrowUpRight className="size-4 text-[#b8860b] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
 
               <Link
                 to="/datacenter"
-                className="group flex items-center justify-between rounded-[17px] border border-[#d8d5d0] bg-white p-4 shadow-[0_5px_18px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                className="
+                  group
+                  relative
+                  inline-flex
+                  items-center
+                  gap-1.5
+                  text-[10px]
+                  font-semibold
+                  text-[#111111]
+                "
               >
-                <div className="flex items-center gap-3">
-                  <div className="flex size-9 items-center justify-center rounded-xl bg-[#172554]/8">
-                    <Network className="size-4 text-[#172554]" />
-                  </div>
+                Explore Datacenter
 
-                  <div>
-                    <p className="text-[8px] font-bold uppercase tracking-[0.15em] text-[#999]">
-                      Explore
-                    </p>
+                <ArrowRight className="size-3.5 text-[#B08A24]" />
 
-                    <p className="font-serif text-sm font-bold text-[#25262a]">
-                      Datacenter
-                    </p>
-                  </div>
-                </div>
-
-                <ArrowUpRight className="size-4 text-[#172554] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
-
             </div>
           </div>
         </section>
-
-        {/* =========================================================
-            MINIMAL CTA
-        ========================================================== */}
-        <section className="relative overflow-hidden bg-[#3f4146]">
-          <div className="absolute right-0 top-0 h-full w-1/3 bg-[#7f1d1d]/15" />
-
-          <div className="relative mx-auto flex max-w-[1500px] items-center justify-between gap-5 px-5 py-6 sm:px-8 lg:px-12">
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-[#e4bd5b]" />
-
-                <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-[#e4bd5b]">
-                  Digital Learning
-                </span>
-              </div>
-
-              <h2 className="mt-1.5 font-serif text-lg font-bold leading-tight text-white sm:text-xl">
-                Technology that keeps learning connected.
-              </h2>
-            </div>
-
-            <Link
-              to="/facilities"
-              className="hidden shrink-0 items-center gap-2 rounded-full bg-[#e4bd5b] px-4 py-2 text-[9px] font-bold text-[#172554] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white sm:inline-flex"
-            >
-              All Facilities
-              <ArrowUpRight className="size-3.5" />
-            </Link>
-          </div>
-        </section>
-
       </main>
     </SiteLayout>
   );
 }
+
+export default LMSPage;

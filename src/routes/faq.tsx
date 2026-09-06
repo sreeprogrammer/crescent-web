@@ -60,6 +60,11 @@ const faqItems = [
   },
 ];
 
+const circularFont = {
+  fontFamily:
+    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
+};
+
 function FaqPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -69,42 +74,27 @@ function FaqPage() {
 
   return (
     <SiteLayout>
-      <main className="relative overflow-hidden bg-[#f4f0e8]">
-
-        {/* =====================================================
-            BACKGROUND
-        ====================================================== */}
-
-        {/* Soft red glow */}
+      <main
+        style={circularFont}
+        className="relative overflow-hidden bg-[#f4f0e8]"
+      >
+        {/* BACKGROUND GLOWS */}
         <div className="pointer-events-none absolute -left-40 -top-40 h-[420px] w-[420px] rounded-full bg-[#741b1b]/7 blur-[100px]" />
 
-        {/* Soft navy glow */}
         <div className="pointer-events-none absolute -right-40 top-20 h-[420px] w-[420px] rounded-full bg-[#0f1f3d]/7 blur-[110px]" />
 
-        {/* Gold glow */}
         <div className="pointer-events-none absolute bottom-[-180px] left-1/2 h-[350px] w-[700px] -translate-x-1/2 rounded-full bg-[#d4a017]/8 blur-[120px]" />
 
-        {/* =====================================================
-            TOP PREMIUM BAR
-        ====================================================== */}
+        {/* TOP ACCENT */}
+        <div className="relative h-[4px] bg-gradient-to-r from-[#741b1b] via-[#d4a017] to-[#0f1f3d]" />
 
-        <div className="relative h-[5px] bg-gradient-to-r from-[#741b1b] via-[#d4a017] to-[#0f1f3d]" />
-
-        {/* =====================================================
-            MAIN CONTENT
-        ====================================================== */}
-
-        <section className="relative px-4 pb-10 pt-8 sm:px-6 sm:pb-12 sm:pt-9 lg:px-8">
+        {/* HEADER */}
+        <section className="relative px-4 pb-6 pt-5 sm:px-6 sm:pb-7 sm:pt-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
 
-            {/* =================================================
-                COMPACT HEADER
-            ================================================= */}
-
-            <div className="mb-7 text-center">
-
-              {/* Badge */}
-              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#741b1b]/15 bg-white px-3 py-1.5 shadow-[0_5px_20px_rgba(15,31,61,0.06)]">
+            <div className="mb-5 text-center">
+              {/* FAQ BADGE */}
+              <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-[#741b1b]/15 bg-white px-3 py-1 shadow-[0_5px_20px_rgba(15,31,61,0.06)]">
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#741b1b] text-[10px] font-bold text-white">
                   ?
                 </span>
@@ -116,43 +106,37 @@ function FaqPage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-[#d4a017]" />
               </div>
 
-              {/* Heading */}
-              <h1 className="text-2xl font-bold tracking-tight text-[#0f1f3d] sm:text-3xl lg:text-[34px]">
+              {/* TITLE */}
+              <h1 className="text-2xl font-bold tracking-tight text-black sm:text-3xl lg:text-[34px]">
                 Answers before you apply
               </h1>
 
-              {/* Description */}
-              <p className="mx-auto mt-2 max-w-xl text-xs leading-5 text-slate-600 sm:text-sm">
+              <p className="mx-auto mt-1.5 max-w-xl text-xs leading-5 text-black/60 sm:text-sm">
                 Still unsure? Find clear answers about admissions, learning,
                 fees, examinations and student support.
               </p>
 
-              {/* Divider */}
-              <div className="mx-auto mt-4 flex items-center justify-center gap-2">
-                <span className="h-px w-10 bg-[#741b1b]/20" />
-                <span className="h-1 w-10 rounded-full bg-[#d4a017]" />
-                <span className="h-px w-10 bg-[#0f1f3d]/20" />
+              {/* DIVIDER */}
+              <div className="mx-auto mt-3 flex items-center justify-center gap-2">
+                <span className="h-px w-8 bg-[#741b1b]/20" />
+                <span className="h-1 w-8 rounded-full bg-[#d4a017]" />
+                <span className="h-px w-8 bg-[#0f1f3d]/20" />
               </div>
             </div>
 
-            {/* =================================================
-                FAQ PANEL
-            ================================================= */}
+            {/* FAQ PANEL */}
+            <div className="relative overflow-hidden rounded-[22px] border border-[#0f1f3d]/10 bg-[#0f1f3d] shadow-[0_15px_45px_rgba(15,31,61,0.14)]">
 
-            <div className="relative overflow-hidden rounded-[22px] border border-[#0f1f3d]/10 bg-[#0f1f3d] shadow-[0_20px_60px_rgba(15,31,61,0.16)]">
-
-              {/* Top gold line */}
+              {/* PANEL TOP LINE */}
               <div className="h-[3px] bg-gradient-to-r from-[#741b1b] via-[#d4a017] to-[#741b1b]" />
 
-              {/* Subtle panel glow */}
               <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#741b1b]/20 blur-[80px]" />
 
-              <div className="relative p-4 sm:p-6 lg:p-7">
+              <div className="relative p-3.5 sm:p-5 lg:p-6">
 
-                {/* Panel Header */}
-                <div className="mb-5 flex items-center gap-3">
-
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#741b1b] shadow-[0_8px_25px_rgba(116,27,27,0.35)]">
+                {/* PANEL HEADER */}
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#741b1b] shadow-[0_8px_25px_rgba(116,27,27,0.35)]">
                     <MessageCircleQuestion
                       className="h-5 w-5 text-white"
                       strokeWidth={1.8}
@@ -170,12 +154,8 @@ function FaqPage() {
                   </div>
                 </div>
 
-                {/* =================================================
-                    FAQ ITEMS
-                ================================================= */}
-
-                <div className="space-y-2">
-
+                {/* FAQ ITEMS */}
+                <div className="space-y-1.5">
                   {faqItems.map((item, index) => {
                     const isOpen = openIndex === index;
 
@@ -189,13 +169,12 @@ function FaqPage() {
                             : "border-white/[0.09] bg-white/[0.055] hover:border-[#d4a017]/25 hover:bg-white/[0.08]",
                         ].join(" ")}
                       >
-
-                        {/* Question */}
+                        {/* QUESTION */}
                         <button
                           type="button"
                           onClick={() => toggleFaq(index)}
                           aria-expanded={isOpen}
-                          className="flex w-full items-center justify-between gap-4 px-4 py-3.5 text-left sm:px-5 sm:py-4"
+                          className="flex w-full items-center justify-between gap-4 px-4 py-3 text-left sm:px-5 sm:py-3.5"
                         >
                           <span
                             className={[
@@ -220,7 +199,7 @@ function FaqPage() {
                           </span>
                         </button>
 
-                        {/* Answer */}
+                        {/* ANSWER */}
                         <div
                           className={[
                             "grid transition-[grid-template-rows] duration-300 ease-out",
@@ -230,33 +209,26 @@ function FaqPage() {
                           ].join(" ")}
                         >
                           <div className="overflow-hidden">
-                            <div className="border-t border-white/[0.07] px-4 pb-4 pt-3 sm:px-5">
-                              <p className="text-xs leading-6 text-white/60 sm:text-sm">
+                            <div className="border-t border-white/[0.07] px-4 pb-3.5 pt-2.5 sm:px-5">
+                              <p className="text-xs leading-5 text-[#f4f0e8] sm:text-sm">
                                 {item.answer}
                               </p>
                             </div>
                           </div>
                         </div>
-
                       </div>
                     );
                   })}
-
                 </div>
               </div>
             </div>
 
-            {/* =================================================
-                SUPPORT CARD
-            ================================================= */}
-
-            <div className="mt-5 overflow-hidden rounded-xl border border-[#741b1b]/10 bg-white shadow-[0_10px_35px_rgba(15,31,61,0.07)]">
-
-              <div className="flex flex-col items-center gap-3 px-4 py-4 text-center sm:flex-row sm:justify-between sm:px-6 sm:text-left">
+            {/* ADMIN OFFICE SUPPORT */}
+            <div className="mt-4 overflow-hidden rounded-xl border border-[#741b1b]/10 bg-white shadow-[0_8px_25px_rgba(15,31,61,0.06)]">
+              <div className="flex flex-col items-center gap-2.5 px-4 py-3 text-center sm:flex-row sm:justify-between sm:px-5 sm:text-left">
 
                 <div className="flex items-center gap-3">
-
-                  <div className="hidden h-9 w-9 items-center justify-center rounded-lg bg-[#741b1b]/10 sm:flex">
+                  <div className="hidden h-8 w-8 items-center justify-center rounded-lg bg-[#741b1b]/10 sm:flex">
                     <ShieldCheck className="h-4 w-4 text-[#741b1b]" />
                   </div>
 
@@ -265,29 +237,28 @@ function FaqPage() {
                       Need more assistance?
                     </p>
 
-                    <p className="mt-0.5 text-xs text-slate-600 sm:text-sm">
-                      Our student support team is ready to guide you.
+                    <p className="mt-0.5 text-xs text-black/60 sm:text-sm">
+                      Contact the Admin Office for further assistance.
                     </p>
                   </div>
-
                 </div>
 
-                <div className="rounded-lg bg-[#0f1f3d] px-4 py-2 shadow-sm">
+                <div className="rounded-lg bg-[#0f1f3d] px-4 py-1.5 shadow-sm">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-[#d4a017]">
-                    Student Support
+                    Contact to Admin Office
                   </span>
                 </div>
-
               </div>
             </div>
 
           </div>
         </section>
 
-        {/* Bottom accent */}
+        {/* BOTTOM ACCENT */}
         <div className="relative h-[3px] bg-gradient-to-r from-[#741b1b] via-[#d4a017] to-[#0f1f3d]" />
-
       </main>
     </SiteLayout>
   );
 }
+
+export default FaqPage;

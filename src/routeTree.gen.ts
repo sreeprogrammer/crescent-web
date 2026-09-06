@@ -24,6 +24,8 @@ import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as LmsRouteImport } from './routes/lms'
 import { Route as LmsLoginRouteImport } from './routes/lms-login'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as MbaRouteImport } from './routes/mba'
+import { Route as McaRouteImport } from './routes/mca'
 import { Route as NewRegistrationRouteImport } from './routes/new-registration'
 import { Route as ProgrammesRouteImport } from './routes/programmes'
 import { Route as StudentsCornerRouteImport } from './routes/students-corner'
@@ -31,7 +33,14 @@ import { Route as StudioRouteImport } from './routes/studio'
 import { Route as TechnicalRouteImport } from './routes/technical'
 import { Route as UgcCornerRouteImport } from './routes/ugc-corner'
 import { Route as VisionaryTeamRouteImport } from './routes/visionary-team'
-import { Route as BaIslamicStudiesPeopleRouteImport } from './routes/ba-islamic-studies.people'
+import { Route as BaIslamicStudiesIndexRouteImport } from './routes/ba-islamic-studies/index'
+import { Route as BaIslamicStudiesPeopleRouteImport } from './routes/ba-islamic-studies/people'
+import { Route as BaIslamicStudiesSyllabusRouteImport } from './routes/ba-islamic-studies/syllabus'
+import { Route as MbaIndexRouteImport } from './routes/mba/index'
+import { Route as MbaSyllabusRouteImport } from './routes/mba/syllabus'
+import { Route as McaIndexRouteImport } from './routes/mca/index'
+import { Route as McaPeopleRouteImport } from './routes/mca/people'
+import { Route as McaSyllabusRouteImport } from './routes/mca/syllabus'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -108,6 +117,16 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MbaRoute = MbaRouteImport.update({
+  id: '/mba',
+  path: '/mba',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const McaRoute = McaRouteImport.update({
+  id: '/mca',
+  path: '/mca',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NewRegistrationRoute = NewRegistrationRouteImport.update({
   id: '/new-registration',
   path: '/new-registration',
@@ -143,10 +162,46 @@ const VisionaryTeamRoute = VisionaryTeamRouteImport.update({
   path: '/visionary-team',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BaIslamicStudiesIndexRoute = BaIslamicStudiesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BaIslamicStudiesRoute,
+} as any)
 const BaIslamicStudiesPeopleRoute = BaIslamicStudiesPeopleRouteImport.update({
   id: '/people',
   path: '/people',
   getParentRoute: () => BaIslamicStudiesRoute,
+} as any)
+const BaIslamicStudiesSyllabusRoute =
+  BaIslamicStudiesSyllabusRouteImport.update({
+    id: '/syllabus',
+    path: '/syllabus',
+    getParentRoute: () => BaIslamicStudiesRoute,
+  } as any)
+const MbaIndexRoute = MbaIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MbaRoute,
+} as any)
+const MbaSyllabusRoute = MbaSyllabusRouteImport.update({
+  id: '/syllabus',
+  path: '/syllabus',
+  getParentRoute: () => MbaRoute,
+} as any)
+const McaIndexRoute = McaIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => McaRoute,
+} as any)
+const McaPeopleRoute = McaPeopleRouteImport.update({
+  id: '/people',
+  path: '/people',
+  getParentRoute: () => McaRoute,
+} as any)
+const McaSyllabusRoute = McaSyllabusRouteImport.update({
+  id: '/syllabus',
+  path: '/syllabus',
+  getParentRoute: () => McaRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -165,6 +220,8 @@ export interface FileRoutesByFullPath {
   '/lms': typeof LmsRoute
   '/lms-login': typeof LmsLoginRoute
   '/login': typeof LoginRoute
+  '/mba': typeof MbaRouteWithChildren
+  '/mca': typeof McaRouteWithChildren
   '/new-registration': typeof NewRegistrationRoute
   '/programmes': typeof ProgrammesRoute
   '/students-corner': typeof StudentsCornerRoute
@@ -173,12 +230,18 @@ export interface FileRoutesByFullPath {
   '/ugc-corner': typeof UgcCornerRoute
   '/visionary-team': typeof VisionaryTeamRoute
   '/ba-islamic-studies/people': typeof BaIslamicStudiesPeopleRoute
+  '/ba-islamic-studies/syllabus': typeof BaIslamicStudiesSyllabusRoute
+  '/mba/syllabus': typeof MbaSyllabusRoute
+  '/mca/people': typeof McaPeopleRoute
+  '/mca/syllabus': typeof McaSyllabusRoute
+  '/ba-islamic-studies/': typeof BaIslamicStudiesIndexRoute
+  '/mba/': typeof MbaIndexRoute
+  '/mca/': typeof McaIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admission': typeof AdmissionRoute
-  '/ba-islamic-studies': typeof BaIslamicStudiesRouteWithChildren
   '/cdoe-team': typeof CdoeTeamRoute
   '/contact': typeof ContactRoute
   '/datacenter': typeof DatacenterRoute
@@ -198,6 +261,13 @@ export interface FileRoutesByTo {
   '/ugc-corner': typeof UgcCornerRoute
   '/visionary-team': typeof VisionaryTeamRoute
   '/ba-islamic-studies/people': typeof BaIslamicStudiesPeopleRoute
+  '/ba-islamic-studies/syllabus': typeof BaIslamicStudiesSyllabusRoute
+  '/mba/syllabus': typeof MbaSyllabusRoute
+  '/mca/people': typeof McaPeopleRoute
+  '/mca/syllabus': typeof McaSyllabusRoute
+  '/ba-islamic-studies': typeof BaIslamicStudiesIndexRoute
+  '/mba': typeof MbaIndexRoute
+  '/mca': typeof McaIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -216,6 +286,8 @@ export interface FileRoutesById {
   '/lms': typeof LmsRoute
   '/lms-login': typeof LmsLoginRoute
   '/login': typeof LoginRoute
+  '/mba': typeof MbaRouteWithChildren
+  '/mca': typeof McaRouteWithChildren
   '/new-registration': typeof NewRegistrationRoute
   '/programmes': typeof ProgrammesRoute
   '/students-corner': typeof StudentsCornerRoute
@@ -224,6 +296,13 @@ export interface FileRoutesById {
   '/ugc-corner': typeof UgcCornerRoute
   '/visionary-team': typeof VisionaryTeamRoute
   '/ba-islamic-studies/people': typeof BaIslamicStudiesPeopleRoute
+  '/ba-islamic-studies/syllabus': typeof BaIslamicStudiesSyllabusRoute
+  '/mba/syllabus': typeof MbaSyllabusRoute
+  '/mca/people': typeof McaPeopleRoute
+  '/mca/syllabus': typeof McaSyllabusRoute
+  '/ba-islamic-studies/': typeof BaIslamicStudiesIndexRoute
+  '/mba/': typeof MbaIndexRoute
+  '/mca/': typeof McaIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -243,6 +322,8 @@ export interface FileRouteTypes {
     | '/lms'
     | '/lms-login'
     | '/login'
+    | '/mba'
+    | '/mca'
     | '/new-registration'
     | '/programmes'
     | '/students-corner'
@@ -251,12 +332,18 @@ export interface FileRouteTypes {
     | '/ugc-corner'
     | '/visionary-team'
     | '/ba-islamic-studies/people'
+    | '/ba-islamic-studies/syllabus'
+    | '/mba/syllabus'
+    | '/mca/people'
+    | '/mca/syllabus'
+    | '/ba-islamic-studies/'
+    | '/mba/'
+    | '/mca/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/admission'
-    | '/ba-islamic-studies'
     | '/cdoe-team'
     | '/contact'
     | '/datacenter'
@@ -276,6 +363,13 @@ export interface FileRouteTypes {
     | '/ugc-corner'
     | '/visionary-team'
     | '/ba-islamic-studies/people'
+    | '/ba-islamic-studies/syllabus'
+    | '/mba/syllabus'
+    | '/mca/people'
+    | '/mca/syllabus'
+    | '/ba-islamic-studies'
+    | '/mba'
+    | '/mca'
   id:
     | '__root__'
     | '/'
@@ -293,6 +387,8 @@ export interface FileRouteTypes {
     | '/lms'
     | '/lms-login'
     | '/login'
+    | '/mba'
+    | '/mca'
     | '/new-registration'
     | '/programmes'
     | '/students-corner'
@@ -301,6 +397,13 @@ export interface FileRouteTypes {
     | '/ugc-corner'
     | '/visionary-team'
     | '/ba-islamic-studies/people'
+    | '/ba-islamic-studies/syllabus'
+    | '/mba/syllabus'
+    | '/mca/people'
+    | '/mca/syllabus'
+    | '/ba-islamic-studies/'
+    | '/mba/'
+    | '/mca/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -319,6 +422,8 @@ export interface RootRouteChildren {
   LmsRoute: typeof LmsRoute
   LmsLoginRoute: typeof LmsLoginRoute
   LoginRoute: typeof LoginRoute
+  MbaRoute: typeof MbaRouteWithChildren
+  McaRoute: typeof McaRouteWithChildren
   NewRegistrationRoute: typeof NewRegistrationRoute
   ProgrammesRoute: typeof ProgrammesRoute
   StudentsCornerRoute: typeof StudentsCornerRoute
@@ -435,6 +540,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mba': {
+      id: '/mba'
+      path: '/mba'
+      fullPath: '/mba'
+      preLoaderRoute: typeof MbaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mca': {
+      id: '/mca'
+      path: '/mca'
+      fullPath: '/mca'
+      preLoaderRoute: typeof McaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/new-registration': {
       id: '/new-registration'
       path: '/new-registration'
@@ -484,6 +603,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VisionaryTeamRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ba-islamic-studies/': {
+      id: '/ba-islamic-studies/'
+      path: '/'
+      fullPath: '/ba-islamic-studies/'
+      preLoaderRoute: typeof BaIslamicStudiesIndexRouteImport
+      parentRoute: typeof BaIslamicStudiesRoute
+    }
     '/ba-islamic-studies/people': {
       id: '/ba-islamic-studies/people'
       path: '/people'
@@ -491,19 +617,91 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaIslamicStudiesPeopleRouteImport
       parentRoute: typeof BaIslamicStudiesRoute
     }
+    '/ba-islamic-studies/syllabus': {
+      id: '/ba-islamic-studies/syllabus'
+      path: '/syllabus'
+      fullPath: '/ba-islamic-studies/syllabus'
+      preLoaderRoute: typeof BaIslamicStudiesSyllabusRouteImport
+      parentRoute: typeof BaIslamicStudiesRoute
+    }
+    '/mba/': {
+      id: '/mba/'
+      path: '/'
+      fullPath: '/mba/'
+      preLoaderRoute: typeof MbaIndexRouteImport
+      parentRoute: typeof MbaRoute
+    }
+    '/mba/syllabus': {
+      id: '/mba/syllabus'
+      path: '/syllabus'
+      fullPath: '/mba/syllabus'
+      preLoaderRoute: typeof MbaSyllabusRouteImport
+      parentRoute: typeof MbaRoute
+    }
+    '/mca/': {
+      id: '/mca/'
+      path: '/'
+      fullPath: '/mca/'
+      preLoaderRoute: typeof McaIndexRouteImport
+      parentRoute: typeof McaRoute
+    }
+    '/mca/people': {
+      id: '/mca/people'
+      path: '/people'
+      fullPath: '/mca/people'
+      preLoaderRoute: typeof McaPeopleRouteImport
+      parentRoute: typeof McaRoute
+    }
+    '/mca/syllabus': {
+      id: '/mca/syllabus'
+      path: '/syllabus'
+      fullPath: '/mca/syllabus'
+      preLoaderRoute: typeof McaSyllabusRouteImport
+      parentRoute: typeof McaRoute
+    }
   }
 }
 
 interface BaIslamicStudiesRouteChildren {
   BaIslamicStudiesPeopleRoute: typeof BaIslamicStudiesPeopleRoute
+  BaIslamicStudiesSyllabusRoute: typeof BaIslamicStudiesSyllabusRoute
+  BaIslamicStudiesIndexRoute: typeof BaIslamicStudiesIndexRoute
 }
 
 const BaIslamicStudiesRouteChildren: BaIslamicStudiesRouteChildren = {
   BaIslamicStudiesPeopleRoute: BaIslamicStudiesPeopleRoute,
+  BaIslamicStudiesSyllabusRoute: BaIslamicStudiesSyllabusRoute,
+  BaIslamicStudiesIndexRoute: BaIslamicStudiesIndexRoute,
 }
 
 const BaIslamicStudiesRouteWithChildren =
   BaIslamicStudiesRoute._addFileChildren(BaIslamicStudiesRouteChildren)
+
+interface MbaRouteChildren {
+  MbaSyllabusRoute: typeof MbaSyllabusRoute
+  MbaIndexRoute: typeof MbaIndexRoute
+}
+
+const MbaRouteChildren: MbaRouteChildren = {
+  MbaSyllabusRoute: MbaSyllabusRoute,
+  MbaIndexRoute: MbaIndexRoute,
+}
+
+const MbaRouteWithChildren = MbaRoute._addFileChildren(MbaRouteChildren)
+
+interface McaRouteChildren {
+  McaPeopleRoute: typeof McaPeopleRoute
+  McaSyllabusRoute: typeof McaSyllabusRoute
+  McaIndexRoute: typeof McaIndexRoute
+}
+
+const McaRouteChildren: McaRouteChildren = {
+  McaPeopleRoute: McaPeopleRoute,
+  McaSyllabusRoute: McaSyllabusRoute,
+  McaIndexRoute: McaIndexRoute,
+}
+
+const McaRouteWithChildren = McaRoute._addFileChildren(McaRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -521,6 +719,8 @@ const rootRouteChildren: RootRouteChildren = {
   LmsRoute: LmsRoute,
   LmsLoginRoute: LmsLoginRoute,
   LoginRoute: LoginRoute,
+  MbaRoute: MbaRouteWithChildren,
+  McaRoute: McaRouteWithChildren,
   NewRegistrationRoute: NewRegistrationRoute,
   ProgrammesRoute: ProgrammesRoute,
   StudentsCornerRoute: StudentsCornerRoute,

@@ -1,832 +1,646 @@
 import { AdmissionTimeline } from "@/components/site/AdmissionTimeline";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
 import {
+  ArrowRight,
   Bell,
-  CheckCircle2,
-  ChevronRight,
-  FileCheck2,
-  FileSignature,
-  GraduationCap,
+  FileText,
   LogIn,
-  ShieldCheck,
   UserPlus,
+  Download,
 } from "lucide-react";
 
-/* =========================================================
-   SEO
-========================================================= */
-
-const title = "Admission 2026–2027 — Apply Online for UG & PG Programmes";
-
-const description =
-  "How to apply, new registration, applicant login and the latest admission notifications for Crescent Distance Education programmes.";
+import overviewImage from "@/assets/campus-1.jpg";
 
 /* =========================================================
    ROUTE
 ========================================================= */
 
 export const Route = createFileRoute("/admission")({
-  head: () => ({
-    meta: [
-      {
-        title,
-      },
-      {
-        name: "description",
-        content: description,
-      },
-      {
-        property: "og:title",
-        content: title,
-      },
-      {
-        property: "og:description",
-        content: description,
-      },
-      {
-        property: "og:type",
-        content: "website",
-      },
-      {
-        name: "twitter:card",
-        content: "summary_large_image",
-      },
-    ],
-  }),
-
   component: AdmissionPage,
 });
 
 /* =========================================================
-   SUPPORT CARD DATA
+   FONT
 ========================================================= */
 
-const supportCards = [
-  {
-    id: "new-registration",
-    number: "01",
-    icon: UserPlus,
-    label: "GET STARTED",
-    title: "New Registration",
-    description:
-      "Create your applicant account and begin your admission application in a few simple steps.",
-    items: [
-      "Choose your username and password",
-      "Enter your personal details",
-      "Select your programme",
-    ],
-    action: "Start Registration",
-    link: "/new-registration",
-  },
-
-  {
-    id: "applicant-login",
-    number: "02",
-    icon: LogIn,
-    label: "RETURNING APPLICANT",
-    title: "Applicant Login",
-    description:
-      "Already registered? Continue your application, upload documents and track your admission status.",
-    items: [
-      "Continue your saved application",
-      "Upload pending documents",
-      "Track application status",
-    ],
-    action: "Applicant Login",
-    link: "/login",
-  },
-
-  {
-    id: "notification",
-    number: "03",
-    icon: Bell,
-    label: "LATEST UPDATES",
-    title: "Admission Notification",
-    description:
-      "Important dates and updates for the 2026–2027 admission cycle.",
-    items: [
-      "Applications open — 1 January 2026",
-      "Last date — 31 July 2026",
-      "Verification — within 48 hours",
-      "Session starts — 1 September 2026",
-    ],
-    action: null,
-    link: "/admission",
-  },
-
-  {
-    id: "documents",
-    number: "04",
-    icon: FileSignature,
-    label: "BEFORE YOU APPLY",
-    title: "Documents Required",
-    description:
-      "Keep the required documents ready before starting your online application.",
-    items: [
-      "10th & 12th marksheets",
-      "Degree certificate for PG",
-      "Government photo ID",
-      "Photo & signature",
-    ],
-    action: null,
-    link: "/admission",
-  },
-] as const;
+const circularFont = {
+  fontFamily:
+    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
+};
 
 /* =========================================================
-   SUPPORT CARD
+   ADMISSION QUICK LINKS
 ========================================================= */
 
-function SupportCard({
-  card,
-  index,
-}: {
-  card: (typeof supportCards)[number];
-  index: number;
-}) {
-  const Icon = card.icon;
+function AdmissionQuickLinks() {
+  const links = [
+    {
+      number: "01",
+      title: "Start Registration",
+      description: "Create your admission account",
+      icon: UserPlus,
+      href: "#registration",
+      accent: "#8F3030",
+    },
+    {
+      number: "02",
+      title: "Applicant Login",
+      description: "Continue your application",
+      icon: LogIn,
+      href: "#login",
+      accent: "#30265F",
+    },
+    {
+      number: "03",
+      title: "Documents Required",
+      description: "Check required documents",
+      icon: FileText,
+      href: "#documents",
+      accent: "#B08A24",
+    },
+    {
+      number: "04",
+      title: "Admission Notification",
+      description: "View admission updates",
+      icon: Bell,
+      href: "#notification",
+      accent: "#427D76",
+    },
+  ];
 
-  return (
-    <motion.article
-      id={card.id}
-      initial={{
-        opacity: 0,
-        y: 18,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.15,
-      }}
-      transition={{
-        duration: 0.5,
-        delay: index * 0.07,
-      }}
-      whileHover={{
-        y: -5,
-      }}
-      className="
-        group
-        relative
-        overflow-hidden
-        rounded-[1.4rem]
-        border
-        border-[#172554]/10
-        bg-white
-        p-4
-        shadow-[0_10px_28px_rgba(23,37,84,0.06)]
-        transition-all
-        duration-300
-        hover:border-[#d4af37]/50
-        hover:shadow-[0_18px_38px_rgba(23,37,84,0.11)]
-      "
-    >
-      {/* Glow */}
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -right-12
-          -top-12
-          size-32
-          rounded-full
-          bg-[#d4af37]/10
-          blur-2xl
-          transition-all
-          duration-500
-          group-hover:bg-[#8f1d1d]/10
-        "
-      />
-
-      {/* Top */}
-
-      <div className="relative flex items-start justify-between">
-        <div
-          className="
-            flex
-            size-10
-            items-center
-            justify-center
-            rounded-[0.8rem]
-            bg-[#172554]
-            text-[#d4af37]
-            shadow-md
-            transition-all
-            duration-300
-            group-hover:bg-[#8f1d1d]
-            group-hover:text-white
-          "
-        >
-          <Icon className="size-[18px]" />
-        </div>
-
-        <span
-          className="
-            rounded-full
-            border
-            border-[#d4af37]/30
-            bg-[#d4af37]/10
-            px-2.5
-            py-1
-            text-[8px]
-            font-black
-            tracking-[0.18em]
-            text-[#8f1d1d]
-          "
-        >
-          {card.number}
-        </span>
-      </div>
-
-      {/* Label */}
-
-      <p
-        className="
-          relative
-          mt-3
-          text-[8px]
-          font-black
-          tracking-[0.22em]
-          text-[#8f1d1d]
-        "
-      >
-        {card.label}
-      </p>
-
-      {/* Title */}
-
-      <h3
-        className="
-          relative
-          mt-1
-          text-lg
-          font-black
-          tracking-tight
-          text-[#172554]
-        "
-      >
-        {card.title}
-      </h3>
-
-      {/* Description */}
-
-      <p
-        className="
-          relative
-          mt-1
-          text-[11px]
-          leading-[1.5]
-          text-slate-500
-        "
-      >
-        {card.description}
-      </p>
-
-      {/* Items */}
-
-      <div
-        className="
-          relative
-          mt-3
-          space-y-1.5
-          border-t
-          border-slate-100
-          pt-3
-        "
-      >
-        {card.items.map((item) => (
-          <div
-            key={item}
-            className="
-              flex
-              items-start
-              gap-2
-              text-[10px]
-              font-medium
-              text-slate-600
-            "
-          >
-            <CheckCircle2
-              className="
-                mt-0.5
-                size-3.5
-                shrink-0
-                text-[#8f1d1d]
-              "
-            />
-
-            <span>{item}</span>
-          </div>
-        ))}
-      </div>
-
-      {/* Action */}
-
-      {card.action && (
-        <Link
-          to={card.link}
-          className="
-            relative
-            mt-3
-            flex
-            items-center
-            justify-between
-            rounded-xl
-            bg-[#172554]
-            px-3.5
-            py-2.5
-            text-[10px]
-            font-bold
-            text-white
-            transition-all
-            duration-300
-            hover:bg-[#8f1d1d]
-          "
-        >
-          <span>{card.action}</span>
-
-          <ChevronRight
-            className="
-              size-3.5
-              transition-transform
-              duration-300
-              group-hover:translate-x-1
-            "
-          />
-        </Link>
-      )}
-    </motion.article>
-  );
-}
-
-/* =========================================================
-   HERO
-========================================================= */
-
-function AdmissionHero() {
   return (
     <section
+      style={circularFont}
       className="
         relative
-        overflow-hidden
-        bg-[#f7f4ee]
-        px-4
-        py-3
-        sm:px-6
-        sm:py-4
-        lg:px-10
-        lg:py-5
+        bg-[#F5F1E9]
+        px-5
+        pb-6
+        pt-4
+        sm:px-8
+        lg:px-12
       "
     >
-      {/* Background */}
+      <div className="mx-auto max-w-7xl">
 
-      <div
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          overflow-hidden
-        "
-      >
+        {/* =================================================
+            DARK GOLD LINE
+        ================================================= */}
+
         <div
           className="
-            absolute
-            -left-28
-            -top-28
-            size-72
+            mb-5
+            h-[3px]
+            w-full
             rounded-full
-            bg-[#8f1d1d]/10
-            blur-3xl
+            bg-[#B08A24]
           "
         />
 
-        <div
-          className="
-            absolute
-            -bottom-32
-            -right-20
-            size-80
-            rounded-full
-            bg-[#d4af37]/15
-            blur-3xl
-          "
-        />
+        {/* =================================================
+            QUICK LINK CARDS
+        ================================================= */}
 
-        <div
-          className="
-            absolute
-            right-[30%]
-            top-1/2
-            size-40
-            rounded-full
-            bg-[#172554]/5
-            blur-3xl
-          "
-        />
-      </div>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
 
-      <div className="relative mx-auto max-w-7xl">
+          {links.map((item) => {
+            const Icon = item.icon;
 
-        {/* =====================================================
-            ADMISSIONS OPEN
-        ===================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: -10,
-            scale: 0.92,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            scale: 1,
-          }}
-          transition={{
-            duration: 0.5,
-          }}
-          className="
-            mb-2
-            flex
-            justify-center
-          "
-        >
-          <motion.div
-            animate={{
-              opacity: [1, 0.78, 1],
-              scale: [1, 1.025, 1],
-              boxShadow: [
-                "0 0 0 rgba(127,29,29,0)",
-                "0 0 18px rgba(127,29,29,0.30)",
-                "0 0 0 rgba(127,29,29,0)",
-              ],
-            }}
-            transition={{
-              duration: 2.2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="
-              inline-flex
-              items-center
-              gap-2
-              rounded-full
-              border
-              border-[#7f1d1d]/40
-              bg-[#7f1d1d]
-              px-5
-              py-2
-              text-white
-              backdrop-blur-md
-            "
-          >
-            <span className="size-1.5 rounded-full bg-[#d4af37]" />
-
-            <span
-              className="
-                text-[10px]
-                font-black
-                tracking-[0.16em]
-                text-white
-                sm:text-[11px]
-              "
-            >
-              Admissions Open · 2026–2027
-            </span>
-
-            <span className="size-1.5 rounded-full bg-[#d4af37]" />
-          </motion.div>
-        </motion.div>
-
-        {/* =====================================================
-            HERO GRID
-        ===================================================== */}
-
-        <div
-          className="
-            grid
-            items-center
-            gap-4
-            lg:grid-cols-[1.2fr_0.8fr]
-          "
-        >
-
-          {/* LEFT */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: -20,
-            }}
-            animate={{
-              opacity: 1,
-              x: 0,
-            }}
-            transition={{
-              duration: 0.6,
-            }}
-            className="text-center lg:text-left"
-          >
-            {/* Accent */}
-
-            <div
-              className="
-                mb-2
-                flex
-                items-center
-                justify-center
-                gap-1.5
-                lg:justify-start
-              "
-            >
-              <span className="h-[2px] w-7 rounded-full bg-[#8f1d1d]" />
-
-              <span className="size-1 rounded-full bg-[#d4af37]" />
-
-              <span className="h-[2px] w-7 rounded-full bg-[#172554]" />
-            </div>
-
-            {/* Heading */}
-
-            <h1
-              className="
-                mx-auto
-                max-w-2xl
-                text-[26px]
-                font-black
-                leading-[1.08]
-                tracking-[-0.025em]
-                text-[#172554]
-                sm:text-[32px]
-                lg:mx-0
-                lg:text-[38px]
-              "
-            >
-              Begin your{" "}
-              <span className="text-[#8f1d1d]">
-                academic journey
-              </span>{" "}
-              with confidence.
-            </h1>
-
-            {/* Description */}
-
-            <p
-              className="
-                mx-auto
-                mt-2
-                max-w-xl
-                text-[11px]
-                leading-5
-                text-slate-600
-                sm:text-xs
-                lg:mx-0
-              "
-            >
-              Apply online for UG and PG programmes through a simple,
-              supported admission journey — from registration to enrolment.
-            </p>
-
-            {/* Trust badges */}
-
-            <div
-              className="
-                mt-3
-                flex
-                flex-wrap
-                justify-center
-                gap-2
-                lg:justify-start
-              "
-            >
-              {[
-                "UGC Approved",
-                "100% Online",
-                "Flexible Learning",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="
-                    flex
-                    items-center
-                    gap-1.5
-                    rounded-full
-                    border
-                    border-[#172554]/10
-                    bg-white/75
-                    px-3
-                    py-1.5
-                    text-[9px]
-                    font-bold
-                    text-[#172554]
-                    shadow-sm
-                  "
-                >
-                  <CheckCircle2
-                    className="
-                      size-3
-                      text-[#8f1d1d]
-                    "
-                  />
-
-                  {item}
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* RIGHT STATUS */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: 20,
-              scale: 0.97,
-            }}
-            animate={{
-              opacity: 1,
-              x: 0,
-              scale: 1,
-            }}
-            transition={{
-              duration: 0.65,
-              delay: 0.1,
-            }}
-            className="relative"
-          >
-            <div
-              className="
-                absolute
-                -inset-3
-                rounded-[2rem]
-                bg-[#d4af37]/10
-                blur-2xl
-              "
-            />
-
-            <div
-              className="
-                relative
-                overflow-hidden
-                rounded-[1.6rem]
-                border
-                border-[#d4af37]/30
-                bg-[#172554]
-                p-3.5
-                text-white
-                shadow-[0_18px_45px_rgba(23,37,84,0.16)]
-              "
-            >
-              <div
+            return (
+              <a
+                key={item.number}
+                href={item.href}
                 className="
-                  absolute
-                  -right-16
-                  -top-16
-                  size-44
-                  rounded-full
-                  bg-[#d4af37]/10
-                  blur-2xl
+                  group
+                  relative
+                  overflow-hidden
+                  rounded-[1.1rem]
+                  border
+                  border-[#D9D4CA]
+                  bg-white
+                  px-4
+                  py-3.5
+                  shadow-[0_6px_18px_rgba(31,35,43,0.05)]
+                  transition-all
+                  duration-300
+                  hover:-translate-y-0.5
+                  hover:shadow-[0_10px_25px_rgba(31,35,43,0.09)]
                 "
-              />
+              >
 
-              <div className="relative">
+                {/* TOP ACCENT */}
 
-                {/* Status Header */}
+                <div
+                  className="
+                    absolute
+                    left-0
+                    right-0
+                    top-0
+                    h-[2px]
+                  "
+                  style={{
+                    backgroundColor: item.accent,
+                  }}
+                />
 
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p
-                      className="
-                        text-[8px]
-                        font-black
-                        uppercase
-                        tracking-[0.25em]
-                        text-[#d4af37]
-                      "
-                    >
-                      Admission Status
-                    </p>
+                <div className="flex items-center gap-3">
 
-                    <h2 className="mt-1 text-lg font-black">
-                      Applications Open
-                    </h2>
-                  </div>
+                  {/* ICON */}
 
                   <div
                     className="
                       flex
                       size-9
+                      shrink-0
                       items-center
                       justify-center
                       rounded-xl
-                      bg-[#8f1d1d]
+                      bg-[#17234B]
+                      transition-transform
+                      duration-300
+                      group-hover:scale-105
                     "
                   >
-                    <GraduationCap className="size-4.5" />
+                    <Icon className="size-4 text-[#D8B84C]" />
                   </div>
-                </div>
 
-                {/* Session / Mode */}
+                  {/* CONTENT */}
 
-                <div className="mt-3 grid grid-cols-2 gap-2">
+                  <div className="min-w-0 flex-1">
 
-                  <div
-                    className="
-                      rounded-xl
-                      border
-                      border-white/10
-                      bg-white/[0.06]
-                      p-2.5
-                    "
-                  >
+                    <div className="flex items-center gap-1.5">
+
+                      <span
+                        className="
+                          text-[8px]
+                          font-bold
+                          tracking-[0.12em]
+                        "
+                        style={{
+                          color: item.accent,
+                        }}
+                      >
+                        {item.number}
+                      </span>
+
+                      <h3
+                        className="
+                          truncate
+                          text-[11px]
+                          font-bold
+                          text-[#20242B]
+                        "
+                      >
+                        {item.title}
+                      </h3>
+
+                    </div>
+
                     <p
                       className="
-                        text-[7px]
-                        font-bold
-                        uppercase
-                        tracking-wider
-                        text-white/40
+                        mt-0.5
+                        truncate
+                        text-[9px]
+                        font-medium
+                        text-[#737782]
                       "
                     >
-                      Session
+                      {item.description}
                     </p>
 
-                    <p className="mt-1 text-xs font-black">
-                      2026–2027
-                    </p>
                   </div>
 
-                  <div
-                    className="
-                      rounded-xl
-                      border
-                      border-white/10
-                      bg-white/[0.06]
-                      p-2.5
-                    "
-                  >
-                    <p
-                      className="
-                        text-[7px]
-                        font-bold
-                        uppercase
-                        tracking-wider
-                        text-white/40
-                      "
-                    >
-                      Mode
-                    </p>
+                  {/* ARROW */}
 
-                    <p className="mt-1 text-xs font-black">
-                      Online
-                    </p>
-                  </div>
-
-                </div>
-
-                {/* Security Note */}
-
-                <div
-                  className="
-                    mt-2
-                    flex
-                    items-center
-                    gap-2
-                    rounded-xl
-                    border
-                    border-[#d4af37]/20
-                    bg-[#d4af37]/10
-                    p-2.5
-                  "
-                >
-                  <ShieldCheck
+                  <ArrowRight
                     className="
                       size-3.5
                       shrink-0
-                      text-[#d4af37]
+                      text-[#B9BDC5]
+                      transition-all
+                      duration-300
+                      group-hover:translate-x-1
+                      group-hover:text-[#30265F]
                     "
                   />
 
-                  <p
-                    className="
-                      text-[9px]
-                      leading-4
-                      text-white/75
-                    "
-                  >
-                    Simple admission process with dedicated learner support.
-                  </p>
                 </div>
+              </a>
+            );
+          })}
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =========================================================
+   ADMISSION PROCESS HEADING
+========================================================= */
+
+function AdmissionProcessHeading() {
+  return (
+    <section
+      style={circularFont}
+      className="
+        bg-[#F5F1E9]
+        px-5
+        pt-6
+        sm:px-8
+        lg:px-12
+      "
+    >
+      <div className="mx-auto max-w-7xl">
+
+        <div
+          className="
+            relative
+            overflow-hidden
+            rounded-[1.5rem]
+            border
+            border-[#30265F]/30
+            bg-[#30265F]
+            px-6
+            py-5
+            shadow-[0_12px_30px_rgba(48,38,95,0.14)]
+            sm:px-8
+          "
+        >
+
+          {/* DECORATION */}
+
+          <div
+            className="
+              pointer-events-none
+              absolute
+              -right-16
+              -top-16
+              size-40
+              rounded-full
+              border
+              border-[#D8B84C]/20
+            "
+          />
+
+          <div
+            className="
+              pointer-events-none
+              absolute
+              -bottom-12
+              left-1/3
+              size-24
+              rounded-full
+              bg-[#8F3030]/10
+              blur-2xl
+            "
+          />
+
+          {/* CONTENT */}
+
+          <div
+            className="
+              relative
+              flex
+              items-center
+              justify-between
+              gap-5
+            "
+          >
+
+            <div>
+
+              <p
+                className="
+                  text-[9px]
+                  font-bold
+                  uppercase
+                  tracking-[0.22em]
+                  text-[#D8B84C]
+                "
+              >
+                Admission Process
+              </p>
+
+              <h2
+                className="
+                  mt-1.5
+                  text-[20px]
+                  font-bold
+                  text-white
+                  sm:text-[23px]
+                "
+              >
+                Your journey to enrolment
+              </h2>
+
+            </div>
+
+            <div
+              className="
+                hidden
+                size-11
+                shrink-0
+                items-center
+                justify-center
+                rounded-xl
+                border
+                border-[#D8B84C]/30
+                bg-white/10
+                sm:flex
+              "
+            >
+              <ArrowRight className="size-5 text-[#D8B84C]" />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =========================================================
+   OVERVIEW SECTION
+========================================================= */
+
+function AdmissionOverview() {
+  return (
+    <section
+      style={circularFont}
+      className="
+        bg-[#F5F1E9]
+        px-5
+        py-12
+        sm:px-8
+        lg:px-12
+        lg:py-16
+      "
+    >
+      <div className="mx-auto max-w-7xl">
+
+        <div
+          className="
+            grid
+            items-center
+            gap-9
+            lg:grid-cols-[1fr_0.72fr]
+            lg:gap-14
+          "
+        >
+
+          {/* =================================================
+              LEFT CONTENT
+          ================================================= */}
+
+          <div>
+
+            {/* DECORATIVE LINE */}
+
+            <div className="mb-4 flex items-center gap-2">
+
+              <span
+                className="
+                  h-[3px]
+                  w-10
+                  rounded-full
+                  bg-[#8F3030]
+                "
+              />
+
+              <span
+                className="
+                  size-2
+                  rounded-full
+                  bg-[#D8B84C]
+                "
+              />
+
+              <span
+                className="
+                  h-[3px]
+                  w-10
+                  rounded-full
+                  bg-[#30265F]
+                "
+              />
+
+            </div>
+
+            {/* LABEL */}
+
+            <p
+              className="
+                text-[10px]
+                font-bold
+                uppercase
+                tracking-[0.22em]
+                text-[#8F3030]
+              "
+            >
+              Overview
+            </p>
+
+            {/* HEADING */}
+
+            <h2
+              className="
+                mt-2
+                max-w-xl
+                text-[28px]
+                font-bold
+                leading-tight
+                tracking-[-0.02em]
+                text-[#20242B]
+                sm:text-[34px]
+              "
+            >
+              Explore programmes and begin your academic journey
+            </h2>
+
+            {/* CONTENT */}
+
+            <p
+              className="
+                mt-5
+                max-w-2xl
+                text-[13px]
+                font-medium
+                leading-7
+                text-[#5E6470]
+              "
+            >
+              <span className="font-bold text-[#30265F]">
+                VIT Group of Institutions offer
+              </span>{" "}
+              70 Undergraduate, 58 Postgraduate, 15 Integrated
+              Programmes, 2 Research programmes and 2 M.Tech
+              Industrial Programmes. In addition to full-time Ph.D
+              Degrees in Engineering and Management Disciplines,
+              Ph.D. in Science and Languages and Integrated Ph.D.
+              programmes in engineering disciplines.
+            </p>
+
+            <p
+              className="
+                mt-4
+                max-w-2xl
+                text-[13px]
+                font-medium
+                leading-7
+                text-[#5E6470]
+              "
+            >
+              Research Centers, integral of respective schools
+              encourage inter-departmental collaborative participation
+              of students in exciting research projects. A student
+              admitted should register in their respective schools
+              depending on the degree / programme selected to pursue.
+            </p>
+
+            {/* ACTIONS */}
+
+            <div className="mt-6 flex flex-wrap gap-3">
+
+              <Link
+                to="/programmes"
+                className="
+                  inline-flex
+                  items-center
+                  gap-2
+                  rounded-full
+                  bg-[#30265F]
+                  px-5
+                  py-2.5
+                  text-[11px]
+                  font-bold
+                  text-white
+                  shadow-[0_8px_18px_rgba(48,38,95,0.16)]
+                  transition-all
+                  duration-300
+                  hover:-translate-y-0.5
+                  hover:bg-[#3B3170]
+                "
+              >
+                Explore Programmes
+                <ArrowRight className="size-3.5" />
+              </Link>
+
+              <a
+                href="#notification"
+                className="
+                  inline-flex
+                  items-center
+                  gap-2
+                  rounded-full
+                  border
+                  border-[#B08A24]/40
+                  bg-white
+                  px-5
+                  py-2.5
+                  text-[11px]
+                  font-bold
+                  text-[#30265F]
+                  transition-all
+                  duration-300
+                  hover:-translate-y-0.5
+                "
+              >
+                <Download className="size-3.5 text-[#B08A24]" />
+                Admission Notification
+              </a>
+
+            </div>
+          </div>
+
+          {/* =================================================
+              RIGHT SQUARE IMAGE
+          ================================================= */}
+
+          <div className="relative mx-auto w-full max-w-[430px]">
+
+            {/* GOLD DECORATION */}
+
+            <div
+              className="
+                absolute
+                -bottom-3
+                -right-3
+                h-full
+                w-full
+                rounded-[1.8rem]
+                border
+                border-[#B08A24]/30
+              "
+            />
+
+            {/* IMAGE */}
+
+            <div
+              className="
+                relative
+                aspect-square
+                overflow-hidden
+                rounded-[1.8rem]
+                border
+                border-[#30265F]/15
+                bg-[#30265F]
+                shadow-[0_18px_40px_rgba(32,36,43,0.15)]
+              "
+            >
+
+              <img
+                src={overviewImage}
+                alt="Admission overview"
+                className="
+                  h-full
+                  w-full
+                  object-cover
+                "
+              />
+
+              {/* IMAGE OVERLAY */}
+
+              <div
+                className="
+                  absolute
+                  inset-x-0
+                  bottom-0
+                  bg-gradient-to-t
+                  from-[#17142B]/80
+                  via-[#17142B]/30
+                  to-transparent
+                  p-6
+                "
+              >
+
+                <p
+                  className="
+                    text-[9px]
+                    font-bold
+                    uppercase
+                    tracking-[0.2em]
+                    text-[#D8B84C]
+                  "
+                >
+                  Admissions 2026–2027
+                </p>
+
+                <p
+                  className="
+                    mt-1
+                    text-[17px]
+                    font-bold
+                    text-white
+                  "
+                >
+                  Shape your future with confidence
+                </p>
 
               </div>
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </div>
@@ -842,213 +656,40 @@ function AdmissionPage() {
   return (
     <SiteLayout>
 
-      {/* =====================================================
-          HERO
-      ===================================================== */}
-
-      <AdmissionHero />
-
-      {/* =====================================================
-          ADMISSION PROCESS
-      ===================================================== */}
-
-      <div className="bg-[#f7f4ee]">
-        <AdmissionTimeline />
-      </div>
-
-      {/* =====================================================
-          SUPPORT SECTION
-      ===================================================== */}
-
-      <section
-        className="
-          relative
-          overflow-hidden
-          bg-[#f7f4ee]
-          px-4
-          py-5
-          sm:px-6
-          sm:py-6
-          lg:px-10
-        "
+      <main
+        style={circularFont}
+        className="min-h-screen bg-[#F5F1E9]"
       >
-        <div className="mx-auto max-w-7xl">
 
-          {/* Heading */}
+        {/* =================================================
+            QUICK ADMISSION LINKS
+            Compact cards
+        ================================================= */}
 
-          <div
-            className="
-              mb-3
-              flex
-              flex-col
-              gap-2
-              sm:flex-row
-              sm:items-end
-              sm:justify-between
-            "
-          >
-            <div>
-              <p
-                className="
-                  text-[8px]
-                  font-black
-                  uppercase
-                  tracking-[0.25em]
-                  text-[#8f1d1d]
-                "
-              >
-                Admission Support
-              </p>
+        <AdmissionQuickLinks />
 
-              <h2
-                className="
-                  mt-1
-                  text-xl
-                  font-black
-                  tracking-tight
-                  text-[#172554]
-                  sm:text-2xl
-                "
-              >
-                Everything you need to apply
-              </h2>
-            </div>
+        {/* =================================================
+            ADMISSION PROCESS
+        ================================================= */}
 
-            <p
-              className="
-                max-w-md
-                text-[10px]
-                leading-5
-                text-slate-500
-                sm:text-right
-              "
-            >
-              Registration, login, admission updates and document
-              requirements — organised in one simple space.
-            </p>
-          </div>
+        <AdmissionProcessHeading />
 
-          {/* =================================================
-              CARDS
-          ================================================= */}
+        {/* EXISTING TIMELINE — UNCHANGED */}
 
-          <div
-            className="
-              grid
-              gap-3
-              md:grid-cols-2
-              xl:grid-cols-4
-            "
-          >
-            {supportCards.map((card, index) => (
-              <SupportCard
-                key={card.id}
-                card={card}
-                index={index}
-              />
-            ))}
-          </div>
-
-          {/* =================================================
-              BOTTOM CTA
-          ================================================= */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 10,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            className="
-              mt-3
-              flex
-              flex-col
-              items-center
-              justify-between
-              gap-3
-              rounded-2xl
-              border
-              border-[#d4af37]/25
-              bg-[#172554]
-              px-5
-              py-3
-              text-center
-              sm:flex-row
-              sm:text-left
-            "
-          >
-            <div className="flex items-center gap-3">
-
-              <div
-                className="
-                  flex
-                  size-8
-                  items-center
-                  justify-center
-                  rounded-xl
-                  bg-[#d4af37]
-                  text-[#172554]
-                "
-              >
-                <FileCheck2 className="size-3.5" />
-              </div>
-
-              <div>
-                <p className="text-[11px] font-bold text-white">
-                  Ready to start?
-                </p>
-
-                <p className="text-[9px] text-white/55">
-                  Keep your documents ready and begin your application.
-                </p>
-              </div>
-
-            </div>
-
-            {/* =================================================
-                START APPLICATION → NEW REGISTRATION
-            ================================================= */}
-
-            <Link
-              to="/new-registration"
-              className="
-                inline-flex
-                items-center
-                gap-2
-                rounded-full
-                bg-[#8f1d1d]
-                px-4
-                py-2
-                text-[9px]
-                font-black
-                text-white
-                transition-all
-                hover:bg-[#a82424]
-                hover:shadow-lg
-              "
-            >
-              Start Application
-
-              <ChevronRight className="size-3" />
-            </Link>
-
-          </motion.div>
-
+        <div className="bg-[#F5F1E9]">
+          <AdmissionTimeline />
         </div>
-      </section>
+
+        {/* =================================================
+            OVERVIEW
+        ================================================= */}
+
+        <AdmissionOverview />
+
+      </main>
 
     </SiteLayout>
   );
 }
-
-/* =========================================================
-   DEFAULT EXPORT ONLY
-========================================================= */
 
 export default AdmissionPage;
