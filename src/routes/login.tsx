@@ -1,5 +1,5 @@
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
@@ -31,6 +31,12 @@ export const Route = createFileRoute("/login")({
       },
     ],
   }),
+
+  beforeLoad: () => {
+    throw redirect({
+      href: "https://odladmission.crescent-institute.edu.in/login/index.php",
+    });
+  },
 
   component: LoginPage,
 });

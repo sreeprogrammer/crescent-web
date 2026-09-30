@@ -548,6 +548,10 @@
   .marquee-track {
     animation: none;
   }
+
+  .promotional-modal-enter {
+    animation: none;
+  }
 }
 
 /* =========================================================
@@ -573,4 +577,20 @@
     max-width: 100vw;
     overflow-x: hidden;
   }
+}
+
+@keyframes promotional-modal-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.promotional-modal-enter {
+  animation: promotional-modal-enter 220ms ease-out both;
 }

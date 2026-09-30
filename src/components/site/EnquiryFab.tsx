@@ -42,7 +42,7 @@ export function EnquiryFab() {
             Share your details and an admission counsellor will call you back.
           </DialogDescription>
         </DialogHeader>
-        <EnquiryForm idPrefix="fab" />
+        <EnquiryForm idPrefix="fab" onSubmitted={() => setOpen(false)} />
       </DialogContent>
     </Dialog>
   );

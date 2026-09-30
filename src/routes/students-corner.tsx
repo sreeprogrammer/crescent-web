@@ -178,8 +178,8 @@ function StudentsCornerPage() {
                 </div>
 
                 <div className="mt-4">
-                  <Link
-                    to="/lms-login"
+                  <a
+                    href="https://lmscdoe.crescent-institute.edu.in/login/index.php"
                     className="group relative inline-flex items-center gap-1.5 rounded-lg bg-[#30265F] px-3 py-2 text-[10px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5"
                   >
                     Login to LMS
@@ -187,7 +187,7 @@ function StudentsCornerPage() {
                     <ArrowRight className="size-3 transition-transform duration-300 group-hover:translate-x-0.5" />
 
                     <span className="absolute bottom-0 left-2 right-2 h-0.5 origin-left scale-x-0 bg-[#D8B84C] transition-transform duration-300 group-hover:scale-x-100" />
-                  </Link>
+                  </a>
                 </div>
               </motion.section>
 
@@ -563,8 +563,8 @@ function QuickCard({
       animate={{ opacity: 1, y: 0 }}
       className="min-w-0"
     >
-      <Link
-        to={href}
+      <a
+        href={href === "/lms-login" ? "https://lmscdoe.crescent-institute.edu.in/login/index.php" : href}
         className="group relative flex h-[88px] min-h-[88px] w-full items-center overflow-hidden rounded-[1rem] border border-[#D9D4CA] bg-white px-3.5 py-3 shadow-[0_5px_16px_rgba(31,35,43,0.05)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_9px_22px_rgba(31,35,43,0.09)]"
       >
         <div
@@ -600,7 +600,7 @@ function QuickCard({
         </div>
 
         <span className="absolute bottom-0 left-3 right-3 h-0.5 origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100" />
-      </Link>
+      </a>
     </motion.div>
   );
 }

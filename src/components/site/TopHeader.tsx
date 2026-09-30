@@ -209,8 +209,8 @@ export function TopHeader() {
           "
         >
           {/* LMS LOGIN */}
-          <Link
-            to="/lms-login"
+          <a
+            href="https://lmscdoe.crescent-institute.edu.in/login/index.php"
             className="
               group
               flex
@@ -257,7 +257,7 @@ export function TopHeader() {
             <span className="sm:hidden">
               LMS
             </span>
-          </Link>
+          </a>
 
           {/* Divider */}
           <span
@@ -272,8 +272,8 @@ export function TopHeader() {
           />
 
           {/* LOGIN */}
-          <Link
-            to="/login"
+          <a
+            href="https://odladmission.crescent-institute.edu.in/login/index.php"
             className="
               group
               flex
@@ -323,11 +323,11 @@ export function TopHeader() {
             <span>
               Login
             </span>
-          </Link>
+          </a>
 
           {/* SIGN UP / NEW REGISTRATION */}
-          <Link
-            to="/new-registration"
+          <a
+            href="https://odladmission.crescent-institute.edu.in/login/signup.php?"
             className="
               group
               hidden
@@ -375,7 +375,7 @@ export function TopHeader() {
             <span>
               Sign Up
             </span>
-          </Link>
+          </a>
 
           {/* APPLY NOW */}
           <Link

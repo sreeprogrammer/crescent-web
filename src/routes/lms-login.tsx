@@ -1,5 +1,5 @@
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
@@ -29,6 +29,12 @@ export const Route = createFileRoute("/lms-login")({
       { property: "og:type", content: "website" },
     ],
   }),
+
+  beforeLoad: () => {
+    throw redirect({
+      href: "https://lmscdoe.crescent-institute.edu.in/login/index.php",
+    });
+  },
 
   component: LMSLoginPage,
 });

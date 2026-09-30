@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 import ChatWidget from "@/college-navigator-bot/src/chat-components/ChatWidget";
+import { PromotionalModal } from "@/components/site/PromotionalModal";
 
 function NotFoundComponent() {
   return (
@@ -185,6 +186,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <Outlet />
       <ChatWidget />
+      <PromotionalModal />
       <Scripts />
     </QueryClientProvider>
   );
