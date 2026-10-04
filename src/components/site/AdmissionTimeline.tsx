@@ -59,7 +59,7 @@ export function AdmissionTimeline() {
                   bg-[#8f1d1d]
                   px-6
                   py-2
-                  text-[10px]
+                  text-xs
                   font-bold
                   uppercase
                   tracking-[0.22em]
@@ -67,7 +67,7 @@ export function AdmissionTimeline() {
                   shadow-[0_8px_20px_rgba(143,29,29,0.15)]
                   sm:px-7
                   sm:py-2.5
-                  sm:text-[11px]
+                  sm:text-xs
                 "
               >
                 ADMISSION PROCESS
@@ -251,7 +251,7 @@ export function AdmissionTimeline() {
                             bg-[#7f1d1d]/5
                             px-2
                             py-0.5
-                            text-[8px]
+                            text-[9px]
                             font-bold
                             tracking-[0.12em]
                             text-[#7f1d1d]
@@ -285,7 +285,7 @@ export function AdmissionTimeline() {
 
                       <h3
                         className="
-                          text-[13px]
+                          text-sm
                           font-extrabold
                           leading-tight
                           text-[#172554]
@@ -300,7 +300,7 @@ export function AdmissionTimeline() {
                       <p
                         className="
                           mt-1.5
-                          text-[10.5px]
+                          text-xs
                           leading-[1.45]
                           text-slate-500
                         "
@@ -328,7 +328,7 @@ export function AdmissionTimeline() {
 
                         <span
                           className="
-                            text-[8px]
+                            text-[9px]
                             font-semibold
                             tracking-wide
                             text-slate-400
@@ -396,7 +396,7 @@ export function AdmissionTimeline() {
 
                 <span
                   className="
-                    text-[10px]
+                    text-[11px]
                     font-bold
                     text-white
                   "
@@ -418,7 +418,7 @@ export function AdmissionTimeline() {
 
               <span
                 className="
-                  text-[9px]
+                  text-[10px]
                   font-medium
                   text-white/65
                 "
@@ -432,7 +432,7 @@ export function AdmissionTimeline() {
 
               <span
                 className="
-                  text-[9px]
+                  text-[10px]
                   font-medium
                   text-white/65
                 "
@@ -446,7 +446,7 @@ export function AdmissionTimeline() {
 
               <span
                 className="
-                  text-[9px]
+                  text-[10px]
                   font-medium
                   text-white/65
                 "
