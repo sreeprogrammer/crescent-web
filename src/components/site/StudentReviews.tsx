@@ -3,13 +3,16 @@ import review1 from "@/assets/review-1.jpg";
 import review2 from "@/assets/review-2.jpg";
 import review3 from "@/assets/review-3.jpg";
 import review4 from "@/assets/review-4.jpg";
+
 import { AnimatePresence, motion } from "framer-motion";
+
 import {
   ChevronLeft,
   ChevronRight,
   Quote,
   Star,
 } from "lucide-react";
+
 import { useCallback, useEffect, useState } from "react";
 import { Section, SectionHeading } from "./Section";
 
@@ -55,8 +58,8 @@ function Stars({ rating }: { rating: number }) {
           key={i}
           className={
             i < rating
-              ? "size-3.5 fill-[#d4af37] text-[#d4af37]"
-              : "size-3.5 text-[#c7c7c7]"
+              ? "size-4 fill-[#d4af37] text-[#d4af37]"
+              : "size-4 text-[#c7c7c7]"
           }
           aria-hidden
         />
@@ -175,7 +178,7 @@ export function StudentReviews() {
                         "
                       />
 
-                      {/* Quote badge */}
+                      {/* Quote Badge */}
                       <span
                         className="
                           absolute
@@ -191,15 +194,16 @@ export function StudentReviews() {
                           shadow-sm
                         "
                       >
-                        <Quote className="size-2.5" />
+                        <Quote className="size-3" />
                       </span>
                     </div>
 
                     <figcaption>
+                      {/* Student Name */}
                       <span
                         className="
                           block
-                          text-[14px]
+                          text-[16px]
                           font-bold
                           text-[#172554]
                         "
@@ -207,11 +211,12 @@ export function StudentReviews() {
                         {r.name}
                       </span>
 
+                      {/* Programme */}
                       <span
                         className="
                           mt-0.5
                           block
-                          text-[10px]
+                          text-[12px]
                           text-[#4b4b4b]
                         "
                       >
@@ -242,9 +247,10 @@ export function StudentReviews() {
                 <blockquote
                   className="
                     mt-3
-                    text-[12px]
+                    text-[14px]
                     leading-[1.6]
                     text-[#4b4b4b]
+                    lg:text-[15px]
                   "
                 >
                   “{r.text}”
@@ -264,7 +270,7 @@ export function StudentReviews() {
                 >
                   <span
                     className="
-                      text-[9px]
+                      text-[11px]
                       font-bold
                       tracking-[0.12em]
                       text-[#7f1d1d]
@@ -275,7 +281,7 @@ export function StudentReviews() {
 
                   <span
                     className="
-                      text-[9px]
+                      text-[11px]
                       font-semibold
                       tracking-wider
                       text-[#172554]/45
@@ -311,13 +317,14 @@ export function StudentReviews() {
         ========================== */}
         <div className="mt-5 flex items-center justify-center gap-3">
 
+          {/* Previous */}
           <button
             type="button"
             onClick={prev}
             aria-label="Previous reviews"
             className="
               flex
-              size-8
+              size-9
               items-center
               justify-center
               rounded-full
@@ -351,13 +358,14 @@ export function StudentReviews() {
             ))}
           </div>
 
+          {/* Next */}
           <button
             type="button"
             onClick={next}
             aria-label="Next reviews"
             className="
               flex
-              size-8
+              size-9
               items-center
               justify-center
               rounded-full
@@ -374,9 +382,7 @@ export function StudentReviews() {
           </button>
 
         </div>
-
       </div>
     </Section>
   );
 }
-

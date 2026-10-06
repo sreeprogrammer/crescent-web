@@ -26,7 +26,7 @@ export function AdmissionTimeline() {
   return (
     <Section
       id="how-to-apply"
-      className="relative overflow-hidden !py-5 sm:!py-7"
+      className="relative overflow-hidden !py-6 sm:!py-8"
     >
       {/* =====================================================
           BACKGROUND DECORATION
@@ -45,11 +45,11 @@ export function AdmissionTimeline() {
         ================================================== */}
 
         <Reveal>
-          <div className="mx-auto mb-5 max-w-3xl text-center">
+          <div className="mx-auto mb-6 max-w-3xl text-center">
 
             {/* ADMISSION PROCESS PILL */}
 
-            <div className="mb-2 flex items-center justify-center">
+            <div className="mb-2.5 flex items-center justify-center">
               <span
                 className="
                   inline-flex
@@ -59,7 +59,7 @@ export function AdmissionTimeline() {
                   bg-[#8f1d1d]
                   px-6
                   py-2
-                  text-xs
+                  text-[11px]
                   font-bold
                   uppercase
                   tracking-[0.22em]
@@ -78,12 +78,11 @@ export function AdmissionTimeline() {
 
             <h2
               className="
-                text-2xl
+                text-[clamp(1.75rem,3vw,2.4rem)]
                 font-extrabold
+                leading-tight
                 tracking-tight
                 text-[#172554]
-                sm:text-3xl
-                lg:text-[36px]
               "
             >
               Your journey starts{" "}
@@ -97,12 +96,11 @@ export function AdmissionTimeline() {
             <p
               className="
                 mx-auto
-                mt-1
+                mt-2
                 max-w-xl
-                text-xs
-                leading-relaxed
+                text-[clamp(0.9rem,1vw,1rem)]
+                leading-[1.6]
                 text-slate-500
-                sm:text-sm
               "
             >
               Six simple steps from application to your first lesson —
@@ -120,7 +118,7 @@ export function AdmissionTimeline() {
 
           {/* DESKTOP LINE */}
 
-          <div className="absolute left-[8%] right-[8%] top-[39px] hidden lg:block">
+          <div className="absolute left-[8%] right-[8%] top-[43px] hidden lg:block">
 
             <div className="h-[2px] bg-[#d4af37]/25" />
 
@@ -168,8 +166,8 @@ export function AdmissionTimeline() {
                         border
                         border-slate-200/70
                         bg-white/65
-                        px-3
-                        py-3
+                        px-3.5
+                        py-4
                         shadow-[0_6px_20px_rgba(23,37,84,0.06)]
                         backdrop-blur-lg
                         transition-all
@@ -217,7 +215,7 @@ export function AdmissionTimeline() {
                         className="
                           relative
                           z-10
-                          mb-2.5
+                          mb-3
                           flex
                           items-center
                           justify-between
@@ -227,7 +225,7 @@ export function AdmissionTimeline() {
                         <div
                           className="
                             flex
-                            size-9
+                            size-10
                             items-center
                             justify-center
                             rounded-xl
@@ -238,20 +236,20 @@ export function AdmissionTimeline() {
                             shadow-[0_5px_12px_rgba(23,37,84,0.16)]
                             transition-all
                             duration-300
-                            group-hover:bg-[#7f1d1d]
                             group-hover:scale-105
+                            group-hover:bg-[#7f1d1d]
                           "
                         >
-                          <Icon className="size-4" />
+                          <Icon className="size-[18px]" />
                         </div>
 
                         <span
                           className="
                             rounded-full
                             bg-[#7f1d1d]/5
-                            px-2
-                            py-0.5
-                            text-[9px]
+                            px-2.5
+                            py-1
+                            text-[10px]
                             font-bold
                             tracking-[0.12em]
                             text-[#7f1d1d]
@@ -264,7 +262,7 @@ export function AdmissionTimeline() {
 
                       {/* ACCENT */}
 
-                      <div className="mb-1.5 flex items-center gap-1">
+                      <div className="mb-2 flex items-center gap-1">
 
                         <span
                           className="
@@ -285,9 +283,9 @@ export function AdmissionTimeline() {
 
                       <h3
                         className="
-                          text-sm
+                          text-[clamp(0.95rem,1vw,1.05rem)]
                           font-extrabold
-                          leading-tight
+                          leading-[1.25]
                           text-[#172554]
                           group-hover:text-[#7f1d1d]
                         "
@@ -299,9 +297,9 @@ export function AdmissionTimeline() {
 
                       <p
                         className="
-                          mt-1.5
-                          text-xs
-                          leading-[1.45]
+                          mt-2
+                          text-[clamp(0.82rem,0.85vw,0.92rem)]
+                          leading-[1.5]
                           text-slate-500
                         "
                       >
@@ -312,23 +310,23 @@ export function AdmissionTimeline() {
 
                       <div
                         className="
-                          mt-2.5
+                          mt-3
                           flex
                           items-center
-                          gap-1
+                          gap-1.5
                           border-t
                           border-slate-100
-                          pt-2
+                          pt-2.5
                         "
                       >
 
                         <CheckCircle2
-                          className="size-3 text-[#d4af37]"
+                          className="size-3.5 text-[#d4af37]"
                         />
 
                         <span
                           className="
-                            text-[9px]
+                            text-[10px]
                             font-semibold
                             tracking-wide
                             text-slate-400
@@ -360,7 +358,7 @@ export function AdmissionTimeline() {
           <div
             className="
               relative
-              mt-4
+              mt-5
               overflow-hidden
               rounded-xl
               bg-gradient-to-r
@@ -368,7 +366,7 @@ export function AdmissionTimeline() {
               via-[#202f61]
               to-[#7f1d1d]
               px-4
-              py-2.5
+              py-3
               shadow-[0_8px_24px_rgba(23,37,84,0.12)]
             "
           >
@@ -381,7 +379,7 @@ export function AdmissionTimeline() {
                 items-center
                 justify-center
                 gap-x-4
-                gap-y-1
+                gap-y-1.5
                 text-center
               "
             >
@@ -391,12 +389,12 @@ export function AdmissionTimeline() {
               <div className="flex items-center gap-1.5">
 
                 <GraduationCap
-                  className="size-3.5 text-[#d4af37]"
+                  className="size-4 text-[#d4af37]"
                 />
 
                 <span
                   className="
-                    text-[11px]
+                    text-[12px]
                     font-bold
                     text-white
                   "
@@ -418,7 +416,7 @@ export function AdmissionTimeline() {
 
               <span
                 className="
-                  text-[10px]
+                  text-[11px]
                   font-medium
                   text-white/65
                 "
@@ -432,7 +430,7 @@ export function AdmissionTimeline() {
 
               <span
                 className="
-                  text-[10px]
+                  text-[11px]
                   font-medium
                   text-white/65
                 "
@@ -446,7 +444,7 @@ export function AdmissionTimeline() {
 
               <span
                 className="
-                  text-[10px]
+                  text-[11px]
                   font-medium
                   text-white/65
                 "
@@ -466,7 +464,7 @@ export function AdmissionTimeline() {
 
               <span
                 className="
-                  text-[9px]
+                  text-[10px]
                   font-bold
                   tracking-wide
                   text-[#f2cf67]

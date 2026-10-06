@@ -15,7 +15,6 @@ import { useEffect, useState } from "react";
 
 /* =========================================================
    FONT
-   SAME FONT STYLE AS ABOUT / WHO WE ARE
 ========================================================= */
 
 const circularFont = {
@@ -193,14 +192,14 @@ export function HeroDE() {
                 min-w-0
                 flex-1
                 whitespace-nowrap
-                text-[11px]
+                text-[13px]
                 font-bold
                 uppercase
                 tracking-[0.10em]
                 text-[#0F5C4D]
-                sm:text-[18px]
-                sm:tracking-[0.18em]
-                lg:text-[20px]
+                sm:text-[17px]
+                sm:tracking-[0.16em]
+                lg:text-[19px]
               "
             >
               Crescent Distance Education
@@ -240,7 +239,7 @@ export function HeroDE() {
                 border-[#D4AF37]/40
                 bg-[#D4AF37]
                 px-5
-                py-2
+                py-2.5
                 shadow-[0_8px_25px_rgba(212,175,55,0.28)]
               "
             >
@@ -266,12 +265,12 @@ export function HeroDE() {
               <span
                 className="
                   whitespace-nowrap
-                  text-[12px]
+                  text-[13px]
                   font-bold
                   uppercase
                   tracking-[0.12em]
                   text-white
-                  sm:text-[13px]
+                  sm:text-sm
                 "
               >
                 Admissions Open 2026–2027
@@ -287,15 +286,12 @@ export function HeroDE() {
 
           <h1
             className="
-              max-w-[650px]
-              text-[28px]
+              max-w-[700px]
+              text-[clamp(2rem,3.2vw,3.1rem)]
               font-bold
               leading-[1.05]
               tracking-[-0.04em]
               text-[#111111]
-              sm:text-[32px]
-              lg:text-[36px]
-              xl:text-[40px]
             "
           >
             Empowering Your
@@ -357,13 +353,11 @@ export function HeroDE() {
 
           <p
             className="
-              max-w-[620px]
-              text-[13px]
+              max-w-[650px]
+              text-[clamp(0.95rem,1.05vw,1.1rem)]
               font-medium
-              leading-6
+              leading-[1.65]
               text-[#111111]
-              sm:text-[13px]
-              lg:text-[14px]
             "
           >
             Join UGC Approved Undergraduate and Postgraduate
@@ -382,7 +376,7 @@ export function HeroDE() {
               flex-wrap
               items-center
               gap-x-5
-              gap-y-2.5
+              gap-y-3
             "
           >
 
@@ -399,18 +393,18 @@ export function HeroDE() {
 
                 <CheckCircle2
                   className="
-                    size-[17px]
+                    size-[18px]
                     text-[#8f1d1d]
+                    sm:size-5
                   "
                   strokeWidth={2}
                 />
 
                 <span
                   className="
-                    text-[12px]
+                    text-[clamp(0.88rem,0.95vw,1rem)]
                     font-semibold
                     text-[#111111]
-                    sm:text-[13px]
                   "
                 >
                   {feature}
@@ -444,7 +438,7 @@ export function HeroDE() {
                 border-0
                 bg-[#8f1d1d]
                 px-6
-                text-sm
+                text-[15px]
                 font-bold
                 text-white
                 shadow-[0_10px_24px_rgba(143,29,29,0.20)]
@@ -453,6 +447,8 @@ export function HeroDE() {
                 hover:-translate-y-1
                 hover:bg-[#7f181c]
                 hover:shadow-[0_14px_30px_rgba(143,29,29,0.25)]
+                sm:px-7
+                sm:text-base
               "
             >
               <Link
@@ -476,7 +472,7 @@ export function HeroDE() {
                 border-[#111111]/20
                 bg-white
                 px-6
-                text-sm
+                text-[15px]
                 font-semibold
                 text-[#111111]
                 shadow-sm
@@ -486,6 +482,8 @@ export function HeroDE() {
                 hover:border-[#B08A24]/50
                 hover:bg-[#fffdf8]
                 hover:text-[#8f1d1d]
+                sm:px-7
+                sm:text-base
               "
             >
               <Link to="/programmes">
@@ -598,9 +596,7 @@ export function HeroDE() {
 
               </AnimatePresence>
 
-              {/* =================================================
-                  NAVY IMAGE OVERLAY
-              ================================================== */}
+              {/* NAVY IMAGE OVERLAY */}
 
               <div
                 className="
@@ -614,9 +610,7 @@ export function HeroDE() {
                 "
               />
 
-              {/* =================================================
-                  INNER BORDER
-              ================================================== */}
+              {/* INNER BORDER */}
 
               <div
                 className="
@@ -629,9 +623,7 @@ export function HeroDE() {
                 "
               />
 
-              {/* =================================================
-                  IMAGE BOTTOM CONTENT
-              ================================================== */}
+              {/* IMAGE BOTTOM CONTENT */}
 
               <div
                 className="
@@ -653,12 +645,12 @@ export function HeroDE() {
 
                   <p
                     className="
-                      text-[12px]
+                      text-[13px]
                       font-bold
                       uppercase
                       tracking-[0.20em]
                       text-[#B08A24]
-                      sm:text-[15px]
+                      sm:text-base
                     "
                   >
                     Crescent Distance Education
@@ -667,11 +659,12 @@ export function HeroDE() {
                   <h2
                     className="
                       mt-1
-                      text-lg
+                      text-xl
                       font-bold
                       tracking-[-0.02em]
                       text-white
                       sm:text-2xl
+                      lg:text-[1.65rem]
                     "
                   >
                     Your Future Starts Here
@@ -762,7 +755,7 @@ export function HeroDE() {
               <span
                 className="
                   flex
-                  size-9
+                  size-10
                   shrink-0
                   overflow-hidden
                   rounded-full
@@ -788,7 +781,7 @@ export function HeroDE() {
                 <span
                   className="
                     block
-                    text-sm
+                    text-[15px]
                     font-bold
                     text-[#111111]
                     sm:text-base
@@ -800,10 +793,10 @@ export function HeroDE() {
                 <span
                   className="
                     block
-                    text-[10px]
+                    text-[11px]
                     font-medium
                     text-[#111111]/65
-                    sm:text-xs
+                    sm:text-[13px]
                   "
                 >
                   Approved programmes
@@ -817,7 +810,7 @@ export function HeroDE() {
                 APPLY FLOATING CARD
             ================================================== */}
 
-            <motion.div
+            {/* <motion.div
               initial={{
                 opacity: 0,
                 y: 12,
@@ -864,14 +857,14 @@ export function HeroDE() {
               <span
                 className="
                   flex
-                  size-9
+                  size-10
                   shrink-0
                   items-center
                   justify-center
                   rounded-full
                   bg-[#8f1d1d]
                   text-white
-                  sm:size-10
+                  sm:size-11
                 "
               >
                 <Users className="size-5" />
@@ -882,7 +875,7 @@ export function HeroDE() {
                 <span
                   className="
                     block
-                    text-sm
+                    text-[15px]
                     font-bold
                     capitalize
                     text-[#111111]
@@ -895,10 +888,10 @@ export function HeroDE() {
                 <span
                   className="
                     block
-                    text-[10px]
+                    text-[11px]
                     font-medium
                     text-[#111111]/65
-                    sm:text-xs
+                    sm:text-[13px]
                   "
                 >
                   Crescent Education
@@ -906,7 +899,7 @@ export function HeroDE() {
 
               </span>
 
-            </motion.div>
+            </motion.div> */}
 
           </div>
 

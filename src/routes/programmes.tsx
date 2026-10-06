@@ -73,16 +73,31 @@ function ProgrammesPage() {
         style={circularFont}
       >
         {/* TOP LINE */}
+
         <div className="h-[3px] bg-gradient-to-r from-[#172554] via-[#8f1d1d] to-[#d4af37]" />
 
         {/* BACKGROUND GLOW */}
+
         <div className="pointer-events-none absolute -right-24 -top-24 size-64 rounded-full bg-[#d4af37]/10 blur-3xl" />
 
         <div className="pointer-events-none absolute -bottom-24 -left-24 size-64 rounded-full bg-[#8f1d1d]/6 blur-3xl" />
 
         {/* HERO CONTAINER */}
-        <div className="relative mx-auto max-w-7xl px-4 py-3.5 sm:px-6 sm:py-4 lg:px-8 lg:py-5">
-          <div className="grid items-center gap-4 lg:grid-cols-[1fr_0.88fr] lg:gap-7">
+
+        <div
+          className="
+            relative
+            mx-auto
+            max-w-7xl
+            px-4
+            py-5
+            sm:px-6
+            sm:py-7
+            lg:px-8
+            lg:py-9
+          "
+        >
+          <div className="grid items-center gap-7 lg:grid-cols-[1fr_0.88fr] lg:gap-10">
             {/* ================================================= */}
             {/* LEFT CONTENT */}
             {/* ================================================= */}
@@ -97,36 +112,64 @@ function ProgrammesPage() {
               className="min-w-0"
             >
               {/* EYEBROW */}
-              <div className="mb-1.5 flex items-center gap-2">
-                <span className="h-[2px] w-7 rounded-full bg-[#8f1d1d]" />
 
-                <span className="text-[7px] font-bold uppercase tracking-[0.2em] text-[#d4af37]">
+              <div className="mb-2 flex items-center gap-2.5">
+                <span className="h-[2px] w-8 rounded-full bg-[#8f1d1d]" />
+
+                <span
+                  className="
+                    text-[clamp(0.65rem,0.58rem+0.22vw,0.82rem)]
+                    font-bold
+                    uppercase
+                    tracking-[0.2em]
+                    text-[#d4af37]
+                  "
+                >
                   Programmes Offered
                 </span>
               </div>
 
               {/* TITLE */}
+
               <h1
-                className="font-display max-w-2xl text-[1.7rem] font-bold leading-[1.03] tracking-[-0.04em] text-[#111111] sm:text-[2rem] lg:text-[2.4rem]"
+                className="
+                  font-display
+                  max-w-2xl
+                  text-[clamp(2rem,1.55rem+1.8vw,3.1rem)]
+                  font-bold
+                  leading-[1.04]
+                  tracking-[-0.04em]
+                  text-[#111111]
+                "
                 style={circularFont}
               >
                 Shape Your Future With{" "}
                 <span className="relative text-[#111111]">
                   The Right Programme
 
-                  <span className="absolute -bottom-1 left-0 h-[2px] w-10 rounded-full bg-[#d4af37]" />
+                  <span className="absolute -bottom-1 left-0 h-[2px] w-10 rounded-full bg-[#d4af37] sm:w-14" />
                 </span>
               </h1>
 
               {/* DESCRIPTION */}
-              <p className="mt-2 max-w-xl text-[9px] leading-[1.5] text-[#111111] sm:text-[10px]">
+
+              <p
+                className="
+                  mt-3
+                  max-w-xl
+                  text-[clamp(0.82rem,0.72rem+0.28vw,1rem)]
+                  leading-[1.6]
+                  text-[#111111]/80
+                "
+              >
                 Explore flexible undergraduate, postgraduate and professional
                 programmes designed for learners who want quality education
                 without putting their career on hold.
               </p>
 
               {/* QUICK FEATURES */}
-              <div className="mt-2.5 grid max-w-lg grid-cols-3 gap-1.5">
+
+              <div className="mt-4 grid max-w-lg grid-cols-3 gap-2 sm:gap-2.5">
                 <MiniFeature
                   icon={GraduationCap}
                   title="UG"
@@ -146,11 +189,9 @@ function ProgrammesPage() {
                 />
               </div>
 
-              {/* ================================================= */}
-              {/* APPLY BUTTON ONLY */}
-              {/* ================================================= */}
+              {/* APPLY BUTTON */}
 
-              <div className="mt-2.5">
+              <div className="mt-4">
                 <Link
                   to="/admission"
                   hash="how-to-apply"
@@ -159,12 +200,12 @@ function ProgrammesPage() {
                     relative
                     inline-flex
                     items-center
-                    gap-1.5
+                    gap-2
                     rounded-full
                     bg-[#8f1d1d]
-                    px-3.5
-                    py-1.5
-                    text-[8px]
+                    px-4
+                    py-2
+                    text-[clamp(0.72rem,0.65rem+0.2vw,0.88rem)]
                     font-bold
                     text-white
                     shadow-[0_6px_16px_rgba(143,29,29,0.14)]
@@ -177,14 +218,13 @@ function ProgrammesPage() {
 
                   <ArrowRight
                     className="
-                      size-2.5
+                      size-3.5
                       transition-transform
                       duration-300
                       group-hover:translate-x-0.5
                     "
                   />
 
-                  {/* GOLD HOVER LINE */}
                   <span
                     className="
                       absolute
@@ -197,17 +237,25 @@ function ProgrammesPage() {
                       bg-[#d4af37]
                       transition-all
                       duration-300
-                      group-hover:w-8
+                      group-hover:w-10
                     "
                   />
                 </Link>
               </div>
 
               {/* TRUST LINE */}
-              <div className="mt-2 flex items-center gap-1.5">
-                <CheckCircle2 className="size-2.5 text-[#8f1d1d]" />
 
-                <span className="text-[6px] font-semibold tracking-wide text-[#111111]">
+              <div className="mt-3 flex items-center gap-2">
+                <CheckCircle2 className="size-3.5 shrink-0 text-[#8f1d1d]" />
+
+                <span
+                  className="
+                    text-[clamp(0.62rem,0.56rem+0.16vw,0.76rem)]
+                    font-semibold
+                    tracking-wide
+                    text-[#111111]/75
+                  "
+                >
                   Flexible learning • Career focused • Student friendly
                 </span>
               </div>
@@ -227,9 +275,11 @@ function ProgrammesPage() {
               className="relative mx-auto w-full max-w-[540px] lg:ml-auto"
             >
               {/* GOLD OUTER GLOW */}
+
               <div className="absolute -inset-1 rounded-[1.25rem] bg-gradient-to-br from-[#d4af37]/40 via-transparent to-[#8f1d1d]/25 blur-[2px]" />
 
               {/* IMAGE FRAME */}
+
               <div
                 className="
                   relative
@@ -248,31 +298,35 @@ function ProgrammesPage() {
                     alt="Crescent Institute campus"
                     width={1200}
                     height={750}
+                    loading="eager"
                     className="
-                      h-[165px]
+                      h-[210px]
                       w-full
                       object-cover
                       transition-transform
                       duration-700
                       hover:scale-105
-                      sm:h-[195px]
-                      lg:h-[225px]
+                      sm:h-[260px]
+                      lg:h-[320px]
                     "
                   />
 
                   {/* IMAGE OVERLAY */}
+
                   <div className="absolute inset-0 bg-gradient-to-t from-[#172554]/90 via-[#172554]/15 to-transparent" />
 
                   {/* TOP LABEL */}
-                  <div className="absolute left-3 top-3">
+
+                  <div className="absolute left-3 top-3 sm:left-4 sm:top-4">
                     <span
                       className="
                         rounded-full
-                        border border-white/20
+                        border
+                        border-white/20
                         bg-[#172554]/60
-                        px-2
-                        py-1
-                        text-[5px]
+                        px-2.5
+                        py-1.5
+                        text-[clamp(0.55rem,0.5rem+0.12vw,0.68rem)]
                         font-bold
                         uppercase
                         tracking-[0.15em]
@@ -285,27 +339,43 @@ function ProgrammesPage() {
                   </div>
 
                   {/* IMAGE TEXT */}
-                  <div className="absolute bottom-3 left-3 right-3">
-                    <div className="flex items-end justify-between gap-2">
+
+                  <div className="absolute bottom-4 left-4 right-4 sm:bottom-5 sm:left-5 sm:right-5">
+                    <div className="flex items-end justify-between gap-3">
                       <div>
-                        <p className="text-[6px] font-bold uppercase tracking-[0.18em] text-[#d4af37]">
+                        <p
+                          className="
+                            text-[clamp(0.55rem,0.5rem+0.14vw,0.7rem)]
+                            font-bold
+                            uppercase
+                            tracking-[0.18em]
+                            text-[#d4af37]
+                          "
+                        >
                           Crescent Education
                         </p>
 
                         <h2
-                          className="mt-0.5 font-display text-sm font-bold leading-tight text-white sm:text-base"
+                          className="
+                            mt-1
+                            font-display
+                            text-[clamp(1.1rem,0.95rem+0.45vw,1.5rem)]
+                            font-bold
+                            leading-tight
+                            text-white
+                          "
                           style={circularFont}
                         >
                           Learn. Grow. Lead.
                         </h2>
 
-                        <div className="mt-1 h-[2px] w-7 rounded-full bg-[#d4af37]" />
+                        <div className="mt-1.5 h-[2px] w-9 rounded-full bg-[#d4af37]" />
                       </div>
 
                       <div
                         className="
                           flex
-                          size-7
+                          size-9
                           shrink-0
                           items-center
                           justify-center
@@ -314,9 +384,10 @@ function ProgrammesPage() {
                           border-white/20
                           bg-white/10
                           backdrop-blur-md
+                          sm:size-10
                         "
                       >
-                        <GraduationCap className="size-3 text-white" />
+                        <GraduationCap className="size-4 text-white sm:size-5" />
                       </div>
                     </div>
                   </div>
@@ -324,6 +395,7 @@ function ProgrammesPage() {
               </div>
 
               {/* FLOATING BADGE */}
+
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -333,36 +405,43 @@ function ProgrammesPage() {
                 }}
                 className="
                   absolute
-                  -bottom-3
+                  -bottom-4
                   left-4
                   flex
                   items-center
-                  gap-1.5
+                  gap-2
                   rounded-xl
                   border
                   border-[#172554]/10
                   bg-white/95
-                  px-2
-                  py-1.5
+                  px-3
+                  py-2
                   shadow-[0_8px_22px_rgba(23,37,84,0.14)]
                   backdrop-blur-xl
                   sm:left-6
                 "
               >
-                <div className="flex size-5 items-center justify-center rounded-full bg-[#8f1d1d]">
-                  <CheckCircle2 className="size-2.5 text-white" />
+                <div className="flex size-6 items-center justify-center rounded-full bg-[#8f1d1d]">
+                  <CheckCircle2 className="size-3 text-white" />
                 </div>
 
                 <div>
                   <p
-                    className="text-[7px] font-bold text-[#111111]"
+                    className="
+                      text-[clamp(0.62rem,0.56rem+0.16vw,0.76rem)]
+                      font-bold
+                      text-[#111111]
+                    "
                     style={circularFont}
                   >
                     Flexible Learning
                   </p>
 
                   <p
-                    className="text-[5px] text-[#111111]"
+                    className="
+                      text-[clamp(0.52rem,0.48rem+0.12vw,0.64rem)]
+                      text-[#111111]/70
+                    "
                     style={circularFont}
                   >
                     Learn at your own pace
@@ -440,8 +519,9 @@ function ProgrammesPage() {
             >
               {/* DRAWER HEADER */}
 
-              <div className="relative shrink-0 overflow-hidden bg-[#172554] px-5 py-5">
+              <div className="relative shrink-0 overflow-hidden bg-[#172554] px-5 py-6 sm:px-6">
                 {/* GLOW 1 */}
+
                 <div
                   className="
                     pointer-events-none
@@ -456,6 +536,7 @@ function ProgrammesPage() {
                 />
 
                 {/* GLOW 2 */}
+
                 <div
                   className="
                     pointer-events-none
@@ -516,18 +597,41 @@ function ProgrammesPage() {
 
                 <div className="relative z-10 pr-12">
                   <div className="mb-2 flex items-center gap-2">
-                    <span className="h-[2px] w-7 rounded-full bg-[#d4af37]" />
+                    <span className="h-[2px] w-8 rounded-full bg-[#d4af37]" />
 
-                    <span className="text-[8px] font-bold uppercase tracking-[0.22em] text-[#d4af37]">
+                    <span
+                      className="
+                        text-[clamp(0.62rem,0.56rem+0.16vw,0.76rem)]
+                        font-bold
+                        uppercase
+                        tracking-[0.22em]
+                        text-[#d4af37]
+                      "
+                    >
                       Programmes Offered
                     </span>
                   </div>
 
-                  <h2 className="font-display text-2xl font-bold leading-tight text-white">
+                  <h2
+                    className="
+                      font-display
+                      text-[clamp(1.45rem,1.2rem+0.8vw,1.9rem)]
+                      font-bold
+                      leading-tight
+                      text-white
+                    "
+                  >
                     Explore Programmes
                   </h2>
 
-                  <p className="mt-1.5 text-[10px] leading-4 text-white/60">
+                  <p
+                    className="
+                      mt-1.5
+                      text-[clamp(0.72rem,0.65rem+0.18vw,0.86rem)]
+                      leading-5
+                      text-white/60
+                    "
+                  >
                     Select a programme to view its complete overview.
                   </p>
                 </div>
@@ -535,7 +639,7 @@ function ProgrammesPage() {
 
               {/* PROGRAMME LIST */}
 
-              <div className="min-h-0 flex-1 overflow-y-auto px-4 py-5">
+              <div className="min-h-0 flex-1 overflow-y-auto px-4 py-5 sm:px-5">
                 {/* UG */}
 
                 <ProgrammeDrawerSection
@@ -623,6 +727,7 @@ function ProgrammesPage() {
                   border-slate-200
                   bg-white
                   p-4
+                  sm:p-5
                 "
               >
                 <Link
@@ -641,7 +746,7 @@ function ProgrammesPage() {
                     bg-[#8f1d1d]
                     px-4
                     py-3
-                    text-xs
+                    text-[clamp(0.75rem,0.68rem+0.2vw,0.9rem)]
                     font-bold
                     text-white
                     shadow-[0_8px_20px_rgba(143,29,29,0.18)]
@@ -660,7 +765,6 @@ function ProgrammesPage() {
                     "
                   />
 
-                  {/* GOLD HOVER LINE */}
                   <span
                     className="
                       absolute
@@ -744,7 +848,7 @@ function ProgrammesPage() {
             >
               {/* MODAL HEADER */}
 
-              <div className="relative overflow-hidden bg-[#172554] px-5 py-5">
+              <div className="relative overflow-hidden bg-[#172554] px-5 py-6">
                 <div className="pointer-events-none absolute -right-10 -top-10 size-28 rounded-full bg-[#8f1d1d]/40 blur-2xl" />
 
                 <div className="pointer-events-none absolute -bottom-8 -left-8 size-24 rounded-full bg-[#d4af37]/10 blur-2xl" />
@@ -761,7 +865,7 @@ function ProgrammesPage() {
                     top-3
                     z-10
                     flex
-                    size-8
+                    size-9
                     items-center
                     justify-center
                     rounded-full
@@ -782,16 +886,40 @@ function ProgrammesPage() {
                   <div className="mb-2 flex items-center gap-2">
                     <span className="h-1 w-6 rounded-full bg-[#d4af37]" />
 
-                    <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-[#d4af37]">
+                    <span
+                      className="
+                        text-[clamp(0.62rem,0.56rem+0.16vw,0.76rem)]
+                        font-bold
+                        uppercase
+                        tracking-[0.2em]
+                        text-[#d4af37]
+                      "
+                    >
                       Programme Brochure
                     </span>
                   </div>
 
-                  <h2 className="font-display text-xl font-bold text-white">
+                  <h2
+                    className="
+                      font-display
+                      text-[clamp(1.35rem,1.15rem+0.6vw,1.7rem)]
+                      font-bold
+                      leading-tight
+                      text-white
+                    "
+                  >
                     Get the Programme Brochure
                   </h2>
 
-                  <p className="mt-1 max-w-sm text-[10px] leading-4 text-white/60">
+                  <p
+                    className="
+                      mt-1.5
+                      max-w-sm
+                      text-[clamp(0.72rem,0.66rem+0.18vw,0.86rem)]
+                      leading-5
+                      text-white/60
+                    "
+                  >
                     Share your details and our admission team will help you
                     with programmes, eligibility and admission information.
                   </p>
@@ -800,7 +928,7 @@ function ProgrammesPage() {
 
               {/* FORM */}
 
-              <div className="p-5" style={circularFont}>
+              <div className="p-5 sm:p-6" style={circularFont}>
                 <EnquiryForm
                   language="en"
                   onSubmitted={() => setShowBrochureForm(false)}
@@ -828,19 +956,45 @@ function ProgrammeDrawerSection({
   children: ReactNode;
 }) {
   return (
-    <div className="mb-6" style={circularFont}>
+    <div className="mb-7" style={circularFont}>
       <div className="mb-3 flex items-end justify-between gap-3">
         <div>
-          <p className="text-[7px] font-bold uppercase tracking-[0.17em] text-[#d4af37]">
+          <p
+            className="
+              text-[clamp(0.58rem,0.53rem+0.14vw,0.7rem)]
+              font-bold
+              uppercase
+              tracking-[0.17em]
+              text-[#d4af37]
+            "
+          >
             Programmes
           </p>
 
-          <h3 className="mt-0.5 text-base font-black text-[#111111]">
+          <h3
+            className="
+              mt-0.5
+              text-[clamp(1rem,0.9rem+0.3vw,1.2rem)]
+              font-black
+              text-[#111111]
+            "
+          >
             {title}
           </h3>
         </div>
 
-        <span className="rounded-full bg-white px-2.5 py-1 text-[7px] font-bold text-[#111111] shadow-sm">
+        <span
+          className="
+            rounded-full
+            bg-white
+            px-2.5
+            py-1.5
+            text-[clamp(0.58rem,0.53rem+0.14vw,0.7rem)]
+            font-bold
+            text-[#111111]
+            shadow-sm
+          "
+        >
           {count}
         </span>
       </div>
@@ -948,11 +1102,24 @@ function ProgrammeDrawerItem({
         {/* CONTENT */}
 
         <div className="min-w-0 flex-1">
-          <h4 className="text-[13px] font-black text-[#111111]">
+          <h4
+            className="
+              text-[clamp(0.82rem,0.75rem+0.2vw,0.98rem)]
+              font-black
+              text-[#111111]
+            "
+          >
             {title}
           </h4>
 
-          <p className="mt-0.5 text-[8px] leading-4 text-[#111111]">
+          <p
+            className="
+              mt-0.5
+              text-[clamp(0.62rem,0.57rem+0.16vw,0.76rem)]
+              leading-4
+              text-[#111111]/70
+            "
+          >
             {description}
           </p>
         </div>
@@ -962,7 +1129,7 @@ function ProgrammeDrawerItem({
         <div
           className="
             flex
-            size-7
+            size-8
             shrink-0
             items-center
             justify-center
@@ -1008,13 +1175,13 @@ function MiniFeature({
         group
         flex
         items-center
-        gap-1.5
+        gap-2
         rounded-lg
         border
         border-[#172554]/7
         bg-white/70
-        px-1.5
-        py-1.5
+        px-2
+        py-2
         shadow-[0_3px_10px_rgba(23,37,84,0.035)]
         transition-all
         duration-300
@@ -1027,7 +1194,7 @@ function MiniFeature({
       <div
         className="
           flex
-          size-6
+          size-7
           shrink-0
           items-center
           justify-center
@@ -1040,15 +1207,30 @@ function MiniFeature({
           group-hover:text-white
         "
       >
-        <Icon className="size-3" />
+        <Icon className="size-3.5" />
       </div>
 
       <div className="min-w-0">
-        <p className="text-[7px] font-bold leading-none text-[#111111]">
+        <p
+          className="
+            text-[clamp(0.62rem,0.56rem+0.16vw,0.76rem)]
+            font-bold
+            leading-none
+            text-[#111111]
+          "
+        >
           {title}
         </p>
 
-        <p className="mt-0.5 text-[5px] font-medium leading-none text-[#111111]">
+        <p
+          className="
+            mt-1
+            text-[clamp(0.52rem,0.48rem+0.12vw,0.64rem)]
+            font-medium
+            leading-none
+            text-[#111111]/70
+          "
+        >
           {text}
         </p>
       </div>

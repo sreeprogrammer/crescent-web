@@ -6,7 +6,7 @@ export const college = {
   shortAddress: "Vandalur, Chennai – 600 048",
 
   email: "admissions@crescentcdoe.edu.in",
-  whatsapp: "919000000000",
+  whatsapp: "9176286276",
 
   numbers: [
     {

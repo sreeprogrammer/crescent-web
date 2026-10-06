@@ -81,32 +81,37 @@ function BAIslamicStudiesPeoplePage() {
     <SiteLayout>
       <div
         style={circularFont}
-        className="min-h-screen bg-white text-[#111111]"
+        className="min-h-screen bg-[#F7F8F4] text-[#111111]"
       >
-        {/* HEADER */}
-        <section className="bg-[#F5F1E9]">
-          <div className="mx-auto max-w-6xl px-5 py-3.5 sm:px-6 sm:py-4">
-            <div className="mb-2">
-              <Link
-                to="/ba-islamic-studies"
-                className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#111111]"
-              >
-                <ArrowLeft className="h-3.5 w-3.5" />
-                Back to B.A. Islamic Studies
-              </Link>
-            </div>
+        {/* =========================================================
+            HEADER
+        ========================================================= */}
+
+        <section className="relative overflow-hidden bg-[#F5F1E9]">
+          <div className="absolute right-[-80px] top-[-80px] h-56 w-56 rounded-full bg-[#2F6F4E]/5 blur-3xl" />
+
+          <div className="relative mx-auto max-w-7xl px-5 py-6 sm:px-8 md:py-8 lg:px-12">
+            <Link
+              to="/ba-islamic-studies"
+              className="group mb-5 inline-flex items-center gap-2 text-sm font-semibold text-[#111111] transition-colors duration-300 hover:text-[#2F6F4E]"
+            >
+              <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
+              Back to B.A. Islamic Studies
+            </Link>
 
             <div className="max-w-4xl">
-              <div className="mb-1.5 inline-flex items-center gap-1.5 rounded-full bg-[#2F6F4E]/10 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.08em] text-[#2F6F4E]">
-                <GraduationCap className="h-3 w-3" />
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-[#2F6F4E]/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-[#2F6F4E]">
+                <GraduationCap className="h-4 w-4" />
                 B.A. Islamic Studies
               </div>
 
-              <h1 className="text-xl font-bold leading-tight tracking-tight sm:text-2xl">
+              <h1 className="text-[clamp(2rem,4vw,3rem)] font-bold leading-tight tracking-[-0.03em] text-[#111111]">
                 People
               </h1>
 
-              <p className="mt-1 max-w-3xl text-[11px] leading-4.5 text-black/70 sm:text-xs">
+              <div className="mt-3 h-[3px] w-14 rounded-full bg-[#D4AF37]" />
+
+              <p className="mt-4 max-w-3xl text-[clamp(0.95rem,1.5vw,1.1rem)] leading-7 text-black/65">
                 Meet the faculty members supporting teaching, academic
                 guidance and learner development in B.A. Islamic Studies.
               </p>
@@ -114,10 +119,13 @@ function BAIslamicStudiesPeoplePage() {
           </div>
         </section>
 
-        {/* QUICK NAV */}
+        {/* =========================================================
+            QUICK NAVIGATION
+        ========================================================= */}
+
         <section className="border-b border-black/5 bg-white">
-          <div className="mx-auto max-w-6xl px-5 py-2.5 sm:px-6">
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <div className="mx-auto max-w-7xl px-5 py-4 sm:px-8 lg:px-12">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               <QuickNav
                 title="Overview"
                 href="/ba-islamic-studies"
@@ -145,111 +153,183 @@ function BAIslamicStudiesPeoplePage() {
           </div>
         </section>
 
-        {/* MAIN */}
-        <main className="mx-auto max-w-6xl px-5 py-4 sm:px-6 sm:py-5">
-          <div className="mb-4">
-            <div className="mb-1 flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#2F6F4E]">
-              <span className="h-px w-5 bg-[#D4AF37]" />
+        {/* =========================================================
+            MAIN CONTENT
+        ========================================================= */}
+
+        <main className="mx-auto max-w-7xl px-5 py-8 sm:px-8 md:py-10 lg:px-12">
+          {/* SECTION HEADER */}
+
+          <div className="mb-7">
+            <div className="mb-2 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-[#2F6F4E]">
+              <span className="h-px w-7 bg-[#D4AF37]" />
               Faculty Team
             </div>
 
-            <h2 className="text-lg font-bold leading-tight sm:text-xl">
+            <h2 className="text-[clamp(1.5rem,3vw,2.1rem)] font-bold leading-tight tracking-[-0.02em]">
               Faculty — B.A. Islamic Studies
             </h2>
 
-            <p className="mt-0.5 max-w-2xl text-[11px] leading-4 text-black/60">
+            <p className="mt-2 max-w-2xl text-[clamp(0.9rem,1.4vw,1rem)] leading-6 text-black/60">
               Academic professionals supporting the learning journey of our
               students.
             </p>
           </div>
 
-          {/* FACULTY CARDS */}
-          <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+          {/* =========================================================
+              FACULTY CARDS
+          ========================================================= */}
+
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
             {faculty.map((person, index) => (
               <motion.article
                 key={person.name}
-                initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.35,
-                  delay: index * 0.05,
+                initial={{
+                  opacity: 0,
+                  y: 18,
                 }}
-                className="group relative overflow-hidden rounded-xl border border-black/8 bg-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                  margin: "-50px",
+                }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.08,
+                }}
+                className="
+                  group
+                  relative
+                  overflow-hidden
+                  rounded-2xl
+                  border
+                  border-black/8
+                  bg-white
+                  shadow-[0_8px_25px_rgba(0,0,0,0.05)]
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:shadow-[0_16px_35px_rgba(0,0,0,0.09)]
+                "
               >
                 {/* GOLD BOTTOM LINE */}
-                <div className="absolute bottom-0 left-2 right-2 z-20 h-0.5 origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100" />
+
+                <div className="absolute bottom-0 left-4 right-4 z-20 h-[3px] origin-left scale-x-0 rounded-full bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100" />
 
                 {/* PHOTO */}
-                <div className="relative h-[210px] w-full overflow-hidden bg-[#F3F3F3]">
+
+                <div className="relative h-[260px] w-full overflow-hidden bg-[#F3F3F3] sm:h-[280px]">
                   <img
                     src={person.photo}
                     alt={person.name}
-                    className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
+                    className="
+                      h-full
+                      w-full
+                      object-cover
+                      object-center
+                      transition-transform
+                      duration-700
+                      group-hover:scale-[1.03]
+                    "
                   />
 
-                  <div className="absolute left-2.5 top-2.5 rounded-full bg-white/90 px-2.5 py-1 text-[8px] font-semibold uppercase tracking-[0.08em] text-[#2F6F4E] shadow-sm">
+                  <div className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.08em] text-[#2F6F4E] shadow-sm backdrop-blur-sm">
                     B.A. Islamic Studies
                   </div>
 
-                  <div className="absolute bottom-2.5 left-2.5 flex size-7 items-center justify-center rounded-lg bg-[#2F6F4E]/90 text-white">
-                    <UserRound className="size-3.5" />
+                  <div className="absolute bottom-4 left-4 flex h-9 w-9 items-center justify-center rounded-xl bg-[#2F6F4E]/95 text-white shadow-lg">
+                    <UserRound className="h-4 w-4" />
                   </div>
                 </div>
 
                 {/* CARD CONTENT */}
-                <div className="px-3.5 py-3">
-                  <p className="text-[8px] font-semibold uppercase tracking-[0.1em] text-[#2F6F4E]">
+
+                <div className="px-5 py-5">
+                  <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#2F6F4E]">
                     Faculty
                   </p>
 
-                  <h3 className="mt-1 text-sm font-bold leading-5 text-[#111111]">
+                  <h3 className="mt-2 text-[clamp(1.05rem,1.8vw,1.25rem)] font-bold leading-6 text-[#111111]">
                     {person.name}
                   </h3>
 
-                  <p className="mt-0.5 text-[10px] font-semibold text-[#2F6F4E]">
+                  <p className="mt-1.5 text-sm font-semibold text-[#2F6F4E]">
                     {person.designation}
                   </p>
 
-                  <div className="mt-2 flex items-center gap-1.5 text-[9px] text-black/50">
-                    <GraduationCap className="size-3 text-[#D4AF37]" />
-                    {person.qualification}
+                  <div className="mt-4 flex items-start gap-2 text-sm leading-5 text-black/55">
+                    <GraduationCap className="mt-0.5 h-4 w-4 shrink-0 text-[#D4AF37]" />
+                    <span>{person.qualification}</span>
                   </div>
 
                   <button
                     type="button"
                     onClick={() => setSelectedFaculty(person)}
-                    className="group/info relative mt-3 inline-flex items-center gap-1.5 text-[10px] font-semibold text-[#111111]"
+                    className="
+                      group/info
+                      relative
+                      mt-5
+                      inline-flex
+                      items-center
+                      gap-2
+                      text-sm
+                      font-bold
+                      text-[#111111]
+                      transition-colors
+                      duration-300
+                      hover:text-[#2F6F4E]
+                    "
                   >
                     More Info
-                    <ArrowRight className="size-3 text-[#D4AF37] transition-transform duration-300 group-hover/info:translate-x-0.5" />
 
-                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover/info:scale-x-100" />
+                    <ArrowRight className="h-4 w-4 text-[#D4AF37] transition-transform duration-300 group-hover/info:translate-x-1" />
+
+                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] origin-left scale-x-0 rounded-full bg-[#D4AF37] transition-transform duration-300 group-hover/info:scale-x-100" />
                   </button>
                 </div>
               </motion.article>
             ))}
           </div>
 
-          {/* BOTTOM NOTE */}
-          <div className="mt-4 flex items-center gap-2 rounded-xl border border-[#2F6F4E]/10 bg-[#2F6F4E]/5 px-3.5 py-3">
-            <BookOpen className="size-4 shrink-0 text-[#2F6F4E]" />
+          {/* =========================================================
+              BOTTOM NOTE
+          ========================================================= */}
 
-            <p className="text-[9px] leading-4 text-black/60">
+          <div className="mt-7 flex items-start gap-3 rounded-2xl border border-[#2F6F4E]/10 bg-[#2F6F4E]/5 px-5 py-4">
+            <BookOpen className="mt-0.5 h-5 w-5 shrink-0 text-[#2F6F4E]" />
+
+            <p className="text-sm leading-6 text-black/60">
               Our faculty team supports academic learning, guidance and the
               overall development of learners pursuing B.A. Islamic Studies.
             </p>
           </div>
         </main>
 
-        {/* MORE INFO / PORTFOLIO MODAL */}
+        {/* =========================================================
+            FACULTY PROFILE MODAL
+        ========================================================= */}
+
         <AnimatePresence>
           {selectedFaculty && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/55 px-4 py-5 backdrop-blur-sm"
+              className="
+                fixed
+                inset-0
+                z-[9999]
+                flex
+                items-center
+                justify-center
+                bg-black/55
+                px-4
+                py-5
+                backdrop-blur-sm
+              "
               onMouseDown={(event) => {
                 if (event.target === event.currentTarget) {
                   setSelectedFaculty(null);
@@ -260,7 +340,7 @@ function BAIslamicStudiesPeoplePage() {
                 initial={{
                   opacity: 0,
                   scale: 0.96,
-                  y: 12,
+                  y: 18,
                 }}
                 animate={{
                   opacity: 1,
@@ -270,27 +350,60 @@ function BAIslamicStudiesPeoplePage() {
                 exit={{
                   opacity: 0,
                   scale: 0.96,
-                  y: 12,
+                  y: 18,
                 }}
-                transition={{ duration: 0.25 }}
-                className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white shadow-[0_24px_70px_rgba(0,0,0,0.25)]"
+                transition={{
+                  duration: 0.25,
+                }}
+                className="
+                  relative
+                  max-h-[90vh]
+                  w-full
+                  max-w-3xl
+                  overflow-y-auto
+                  rounded-2xl
+                  bg-white
+                  shadow-[0_24px_70px_rgba(0,0,0,0.25)]
+                "
               >
-                {/* PROFILE HEADER */}
-                <div className="relative overflow-hidden bg-[#2F6F4E] px-5 py-5 text-white sm:px-6">
+                {/* =================================================
+                    MODAL HEADER
+                ================================================= */}
+
+                <div className="relative overflow-hidden bg-[#2F6F4E] px-5 py-6 text-white sm:px-7">
                   <div className="absolute inset-x-0 top-0 h-1 bg-[#D4AF37]" />
+
+                  <div className="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-white/5 blur-2xl" />
 
                   <button
                     type="button"
                     onClick={() => setSelectedFaculty(null)}
                     aria-label="Close faculty profile"
-                    className="absolute right-4 top-4 flex size-8 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+                    className="
+                      absolute
+                      right-4
+                      top-4
+                      flex
+                      h-9
+                      w-9
+                      items-center
+                      justify-center
+                      rounded-full
+                      bg-white/10
+                      text-white
+                      transition-all
+                      duration-300
+                      hover:bg-white/20
+                      hover:rotate-90
+                    "
                   >
-                    <X className="size-4" />
+                    <X className="h-5 w-5" />
                   </button>
 
-                  <div className="flex flex-col gap-4 pr-8 sm:flex-row sm:items-center">
-                    {/* TEMPORARY PHOTO */}
-                    <div className="h-[120px] w-[120px] shrink-0 overflow-hidden rounded-xl border-2 border-white/40 bg-white/10 shadow-lg">
+                  <div className="relative flex flex-col gap-5 pr-8 sm:flex-row sm:items-center">
+                    {/* PHOTO */}
+
+                    <div className="h-[140px] w-[140px] shrink-0 overflow-hidden rounded-2xl border-2 border-white/40 bg-white/10 shadow-xl">
                       <img
                         src={selectedFaculty.photo}
                         alt={selectedFaculty.name}
@@ -298,61 +411,64 @@ function BAIslamicStudiesPeoplePage() {
                       />
                     </div>
 
+                    {/* PROFILE NAME */}
+
                     <div>
-                      <p className="text-[8px] font-semibold uppercase tracking-[0.14em] text-[#D4AF37]">
+                      <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#D4AF37]">
                         Faculty Profile
                       </p>
 
-                      <h2 className="mt-1 text-xl font-bold leading-tight sm:text-2xl">
+                      <h2 className="mt-2 text-[clamp(1.4rem,3vw,2rem)] font-bold leading-tight">
                         {selectedFaculty.name}
                       </h2>
 
-                      <p className="mt-1 text-[11px] font-medium text-white/80">
+                      <p className="mt-2 text-sm font-medium text-white/80">
                         {selectedFaculty.designation}
                       </p>
 
-                      <div className="mt-2 inline-flex rounded-full bg-white/10 px-2.5 py-1 text-[8px] font-semibold uppercase tracking-[0.08em] text-white/85">
+                      <div className="mt-3 inline-flex rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.08em] text-white/90">
                         B.A. Islamic Studies
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* PROFILE DETAILS */}
-                <div className="p-5 sm:p-6">
-                  <div className="mb-3">
-                    <p className="text-[8px] font-semibold uppercase tracking-[0.12em] text-[#2F6F4E]">
+                {/* =================================================
+                    PROFILE DETAILS
+                ================================================= */}
+
+                <div className="p-5 sm:p-7">
+                  <div className="mb-5">
+                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#2F6F4E]">
                       Faculty Details
                     </p>
 
-                    <h3 className="mt-1 text-base font-bold text-[#111111]">
+                    <h3 className="mt-1.5 text-xl font-bold text-[#111111]">
                       Academic & Professional Information
                     </h3>
                   </div>
 
-                  <div className="overflow-hidden rounded-xl border border-black/7">
-                    {/* DESIGNATION */}
+                  <div className="overflow-hidden rounded-2xl border border-black/7">
                     <DetailRow
                       label="Designation"
                       value={selectedFaculty.designation}
                     />
 
-                    {/* EMPLOYMENT */}
                     <DetailRow
                       label="Nature of Employment"
                       value={selectedFaculty.natureOfEmployment}
                     />
 
-                    {/* QUALIFICATION */}
                     <DetailRow
                       label="Qualification"
                       value={selectedFaculty.qualification}
                     />
 
                     {/* PHONE */}
-                    <div className="grid grid-cols-1 border-b border-black/6 bg-[#F5F1E9]/50 px-3.5 py-3 sm:grid-cols-[170px_1fr] sm:gap-4">
-                      <div className="flex items-center gap-2 text-[9px] font-semibold text-[#2F6F4E]">
-                        <Phone className="size-3.5 text-[#D4AF37]" />
+
+                    <div className="grid grid-cols-1 border-b border-black/6 bg-[#F5F1E9]/50 px-4 py-4 sm:grid-cols-[180px_1fr] sm:gap-5">
+                      <div className="flex items-center gap-2 text-sm font-bold text-[#2F6F4E]">
+                        <Phone className="h-4 w-4 text-[#D4AF37]" />
                         Phone
                       </div>
 
@@ -361,22 +477,23 @@ function BAIslamicStudiesPeoplePage() {
                           /[^0-9]/g,
                           "",
                         )}`}
-                        className="mt-1 text-[10px] font-medium text-[#111111] sm:mt-0"
+                        className="mt-2 text-sm font-medium text-[#111111] hover:text-[#2F6F4E] sm:mt-0"
                       >
                         {selectedFaculty.phone}
                       </a>
                     </div>
 
                     {/* EMAIL */}
-                    <div className="grid grid-cols-1 bg-white px-3.5 py-3 sm:grid-cols-[170px_1fr] sm:gap-4">
-                      <div className="flex items-center gap-2 text-[9px] font-semibold text-[#2F6F4E]">
-                        <Mail className="size-3.5 text-[#D4AF37]" />
+
+                    <div className="grid grid-cols-1 bg-white px-4 py-4 sm:grid-cols-[180px_1fr] sm:gap-5">
+                      <div className="flex items-center gap-2 text-sm font-bold text-[#2F6F4E]">
+                        <Mail className="h-4 w-4 text-[#D4AF37]" />
                         Email ID
                       </div>
 
                       <a
                         href={`mailto:${selectedFaculty.email}`}
-                        className="mt-1 break-all text-[10px] font-medium text-[#111111] sm:mt-0"
+                        className="mt-2 break-all text-sm font-medium text-[#111111] hover:text-[#2F6F4E] sm:mt-0"
                       >
                         {selectedFaculty.email}
                       </a>
@@ -384,16 +501,19 @@ function BAIslamicStudiesPeoplePage() {
                   </div>
 
                   {/* PROGRAMME */}
-                  <div className="mt-3 rounded-xl border border-[#2F6F4E]/10 bg-[#F5F1E9] p-3.5">
-                    <div className="flex items-center gap-2">
-                      <BookOpen className="size-4 text-[#2F6F4E]" />
+
+                  <div className="mt-5 rounded-2xl border border-[#2F6F4E]/10 bg-[#F5F1E9] p-4">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#2F6F4E]/10">
+                        <BookOpen className="h-5 w-5 text-[#2F6F4E]" />
+                      </div>
 
                       <div>
-                        <p className="text-[8px] font-semibold uppercase tracking-[0.1em] text-[#2F6F4E]">
+                        <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#2F6F4E]">
                           Programme
                         </p>
 
-                        <p className="text-[11px] font-bold text-[#111111]">
+                        <p className="mt-0.5 text-sm font-bold text-[#111111]">
                           B.A. Islamic Studies
                         </p>
                       </div>
@@ -401,13 +521,14 @@ function BAIslamicStudiesPeoplePage() {
                   </div>
 
                   {/* OFFICIAL PROFILE */}
-                  <div className="mt-4 flex flex-col gap-2 border-t border-black/5 pt-4 sm:flex-row sm:items-center sm:justify-between">
+
+                  <div className="mt-6 flex flex-col gap-4 border-t border-black/5 pt-5 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                      <p className="text-[10px] font-semibold text-[#111111]">
+                      <p className="text-sm font-bold text-[#111111]">
                         Official Faculty Profile
                       </p>
 
-                      <p className="mt-0.5 text-[9px] text-black/50">
+                      <p className="mt-1 text-xs leading-5 text-black/50">
                         View the complete profile on the Crescent website.
                       </p>
                     </div>
@@ -415,13 +536,31 @@ function BAIslamicStudiesPeoplePage() {
                     <a
                       href={selectedFaculty.profileUrl}
                       target="_blank"
-                      rel="noreferrer"
-                      className="group relative inline-flex shrink-0 items-center justify-center gap-1.5 rounded-lg bg-[#2F6F4E] px-3.5 py-2 text-[9px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5"
+                      rel="noopener noreferrer"
+                      className="
+                        group
+                        inline-flex
+                        shrink-0
+                        items-center
+                        justify-center
+                        gap-2
+                        rounded-xl
+                        bg-[#2F6F4E]
+                        px-4
+                        py-2.5
+                        text-sm
+                        font-bold
+                        text-white
+                        transition-all
+                        duration-300
+                        hover:-translate-y-0.5
+                        hover:bg-[#24593E]
+                        hover:shadow-lg
+                      "
                     >
                       View Official Profile
-                      <ExternalLink className="size-3 text-[#D4AF37]" />
 
-                      <span className="absolute bottom-0 left-2 right-2 h-0.5 origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100" />
+                      <ExternalLink className="h-4 w-4 text-[#D4AF37] transition-transform duration-300 group-hover:translate-x-0.5" />
                     </a>
                   </div>
                 </div>
@@ -434,7 +573,10 @@ function BAIslamicStudiesPeoplePage() {
   );
 }
 
-/* QUICK NAV */
+/* =========================================================
+   QUICK NAVIGATION
+========================================================= */
+
 function QuickNav({
   title,
   href,
@@ -447,38 +589,80 @@ function QuickNav({
   return (
     <Link
       to={href}
-      className={`group relative rounded-lg border px-3 py-2.5 transition-all duration-300 ${
-        active
-          ? "border-[#2F6F4E]/20 bg-[#2F6F4E]/5"
-          : "border-black/6 bg-white hover:bg-[#F5F1E9]"
-      }`}
+      className={`
+        group
+        relative
+        rounded-xl
+        border
+        px-4
+        py-3
+        transition-all
+        duration-300
+        ${
+          active
+            ? "border-[#2F6F4E]/20 bg-[#2F6F4E]/5"
+            : "border-black/6 bg-white hover:-translate-y-0.5 hover:bg-[#F5F1E9]"
+        }
+      `}
     >
-      <div className="flex items-center justify-between gap-2">
+      <div className="flex items-center justify-between gap-3">
         <span
-          className={`text-[9px] font-semibold ${
-            active ? "text-[#2F6F4E]" : "text-[#111111]"
-          }`}
+          className={`
+            text-sm
+            font-bold
+            ${
+              active
+                ? "text-[#2F6F4E]"
+                : "text-[#111111] group-hover:text-[#2F6F4E]"
+            }
+          `}
         >
           {title}
         </span>
 
         <ArrowRight
-          className={`size-3 ${
-            active ? "text-[#2F6F4E]" : "text-black/30"
-          } transition-transform duration-300 group-hover:translate-x-0.5`}
+          className={`
+            h-4
+            w-4
+            transition-all
+            duration-300
+            group-hover:translate-x-1
+            ${
+              active
+                ? "text-[#2F6F4E]"
+                : "text-black/25 group-hover:text-[#2F6F4E]"
+            }
+          `}
         />
       </div>
 
       <span
-        className={`absolute bottom-0 left-2 right-2 h-0.5 origin-left bg-[#D4AF37] transition-transform duration-300 ${
-          active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-        }`}
+        className={`
+          absolute
+          bottom-0
+          left-3
+          right-3
+          h-[2px]
+          origin-left
+          rounded-full
+          bg-[#D4AF37]
+          transition-transform
+          duration-300
+          ${
+            active
+              ? "scale-x-100"
+              : "scale-x-0 group-hover:scale-x-100"
+          }
+        `}
       />
     </Link>
   );
 }
 
-/* DETAIL ROW */
+/* =========================================================
+   DETAIL ROW
+========================================================= */
+
 function DetailRow({
   label,
   value,
@@ -487,12 +671,12 @@ function DetailRow({
   value: ReactNode;
 }) {
   return (
-    <div className="grid grid-cols-1 border-b border-black/6 bg-white px-3.5 py-3 sm:grid-cols-[170px_1fr] sm:gap-4">
-      <div className="text-[9px] font-semibold text-[#2F6F4E]">
+    <div className="grid grid-cols-1 border-b border-black/6 bg-white px-4 py-4 sm:grid-cols-[180px_1fr] sm:gap-5">
+      <div className="text-sm font-bold text-[#2F6F4E]">
         {label}
       </div>
 
-      <div className="mt-1 text-[10px] font-medium leading-4 text-[#111111] sm:mt-0">
+      <div className="mt-1.5 text-sm font-medium leading-5 text-[#111111] sm:mt-0">
         {value}
       </div>
     </div>

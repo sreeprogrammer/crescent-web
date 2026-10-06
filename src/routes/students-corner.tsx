@@ -19,14 +19,26 @@ import {
 import campusPhoto from "@/assets/campus-1.jpg";
 import { SiteLayout } from "@/components/site/SiteLayout";
 
+/* =========================================================
+   FONT
+========================================================= */
+
 const circularFont = {
   fontFamily:
     "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
 };
 
+/* =========================================================
+   ROUTE
+========================================================= */
+
 export const Route = createFileRoute("/students-corner")({
   component: StudentsCornerPage,
 });
+
+/* =========================================================
+   STUDENTS CORNER PAGE
+========================================================= */
 
 function StudentsCornerPage() {
   const [isComplaintOpen, setIsComplaintOpen] = useState(false);
@@ -37,30 +49,75 @@ function StudentsCornerPage() {
         style={circularFont}
         className="min-h-screen overflow-hidden bg-[#F5F1E9] text-[#111111]"
       >
-        {/* HEADER */}
+        {/* =================================================
+            HEADER
+        ================================================= */}
+
         <section className="bg-[#F5F1E9]">
-          <div className="mx-auto max-w-6xl px-5 py-4 sm:px-6 sm:py-5">
-            <div className="mb-2">
+          <div className="mx-auto max-w-6xl px-5 py-6 sm:px-6 sm:py-7 lg:py-8">
+
+            <div className="mb-3">
               <Link
                 to="/"
-                className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#111111]"
+                className="
+                  inline-flex
+                  items-center
+                  gap-2
+                  text-[clamp(0.78rem,0.72rem+0.15vw,0.9rem)]
+                  font-medium
+                  text-[#111111]
+                  transition-colors
+                  hover:text-[#8F1D1D]
+                "
               >
-                <ArrowLeft className="h-3.5 w-3.5" />
+                <ArrowLeft className="size-[clamp(0.9rem,0.85rem+0.15vw,1rem)]" />
                 Back to Home
               </Link>
             </div>
 
             <div className="max-w-4xl">
-              <div className="mb-1.5 inline-flex items-center gap-1.5 rounded-full bg-white/70 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.08em] text-[#111111]">
-                <GraduationCap className="h-3 w-3" />
+
+              <div
+                className="
+                  mb-2.5
+                  inline-flex
+                  items-center
+                  gap-2
+                  rounded-full
+                  bg-white/70
+                  px-3
+                  py-1.5
+                  text-[clamp(0.65rem,0.6rem+0.15vw,0.8rem)]
+                  font-semibold
+                  uppercase
+                  tracking-[0.08em]
+                  text-[#111111]
+                "
+              >
+                <GraduationCap className="size-4" />
                 Student Support
               </div>
 
-              <h1 className="text-xl font-bold leading-tight tracking-tight sm:text-2xl">
+              <h1
+                className="
+                  text-[clamp(1.8rem,1.45rem+1.2vw,2.7rem)]
+                  font-bold
+                  leading-[1.05]
+                  tracking-tight
+                "
+              >
                 Students Corner
               </h1>
 
-              <p className="mt-1 max-w-3xl text-[11px] leading-4.5 text-black/70 sm:text-xs">
+              <p
+                className="
+                  mt-2
+                  max-w-3xl
+                  text-[clamp(0.9rem,0.82rem+0.2vw,1.08rem)]
+                  leading-[1.6]
+                  text-black/70
+                "
+              >
                 Access learning resources, student services and grievance
                 support through one convenient space.
               </p>
@@ -68,17 +125,31 @@ function StudentsCornerPage() {
           </div>
         </section>
 
-        {/* QUICK ACCESS */}
-        <section className="bg-[#F5F1E9] px-5 pb-4 pt-3 sm:px-6 sm:pt-4">
+        {/* =================================================
+            QUICK ACCESS
+        ================================================= */}
+
+        <section className="bg-[#F5F1E9] px-5 pb-6 pt-3 sm:px-6 sm:pb-7 lg:pb-8">
           <div className="mx-auto max-w-6xl">
-            <div className="mb-2 flex items-center gap-2">
-              <span className="h-px w-5 bg-[#B08A24]" />
-              <span className="text-[9px] font-semibold uppercase tracking-[0.12em] text-[#8f1d1d]">
+
+            <div className="mb-3 flex items-center gap-2.5">
+              <span className="h-[2px] w-7 bg-[#B08A24]" />
+
+              <span
+                className="
+                  text-[clamp(0.68rem,0.62rem+0.15vw,0.8rem)]
+                  font-semibold
+                  uppercase
+                  tracking-[0.12em]
+                  text-[#8f1d1d]
+                "
+              >
                 Quick Access
               </span>
             </div>
 
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+
               <QuickCard
                 number="01"
                 title="LMS Login"
@@ -114,51 +185,101 @@ function StudentsCornerPage() {
                 accent="#8F1D1D"
                 href="#student-affairs"
               />
+
             </div>
           </div>
         </section>
 
-        {/* MAIN CONTENT */}
-        <section className="px-5 pb-6 pt-1 sm:px-6 sm:pb-8">
+        {/* =================================================
+            MAIN CONTENT
+        ================================================= */}
+
+        <section className="px-5 pb-8 pt-2 sm:px-6 sm:pb-10">
           <div className="mx-auto max-w-6xl">
-            <div className="grid gap-3 lg:grid-cols-2">
-              {/* LMS LOGIN */}
+
+            <div className="grid gap-4 lg:grid-cols-2">
+
+              {/* =================================================
+                  LMS LOGIN
+              ================================================= */}
+
               <motion.section
                 id="lms-login"
                 initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4 }}
-                className="relative overflow-hidden rounded-[16px] border border-[#dedbd6] bg-white p-4 shadow-[0_6px_20px_rgba(0,0,0,0.05)] sm:p-5"
+                className="
+                  relative
+                  overflow-hidden
+                  rounded-[16px]
+                  border
+                  border-[#dedbd6]
+                  bg-white
+                  p-5
+                  shadow-[0_6px_20px_rgba(0,0,0,0.05)]
+                  sm:p-6
+                "
               >
                 <div className="absolute left-0 top-0 h-1 w-full bg-[#30265F]" />
 
-                <div className="flex items-start justify-between gap-3">
+                <div className="flex items-start justify-between gap-4">
+
                   <div>
-                    <div className="mb-1.5 flex items-center gap-2">
-                      <div className="flex size-8 items-center justify-center rounded-lg bg-[#30265F]">
-                        <BookOpen className="size-4 text-[#D8B84C]" />
+
+                    <div className="mb-2 flex items-center gap-2.5">
+
+                      <div className="flex size-10 items-center justify-center rounded-xl bg-[#30265F]">
+                        <BookOpen className="size-5 text-[#D8B84C]" />
                       </div>
 
                       <div>
-                        <p className="text-[8px] font-bold uppercase tracking-[0.14em] text-[#30265F]">
+
+                        <p
+                          className="
+                            text-[clamp(0.65rem,0.6rem+0.15vw,0.78rem)]
+                            font-bold
+                            uppercase
+                            tracking-[0.14em]
+                            text-[#30265F]
+                          "
+                        >
                           Digital Learning
                         </p>
 
-                        <h2 className="text-base font-bold leading-tight">
+                        <h2
+                          className="
+                            text-[clamp(1.05rem,0.95rem+0.3vw,1.35rem)]
+                            font-bold
+                            leading-tight
+                          "
+                        >
                           LMS Login
                         </h2>
+
                       </div>
                     </div>
 
-                    <p className="mt-2 max-w-xl text-[10px] leading-4.5 text-black/65">
+                    <p
+                      className="
+                        mt-3
+                        max-w-xl
+                        text-[clamp(0.82rem,0.76rem+0.2vw,0.98rem)]
+                        leading-[1.65]
+                        text-black/65
+                      "
+                    >
                       Access your online learning environment, academic
                       resources and important course updates.
                     </p>
+
                   </div>
                 </div>
 
-                <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2">
+                {/* FEATURES */}
+
+                <div className="mt-5 grid grid-cols-1 gap-x-4 gap-y-3 sm:grid-cols-2">
+
                   {[
                     "Recorded lectures",
                     "Live weekend classes",
@@ -169,93 +290,186 @@ function StudentsCornerPage() {
                   ].map((item) => (
                     <div
                       key={item}
-                      className="flex items-center gap-1.5 text-[9px] font-medium text-[#111111]"
+                      className="
+                        flex
+                        items-center
+                        gap-2
+                        text-[clamp(0.78rem,0.72rem+0.15vw,0.9rem)]
+                        font-medium
+                        text-[#111111]
+                      "
                     >
-                      <CheckCircle2 className="size-3 shrink-0 text-[#2F6F4E]" />
+                      <CheckCircle2 className="size-4 shrink-0 text-[#2F6F4E]" />
                       {item}
                     </div>
                   ))}
+
                 </div>
 
-                <div className="mt-4">
+                {/* BUTTON */}
+
+                <div className="mt-5">
+
                   <a
                     href="https://lmscdoe.crescent-institute.edu.in/login/index.php"
-                    className="group relative inline-flex items-center gap-1.5 rounded-lg bg-[#30265F] px-3 py-2 text-[10px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5"
+                    className="
+                      group
+                      relative
+                      inline-flex
+                      items-center
+                      gap-2
+                      rounded-lg
+                      bg-[#30265F]
+                      px-4
+                      py-2.5
+                      text-[clamp(0.78rem,0.72rem+0.15vw,0.9rem)]
+                      font-semibold
+                      text-white
+                      transition-all
+                      duration-300
+                      hover:-translate-y-0.5
+                    "
                   >
                     Login to LMS
 
-                    <ArrowRight className="size-3 transition-transform duration-300 group-hover:translate-x-0.5" />
+                    <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
 
-                    <span className="absolute bottom-0 left-2 right-2 h-0.5 origin-left scale-x-0 bg-[#D8B84C] transition-transform duration-300 group-hover:scale-x-100" />
+                    <span className="absolute bottom-0 left-3 right-3 h-0.5 origin-left scale-x-0 bg-[#D8B84C] transition-transform duration-300 group-hover:scale-x-100" />
                   </a>
+
                 </div>
               </motion.section>
 
-              {/* GRIEVANCE */}
+              {/* =================================================
+                  GRIEVANCE
+              ================================================= */}
+
               <motion.section
                 id="student-affairs"
                 initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: 0.05 }}
-                className="relative overflow-hidden rounded-[16px] bg-[#17234B] p-4 text-white shadow-[0_8px_22px_rgba(23,35,75,0.16)] sm:p-5"
+                className="
+                  relative
+                  overflow-hidden
+                  rounded-[16px]
+                  bg-[#17234B]
+                  p-5
+                  text-white
+                  shadow-[0_8px_22px_rgba(23,35,75,0.16)]
+                  sm:p-6
+                "
               >
                 <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-[#2F6F4E] via-[#D8B84C] to-[#8F1D1D]" />
 
-                <div className="mb-3 flex items-center gap-2">
-                  <div className="flex size-8 items-center justify-center rounded-lg bg-white/10">
-                    <ShieldCheck className="size-4 text-[#D8B84C]" />
+                <div className="mb-4 flex items-center gap-2.5">
+
+                  <div className="flex size-10 items-center justify-center rounded-xl bg-white/10">
+                    <ShieldCheck className="size-5 text-[#D8B84C]" />
                   </div>
 
                   <div>
-                    <p className="text-[8px] font-bold uppercase tracking-[0.14em] text-[#D8B84C]">
+
+                    <p
+                      className="
+                        text-[clamp(0.65rem,0.6rem+0.15vw,0.78rem)]
+                        font-bold
+                        uppercase
+                        tracking-[0.14em]
+                        text-[#D8B84C]
+                      "
+                    >
                       Student Support
                     </p>
 
-                    <h2 className="text-base font-bold leading-tight">
+                    <h2
+                      className="
+                        text-[clamp(1.05rem,0.95rem+0.3vw,1.35rem)]
+                        font-bold
+                        leading-tight
+                      "
+                    >
                       Student Grievance Redressal Cell
                     </h2>
+
                   </div>
                 </div>
 
-                <div className="grid gap-3 sm:grid-cols-[1fr_170px]">
+                <div className="grid gap-4 sm:grid-cols-[1fr_190px]">
+
                   {/* OFFICER */}
+
                   <div>
-                    <p className="text-[9px] leading-4 text-white/65">
+
+                    <p
+                      className="
+                        text-[clamp(0.78rem,0.72rem+0.15vw,0.92rem)]
+                        leading-[1.65]
+                        text-white/65
+                      "
+                    >
                       For any academic or student-related grievance, learners
                       can approach the designated Nodal Officer.
                     </p>
 
-                    {/* MAM PROFILE - TEMPORARY PHOTO */}
-                    <div className="mt-3 flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-3">
-                      <div className="h-[76px] w-[76px] shrink-0 overflow-hidden rounded-xl border-2 border-[#D8B84C]/60 bg-white/10">
+                    {/* PROFILE */}
+
+                    <div className="mt-4 flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-3.5">
+
+                      <div className="h-[84px] w-[84px] shrink-0 overflow-hidden rounded-xl border-2 border-[#D8B84C]/60 bg-white/10">
+
                         <img
                           src={campusPhoto}
                           alt="Ms. P. Paul Merline"
                           className="h-full w-full object-cover object-center"
                         />
+
                       </div>
 
                       <div className="min-w-0">
-                        <p className="text-[11px] font-bold">
+
+                        <p
+                          className="
+                            text-[clamp(0.82rem,0.76rem+0.15vw,0.95rem)]
+                            font-bold
+                          "
+                        >
                           Ms. P. Paul Merline
                         </p>
 
-                        <p className="mt-0.5 text-[8px] leading-3.5 text-white/60">
+                        <p
+                          className="
+                            mt-1
+                            text-[clamp(0.7rem,0.65rem+0.15vw,0.82rem)]
+                            leading-5
+                            text-white/60
+                          "
+                        >
                           Technical Manager
                           <br />
                           (LMS &amp; Data Management)
                         </p>
 
-                        <p className="mt-1 text-[8px] font-semibold text-[#D8B84C]">
+                        <p
+                          className="
+                            mt-1.5
+                            text-[clamp(0.68rem,0.62rem+0.15vw,0.8rem)]
+                            font-semibold
+                            text-[#D8B84C]
+                          "
+                        >
                           Nodal Officer
                         </p>
+
                       </div>
                     </div>
                   </div>
 
                   {/* FEATURES */}
-                  <div className="grid grid-cols-2 gap-1.5">
+
+                  <div className="grid grid-cols-2 gap-2">
+
                     {[
                       "Academic grievances",
                       "Grievance Box",
@@ -264,52 +478,107 @@ function StudentsCornerPage() {
                     ].map((item, index) => (
                       <div
                         key={item}
-                        className="rounded-lg border border-white/10 bg-white/5 px-2 py-2"
+                        className="rounded-lg border border-white/10 bg-white/5 px-2.5 py-2.5"
                       >
-                        <div className="mb-1 text-[8px] font-bold text-[#D8B84C]">
+                        <div
+                          className="
+                            mb-1
+                            text-[clamp(0.68rem,0.62rem+0.15vw,0.8rem)]
+                            font-bold
+                            text-[#D8B84C]
+                          "
+                        >
                           0{index + 1}
                         </div>
 
-                        <p className="text-[8px] leading-3.5 text-white/75">
+                        <p
+                          className="
+                            text-[clamp(0.68rem,0.62rem+0.15vw,0.8rem)]
+                            leading-4
+                            text-white/75
+                          "
+                        >
                           {item}
                         </p>
                       </div>
                     ))}
+
                   </div>
                 </div>
 
                 {/* ACTIONS */}
-                <div className="mt-4 flex flex-wrap gap-2">
+
+                <div className="mt-5 flex flex-wrap gap-2.5">
+
                   <button
                     type="button"
                     onClick={() => setIsComplaintOpen(true)}
-                    className="group relative inline-flex items-center gap-1.5 rounded-lg bg-[#D8B84C] px-3 py-2 text-[9px] font-bold text-[#17234B] transition-all duration-300 hover:-translate-y-0.5"
+                    className="
+                      group
+                      relative
+                      inline-flex
+                      items-center
+                      gap-2
+                      rounded-lg
+                      bg-[#D8B84C]
+                      px-4
+                      py-2.5
+                      text-[clamp(0.72rem,0.68rem+0.15vw,0.85rem)]
+                      font-bold
+                      text-[#17234B]
+                      transition-all
+                      duration-300
+                      hover:-translate-y-0.5
+                    "
                   >
-                    <FileText className="size-3" />
+                    <FileText className="size-4" />
 
                     Online Complaint Form
 
-                    <span className="absolute bottom-0 left-2 right-2 h-0.5 origin-left scale-x-0 bg-[#8F1D1D] transition-transform duration-300 group-hover:scale-x-100" />
+                    <span className="absolute bottom-0 left-3 right-3 h-0.5 origin-left scale-x-0 bg-[#8F1D1D] transition-transform duration-300 group-hover:scale-x-100" />
                   </button>
 
                   <a
                     href="https://distance.crescent-institute.edu.in/img/Grievence.png"
                     target="_blank"
                     rel="noreferrer"
-                    className="group relative inline-flex items-center gap-1.5 rounded-lg border border-white/20 bg-white/5 px-3 py-2 text-[9px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5"
+                    className="
+                      group
+                      relative
+                      inline-flex
+                      items-center
+                      gap-2
+                      rounded-lg
+                      border
+                      border-white/20
+                      bg-white/5
+                      px-4
+                      py-2.5
+                      text-[clamp(0.72rem,0.68rem+0.15vw,0.85rem)]
+                      font-semibold
+                      text-white
+                      transition-all
+                      duration-300
+                      hover:-translate-y-0.5
+                    "
                   >
-                    <FileText className="size-3 text-[#D8B84C]" />
+                    <FileText className="size-4 text-[#D8B84C]" />
 
                     UGC Letter
 
-                    <span className="absolute bottom-0 left-2 right-2 h-0.5 origin-left scale-x-0 bg-[#D8B84C] transition-transform duration-300 group-hover:scale-x-100" />
+                    <span className="absolute bottom-0 left-3 right-3 h-0.5 origin-left scale-x-0 bg-[#D8B84C] transition-transform duration-300 group-hover:scale-x-100" />
                   </a>
+
                 </div>
               </motion.section>
             </div>
 
-            {/* SUPPORT STRIP */}
-            <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3">
+            {/* =================================================
+                SUPPORT STRIP
+            ================================================= */}
+
+            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+
               <SupportCard
                 icon={ShieldCheck}
                 title="Secure Learning"
@@ -330,18 +599,33 @@ function StudentsCornerPage() {
                 description="Support designed around students"
                 accent="#8F1D1D"
               />
+
             </div>
           </div>
         </section>
 
-        {/* COMPLAINT MODAL */}
+        {/* =================================================
+            COMPLAINT MODAL
+        ================================================= */}
+
         <AnimatePresence>
           {isComplaintOpen && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[10000] flex items-center justify-center bg-[#111111]/60 px-4 py-5 backdrop-blur-sm"
+              className="
+                fixed
+                inset-0
+                z-[10000]
+                flex
+                items-center
+                justify-center
+                bg-[#111111]/60
+                px-4
+                py-5
+                backdrop-blur-sm
+              "
               onMouseDown={(event) => {
                 if (event.target === event.currentTarget) {
                   setIsComplaintOpen(false);
@@ -353,59 +637,120 @@ function StudentsCornerPage() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.96, y: 12 }}
                 transition={{ duration: 0.25 }}
-                className="relative max-h-[92vh] w-full max-w-xl overflow-y-auto rounded-[18px] bg-white shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
+                className="
+                  relative
+                  max-h-[92vh]
+                  w-full
+                  max-w-xl
+                  overflow-y-auto
+                  rounded-[18px]
+                  bg-white
+                  shadow-[0_20px_60px_rgba(0,0,0,0.25)]
+                "
               >
+
                 {/* MODAL HEADER */}
-                <div className="sticky top-0 z-10 bg-[#17234B] px-5 py-4 text-white">
+
+                <div className="sticky top-0 z-10 bg-[#17234B] px-5 py-5 text-white">
+
                   <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-[#2F6F4E] via-[#D8B84C] to-[#8F1D1D]" />
 
                   <button
                     type="button"
                     onClick={() => setIsComplaintOpen(false)}
                     aria-label="Close complaint form"
-                    className="absolute right-4 top-4 flex size-7 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+                    className="
+                      absolute
+                      right-4
+                      top-4
+                      flex
+                      size-8
+                      items-center
+                      justify-center
+                      rounded-full
+                      bg-white/10
+                      text-white
+                      transition-colors
+                      hover:bg-white/20
+                    "
                   >
                     <X className="size-4" />
                   </button>
 
-                  <div className="pr-8">
-                    <div className="mb-1 flex items-center gap-2">
-                      <ShieldCheck className="size-4 text-[#D8B84C]" />
+                  <div className="pr-10">
 
-                      <span className="text-[8px] font-bold uppercase tracking-[0.15em] text-[#D8B84C]">
+                    <div className="mb-1.5 flex items-center gap-2">
+
+                      <ShieldCheck className="size-5 text-[#D8B84C]" />
+
+                      <span
+                        className="
+                          text-[clamp(0.65rem,0.6rem+0.15vw,0.8rem)]
+                          font-bold
+                          uppercase
+                          tracking-[0.15em]
+                          text-[#D8B84C]
+                        "
+                      >
                         Student Support
                       </span>
+
                     </div>
 
-                    <h2 className="text-lg font-bold leading-tight">
+                    <h2
+                      className="
+                        text-[clamp(1.15rem,1rem+0.4vw,1.5rem)]
+                        font-bold
+                        leading-tight
+                      "
+                    >
                       Students Grievance Redressal Cell
                     </h2>
 
-                    <p className="mt-1 text-[9px] leading-4 text-white/65">
+                    <p
+                      className="
+                        mt-1.5
+                        text-[clamp(0.75rem,0.7rem+0.15vw,0.9rem)]
+                        leading-5
+                        text-white/65
+                      "
+                    >
                       Submit your grievance using the form below.
                     </p>
+
                   </div>
                 </div>
 
                 {/* FORM */}
+
                 <form
-                  className="space-y-3 px-5 py-5"
+                  className="space-y-4 px-5 py-6"
                   onSubmit={(event) => {
                     event.preventDefault();
                     setIsComplaintOpen(false);
                   }}
                 >
+
                   {/* NAME */}
+
                   <div>
+
                     <label
                       htmlFor="student-name"
-                      className="mb-1 block text-[9px] font-bold text-[#111111]"
+                      className="
+                        mb-1.5
+                        block
+                        text-[clamp(0.75rem,0.7rem+0.15vw,0.88rem)]
+                        font-bold
+                        text-[#111111]
+                      "
                     >
                       Name of Student
                     </label>
 
                     <div className="relative">
-                      <UserRound className="pointer-events-none absolute left-3 top-1/2 size-3.5 -translate-y-1/2 text-[#6B4C9A]" />
+
+                      <UserRound className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#6B4C9A]" />
 
                       <input
                         id="student-name"
@@ -413,17 +758,45 @@ function StudentsCornerPage() {
                         type="text"
                         required
                         placeholder="Enter your name"
-                        className="h-9 w-full rounded-lg border border-[#dedbd6] bg-[#F8F7F4] pl-9 pr-3 text-[10px] text-[#111111] outline-none transition-all placeholder:text-black/35 focus:border-[#6B4C9A] focus:bg-white focus:ring-2 focus:ring-[#6B4C9A]/10"
+                        className="
+                          h-11
+                          w-full
+                          rounded-lg
+                          border
+                          border-[#dedbd6]
+                          bg-[#F8F7F4]
+                          pl-10
+                          pr-3
+                          text-[clamp(0.8rem,0.75rem+0.15vw,0.95rem)]
+                          text-[#111111]
+                          outline-none
+                          transition-all
+                          placeholder:text-black/35
+                          focus:border-[#6B4C9A]
+                          focus:bg-white
+                          focus:ring-2
+                          focus:ring-[#6B4C9A]/10
+                        "
                       />
+
                     </div>
                   </div>
 
                   {/* RRN + PHONE */}
-                  <div className="grid gap-3 sm:grid-cols-2">
+
+                  <div className="grid gap-4 sm:grid-cols-2">
+
                     <div>
+
                       <label
                         htmlFor="student-rrn"
-                        className="mb-1 block text-[9px] font-bold text-[#111111]"
+                        className="
+                          mb-1.5
+                          block
+                          text-[clamp(0.75rem,0.7rem+0.15vw,0.88rem)]
+                          font-bold
+                          text-[#111111]
+                        "
                       >
                         RRN
                       </label>
@@ -434,20 +807,46 @@ function StudentsCornerPage() {
                         type="text"
                         required
                         placeholder="Enter RRN"
-                        className="h-9 w-full rounded-lg border border-[#dedbd6] bg-[#F8F7F4] px-3 text-[10px] text-[#111111] outline-none transition-all placeholder:text-black/35 focus:border-[#2F6F4E] focus:bg-white focus:ring-2 focus:ring-[#2F6F4E]/10"
+                        className="
+                          h-11
+                          w-full
+                          rounded-lg
+                          border
+                          border-[#dedbd6]
+                          bg-[#F8F7F4]
+                          px-3
+                          text-[clamp(0.8rem,0.75rem+0.15vw,0.95rem)]
+                          text-[#111111]
+                          outline-none
+                          transition-all
+                          placeholder:text-black/35
+                          focus:border-[#2F6F4E]
+                          focus:bg-white
+                          focus:ring-2
+                          focus:ring-[#2F6F4E]/10
+                        "
                       />
+
                     </div>
 
                     <div>
+
                       <label
                         htmlFor="student-phone"
-                        className="mb-1 block text-[9px] font-bold text-[#111111]"
+                        className="
+                          mb-1.5
+                          block
+                          text-[clamp(0.75rem,0.7rem+0.15vw,0.88rem)]
+                          font-bold
+                          text-[#111111]
+                        "
                       >
                         Phone
                       </label>
 
                       <div className="relative">
-                        <Phone className="pointer-events-none absolute left-3 top-1/2 size-3.5 -translate-y-1/2 text-[#8F1D1D]" />
+
+                        <Phone className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#8F1D1D]" />
 
                         <input
                           id="student-phone"
@@ -455,23 +854,51 @@ function StudentsCornerPage() {
                           type="tel"
                           required
                           placeholder="Enter phone number"
-                          className="h-9 w-full rounded-lg border border-[#dedbd6] bg-[#F8F7F4] pl-9 pr-3 text-[10px] text-[#111111] outline-none transition-all placeholder:text-black/35 focus:border-[#8F1D1D] focus:bg-white focus:ring-2 focus:ring-[#8F1D1D]/10"
+                          className="
+                            h-11
+                            w-full
+                            rounded-lg
+                            border
+                            border-[#dedbd6]
+                            bg-[#F8F7F4]
+                            pl-10
+                            pr-3
+                            text-[clamp(0.8rem,0.75rem+0.15vw,0.95rem)]
+                            text-[#111111]
+                            outline-none
+                            transition-all
+                            placeholder:text-black/35
+                            focus:border-[#8F1D1D]
+                            focus:bg-white
+                            focus:ring-2
+                            focus:ring-[#8F1D1D]/10
+                          "
                         />
+
                       </div>
                     </div>
                   </div>
 
                   {/* EMAIL */}
+
                   <div>
+
                     <label
                       htmlFor="student-email"
-                      className="mb-1 block text-[9px] font-bold text-[#111111]"
+                      className="
+                        mb-1.5
+                        block
+                        text-[clamp(0.75rem,0.7rem+0.15vw,0.88rem)]
+                        font-bold
+                        text-[#111111]
+                      "
                     >
                       Email
                     </label>
 
                     <div className="relative">
-                      <Mail className="pointer-events-none absolute left-3 top-1/2 size-3.5 -translate-y-1/2 text-[#B08A24]" />
+
+                      <Mail className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#B08A24]" />
 
                       <input
                         id="student-email"
@@ -479,16 +906,43 @@ function StudentsCornerPage() {
                         type="email"
                         required
                         placeholder="Enter email address"
-                        className="h-9 w-full rounded-lg border border-[#dedbd6] bg-[#F8F7F4] pl-9 pr-3 text-[10px] text-[#111111] outline-none transition-all placeholder:text-black/35 focus:border-[#B08A24] focus:bg-white focus:ring-2 focus:ring-[#B08A24]/10"
+                        className="
+                          h-11
+                          w-full
+                          rounded-lg
+                          border
+                          border-[#dedbd6]
+                          bg-[#F8F7F4]
+                          pl-10
+                          pr-3
+                          text-[clamp(0.8rem,0.75rem+0.15vw,0.95rem)]
+                          text-[#111111]
+                          outline-none
+                          transition-all
+                          placeholder:text-black/35
+                          focus:border-[#B08A24]
+                          focus:bg-white
+                          focus:ring-2
+                          focus:ring-[#B08A24]/10
+                        "
                       />
+
                     </div>
                   </div>
 
                   {/* GRIEVANCE */}
+
                   <div>
+
                     <label
                       htmlFor="student-grievance"
-                      className="mb-1 block text-[9px] font-bold text-[#111111]"
+                      className="
+                        mb-1.5
+                        block
+                        text-[clamp(0.75rem,0.7rem+0.15vw,0.88rem)]
+                        font-bold
+                        text-[#111111]
+                      "
                     >
                       State Your Grievance
                     </label>
@@ -499,25 +953,72 @@ function StudentsCornerPage() {
                       required
                       rows={5}
                       placeholder="State your grievance clearly..."
-                      className="w-full resize-none rounded-lg border border-[#dedbd6] bg-[#F8F7F4] px-3 py-2.5 text-[10px] leading-4 text-[#111111] outline-none transition-all placeholder:text-black/35 focus:border-[#30265F] focus:bg-white focus:ring-2 focus:ring-[#30265F]/10"
+                      className="
+                        w-full
+                        resize-none
+                        rounded-lg
+                        border
+                        border-[#dedbd6]
+                        bg-[#F8F7F4]
+                        px-3
+                        py-3
+                        text-[clamp(0.8rem,0.75rem+0.15vw,0.95rem)]
+                        leading-6
+                        text-[#111111]
+                        outline-none
+                        transition-all
+                        placeholder:text-black/35
+                        focus:border-[#30265F]
+                        focus:bg-white
+                        focus:ring-2
+                        focus:ring-[#30265F]/10
+                      "
                     />
+
                   </div>
 
                   {/* SUBMIT */}
+
                   <button
                     type="submit"
-                    className="group relative flex h-10 w-full items-center justify-center gap-2 overflow-hidden rounded-lg bg-[#17234B] text-[10px] font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
+                    className="
+                      group
+                      relative
+                      flex
+                      h-11
+                      w-full
+                      items-center
+                      justify-center
+                      gap-2
+                      overflow-hidden
+                      rounded-lg
+                      bg-[#17234B]
+                      text-[clamp(0.8rem,0.75rem+0.15vw,0.95rem)]
+                      font-bold
+                      text-white
+                      transition-all
+                      duration-300
+                      hover:-translate-y-0.5
+                    "
                   >
                     <span>Submit</span>
 
-                    <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                    <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
 
                     <span className="absolute bottom-0 left-5 right-5 h-0.5 origin-left scale-x-0 bg-[#D8B84C] transition-transform duration-300 group-hover:scale-x-100" />
                   </button>
 
                   {/* NOTE */}
-                  <div className="rounded-lg border-l-[3px] border-[#D8B84C] bg-[#F5F1E9] px-3 py-2.5">
-                    <p className="text-[9px] leading-4 text-[#111111]/75">
+
+                  <div className="rounded-lg border-l-[3px] border-[#D8B84C] bg-[#F5F1E9] px-3.5 py-3">
+
+                    <p
+                      className="
+                        text-[clamp(0.75rem,0.7rem+0.15vw,0.88rem)]
+                        leading-5
+                        text-[#111111]/75
+                      "
+                    >
                       <span className="font-bold text-[#8F1D1D]">
                         Note:
                       </span>{" "}
@@ -530,6 +1031,7 @@ function StudentsCornerPage() {
                       </a>{" "}
                       or submit your grievance in person to the Nodal Officer.
                     </p>
+
                   </div>
                 </form>
               </motion.div>
@@ -541,7 +1043,10 @@ function StudentsCornerPage() {
   );
 }
 
-/* QUICK CARD */
+/* =========================================================
+   QUICK CARD
+========================================================= */
+
 function QuickCard({
   number,
   title,
@@ -557,6 +1062,11 @@ function QuickCard({
   accent: string;
   href: string;
 }) {
+  const destination =
+    href === "/lms-login"
+      ? "https://lmscdoe.crescent-institute.edu.in/login/index.php"
+      : href;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 6 }}
@@ -564,39 +1074,103 @@ function QuickCard({
       className="min-w-0"
     >
       <a
-        href={href === "/lms-login" ? "https://lmscdoe.crescent-institute.edu.in/login/index.php" : href}
-        className="group relative flex h-[88px] min-h-[88px] w-full items-center overflow-hidden rounded-[1rem] border border-[#D9D4CA] bg-white px-3.5 py-3 shadow-[0_5px_16px_rgba(31,35,43,0.05)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_9px_22px_rgba(31,35,43,0.09)]"
+        href={destination}
+        className="
+          group
+          relative
+          flex
+          min-h-[104px]
+          w-full
+          items-center
+          overflow-hidden
+          rounded-[1rem]
+          border
+          border-[#D9D4CA]
+          bg-white
+          px-4
+          py-4
+          shadow-[0_5px_16px_rgba(31,35,43,0.05)]
+          transition-all
+          duration-300
+          hover:-translate-y-0.5
+          hover:shadow-[0_9px_22px_rgba(31,35,43,0.09)]
+        "
       >
+
         <div
-          className="absolute left-0 right-0 top-0 h-[2px]"
+          className="absolute left-0 right-0 top-0 h-[3px]"
           style={{ backgroundColor: accent }}
         />
 
-        <div className="flex w-full items-center gap-2.5">
-          <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-[#17234B]">
-            <Icon className="size-3.5 text-[#D8B84C]" />
+        <div className="flex w-full items-center gap-3">
+
+          {/* ICON */}
+
+          <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#17234B] transition-transform duration-300 group-hover:scale-105">
+
+            <Icon className="size-5 text-[#D8B84C]" />
+
           </div>
 
+          {/* CONTENT */}
+
           <div className="min-w-0 flex-1">
-            <div className="flex items-center gap-1.5">
+
+            <div className="flex items-center gap-2">
+
               <span
-                className="text-[8px] font-bold tracking-[0.1em]"
+                className="
+                  shrink-0
+                  text-[clamp(0.68rem,0.62rem+0.15vw,0.8rem)]
+                  font-bold
+                  tracking-[0.1em]
+                "
                 style={{ color: accent }}
               >
                 {number}
               </span>
 
-              <h3 className="truncate text-[10px] font-bold text-[#20242B]">
+              <h3
+                className="
+                  truncate
+                  text-[clamp(0.88rem,0.82rem+0.2vw,1rem)]
+                  font-bold
+                  text-[#20242B]
+                "
+              >
                 {title}
               </h3>
+
             </div>
 
-            <p className="mt-0.5 truncate text-[8px] font-medium text-[#737782]">
+            <p
+              className="
+                mt-1
+                truncate
+                text-[clamp(0.72rem,0.68rem+0.15vw,0.85rem)]
+                font-medium
+                text-[#737782]
+              "
+            >
               {description}
             </p>
+
           </div>
 
-          <ArrowRight className="size-3 shrink-0 text-[#B9BDC5] transition-transform duration-300 group-hover:translate-x-1" />
+          {/* ARROW */}
+
+          <ArrowRight
+            className="
+              size-4
+              shrink-0
+              text-[#B9BDC5]
+              transition-all
+              duration-300
+              group-hover:translate-x-1
+              group-hover:text-[#30265F]
+            "
+          />
+
         </div>
 
         <span className="absolute bottom-0 left-3 right-3 h-0.5 origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100" />
@@ -605,7 +1179,10 @@ function QuickCard({
   );
 }
 
-/* SUPPORT CARD */
+/* =========================================================
+   SUPPORT CARD
+========================================================= */
+
 function SupportCard({
   icon: Icon,
   title,
@@ -618,23 +1195,44 @@ function SupportCard({
   accent: string;
 }) {
   return (
-    <div className="group relative overflow-hidden rounded-xl border border-[#D9D4CA] bg-white px-3.5 py-3 shadow-[0_4px_14px_rgba(31,35,43,0.04)]">
+    <div className="group relative overflow-hidden rounded-xl border border-[#D9D4CA] bg-white px-4 py-4 shadow-[0_4px_14px_rgba(31,35,43,0.04)]">
+
       <div
         className="absolute left-0 top-0 h-full w-1"
         style={{ backgroundColor: accent }}
       />
 
-      <div className="flex items-center gap-2.5 pl-1">
+      <div className="flex items-center gap-3 pl-1">
+
         <div
-          className="flex size-8 shrink-0 items-center justify-center rounded-lg"
+          className="flex size-10 shrink-0 items-center justify-center rounded-lg"
           style={{ backgroundColor: `${accent}15` }}
         >
-          <Icon className="size-3.5" style={{ color: accent }} />
+          <Icon className="size-5" style={{ color: accent }} />
         </div>
 
         <div>
-          <h3 className="text-[10px] font-bold text-[#111111]">{title}</h3>
-          <p className="mt-0.5 text-[8px] text-black/55">{description}</p>
+
+          <h3
+            className="
+              text-[clamp(0.82rem,0.76rem+0.2vw,0.98rem)]
+              font-bold
+              text-[#111111]
+            "
+          >
+            {title}
+          </h3>
+
+          <p
+            className="
+              mt-0.5
+              text-[clamp(0.72rem,0.68rem+0.15vw,0.85rem)]
+              text-black/55
+            "
+          >
+            {description}
+          </p>
+
         </div>
       </div>
 

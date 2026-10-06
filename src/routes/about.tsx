@@ -55,7 +55,6 @@ export const Route = createFileRoute("/about")({
 
 /* =========================================================
    FONT
-   SAME FONT AS ADMISSION PAGE
 ========================================================= */
 
 const circularFont = {
@@ -106,7 +105,19 @@ function AboutQuickLinks() {
   return (
     <section
       style={circularFont}
-      className="relative bg-[#F5F1E9] px-5 pb-5 pt-3 sm:px-8 lg:px-12"
+      className="
+        relative
+        bg-[#F5F1E9]
+        px-4
+        pb-6
+        pt-4
+        sm:px-6
+        sm:pb-7
+        sm:pt-5
+        lg:px-10
+        lg:pb-8
+        lg:pt-5
+      "
     >
       <div className="mx-auto w-full max-w-7xl">
 
@@ -114,15 +125,30 @@ function AboutQuickLinks() {
             GOLD LINE
         ================================================= */}
 
-        <div className="mb-5 h-[3px] w-full rounded-full bg-[#B08A24]" />
+        <div
+          className="
+            mb-5
+            h-[3px]
+            w-full
+            rounded-full
+            bg-[#B08A24]
+            sm:mb-6
+          "
+        />
 
         {/* =================================================
             QUICK LINK CARDS
-            EXACT ADMISSION CARD HEIGHT
         ================================================= */}
 
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-
+        <div
+          className="
+            grid
+            grid-cols-1
+            gap-3
+            sm:grid-cols-2
+            lg:grid-cols-4
+          "
+        >
           {links.map((item, index) => {
             const Icon = item.icon;
 
@@ -131,7 +157,7 @@ function AboutQuickLinks() {
                 key={item.number}
                 initial={{
                   opacity: 0,
-                  y: 6,
+                  y: 8,
                 }}
                 animate={{
                   opacity: 1,
@@ -149,8 +175,7 @@ function AboutQuickLinks() {
                     group
                     relative
                     flex
-                    h-[96px]
-                    min-h-[96px]
+                    min-h-[100px]
                     w-full
                     items-center
                     overflow-hidden
@@ -159,12 +184,16 @@ function AboutQuickLinks() {
                     border-[#D9D4CA]
                     bg-white
                     px-4
-                    py-3.5
+                    py-4
                     shadow-[0_6px_18px_rgba(31,35,43,0.05)]
                     transition-all
                     duration-300
-                    hover:-translate-y-0.5
-                    hover:shadow-[0_10px_25px_rgba(31,35,43,0.09)]
+                    hover:-translate-y-1
+                    hover:shadow-[0_12px_28px_rgba(31,35,43,0.10)]
+                    sm:min-h-[108px]
+                    sm:px-4
+                    lg:min-h-[112px]
+                    lg:px-4
                   "
                 >
 
@@ -176,7 +205,7 @@ function AboutQuickLinks() {
                       left-0
                       right-0
                       top-0
-                      h-[2px]
+                      h-[3px]
                     "
                     style={{
                       backgroundColor: item.accent,
@@ -185,14 +214,22 @@ function AboutQuickLinks() {
 
                   {/* CARD CONTENT */}
 
-                  <div className="flex w-full items-center gap-3">
+                  <div
+                    className="
+                      flex
+                      w-full
+                      items-center
+                      gap-3
+                      sm:gap-3.5
+                    "
+                  >
 
                     {/* ICON */}
 
                     <div
                       className="
                         flex
-                        size-9
+                        size-10
                         shrink-0
                         items-center
                         justify-center
@@ -201,21 +238,35 @@ function AboutQuickLinks() {
                         transition-transform
                         duration-300
                         group-hover:scale-105
+                        sm:size-11
                       "
                     >
-                      <Icon className="size-4 text-[#D8B84C]" />
+                      <Icon
+                        className="
+                          size-4
+                          text-[#D8B84C]
+                          sm:size-[18px]
+                        "
+                      />
                     </div>
 
                     {/* TEXT */}
 
                     <div className="min-w-0 flex-1">
 
-                      <div className="flex min-w-0 items-center gap-1.5">
+                      <div
+                        className="
+                          flex
+                          min-w-0
+                          items-center
+                          gap-1.5
+                        "
+                      >
 
                         <span
                           className="
                             shrink-0
-                            text-[8px]
+                            text-[clamp(0.65rem,1vw,0.75rem)]
                             font-bold
                             tracking-[0.12em]
                           "
@@ -230,8 +281,9 @@ function AboutQuickLinks() {
                           className="
                             min-w-0
                             truncate
-                            text-[11px]
+                            text-[clamp(0.85rem,1.2vw,1rem)]
                             font-bold
+                            leading-tight
                             text-[#20242B]
                           "
                         >
@@ -242,10 +294,11 @@ function AboutQuickLinks() {
 
                       <p
                         className="
-                          mt-0.5
+                          mt-1
                           truncate
-                          text-[9px]
+                          text-[clamp(0.72rem,1vw,0.82rem)]
                           font-medium
+                          leading-tight
                           text-[#737782]
                         "
                       >
@@ -258,13 +311,14 @@ function AboutQuickLinks() {
 
                     <ArrowRight
                       className="
-                        size-3.5
+                        size-4
                         shrink-0
                         text-[#B9BDC5]
                         transition-all
                         duration-300
                         group-hover:translate-x-1
                         group-hover:text-[#30265F]
+                        sm:size-[18px]
                       "
                     />
 
@@ -273,7 +327,6 @@ function AboutQuickLinks() {
               </motion.div>
             );
           })}
-
         </div>
       </div>
     </section>
@@ -289,11 +342,15 @@ function AboutPage() {
     <SiteLayout>
       <main
         style={circularFont}
-        className="min-h-screen overflow-hidden bg-[#F5F1E9]"
+        className="
+          min-h-screen
+          overflow-hidden
+          bg-[#F5F1E9]
+        "
       >
 
         {/* =================================================
-            ADMISSION STYLE CARDS
+            QUICK LINK CARDS
         ================================================= */}
 
         <AboutQuickLinks />
@@ -302,21 +359,62 @@ function AboutPage() {
             MAIN ABOUT CONTENT
         ================================================= */}
 
-        <section className="relative border-b border-[#dedbd6] bg-[#f5f3f0]">
+        <section
+          className="
+            relative
+            border-b
+            border-[#dedbd6]
+            bg-[#f5f3f0]
+          "
+        >
 
           {/* BACKGROUND DECORATION */}
 
           <div className="pointer-events-none absolute inset-0 overflow-hidden">
 
-            <div className="absolute -right-24 -top-24 size-72 rounded-full bg-[#8f1d1d]/5 blur-3xl" />
+            <div
+              className="
+                absolute
+                -right-24
+                -top-24
+                size-72
+                rounded-full
+                bg-[#8f1d1d]/5
+                blur-3xl
+              "
+            />
 
-            <div className="absolute -bottom-24 left-0 size-64 rounded-full bg-[#8f1d1d]/5 blur-3xl" />
+            <div
+              className="
+                absolute
+                -bottom-24
+                left-0
+                size-64
+                rounded-full
+                bg-[#8f1d1d]/5
+                blur-3xl
+              "
+            />
 
           </div>
 
-          <div className="relative mx-auto max-w-[1400px] px-5 py-5 sm:px-8 lg:px-10 lg:py-6">
+          <div
+            className="
+              relative
+              mx-auto
+              max-w-[1400px]
+              px-4
+              py-6
+              sm:px-6
+              sm:py-7
+              lg:px-10
+              lg:py-8
+            "
+          >
 
-            {/* SMALL LABEL */}
+            {/* =================================================
+                SMALL LABEL
+            ================================================= */}
 
             <motion.div
               initial={{
@@ -330,20 +428,54 @@ function AboutPage() {
               transition={{
                 duration: 0.45,
               }}
-              className="mb-3 flex items-center gap-2"
+              className="
+                mb-4
+                flex
+                items-center
+                gap-2
+                sm:mb-5
+              "
             >
-              <span className="h-[2px] w-7 bg-[#8f1d1d]" />
+              <span
+                className="
+                  h-[2px]
+                  w-7
+                  rounded-full
+                  bg-[#8f1d1d]
+                  sm:w-9
+                "
+              />
 
-              <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-[#111111]">
+              <span
+                className="
+                  text-[clamp(0.65rem,1vw,0.8rem)]
+                  font-bold
+                  uppercase
+                  tracking-[0.18em]
+                  text-[#111111]
+                "
+              >
                 About CDOE
               </span>
             </motion.div>
 
-            {/* HERO GRID */}
+            {/* =================================================
+                HERO GRID
+            ================================================= */}
 
-            <div className="grid items-stretch gap-5 lg:grid-cols-[1.08fr_0.92fr]">
+            <div
+              className="
+                grid
+                items-stretch
+                gap-5
+                lg:grid-cols-[1.08fr_0.92fr]
+                lg:gap-7
+              "
+            >
 
-              {/* LEFT CONTENT */}
+              {/* =================================================
+                  LEFT CONTENT
+              ================================================= */}
 
               <motion.div
                 initial={{
@@ -366,29 +498,61 @@ function AboutPage() {
                   border-[#dedbd6]
                   bg-white
                   px-5
-                  py-5
+                  py-6
                   shadow-[0_5px_18px_rgba(0,0,0,0.04)]
                   sm:px-7
-                  lg:px-8
+                  sm:py-7
+                  lg:px-9
+                  lg:py-8
                 "
               >
 
                 {/* SMALL HEADING */}
 
-                <div className="flex items-center gap-2 text-[#111111]">
+                <div
+                  className="
+                    flex
+                    items-center
+                    gap-2
+                    text-[#111111]
+                  "
+                >
 
-                  <ShieldCheck className="size-3.5" />
+                  <ShieldCheck
+                    className="
+                      size-4
+                      sm:size-[18px]
+                    "
+                  />
 
-                  <span className="text-[8px] font-bold uppercase tracking-[0.16em]">
+                  <span
+                    className="
+                      text-[clamp(0.7rem,1vw,0.85rem)]
+                      font-bold
+                      uppercase
+                      tracking-[0.16em]
+                    "
+                  >
                     Academic Excellence
                   </span>
 
                 </div>
 
-                {/* MAIN HEADING */}
+                {/* =================================================
+                    MAIN HEADING
+                ================================================= */}
 
-                <h1 className="mt-3 max-w-3xl text-2xl font-bold leading-[1.08] tracking-[-0.02em] text-[#111111] sm:text-3xl lg:text-[2.4rem]">
-
+                <h1
+                  className="
+                    mt-4
+                    max-w-3xl
+                    text-[clamp(1.75rem,4vw,3rem)]
+                    font-bold
+                    leading-[1.08]
+                    tracking-[-0.03em]
+                    text-[#111111]
+                  "
+                >
                   An institution shaped by{" "}
 
                   <span className="text-[#8f1d1d]">
@@ -396,12 +560,21 @@ function AboutPage() {
                   </span>{" "}
 
                   &amp; purpose.
-
                 </h1>
 
-                {/* PARAGRAPH 1 */}
+                {/* =================================================
+                    PARAGRAPH 1
+                ================================================= */}
 
-                <p className="mt-3 max-w-2xl text-[11px] leading-5 text-[#111111] sm:text-xs">
+                <p
+                  className="
+                    mt-4
+                    max-w-2xl
+                    text-[clamp(0.9rem,1.25vw,1rem)]
+                    leading-[1.75]
+                    text-[#111111]
+                  "
+                >
                   Our institution is committed to creating an inspiring
                   learning environment that encourages students to think
                   beyond boundaries, develop their abilities, and prepare
@@ -411,9 +584,19 @@ function AboutPage() {
                   purposeful.
                 </p>
 
-                {/* PARAGRAPH 2 */}
+                {/* =================================================
+                    PARAGRAPH 2
+                ================================================= */}
 
-                <p className="mt-2 max-w-2xl text-[11px] leading-5 text-[#111111] sm:text-xs">
+                <p
+                  className="
+                    mt-3
+                    max-w-2xl
+                    text-[clamp(0.9rem,1.25vw,1rem)]
+                    leading-[1.75]
+                    text-[#111111]
+                  "
+                >
                   With a wide range of academic programmes, digital learning
                   opportunities, student activities, and modern facilities, we
                   provide an environment where learners can grow academically,
@@ -422,41 +605,120 @@ function AboutPage() {
                   connected, and confident about the future.
                 </p>
 
-                {/* STATS */}
+                {/* =================================================
+                    STATS
+                ================================================= */}
 
-                <div className="mt-4 grid grid-cols-3 border-y border-[#dedbd6] py-3">
+                <div
+                  className="
+                    mt-6
+                    grid
+                    grid-cols-3
+                    border-y
+                    border-[#dedbd6]
+                    py-4
+                  "
+                >
 
-                  <div className="border-r border-[#dedbd6] pr-3">
+                  {/* STAT 1 */}
 
-                    <p className="font-serif text-lg font-bold text-[#111111]">
+                  <div
+                    className="
+                      border-r
+                      border-[#dedbd6]
+                      pr-3
+                      sm:pr-5
+                    "
+                  >
+
+                    <p
+                      className="
+                        font-serif
+                        text-[clamp(1.15rem,2vw,1.6rem)]
+                        font-bold
+                        text-[#111111]
+                      "
+                    >
                       01
                     </p>
 
-                    <p className="mt-0.5 text-[8px] font-semibold uppercase tracking-wider text-[#111111]">
+                    <p
+                      className="
+                        mt-1
+                        text-[clamp(0.6rem,0.9vw,0.75rem)]
+                        font-semibold
+                        uppercase
+                        tracking-[0.08em]
+                        text-[#111111]
+                      "
+                    >
                       Academic Vision
                     </p>
 
                   </div>
 
-                  <div className="border-r border-[#dedbd6] px-3">
+                  {/* STAT 2 */}
 
-                    <p className="font-serif text-lg font-bold text-[#111111]">
+                  <div
+                    className="
+                      border-r
+                      border-[#dedbd6]
+                      px-3
+                      sm:px-5
+                    "
+                  >
+
+                    <p
+                      className="
+                        font-serif
+                        text-[clamp(1.15rem,2vw,1.6rem)]
+                        font-bold
+                        text-[#111111]
+                      "
+                    >
                       04
                     </p>
 
-                    <p className="mt-0.5 text-[8px] font-semibold uppercase tracking-wider text-[#111111]">
+                    <p
+                      className="
+                        mt-1
+                        text-[clamp(0.6rem,0.9vw,0.75rem)]
+                        font-semibold
+                        uppercase
+                        tracking-[0.08em]
+                        text-[#111111]
+                      "
+                    >
                       Core Teams
                     </p>
 
                   </div>
 
-                  <div className="pl-3">
+                  {/* STAT 3 */}
 
-                    <p className="font-serif text-lg font-bold text-[#111111]">
+                  <div className="pl-3 sm:pl-5">
+
+                    <p
+                      className="
+                        font-serif
+                        text-[clamp(1.15rem,2vw,1.6rem)]
+                        font-bold
+                        text-[#111111]
+                      "
+                    >
                       24/7
                     </p>
 
-                    <p className="mt-0.5 text-[8px] font-semibold uppercase tracking-wider text-[#111111]">
+                    <p
+                      className="
+                        mt-1
+                        text-[clamp(0.6rem,0.9vw,0.75rem)]
+                        font-semibold
+                        uppercase
+                        tracking-[0.08em]
+                        text-[#111111]
+                      "
+                    >
                       Digital Access
                     </p>
 
@@ -464,31 +726,66 @@ function AboutPage() {
 
                 </div>
 
-                {/* TAGS */}
+                {/* =================================================
+                    TAGS
+                ================================================= */}
 
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div
+                  className="
+                    mt-4
+                    flex
+                    flex-wrap
+                    gap-2
+                  "
+                >
 
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#8f1d1d] px-2.5 py-1 text-[8px] font-semibold text-white">
-
-                    <GraduationCap className="size-3" />
+                  <span
+                    className="
+                      inline-flex
+                      items-center
+                      gap-1.5
+                      rounded-full
+                      bg-[#8f1d1d]
+                      px-3
+                      py-1.5
+                      text-[clamp(0.65rem,0.9vw,0.8rem)]
+                      font-semibold
+                      text-white
+                    "
+                  >
+                    <GraduationCap className="size-3.5" />
 
                     Learner First
-
                   </span>
 
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-[#222222] bg-white px-2.5 py-1 text-[8px] font-semibold text-[#111111]">
-
-                    <Sparkles className="size-3" />
+                  <span
+                    className="
+                      inline-flex
+                      items-center
+                      gap-1.5
+                      rounded-full
+                      border
+                      border-[#222222]
+                      bg-white
+                      px-3
+                      py-1.5
+                      text-[clamp(0.65rem,0.9vw,0.8rem)]
+                      font-semibold
+                      text-[#111111]
+                    "
+                  >
+                    <Sparkles className="size-3.5" />
 
                     Digital Learning
-
                   </span>
 
                 </div>
 
               </motion.div>
 
-              {/* RIGHT IMAGE */}
+              {/* =================================================
+                  RIGHT IMAGE
+              ================================================= */}
 
               <motion.div
                 initial={{
@@ -504,10 +801,13 @@ function AboutPage() {
                 }}
                 className="
                   relative
-                  min-h-[260px]
+                  min-h-[300px]
                   overflow-hidden
                   rounded-[16px]
                   shadow-[0_10px_25px_rgba(0,0,0,0.1)]
+                  sm:min-h-[360px]
+                  lg:min-h-[480px]
+                  xl:min-h-[520px]
                 "
               >
 
@@ -526,23 +826,88 @@ function AboutPage() {
                   "
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                {/* IMAGE OVERLAY */}
 
-                <div className="absolute left-0 top-0 h-full w-1 bg-[#8f1d1d]" />
+                <div
+                  className="
+                    absolute
+                    inset-0
+                    bg-gradient-to-t
+                    from-black/80
+                    via-black/10
+                    to-transparent
+                  "
+                />
 
-                <div className="absolute bottom-0 left-0 right-0 p-5">
+                {/* RED ACCENT */}
 
-                  <div className="mb-1.5 flex items-center gap-2">
+                <div
+                  className="
+                    absolute
+                    left-0
+                    top-0
+                    h-full
+                    w-1
+                    bg-[#8f1d1d]
+                    sm:w-1.5
+                  "
+                />
 
-                    <Landmark className="size-3.5 text-white" />
+                {/* IMAGE CONTENT */}
 
-                    <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-white">
+                <div
+                  className="
+                    absolute
+                    bottom-0
+                    left-0
+                    right-0
+                    p-5
+                    sm:p-7
+                    lg:p-8
+                  "
+                >
+
+                  <div
+                    className="
+                      mb-2
+                      flex
+                      items-center
+                      gap-2
+                    "
+                  >
+
+                    <Landmark
+                      className="
+                        size-4
+                        text-white
+                        sm:size-[18px]
+                      "
+                    />
+
+                    <span
+                      className="
+                        text-[clamp(0.65rem,1vw,0.8rem)]
+                        font-bold
+                        uppercase
+                        tracking-[0.18em]
+                        text-white
+                      "
+                    >
                       Our Campus
                     </span>
 
                   </div>
 
-                  <h2 className="max-w-md font-serif text-xl font-bold leading-tight text-white">
+                  <h2
+                    className="
+                      max-w-md
+                      font-serif
+                      text-[clamp(1.35rem,2.5vw,2rem)]
+                      font-bold
+                      leading-tight
+                      text-white
+                    "
+                  >
                     Where academic ambition meets opportunity.
                   </h2>
 

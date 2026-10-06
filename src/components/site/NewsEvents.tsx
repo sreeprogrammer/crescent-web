@@ -1,4 +1,3 @@
-
 import campus1 from "@/assets/campus-1.jpg";
 import campus2 from "@/assets/campus-2.jpg";
 import convocation from "@/assets/convocation.jpg";
@@ -7,12 +6,14 @@ import events from "@/assets/events.jpg";
 import jobFair from "@/assets/job-fair.jpg";
 
 import { AnimatePresence, motion } from "framer-motion";
+
 import {
   ArrowUpRight,
   CalendarDays,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+
 import { useCallback, useEffect, useState } from "react";
 
 import { Link } from "@tanstack/react-router";
@@ -181,7 +182,7 @@ export function NewsEvents() {
                 bg-[#d4af37]
                 px-3
                 py-1
-                text-[9px]
+                text-[11px]
                 font-bold
                 tracking-[0.15em]
                 text-[#172554]
@@ -200,13 +201,13 @@ export function NewsEvents() {
                 flex
                 items-center
                 gap-2
-                text-[10px]
+                text-[12px]
                 font-semibold
                 tracking-[0.08em]
                 text-[#7f1d1d]
               "
             >
-              <CalendarDays className="size-3.5" />
+              <CalendarDays className="size-4" />
               {featuredEvent.date}
             </div>
 
@@ -217,14 +218,14 @@ export function NewsEvents() {
             <h3
               className="
                 mt-3
-                text-xl
+                text-2xl
                 font-bold
                 leading-tight
                 text-[#172554]
                 transition-colors
                 duration-300
                 group-hover:text-[#7f1d1d]
-                lg:text-2xl
+                lg:text-3xl
               "
             >
               {featuredEvent.title}
@@ -235,9 +236,10 @@ export function NewsEvents() {
               className="
                 mt-2
                 max-w-xl
-                text-[12px]
+                text-[14px]
                 leading-[1.55]
                 text-[#4b4b4b]
+                lg:text-[15px]
               "
             >
               {featuredEvent.body}
@@ -254,8 +256,8 @@ export function NewsEvents() {
                   rounded-full
                   bg-[#172554]
                   px-4
-                  py-2
-                  text-[9px]
+                  py-2.5
+                  text-[11px]
                   font-semibold
                   tracking-[0.08em]
                   text-white
@@ -373,13 +375,13 @@ export function NewsEvents() {
                       bg-white/95
                       px-2.5
                       py-1
-                      text-[9px]
+                      text-[11px]
                       font-semibold
                       text-[#172554]
                     "
                   >
                     <CalendarDays
-                      className="size-3 text-[#7f1d1d]"
+                      className="size-3.5 text-[#7f1d1d]"
                     />
                     {item.date}
                   </div>
@@ -403,7 +405,7 @@ export function NewsEvents() {
                       group-hover:opacity-100
                     "
                   >
-                    <ArrowUpRight className="size-3.5" />
+                    <ArrowUpRight className="size-4" />
                   </span>
                 </div>
 
@@ -427,7 +429,7 @@ export function NewsEvents() {
                   {/* Title */}
                   <h3
                     className="
-                      text-[14px]
+                      text-[16px]
                       font-bold
                       leading-snug
                       text-[#172554]
@@ -443,7 +445,7 @@ export function NewsEvents() {
                   <p
                     className="
                       mt-1.5
-                      text-[11px]
+                      text-[13px]
                       leading-[1.45]
                       text-[#4b4b4b]
                     "
@@ -459,7 +461,7 @@ export function NewsEvents() {
                       inline-flex
                       items-center
                       gap-1
-                      text-[9px]
+                      text-[11px]
                       font-bold
                       tracking-[0.08em]
                       text-[#7f1d1d]
@@ -468,7 +470,7 @@ export function NewsEvents() {
                     "
                   >
                     VIEW EVENT
-                    <ArrowUpRight className="size-3" />
+                    <ArrowUpRight className="size-3.5" />
                   </Link>
                 </div>
 
@@ -505,7 +507,7 @@ export function NewsEvents() {
             aria-label="Previous events"
             className="
               flex
-              size-8
+              size-9
               items-center
               justify-center
               rounded-full
@@ -546,7 +548,7 @@ export function NewsEvents() {
             aria-label="Next events"
             className="
               flex
-              size-8
+              size-9
               items-center
               justify-center
               rounded-full
@@ -567,4 +569,3 @@ export function NewsEvents() {
     </Section>
   );
 }
-

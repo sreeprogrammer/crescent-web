@@ -1,4 +1,7 @@
 import logo from "@/assets/crescent-logo.png.asset.png";
+import developerPlaceholder1 from "@/assets/developer-placeholder-1.svg";
+import developerPlaceholder3 from "@/assets/developer-placeholder-3.svg";
+import mdinthisarPhoto from "@/assets/me.jpeg";
 import {
   ArrowUpRight,
   BookOpen,
@@ -14,6 +17,14 @@ import {
 } from "lucide-react";
 
 import { college } from "@/data/site";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -60,7 +71,6 @@ const socialLinks = [
 export function SiteFooter() {
   return (
     <footer className="relative overflow-hidden bg-white text-[#172554]">
-
       {/* =====================================================
           TOP ACCENT LINE
       ====================================================== */}
@@ -99,7 +109,6 @@ export function SiteFooter() {
           MAIN FOOTER
       ====================================================== */}
       <div className="relative mx-auto max-w-7xl px-5 py-9 sm:px-8 lg:px-10">
-
         <div
           className="
             grid
@@ -108,18 +117,12 @@ export function SiteFooter() {
             lg:gap-10
           "
         >
-
           {/* =================================================
               BRAND + CONTACT
           ================================================= */}
           <div>
-
             {/* Logo */}
-            <a
-              href="/"
-              className="inline-flex items-center"
-              aria-label="Crescent Institute Home"
-            >
+            <a href="/" className="inline-flex items-center" aria-label="Crescent Institute Home">
               <img
                 src={logo}
                 alt="B.S. Abdur Rahman Crescent Institute of Science and Technology"
@@ -145,16 +148,13 @@ export function SiteFooter() {
                 text-[#8a6a24]
               "
             >
-              B.S. Abdur Rahman Crescent Institute of Science &amp;
-              Technology
+              B.S. Abdur Rahman Crescent Institute of Science &amp; Technology
             </p>
 
             {/* Contact Details */}
             <div className="mt-4 space-y-2.5">
-
               {/* Address */}
               <div className="flex items-start gap-3">
-
                 <span
                   className="
                     mt-0.5
@@ -186,7 +186,6 @@ export function SiteFooter() {
                   <br />
                   Tamil Nadu, India
                 </p>
-
               </div>
 
               {/* Phone */}
@@ -223,9 +222,7 @@ export function SiteFooter() {
                   <Phone className="size-4" />
                 </span>
 
-                <span>
-                  {college.numbers?.[0]?.value ?? "+91 44 2275 1347"}
-                </span>
+                <span>{college.numbers?.[0]?.value ?? "+91 44 2275 1347"}</span>
               </a>
 
               {/* Email */}
@@ -262,11 +259,8 @@ export function SiteFooter() {
                   <Mail className="size-4" />
                 </span>
 
-                <span className="break-all">
-                  {college.email}
-                </span>
+                <span className="break-all">{college.email}</span>
               </a>
-
             </div>
           </div>
 
@@ -274,10 +268,8 @@ export function SiteFooter() {
               QUICK LINKS
           ================================================= */}
           <div>
-
             {/* Heading */}
             <div className="flex items-center gap-3">
-
               <span className="h-8 w-[3px] rounded-full bg-[#7f1d1d]" />
 
               <div>
@@ -303,14 +295,11 @@ export function SiteFooter() {
                   Quick Links
                 </h3>
               </div>
-
             </div>
 
             <ul className="mt-3 space-y-0.5">
-
               {quickLinks.map((item) => (
                 <li key={item.label}>
-
                   <a
                     href={item.href}
                     className="
@@ -340,10 +329,8 @@ export function SiteFooter() {
 
                     {item.label}
                   </a>
-
                 </li>
               ))}
-
             </ul>
           </div>
 
@@ -351,10 +338,8 @@ export function SiteFooter() {
               STUDENT RESOURCES
           ================================================= */}
           <div>
-
             {/* Heading */}
             <div className="flex items-center gap-3">
-
               <span className="h-8 w-[3px] rounded-full bg-[#d4af37]" />
 
               <div>
@@ -380,14 +365,11 @@ export function SiteFooter() {
                   Student Resources
                 </h3>
               </div>
-
             </div>
 
             <ul className="mt-3 space-y-0.5">
-
               {studentResources.map((item) => (
                 <li key={item.label}>
-
                   <a
                     href={item.href}
                     className="
@@ -417,15 +399,12 @@ export function SiteFooter() {
 
                     {item.label}
                   </a>
-
                 </li>
               ))}
-
             </ul>
 
             {/* Mini Cards */}
             <div className="mt-3 flex gap-2">
-
               <a
                 href="/admissions"
                 className="
@@ -501,7 +480,6 @@ export function SiteFooter() {
                   Academics
                 </span>
               </a>
-
             </div>
           </div>
 
@@ -509,10 +487,8 @@ export function SiteFooter() {
               CONNECT WITH US
           ================================================= */}
           <div>
-
             {/* Heading */}
             <div className="flex items-center gap-3">
-
               <span className="h-8 w-[3px] rounded-full bg-[#7f1d1d]" />
 
               <div>
@@ -538,7 +514,6 @@ export function SiteFooter() {
                   Connect With Us
                 </h3>
               </div>
-
             </div>
 
             <p
@@ -550,13 +525,12 @@ export function SiteFooter() {
                 text-[#596273]
               "
             >
-              Stay connected with Crescent for the latest
-              news, events, announcements and campus updates.
+              Stay connected with Crescent for the latest news, events, announcements and campus
+              updates.
             </p>
 
             {/* Social Icons */}
             <div className="mt-4 flex gap-2">
-
               {socialLinks.map((social) => {
                 const Icon = social.icon;
 
@@ -588,7 +562,6 @@ export function SiteFooter() {
                   </a>
                 );
               })}
-
             </div>
 
             {/* Explore Campus */}
@@ -616,9 +589,7 @@ export function SiteFooter() {
                 hover:shadow-lg
               "
             >
-              <span>
-                Explore Campus
-              </span>
+              <span>Explore Campus</span>
 
               <span
                 className="
@@ -668,10 +639,8 @@ export function SiteFooter() {
               >
                 <Mail className="size-3" />
               </span>
-
               Have an enquiry? Contact us
             </a>
-
           </div>
         </div>
       </div>
@@ -680,7 +649,6 @@ export function SiteFooter() {
           BOTTOM BAR
       ====================================================== */}
       <div className="border-t border-[#e5e7eb] bg-white">
-
         <div
           className="
             mx-auto
@@ -699,7 +667,6 @@ export function SiteFooter() {
             lg:px-10
           "
         >
-
           <p
             className="
               text-[10px]
@@ -707,13 +674,64 @@ export function SiteFooter() {
               text-[#7b8492]
             "
           >
-            © {new Date().getFullYear()} B.S. Abdur Rahman
-            Crescent Institute of Science and Technology.
-            All rights reserved.
+            © {new Date().getFullYear()} B.S. Abdur Rahman{" "}
+            <Dialog>
+              <DialogTrigger asChild>
+                <button
+                  type="button"
+                  className="cursor-pointer [font:inherit] [color:inherit]"
+                  aria-label="Learn about the website developers"
+                >
+                  Crescent
+                </button>
+              </DialogTrigger>
+              <DialogContent className="max-h-[85vh] max-w-2xl gap-5 overflow-y-auto border-[#e5e7eb] bg-white p-6 text-[#172554] sm:p-8">
+                <DialogHeader className="pr-8 text-left">
+                  <DialogTitle className="text-xl font-semibold text-[#172554]">
+                    About the developers
+                  </DialogTitle>
+                  <DialogDescription className="text-sm leading-relaxed text-[#667085]">
+                    We are MCA students from the 2025–2027 batch and the developers of this website.
+                  </DialogDescription>
+                </DialogHeader>
+
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {[
+                    { instagramId: "mdinthisar", image: mdinthisarPhoto },
+                    { instagramId: "sree_gokul._", image: developerPlaceholder1 },
+                    { instagramId: "trixhz.z", image: developerPlaceholder3 },
+                  ].map(({ instagramId, image }) => (
+                    <div
+                      key={instagramId}
+                      className="relative h-56 overflow-hidden rounded-xl border border-[#e5e7eb] bg-[#fafafa]"
+                    >
+                      <img
+                        src={image}
+                        alt={`Placeholder portrait for @${instagramId}`}
+                        className="absolute inset-0 size-full object-cover"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/45 to-transparent px-4 pb-4 pt-12 text-center">
+                        <p className="text-sm font-medium text-white">@{instagramId}</p>
+                        <a
+                          href={`https://www.instagram.com/${instagramId}/`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="mt-1 inline-flex items-center gap-1 text-xs text-white/90 transition-colors hover:text-white"
+                          aria-label={`Open Instagram profile for ${instagramId}`}
+                        >
+                          <Instagram className="size-3" aria-hidden="true" />
+                          Instagram
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </DialogContent>
+            </Dialog>{" "}
+            Institute of Science and Technology All rights reserved.
           </p>
 
           <div className="flex items-center gap-4">
-
             <a
               href="/privacy"
               className="
@@ -741,11 +759,9 @@ export function SiteFooter() {
             >
               Terms
             </a>
-
           </div>
         </div>
       </div>
-
     </footer>
   );
 }

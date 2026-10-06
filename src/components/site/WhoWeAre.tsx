@@ -82,9 +82,7 @@ export function WhoWeAre() {
             xl:gap-14
           "
         >
-          {/* =================================================
-              LEFT — IMAGE
-          ================================================== */}
+          {/* LEFT — IMAGE */}
 
           <Reveal>
             <div className="group relative w-full">
@@ -175,11 +173,11 @@ export function WhoWeAre() {
 
                       <span
                         className="
-                          text-[8px]
+                          text-[10px]
                           font-bold
                           tracking-[0.14em]
                           text-slate-700
-                          sm:text-[9px]
+                          sm:text-[11px]
                         "
                       >
                         ESTABLISHED 1984
@@ -231,11 +229,11 @@ export function WhoWeAre() {
                       </div>
 
                       <div>
-                        <p className="text-lg font-bold leading-none text-slate-900">
+                        <p className="text-xl font-bold leading-none text-slate-900">
                           40+
                         </p>
 
-                        <p className="mt-1 text-[9px] text-slate-500 sm:text-[10px]">
+                        <p className="mt-1 text-[10px] text-slate-500 sm:text-[11px]">
                           Years of Excellence
                         </p>
                       </div>
@@ -244,9 +242,7 @@ export function WhoWeAre() {
                 </div>
               </div>
 
-              {/* =================================================
-                  NEW — SMALL INFO STRIP BELOW PHOTO
-              ================================================== */}
+              {/* INFO STRIP BELOW PHOTO */}
 
               <div
                 className="
@@ -283,18 +279,18 @@ export function WhoWeAre() {
                   <div>
                     <p
                       className="
-                        text-[9px]
+                        text-[11px]
                         font-bold
                         uppercase
                         tracking-[0.14em]
                         text-[#8d6b31]
-                        sm:text-[10px]
+                        sm:text-xs
                       "
                     >
                       Quality Education
                     </p>
 
-                    <p className="mt-0.5 text-[10px] text-slate-500">
+                    <p className="mt-0.5 text-[11px] text-slate-500 sm:text-xs">
                       Learn • Grow • Lead
                     </p>
                   </div>
@@ -302,11 +298,11 @@ export function WhoWeAre() {
                 </div>
 
                 <div className="hidden text-right sm:block">
-                  <p className="text-[9px] font-semibold text-slate-400">
+                  <p className="text-[10px] font-semibold text-slate-400">
                     CRESCENT
                   </p>
 
-                  <p className="text-[8px] tracking-[0.12em] text-slate-400">
+                  <p className="text-[9px] tracking-[0.12em] text-slate-400">
                     INSTITUTION
                   </p>
                 </div>
@@ -316,9 +312,7 @@ export function WhoWeAre() {
             </div>
           </Reveal>
 
-          {/* =================================================
-              RIGHT — CONTENT
-          ================================================== */}
+          {/* RIGHT — CONTENT */}
 
           <Reveal delay={0.1}>
             <div
@@ -331,7 +325,7 @@ export function WhoWeAre() {
               "
             >
 
-              {/* WHO WE ARE — CENTER ONLY */}
+              {/* WHO WE ARE */}
 
               <div className="mb-4 flex justify-center">
                 <span
@@ -341,36 +335,30 @@ export function WhoWeAre() {
                     bg-[#8f1d1d]
                     px-4
                     py-1.5
-                    text-[9px]
+                    text-[10px]
                     font-bold
                     uppercase
                     tracking-[0.17em]
                     text-white
                     shadow-sm
-                    sm:text-[10px]
+                    sm:text-xs
                   "
                 >
                   Who We Are
                 </span>
               </div>
 
-              {/* =================================================
-                  HEADING
-                  ONE FLOW — NO SPAN
-              ================================================== */}
+              {/* HEADING */}
 
               <h2
                 className="
                   max-w-none
                   whitespace-normal
-                  text-[1.65rem]
+                  text-[clamp(1.85rem,2.5vw,2.7rem)]
                   font-semibold
                   leading-[1.12]
                   tracking-[-0.025em]
                   text-slate-900
-                  sm:text-[2rem]
-                  lg:text-[2.25rem]
-                  xl:text-[2.55rem]
                 "
               >
                 Empowering learners with knowledge, innovation & excellence.
@@ -382,15 +370,13 @@ export function WhoWeAre() {
 
               {/* Body */}
 
-              <div className="mt-4 max-w-[650px] space-y-2.5">
+              <div className="mt-5 max-w-[650px] space-y-3">
 
                 <p
                   className="
-                    text-[12.5px]
-                    leading-[1.6]
+                    text-[clamp(0.95rem,1.05vw,1.08rem)]
+                    leading-[1.65]
                     text-slate-600
-                    sm:text-[13px]
-                    sm:leading-5.5
                   "
                 >
                   B.S. Abdur Rahman Crescent Institute of Science and Technology
@@ -401,11 +387,9 @@ export function WhoWeAre() {
 
                 <p
                   className="
-                    text-[12.5px]
-                    leading-[1.6]
+                    text-[clamp(0.95rem,1.05vw,1.08rem)]
+                    leading-[1.65]
                     text-slate-600
-                    sm:text-[13px]
-                    sm:leading-5.5
                   "
                 >
                   Through our Centre for Distance and Online Education,
@@ -416,13 +400,11 @@ export function WhoWeAre() {
 
               </div>
 
-              {/* =================================================
-                  STATS
-              ================================================== */}
+              {/* STATS */}
 
               <div
                 className="
-                  mt-5
+                  mt-6
                   grid
                   w-full
                   max-w-[650px]
@@ -438,13 +420,13 @@ export function WhoWeAre() {
 
                 {/* 40+ */}
 
-                <div className="px-3 py-3 sm:px-4 sm:py-3.5">
+                <div className="px-3 py-3.5 sm:px-4 sm:py-4">
 
                   <div
                     className="
-                      mb-1
+                      mb-1.5
                       flex
-                      size-7
+                      size-8
                       items-center
                       justify-center
                       rounded-lg
@@ -452,14 +434,14 @@ export function WhoWeAre() {
                       text-[#24447d]
                     "
                   >
-                    <GraduationCap className="size-3.5" />
+                    <GraduationCap className="size-4" />
                   </div>
 
-                  <p className="text-lg font-bold text-slate-900">
+                  <p className="text-xl font-bold text-slate-900">
                     40+
                   </p>
 
-                  <p className="mt-0.5 text-[9px] text-slate-500 sm:text-[10px]">
+                  <p className="mt-0.5 text-[11px] text-slate-500 sm:text-xs">
                     Years of Excellence
                   </p>
 
@@ -472,17 +454,17 @@ export function WhoWeAre() {
                     border-x
                     border-slate-200
                     px-3
-                    py-3
+                    py-3.5
                     sm:px-4
-                    sm:py-3.5
+                    sm:py-4
                   "
                 >
 
                   <div
                     className="
-                      mb-1
+                      mb-1.5
                       flex
-                      size-7
+                      size-8
                       items-center
                       justify-center
                       rounded-lg
@@ -490,14 +472,14 @@ export function WhoWeAre() {
                       text-[#a17a36]
                     "
                   >
-                    <BookOpen className="size-3.5" />
+                    <BookOpen className="size-4" />
                   </div>
 
-                  <p className="text-lg font-bold text-slate-900">
+                  <p className="text-xl font-bold text-slate-900">
                     55+
                   </p>
 
-                  <p className="mt-0.5 text-[9px] text-slate-500 sm:text-[10px]">
+                  <p className="mt-0.5 text-[11px] text-slate-500 sm:text-xs">
                     Programmes
                   </p>
 
@@ -505,13 +487,13 @@ export function WhoWeAre() {
 
                 {/* 25K+ */}
 
-                <div className="px-3 py-3 sm:px-4 sm:py-3.5">
+                <div className="px-3 py-3.5 sm:px-4 sm:py-4">
 
                   <div
                     className="
-                      mb-1
+                      mb-1.5
                       flex
-                      size-7
+                      size-8
                       items-center
                       justify-center
                       rounded-lg
@@ -519,14 +501,14 @@ export function WhoWeAre() {
                       text-emerald-700
                     "
                   >
-                    <Users className="size-3.5" />
+                    <Users className="size-4" />
                   </div>
 
-                  <p className="text-lg font-bold text-slate-900">
+                  <p className="text-xl font-bold text-slate-900">
                     25K+
                   </p>
 
-                  <p className="mt-0.5 text-[9px] text-slate-500 sm:text-[10px]">
+                  <p className="mt-0.5 text-[11px] text-slate-500 sm:text-xs">
                     Learners
                   </p>
 
@@ -536,7 +518,7 @@ export function WhoWeAre() {
 
               {/* Button */}
 
-              <div className="mt-4">
+              <div className="mt-5">
 
                 <Link
                   to="/about"
@@ -549,7 +531,7 @@ export function WhoWeAre() {
                     bg-[#1d3b73]
                     px-5
                     py-2.5
-                    text-xs
+                    text-sm
                     font-semibold
                     text-white
                     shadow-[0_8px_20px_rgba(29,59,115,0.18)]
@@ -560,14 +542,14 @@ export function WhoWeAre() {
                     hover:shadow-lg
                     sm:px-6
                     sm:py-3
-                    sm:text-sm
+                    sm:text-base
                   "
                 >
                   Discover More
 
                   <ArrowRight
                     className="
-                      size-3.5
+                      size-4
                       transition-transform
                       duration-300
                       group-hover:translate-x-1

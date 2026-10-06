@@ -36,7 +36,7 @@ import programmePhoto from "@/assets/campus-1.jpg";
 import programmeBrochure from "@/assets/programme-brochure.pdf";
 
 /* =========================================================
-   ADMISSION PAGE FONT
+   FONT
 ========================================================= */
 
 const circularFont = {
@@ -199,13 +199,14 @@ function ProgrammeCard({
           {/* HEADER */}
           {/* ================================================= */}
 
-          <div className="relative flex items-center justify-between">
+          <div className="relative flex items-center justify-between gap-2">
             {/* ICON */}
 
             <div
               className="
                 flex
-                size-9
+                size-10
+                shrink-0
                 items-center
                 justify-center
                 rounded-[0.7rem]
@@ -214,8 +215,6 @@ function ProgrammeCard({
                 shadow-[0_5px_12px_rgba(23,37,84,0.15)]
                 transition-all
                 duration-300
-                group-hover:bg-[#172554]
-                group-hover:text-[#D4AF37]
               "
             >
               {isCertification ? (
@@ -231,9 +230,9 @@ function ProgrammeCard({
               className="
                 rounded-full
                 bg-[#F4F1E8]
-                px-2
-                py-1
-                text-[7px]
+                px-2.5
+                py-1.5
+                text-[clamp(0.55rem,0.5rem+0.12vw,0.7rem)]
                 font-bold
                 uppercase
                 tracking-[0.11em]
@@ -255,7 +254,7 @@ function ProgrammeCard({
           <div className="relative mt-3">
             <h4
               className="
-                text-[15px]
+                text-[clamp(1rem,0.9rem+0.35vw,1.15rem)]
                 font-bold
                 leading-tight
                 tracking-[-0.01em]
@@ -269,9 +268,9 @@ function ProgrammeCard({
               className="
                 mt-1
                 line-clamp-1
-                text-[9px]
+                text-[clamp(0.68rem,0.62rem+0.2vw,0.8rem)]
                 font-medium
-                leading-4
+                leading-5
                 text-[#111111]
               "
             >
@@ -283,7 +282,7 @@ function ProgrammeCard({
           {/* DETAILS + PHOTO */}
           {/* ================================================= */}
 
-          <div className="relative mt-3 grid grid-cols-[1fr_58px] gap-2">
+          <div className="relative mt-3 grid grid-cols-[1fr_62px] gap-2.5">
             {/* LEFT SIDE */}
 
             <div className="flex flex-col gap-1.5">
@@ -295,22 +294,38 @@ function ProgrammeCard({
                   border
                   border-[#172554]/10
                   bg-[#172554]/[0.045]
-                  px-2
+                  px-2.5
                   py-2
                   transition-all
                   duration-300
                   group-hover:border-[#172554]/15
                 "
               >
-                <div className="flex items-center gap-1 text-[#172554]">
-                  <Clock3 className="size-3" />
+                <div className="flex items-center gap-1.5 text-[#172554]">
+                  <Clock3 className="size-3.5 shrink-0" />
 
-                  <span className="text-[7px] font-bold uppercase tracking-wide text-[#111111]">
+                  <span
+                    className="
+                      text-[clamp(0.6rem,0.55rem+0.15vw,0.72rem)]
+                      font-bold
+                      uppercase
+                      tracking-wide
+                      text-[#111111]
+                    "
+                  >
                     Duration
                   </span>
                 </div>
 
-                <p className="mt-1 line-clamp-1 text-[9px] font-bold text-[#111111]">
+                <p
+                  className="
+                    mt-1
+                    line-clamp-1
+                    text-[clamp(0.68rem,0.62rem+0.2vw,0.8rem)]
+                    font-bold
+                    text-[#111111]
+                  "
+                >
                   {programme.duration}
                 </p>
               </div>
@@ -326,14 +341,14 @@ function ProgrammeCard({
                     w-full
                     items-center
                     justify-center
-                    gap-1
+                    gap-1.5
                     rounded-[0.7rem]
                     border
                     border-[#D4AF37]/35
                     bg-[#fffaf0]
                     px-2
                     py-2
-                    text-[7px]
+                    text-[clamp(0.6rem,0.55rem+0.15vw,0.72rem)]
                     font-bold
                     text-[#111111]
                     transition-all
@@ -342,9 +357,11 @@ function ProgrammeCard({
                     hover:bg-[#D4AF37]/10
                   "
                 >
-                  <Download className="size-3 text-[#8F1D1D]" />
+                  <Download className="size-3.5 shrink-0 text-[#8F1D1D]" />
 
-                  Download Brochure
+                  <span className="truncate">
+                    Download Brochure
+                  </span>
                 </button>
               ) : (
                 <a
@@ -356,14 +373,14 @@ function ProgrammeCard({
                     w-full
                     items-center
                     justify-center
-                    gap-1
+                    gap-1.5
                     rounded-[0.7rem]
                     border
                     border-[#D4AF37]
                     bg-[#D4AF37]
                     px-2
                     py-2
-                    text-[7px]
+                    text-[clamp(0.6rem,0.55rem+0.15vw,0.72rem)]
                     font-bold
                     text-[#111111]
                     transition-all
@@ -371,9 +388,11 @@ function ProgrammeCard({
                     hover:bg-[#E2C45A]
                   "
                 >
-                  <Download className="size-3" />
+                  <Download className="size-3.5 shrink-0" />
 
-                  Download Brochure
+                  <span className="truncate">
+                    Download Brochure
+                  </span>
                 </a>
               )}
             </div>
@@ -386,7 +405,7 @@ function ProgrammeCard({
               className="
                 relative
                 aspect-square
-                w-[58px]
+                w-[62px]
                 overflow-hidden
                 rounded-[0.7rem]
                 border
@@ -397,6 +416,9 @@ function ProgrammeCard({
               <img
                 src={programmePhoto}
                 alt="Programme"
+                loading="lazy"
+                width={300}
+                height={300}
                 className="
                   h-full
                   w-full
@@ -428,9 +450,15 @@ function ProgrammeCard({
           {/* ================================================= */}
 
           <div className="mt-2.5 flex items-center gap-1.5">
-            <CheckCircle2 className="size-3.5 text-[#8F1D1D]" />
+            <CheckCircle2 className="size-3.5 shrink-0 text-[#8F1D1D]" />
 
-            <span className="text-[7px] font-semibold text-black/55">
+            <span
+              className="
+                text-[clamp(0.62rem,0.57rem+0.15vw,0.75rem)]
+                font-semibold
+                text-black/55
+              "
+            >
               Flexible distance learning
             </span>
           </div>
@@ -446,13 +474,13 @@ function ProgrammeCard({
               variant="outline"
               size="pill"
               className="
-                h-8
+                h-9
                 flex-1
                 rounded-full
                 border-[#172554]/20
                 bg-white
-                px-2
-                text-[9px]
+                px-2.5
+                text-[clamp(0.68rem,0.62rem+0.18vw,0.82rem)]
                 font-semibold
                 text-[#111111]
                 shadow-none
@@ -467,7 +495,7 @@ function ProgrammeCard({
               <Link to={programmeRoute}>
                 Explore
 
-                <ArrowRight className="size-3 transition-transform duration-300 group-hover:translate-x-0.5" />
+                <ArrowRight className="size-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" />
               </Link>
             </Button>
 
@@ -476,13 +504,13 @@ function ProgrammeCard({
             <Button
               size="pill"
               className="
-                h-8
+                h-9
                 flex-1
                 rounded-full
                 border-0
                 bg-[#8F1D1D]
-                px-2
-                text-[9px]
+                px-2.5
+                text-[clamp(0.68rem,0.62rem+0.18vw,0.82rem)]
                 font-bold
                 text-white
                 shadow-[0_5px_12px_rgba(143,29,29,0.15)]
@@ -499,7 +527,7 @@ function ProgrammeCard({
               >
                 Apply Now
 
-                <ArrowRight className="size-3 transition-transform duration-300 group-hover:translate-x-0.5" />
+                <ArrowRight className="size-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" />
               </Link>
             </Button>
           </div>
@@ -640,7 +668,7 @@ function ProgrammeCard({
                     right-3
                     top-3
                     flex
-                    size-8
+                    size-9
                     items-center
                     justify-center
                     rounded-full
@@ -660,20 +688,39 @@ function ProgrammeCard({
                   <div className="mb-2 flex items-center gap-2">
                     <span className="h-1 w-6 rounded-full bg-[#D4AF37]" />
 
-                    <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-[#D4AF37]">
+                    <span
+                      className="
+                        text-[clamp(0.6rem,0.55rem+0.18vw,0.75rem)]
+                        font-bold
+                        uppercase
+                        tracking-[0.2em]
+                        text-[#D4AF37]
+                      "
+                    >
                       Programme Brochure
                     </span>
                   </div>
 
                   <h2
-                    className="text-xl font-bold text-white"
+                    className="
+                      text-[clamp(1.3rem,1.1rem+0.7vw,1.8rem)]
+                      font-bold
+                      leading-tight
+                      text-white
+                    "
                     style={circularFont}
                   >
                     Get the Programme Brochure
                   </h2>
 
                   <p
-                    className="mt-1 max-w-sm text-[10px] leading-4 text-white/65"
+                    className="
+                      mt-1
+                      max-w-sm
+                      text-[clamp(0.75rem,0.68rem+0.2vw,0.9rem)]
+                      leading-5
+                      text-white/65
+                    "
                     style={circularFont}
                   >
                     Fill in your details to unlock the programme brochure.
@@ -722,7 +769,7 @@ function ProgrammeCard({
                     <h3
                       className="
                         mt-3
-                        text-base
+                        text-[clamp(1rem,0.9rem+0.3vw,1.25rem)]
                         font-bold
                         text-[#111111]
                       "
@@ -734,8 +781,8 @@ function ProgrammeCard({
                     <p
                       className="
                         mt-1
-                        text-[9px]
-                        leading-4
+                        text-[clamp(0.72rem,0.65rem+0.2vw,0.85rem)]
+                        leading-5
                         text-black/60
                       "
                       style={circularFont}
@@ -756,8 +803,8 @@ function ProgrammeCard({
                         rounded-full
                         bg-[#8F1D1D]
                         px-5
-                        py-2.5
-                        text-[9px]
+                        py-3
+                        text-[clamp(0.7rem,0.65rem+0.18vw,0.85rem)]
                         font-bold
                         text-white
                         shadow-[0_7px_18px_rgba(143,29,29,0.16)]
@@ -767,7 +814,7 @@ function ProgrammeCard({
                       "
                       style={circularFont}
                     >
-                      <Download className="size-3.5" />
+                      <Download className="size-4" />
 
                       Download PDF
                     </a>
@@ -815,7 +862,7 @@ function ProgrammeSection({
       {/* ================================================= */}
 
       <div className="mb-3 flex items-end justify-between gap-3">
-        <div>
+        <div className="min-w-0">
           {/* EYEBROW */}
 
           <div className="mb-1 flex items-center gap-2">
@@ -823,7 +870,7 @@ function ProgrammeSection({
 
             <span
               className="
-                text-[7px]
+                text-[clamp(0.6rem,0.55rem+0.15vw,0.75rem)]
                 font-bold
                 uppercase
                 tracking-[0.22em]
@@ -837,19 +884,18 @@ function ProgrammeSection({
                   : "Professional"}
             </span>
 
-            <span className="size-1.5 rounded-full bg-[#D4AF37]" />
+            <span className="size-1.5 shrink-0 rounded-full bg-[#D4AF37]" />
           </div>
 
           {/* TITLE */}
 
           <h3
             className="
-              text-[1.15rem]
+              text-[clamp(1.25rem,1.05rem+0.7vw,1.65rem)]
               font-bold
               leading-tight
               tracking-tight
               text-[#111111]
-              sm:text-[1.35rem]
             "
             style={circularFont}
           >
@@ -860,12 +906,11 @@ function ProgrammeSection({
 
           <p
             className="
-              mt-0.5
+              mt-1
               max-w-2xl
-              text-[8px]
-              leading-4
+              text-[clamp(0.7rem,0.64rem+0.2vw,0.85rem)]
+              leading-5
               text-black/55
-              sm:text-[9px]
             "
             style={circularFont}
           >
@@ -880,18 +925,18 @@ function ProgrammeSection({
             hidden
             shrink-0
             items-center
-            gap-1
+            gap-1.5
             rounded-full
             bg-[#F4F1E8]
-            px-2
-            py-1
-            text-[7px]
+            px-2.5
+            py-1.5
+            text-[clamp(0.6rem,0.55rem+0.15vw,0.72rem)]
             font-bold
             text-[#111111]
             sm:flex
           "
         >
-          <BookOpen className="size-2.5 text-[#8F1D1D]" />
+          <BookOpen className="size-3 shrink-0 text-[#8F1D1D]" />
 
           {items.length} Programme
           {items.length > 1 ? "s" : ""}
@@ -900,7 +945,7 @@ function ProgrammeSection({
 
       {/* ================================================= */}
       {/* CARDS */}
-      {/* ================================================= */}
+      {/*================================================= */}
 
       <div className="grid gap-2.5 md:grid-cols-2 lg:grid-cols-3">
         {items.map((programme, index) => (
@@ -1053,13 +1098,13 @@ export function ProgrammeCards({
         >
           {/* CTA CONTENT */}
 
-          <div>
+          <div className="min-w-0">
             <div className="flex items-center gap-1.5">
-              <CheckCircle2 className="size-3 text-[#D4AF37]" />
+              <CheckCircle2 className="size-3.5 shrink-0 text-[#D4AF37]" />
 
               <p
                 className="
-                  text-[7px]
+                  text-[clamp(0.6rem,0.55rem+0.15vw,0.75rem)]
                   font-bold
                   uppercase
                   tracking-[0.18em]
@@ -1070,11 +1115,26 @@ export function ProgrammeCards({
               </p>
             </div>
 
-            <h3 className="mt-0.5 text-[14px] font-bold text-white sm:text-base">
+            <h3
+              className="
+                mt-0.5
+                text-[clamp(0.95rem,0.8rem+0.45vw,1.2rem)]
+                font-bold
+                leading-tight
+                text-white
+              "
+            >
               Ready to start your next chapter?
             </h3>
 
-            <p className="mt-0.5 text-[8px] text-white/65">
+            <p
+              className="
+                mt-0.5
+                text-[clamp(0.65rem,0.6rem+0.18vw,0.8rem)]
+                leading-5
+                text-white/65
+              "
+            >
               Apply online and begin your learning journey with CDOE.
             </p>
           </div>
@@ -1089,7 +1149,8 @@ export function ProgrammeCards({
               border-0
               bg-[#D4AF37]
               px-4
-              text-[9px]
+              py-2.5
+              text-[clamp(0.68rem,0.62rem+0.18vw,0.82rem)]
               font-bold
               text-[#111111]
               shadow-[0_7px_18px_rgba(0,0,0,0.15)]
@@ -1106,7 +1167,7 @@ export function ProgrammeCards({
             >
               Apply Now
 
-              <ArrowRight className="size-3" />
+              <ArrowRight className="size-3.5 shrink-0" />
             </Link>
           </Button>
         </div>
