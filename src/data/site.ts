@@ -10,27 +10,25 @@ export const college = {
 
   numbers: [
     {
-      label: "MBA Admission",
-      value: "+91 90000 11111",
-      tel: "+919000011111",
+      label: "MBA",
+      value: "+91 9790953750",
+      tel: "+919790953750",
     },
     {
-      label: "MCA Admission",
-      value: "+91 90000 22222",
-      tel: "+919000022222",
+      label: "MCA",
+      value: "+91 9444437309",
+      tel: "+919444437309",
     },
     {
       label: "Islamic Studies",
-      value: "+91 90000 33333",
-      tel: "+919000033333",
+      value: "+91 8667530226",
+      tel: "+918667530226",
     },
   ],
 
-  mapEmbed:
-    "https://www.google.com/maps?q=Vandalur,+Chennai&output=embed",
+  mapEmbed: "https://www.google.com/maps?q=Vandalur,+Chennai&output=embed",
 
-  mapLink:
-    "https://www.google.com/maps/search/?api=1&query=Vandalur+Chennai",
+  mapLink: "https://www.google.com/maps/search/?api=1&query=Vandalur+Chennai",
 
   officeHours: [
     {

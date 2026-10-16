@@ -3,6 +3,7 @@ import {
   Award,
   GraduationCap,
 } from "lucide-react";
+import ugc from "@/assets/ugc.png";
 
 const items = [
   {
@@ -85,8 +86,8 @@ function MarqueeItem({
           "
         >
           <img
-            src="/ugc-logo.png"
-            alt="UGC"
+            src={ugc}
+            alt="UGC Approved"
             className="
               h-full
               w-full

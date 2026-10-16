@@ -37,33 +37,33 @@ const quickLinks = [
 ];
 
 const studentResources = [
-  { label: "Student Corner", href: "/student-corner" },
-  { label: "Examinations", href: "/examinations" },
-  { label: "Library", href: "/library" },
-  { label: "Placements", href: "/placements" },
-  { label: "Academic Calendar", href: "/academic-calendar" },
-  { label: "Grievance Redressal", href: "/grievance" },
+  { label: "Student Corner", href: "https://crescent.education/" },
+  { label: "Examinations", href: "https://crescent.education/" },
+  { label: "Library", href: "https://crescent.education/" },
+  { label: "Placements", href: "https://crescent.education/" },
+  { label: "Academic Calendar", href: "https://crescent.education/" },
+  { label: "Grievance Redressal", href: "https://crescent.education/" },
 ];
 
 const socialLinks = [
   {
     label: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com/BSACrescentInstitute/",
     icon: Facebook,
   },
   {
     label: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/bsacrescentinstituteofficial/?hl=en",
     icon: Instagram,
   },
   {
     label: "LinkedIn",
-    href: "#",
+    href: "https://in.linkedin.com/school/crescentinstitute/",
     icon: Linkedin,
   },
   {
     label: "YouTube",
-    href: "#",
+    href: "https://youtu.be/2jvzpjgUOhY?feature=shared",
     icon: Youtube,
   },
 ];
@@ -140,13 +140,13 @@ export function SiteFooter() {
             {/* Institute name */}
             <p
               className="
-                mt-3
-                max-w-sm
-                text-[13px]
-                font-semibold
-                leading-5
-                text-[#8a6a24]
-              "
+    mt-3
+    max-w-sm
+    text-[13px]
+    font-semibold
+    leading-5
+    text-[#172554]
+  "
             >
               B.S. Abdur Rahman Crescent Institute of Science &amp; Technology
             </p>
@@ -188,42 +188,20 @@ export function SiteFooter() {
                 </p>
               </div>
 
-              {/* Phone */}
-              <a
-                href={`tel:${college.numbers?.[0]?.tel ?? ""}`}
-                className="
-                  group
-                  flex
-                  items-center
-                  gap-3
-                  text-[12px]
-                  text-[#596273]
-                  transition-colors
-                  hover:text-[#7f1d1d]
-                "
-              >
-                <span
-                  className="
-                    flex
-                    size-8
-                    shrink-0
-                    items-center
-                    justify-center
-                    rounded-lg
-                    bg-[#172554]/[0.05]
-                    text-[#172554]
-                    ring-1
-                    ring-[#172554]/10
-                    transition-colors
-                    group-hover:bg-[#7f1d1d]
-                    group-hover:text-white
-                  "
-                >
-                  <Phone className="size-4" />
-                </span>
+              {/* Department numbers */}
+              <div className="space-y-1.5 pl-11">
+                {college.numbers.map((number) => (
+                  <a
+                    key={number.label}
+                    href={`tel:${number.tel}`}
+                    className="block text-[11px] leading-5 text-[#596273] transition-colors hover:text-[#172554]"
+                  >
+                    <span className="font-semibold text-[#172554]">{number.label}</span> -{" "}
+                    {number.value}
+                  </a>
+                ))}
+              </div>
 
-                <span>{college.numbers?.[0]?.value ?? "+91 44 2275 1347"}</span>
-              </a>
 
               {/* Email */}
               <a
@@ -236,7 +214,7 @@ export function SiteFooter() {
                   text-[12px]
                   text-[#596273]
                   transition-colors
-                  hover:text-[#7f1d1d]
+                  hover:text-[#172554]
                 "
               >
                 <span
@@ -566,7 +544,7 @@ export function SiteFooter() {
 
             {/* Explore Campus */}
             <a
-              href="/campus"
+              href="https://youtu.be/2jvzpjgUOhY?feature=shared"
               className="
                 group
                 mt-4

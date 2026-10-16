@@ -1,4 +1,5 @@
-      
+import { useState } from "react";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -18,9 +19,6 @@ import {
   certificationProgrammes,
 } from "@/data/site";
 
-import { useState } from "react";
-
-
 // ==================================================
 // TYPES
 // ==================================================
@@ -30,6 +28,10 @@ interface EnquiryFormProps {
   onSubmitted?: () => void;
 }
 
+interface ContactApiResponse {
+  success?: boolean;
+  message?: string;
+}
 
 // ==================================================
 // COMPONENT
@@ -39,42 +41,24 @@ export function EnquiryForm({
   idPrefix = "enq",
   onSubmitted,
 }: EnquiryFormProps) {
-
   // ------------------------------------------------
   // STATE
   // ------------------------------------------------
 
-  const [programme, setProgramme] =
-    useState("");
-
-  const [loading, setLoading] =
-    useState(false);
-
-  const [message, setMessage] =
-    useState("");
-
-  const [error, setError] =
-    useState("");
-
+  const [programme, setProgramme] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   // ------------------------------------------------
   // PROGRAMME OPTIONS
   // ------------------------------------------------
 
   const options = [
-    ...ugProgrammes.map(
-      (p) => p.name
-    ),
-
-    ...pgProgrammes.map(
-      (p) => p.name
-    ),
-
-    ...certificationProgrammes.map(
-      (p) => p.name
-    ),
+    ...ugProgrammes.map((p) => p.name),
+    ...pgProgrammes.map((p) => p.name),
+    ...certificationProgrammes.map((p) => p.name),
   ];
-
 
   // ==================================================
   // SUBMIT FORM
@@ -83,299 +67,200 @@ export function EnquiryForm({
   const handleSubmit = async (
     e: React.FormEvent<HTMLFormElement>
   ) => {
-
     e.preventDefault();
 
+    // Prevent duplicate submissions
+    if (loading) return;
 
-    // ----------------------------------------------
-    // Prevent double submission
-    // ----------------------------------------------
+    const form = e.currentTarget;
 
-    if (loading) {
-      return;
-    }
-
-
-    // ----------------------------------------------
-    // Get form
-    // ----------------------------------------------
-
-    const form =
-      e.currentTarget;
-
-
-    // ----------------------------------------------
     // Browser validation
-    // ----------------------------------------------
-
     if (!form.reportValidity()) {
-
-      setError(
-        "Please complete all required fields."
-      );
-
+      setError("Please complete all required fields.");
       return;
     }
 
-
-    // ----------------------------------------------
     // Programme validation
-    // ----------------------------------------------
-
     if (!programme.trim()) {
-
-      setError(
-        "Please select a programme."
-      );
-
+      setError("Please select a programme.");
       return;
     }
-
-
-    // ----------------------------------------------
-    // Start loading
-    // ----------------------------------------------
 
     setLoading(true);
-
     setMessage("");
-
     setError("");
 
+    try {
+      // ----------------------------------------------
+      // GET FORM DATA
+      // ----------------------------------------------
 
-    // ----------------------------------------------
-    // Get FormData
-    // ----------------------------------------------
+      const formData = new FormData(form);
 
-    const formData =
-      new FormData(form);
+      // ----------------------------------------------
+      // CREATE SUBMISSION ID
+      // ----------------------------------------------
 
+      // Use randomUUID when available.
+      // Fall back for environments without randomUUID.
+      const submissionId =
+        typeof globalThis.crypto?.randomUUID === "function"
+          ? globalThis.crypto.randomUUID()
+          : `${Date.now()}-${Math.random()
+              .toString(36)
+              .slice(2)}-${Math.random()
+              .toString(36)
+              .slice(2)}`;
 
-    // ----------------------------------------------
-    // Create submission ID
-    // ----------------------------------------------
+      // ----------------------------------------------
+      // CREATE API PAYLOAD
+      // ----------------------------------------------
 
-    const submissionId =
-      crypto.randomUUID();
+      const data = {
+        submissionId,
 
+        name: String(formData.get("name") || "").trim(),
 
-    // ----------------------------------------------
-    // Create API payload
-    // ----------------------------------------------
+        email: String(formData.get("email") || "").trim(),
 
-    const data = {
-
-      submissionId,
-
-      name:
-        String(
-          formData.get("name") || ""
-        ).trim(),
-
-      email:
-        String(
-          formData.get("email") || ""
-        ).trim(),
-
-      phonenumber:
-        String(
+        phonenumber: String(
           formData.get("phonenumber") || ""
         ).trim(),
 
-      program:
-        programme.trim(),
+        program: programme.trim(),
 
-      message:
-        String(
+        message: String(
           formData.get("message") || ""
         ).trim(),
-    };
+      };
 
+      // ----------------------------------------------
+      // API URL
+      // ----------------------------------------------
 
-    // ==================================================
-    // API URL
-    // ==================================================
-
-    const API_URL =
-      (
-        import.meta.env
-          .VITE_CONTACT_API_URL ||
+      const API_URL = (
+        import.meta.env.VITE_CONTACT_API_URL ||
         "http://localhost:5000"
-      ).replace(/\/$/, "");
-
-
-    try {
+      ).replace(/\/+$/, "");
 
       // ----------------------------------------------
-      // Send request to Express
+      // SEND REQUEST TO EXPRESS
       // ----------------------------------------------
 
-      const response =
-        await fetch(
-          `${API_URL}/api/contact`,
-          {
-            method: "POST",
-
-            headers: {
-              "Content-Type":
-                "application/json",
-            },
-
-            body:
-              JSON.stringify(data),
-          }
-        );
-
+      const response = await fetch(
+        `${API_URL}/api/contact`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
       // ----------------------------------------------
-      // Read response safely
+      // READ RESPONSE SAFELY
       // ----------------------------------------------
 
-      const result =
-        await response.json();
+      const responseText = await response.text();
 
+      let result: ContactApiResponse;
 
-      // ----------------------------------------------
-      // Check API response
-      // ----------------------------------------------
-
-      if (
-        !response.ok ||
-        !result.success
-      ) {
-
+      try {
+        result = JSON.parse(responseText) as ContactApiResponse;
+      } catch {
         throw new Error(
-          result.message ||
-          "Failed to submit enquiry."
+          `The server returned an invalid response (HTTP ${response.status}).`
         );
       }
 
+      // ----------------------------------------------
+      // CHECK API RESPONSE
+      // ----------------------------------------------
 
-      // ==================================================
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.message ||
+            `Failed to submit enquiry (HTTP ${response.status}).`
+        );
+      }
+
+      // ----------------------------------------------
       // SUCCESS
-      // ==================================================
+      // ----------------------------------------------
 
       setMessage(
         result.message ||
-        "Thank you! Your enquiry has been submitted successfully."
+          "Thank you! Your enquiry has been submitted successfully."
       );
 
-
-      // ----------------------------------------------
       // Reset HTML form
-      // ----------------------------------------------
-
       form.reset();
 
-
-      // ----------------------------------------------
-      // Reset React Select
-      // ----------------------------------------------
-
+      // Reset controlled React Select
       setProgramme("");
 
-
-      // ----------------------------------------------
-      // Clear ONLY form-related storage
-      // ----------------------------------------------
-
-      localStorage.removeItem(
-        "enquiryForm"
-      );
-
-      sessionStorage.removeItem(
-        "enquiryForm"
-      );
-
-
-      // ----------------------------------------------
-      // Close modal
-      // ----------------------------------------------
-
-      if (onSubmitted) {
-
-        onSubmitted();
-
+      // Clear only enquiry-related storage.
+      // Storage cleanup must not turn a successful
+      // server submission into a reported failure.
+      try {
+        localStorage.removeItem("enquiryForm");
+        sessionStorage.removeItem("enquiryForm");
+      } catch (storageError) {
+        console.warn(
+          "Could not clear enquiry form storage:",
+          storageError
+        );
       }
 
-
+      // Close modal if a callback was provided
+      onSubmitted?.();
     } catch (err) {
-
-      // ==================================================
-      // ERROR
-      // ==================================================
-
-      console.error(
-        "Enquiry submission error:",
-        err
-      );
-
+      console.error("Enquiry submission error:", err);
 
       setError(
         err instanceof Error
           ? err.message
           : "Failed to submit enquiry. Please try again."
       );
-
-
     } finally {
-
-      // ----------------------------------------------
-      // Stop loading
-      // ----------------------------------------------
-
       setLoading(false);
     }
   };
-
 
   // ==================================================
   // UI
   // ==================================================
 
   return (
-
     <form
       onSubmit={handleSubmit}
       className="grid gap-5"
     >
-
-      {/* ============================================
-          NAME
-          ============================================ */}
+      {/* NAME */}
 
       <div className="grid gap-2">
-
-        <Label
-          htmlFor={`${idPrefix}-name`}
-        >
+        <Label htmlFor={`${idPrefix}-name`}>
           Student name
         </Label>
 
         <Input
           id={`${idPrefix}-name`}
           name="name"
+          type="text"
           required
           autoComplete="name"
           disabled={loading}
         />
-
       </div>
 
-
-      {/* ============================================
-          EMAIL + PHONE
-          ============================================ */}
+      {/* EMAIL + PHONE */}
 
       <div className="grid gap-5 sm:grid-cols-2 sm:gap-4">
-
         {/* EMAIL */}
 
         <div className="grid gap-2">
-
-          <Label
-            htmlFor={`${idPrefix}-email`}
-          >
+          <Label htmlFor={`${idPrefix}-email`}>
             Email address
           </Label>
 
@@ -387,17 +272,12 @@ export function EnquiryForm({
             autoComplete="email"
             disabled={loading}
           />
-
         </div>
-
 
         {/* PHONE */}
 
         <div className="grid gap-2">
-
-          <Label
-            htmlFor={`${idPrefix}-phone`}
-          >
+          <Label htmlFor={`${idPrefix}-phone`}>
             Phone number
           </Label>
 
@@ -406,76 +286,55 @@ export function EnquiryForm({
             name="phonenumber"
             type="tel"
             required
-            pattern="[0-9+\s-]{8,15}"
+            pattern="[0-9+\\x20\\-]{8,15}"
+            title="Enter 8 to 15 characters using digits, spaces, + or hyphens."
             autoComplete="tel"
             disabled={loading}
           />
-
         </div>
-
       </div>
 
-
-      {/* ============================================
-          PROGRAMME
-          ============================================ */}
+      {/* PROGRAMME */}
 
       <div className="grid gap-2">
-
-        <Label
-          htmlFor={`${idPrefix}-programme`}
-        >
+        <Label htmlFor={`${idPrefix}-programme`}>
           Programme of interest
         </Label>
 
         <Select
           value={programme}
-          onValueChange={setProgramme}
+          onValueChange={(value) => {
+            setProgramme(value);
+            setError("");
+          }}
           disabled={loading}
         >
-
           <SelectTrigger
             id={`${idPrefix}-programme`}
             className="rounded-xl"
             aria-required="true"
+            aria-invalid={!programme && !!error}
           >
-
-            <SelectValue
-              placeholder="Select a programme"
-            />
-
+            <SelectValue placeholder="Select a programme" />
           </SelectTrigger>
 
-
           <SelectContent>
-
             {options.map((option) => (
-
               <SelectItem
                 key={option}
                 value={option}
               >
                 {option}
               </SelectItem>
-
             ))}
-
           </SelectContent>
-
         </Select>
-
       </div>
 
-
-      {/* ============================================
-          MESSAGE
-          ============================================ */}
+      {/* MESSAGE */}
 
       <div className="grid gap-2">
-
-        <Label
-          htmlFor={`${idPrefix}-message`}
-        >
+        <Label htmlFor={`${idPrefix}-message`}>
           Message
         </Label>
 
@@ -486,13 +345,9 @@ export function EnquiryForm({
           required
           disabled={loading}
         />
-
       </div>
 
-
-      {/* ============================================
-          SUBMIT BUTTON
-          ============================================ */}
+      {/* SUBMIT BUTTON */}
 
       <Button
         type="submit"
@@ -501,46 +356,30 @@ export function EnquiryForm({
         className="w-full"
         disabled={loading}
       >
-
-        {loading
-          ? "Submitting..."
-          : "Submit enquiry"}
-
+        {loading ? "Submitting..." : "Submit enquiry"}
       </Button>
 
-
-      {/* ============================================
-          SUCCESS MESSAGE
-          ============================================ */}
+      {/* SUCCESS MESSAGE */}
 
       {message && (
-
         <p
           aria-live="polite"
           className="text-sm text-green-600"
         >
           {message}
         </p>
-
       )}
 
-
-      {/* ============================================
-          ERROR MESSAGE
-          ============================================ */}
+      {/* ERROR MESSAGE */}
 
       {error && (
-
         <p
-          aria-live="assertive"
+          role="alert"
           className="text-sm text-red-600"
         >
           {error}
         </p>
-
       )}
-
     </form>
   );
 }
-

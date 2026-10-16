@@ -1,11 +1,6 @@
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { createFileRoute } from "@tanstack/react-router";
-import {
-  Mail,
-  MapPin,
-  MessageCircle,
-  Phone,
-} from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 
 const title = "Contact Us — Crescent CDOE";
 
@@ -32,8 +27,7 @@ export const Route = createFileRoute("/contact")({
 ========================================================= */
 
 const circularFont = {
-  fontFamily:
-    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
+  fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
 };
 
 function ContactPage() {
@@ -41,10 +35,7 @@ function ContactPage() {
     <SiteLayout>
       {/* ================= CONTACT HEADER ================= */}
 
-      <section
-        className="bg-[#f7f4ee] px-5 pb-4 pt-5 sm:px-8 lg:px-12"
-        style={circularFont}
-      >
+      <section className="bg-[#f7f4ee] px-5 pb-4 pt-5 sm:px-8 lg:px-12" style={circularFont}>
         <div className="mx-auto max-w-7xl">
           <div className="border-b border-[#d9d4ca] pb-4">
             <p className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#8f1d1d]">
@@ -61,8 +52,8 @@ function ContactPage() {
             </div>
 
             <p className="mt-2.5 max-w-4xl text-[12px] font-medium leading-5 text-black/65 sm:text-[13px]">
-              Have a question about admissions, programmes or the university?
-              Get in touch with our team.
+              Have a question about admissions, programmes or the university? Get in touch with our
+              team.
             </p>
           </div>
         </div>
@@ -70,23 +61,27 @@ function ContactPage() {
 
       {/* ================= CONTACT DETAILS ================= */}
 
-      <section
-        className="bg-[#f6f3ec] px-5 py-5 sm:px-8 lg:px-10"
-        style={circularFont}
-      >
+      <section className="bg-[#f6f3ec] px-5 py-5 sm:px-8 lg:px-10" style={circularFont}>
         <div className="mx-auto grid max-w-6xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <ContactCard
             icon={<Phone className="size-5" />}
-            title="Call Us"
-            text="+91 90000 11111"
-            href="tel:+919000011111"
+            title="MBA"
+            text="+91 9790953750"
+            href="tel:+919790953750"
           />
 
           <ContactCard
-            icon={<MessageCircle className="size-5" />}
-            title="WhatsApp"
-            text="Chat with our team"
-            href="https://wa.me/919000000000"
+            icon={<Phone className="size-5" />}
+            title="MCA"
+            text="+91 9444437309"
+            href="tel:+919444437309"
+          />
+
+          <ContactCard
+            icon={<Phone className="size-5" />}
+            title="Islamic Studies"
+            text="+91 8667530226"
+            href="tel:+918667530226"
           />
 
           <ContactCard
@@ -95,47 +90,42 @@ function ContactPage() {
             text="admissions@crescentcdoe.edu.in"
             href="mailto:admissions@crescentcdoe.edu.in"
           />
-
-          <ContactCard
-            icon={<MapPin className="size-5" />}
-            title="Campus"
-            text="Vandalur, Chennai"
-            href="https://www.google.com/maps/search/?api=1&query=Vandalur+Chennai"
-          />
         </div>
       </section>
 
       {/* ================= SIMPLE SUPPORT SECTION ================= */}
 
-      <section
-        className="bg-white px-5 py-5 sm:px-8 lg:px-10"
-        style={circularFont}
-      >
+      <section className="bg-white px-5 py-5 sm:px-8 lg:px-10" style={circularFont}>
         <div className="mx-auto max-w-6xl">
           <div className="rounded-2xl border border-[#172554]/10 bg-[#f8f9fc] px-6 py-6 text-center">
             <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#8f1d1d]">
               Admission Support
             </p>
 
-            <h2 className="mt-1.5 text-2xl font-black text-black">
-              Need admission assistance?
-            </h2>
+            <h2 className="mt-1.5 text-2xl font-black text-black">Need admission assistance?</h2>
 
             <div className="mx-auto mt-2 h-[2px] w-10 rounded-full bg-[#8f1d1d]" />
 
             <p className="mx-auto mt-2 max-w-xl text-sm leading-5 text-black/60">
-              Our admission team can help you with programme selection,
-              eligibility, application process and other admission-related
-              queries.
+              Our admission team can help you with programme selection, eligibility, application
+              process and other admission-related queries.
             </p>
 
             <div className="mt-4 flex flex-wrap justify-center gap-3">
               <a
-                href="tel:+919000011111"
+                href="tel:+919790953750"
                 className="inline-flex items-center gap-2 rounded-full bg-[#172554] px-5 py-2.5 text-xs font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#8f1d1d]"
               >
                 <Phone className="size-4" />
-                Call Admission
+                MBA Hotline
+              </a>
+
+              <a
+                href="tel:+919444437309"
+                className="inline-flex items-center gap-2 rounded-full border border-[#172554]/15 bg-white px-5 py-2.5 text-xs font-bold text-black transition-all hover:-translate-y-0.5 hover:border-[#d4af37]"
+              >
+                <Phone className="size-4" />
+                MCA Hotline
               </a>
 
               <a
@@ -179,13 +169,9 @@ function ContactCard({
       </div>
 
       <div className="min-w-0">
-        <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-[#8f1d1d]">
-          {title}
-        </p>
+        <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-[#8f1d1d]">{title}</p>
 
-        <p className="mt-1 truncate text-xs font-semibold text-black">
-          {text}
-        </p>
+        <p className="mt-1 truncate text-xs font-semibold text-black">{text}</p>
       </div>
     </a>
   );

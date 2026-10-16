@@ -5,7 +5,6 @@ import {
   ArrowLeft,
   ArrowRight,
   BookOpen,
-  ExternalLink,
   GraduationCap,
   Mail,
   Phone,
@@ -13,76 +12,25 @@ import {
   X,
 } from "lucide-react";
 
-import campusPhoto from "@/assets/campus-1.jpg";
 import { SiteLayout } from "@/components/site/SiteLayout";
+import { getFacultyForCourse, type FacultyProfile } from "@/data/facultyProfiles";
 
 const circularFont = {
-  fontFamily:
-    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
+  fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
 };
 
 export const Route = createFileRoute("/ba-islamic-studies/people")({
   component: BAIslamicStudiesPeoplePage,
 });
 
-type Faculty = {
-  name: string;
-  designation: string;
-  natureOfEmployment: string;
-  qualification: string;
-  phone: string;
-  email: string;
-  photo: string;
-  profileUrl: string;
-};
-
-const faculty: Faculty[] = [
-  {
-    name: "Moulavi Dr. S. Abdus Samad Nadwi",
-    designation: "Associate Professor",
-    natureOfEmployment: "Regular",
-    qualification: "M.A., M.Phil., Ph.D.",
-    phone: "044-22751280 (Office)",
-    email: "samadnadwi@crescent.education",
-    photo: campusPhoto,
-    profileUrl:
-      "https://crescent.education/university/schools/school-of-arabic-islamic-studies/faculty/moulavi-dr-s-abdus-samad-nadwi/",
-  },
-  {
-    name: "Dr. M. Yasar Arafath Ali",
-    designation: "Assistant Professor",
-    natureOfEmployment: "Regular",
-    qualification: "M.A., M.Com., Ph.D. DIJ",
-    phone: "044-22751280 (Office)",
-    email: "yasar@crescent.education",
-    photo: campusPhoto,
-    profileUrl:
-      "https://crescent.education/university/schools/school-of-arabic-islamic-studies/faculty/dr-m-yasar-arafath-ali/",
-  },
-  {
-    name: "Moulavi Dr. M. Ahamedullah Al Bukhari",
-    designation: "Assistant Professor",
-    natureOfEmployment: "Regular",
-    qualification: "Afzal-al-Ulama., BBA., M.A., M.Phil., Ph.D",
-    phone: "044-22751280 (Office)",
-    email: "ahamedullah@crescent.education",
-    photo: campusPhoto,
-    profileUrl:
-      "https://crescent.education/university/schools/school-of-arabic-islamic-studies/faculty/moulavi-dr-m-ahamedullah-al-bukhari/",
-  },
-];
+const faculty = getFacultyForCourse("ba-islamic-studies");
 
 function BAIslamicStudiesPeoplePage() {
-  const [selectedFaculty, setSelectedFaculty] = useState<Faculty | null>(
-    null,
-  );
+  const [selectedFaculty, setSelectedFaculty] = useState<FacultyProfile | null>(null);
 
   return (
     <SiteLayout>
-      <div
-        style={circularFont}
-        className="min-h-screen bg-[#F7F8F4] text-[#111111]"
-      >
+      <div style={circularFont} className="min-h-screen bg-[#F7F8F4] text-[#111111]">
         {/* =========================================================
             HEADER
         ========================================================= */}
@@ -112,8 +60,8 @@ function BAIslamicStudiesPeoplePage() {
               <div className="mt-3 h-[3px] w-14 rounded-full bg-[#D4AF37]" />
 
               <p className="mt-4 max-w-3xl text-[clamp(0.95rem,1.5vw,1.1rem)] leading-7 text-black/65">
-                Meet the faculty members supporting teaching, academic
-                guidance and learner development in B.A. Islamic Studies.
+                Meet the faculty members supporting teaching, academic guidance and learner
+                development in B.A. Islamic Studies.
               </p>
             </div>
           </div>
@@ -126,27 +74,19 @@ function BAIslamicStudiesPeoplePage() {
         <section className="border-b border-black/5 bg-white">
           <div className="mx-auto max-w-7xl px-5 py-4 sm:px-8 lg:px-12">
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-              <QuickNav
-                title="Overview"
-                href="/ba-islamic-studies"
-                active={false}
-              />
+              <QuickNav title="Overview" href="/ba-islamic-studies" active={false} />
 
-              <QuickNav
-                title="People"
-                href="/ba-islamic-studies/people"
-                active
-              />
+              <QuickNav title="People" href="/ba-islamic-studies/people" active />
 
               <QuickNav
                 title="Vision"
-                href="/ba-islamic-studies#vision"
+                href="/course-info/ba-islamic-studies/vision"
                 active={false}
               />
 
               <QuickNav
                 title="Mission"
-                href="/ba-islamic-studies#mission"
+                href="/course-info/ba-islamic-studies/mission"
                 active={false}
               />
             </div>
@@ -171,8 +111,7 @@ function BAIslamicStudiesPeoplePage() {
             </h2>
 
             <p className="mt-2 max-w-2xl text-[clamp(0.9rem,1.4vw,1rem)] leading-6 text-black/60">
-              Academic professionals supporting the learning journey of our
-              students.
+              Academic professionals supporting the learning journey of our students.
             </p>
           </div>
 
@@ -284,9 +223,7 @@ function BAIslamicStudiesPeoplePage() {
                     "
                   >
                     More Info
-
                     <ArrowRight className="h-4 w-4 text-[#D4AF37] transition-transform duration-300 group-hover/info:translate-x-1" />
-
                     <span className="absolute -bottom-1 left-0 right-0 h-[2px] origin-left scale-x-0 rounded-full bg-[#D4AF37] transition-transform duration-300 group-hover/info:scale-x-100" />
                   </button>
                 </div>
@@ -302,8 +239,8 @@ function BAIslamicStudiesPeoplePage() {
             <BookOpen className="mt-0.5 h-5 w-5 shrink-0 text-[#2F6F4E]" />
 
             <p className="text-sm leading-6 text-black/60">
-              Our faculty team supports academic learning, guidance and the
-              overall development of learners pursuing B.A. Islamic Studies.
+              Our faculty team supports academic learning, guidance and the overall development of
+              learners pursuing B.A. Islamic Studies.
             </p>
           </div>
         </main>
@@ -449,20 +386,14 @@ function BAIslamicStudiesPeoplePage() {
                   </div>
 
                   <div className="overflow-hidden rounded-2xl border border-black/7">
-                    <DetailRow
-                      label="Designation"
-                      value={selectedFaculty.designation}
-                    />
+                    <DetailRow label="Designation" value={selectedFaculty.designation} />
 
                     <DetailRow
                       label="Nature of Employment"
                       value={selectedFaculty.natureOfEmployment}
                     />
 
-                    <DetailRow
-                      label="Qualification"
-                      value={selectedFaculty.qualification}
-                    />
+                    <DetailRow label="Qualification" value={selectedFaculty.qualification} />
 
                     {/* PHONE */}
 
@@ -473,10 +404,7 @@ function BAIslamicStudiesPeoplePage() {
                       </div>
 
                       <a
-                        href={`tel:${selectedFaculty.phone.replace(
-                          /[^0-9]/g,
-                          "",
-                        )}`}
+                        href={`tel:${selectedFaculty.phone.replace(/[^0-9]/g, "")}`}
                         className="mt-2 text-sm font-medium text-[#111111] hover:text-[#2F6F4E] sm:mt-0"
                       >
                         {selectedFaculty.phone}
@@ -524,19 +452,19 @@ function BAIslamicStudiesPeoplePage() {
 
                   <div className="mt-6 flex flex-col gap-4 border-t border-black/5 pt-5 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                      <p className="text-sm font-bold text-[#111111]">
-                        Official Faculty Profile
-                      </p>
+                      <p className="text-sm font-bold text-[#111111]">Official Faculty Profile</p>
 
                       <p className="mt-1 text-xs leading-5 text-black/50">
                         View the complete profile on the Crescent website.
                       </p>
                     </div>
 
-                    <a
-                      href={selectedFaculty.profileUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link
+                      to="/faculty-profile/$courseSlug/$facultySlug"
+                      params={{
+                        courseSlug: selectedFaculty.courseSlug,
+                        facultySlug: selectedFaculty.slug,
+                      }}
                       className="
                         group
                         inline-flex
@@ -559,9 +487,8 @@ function BAIslamicStudiesPeoplePage() {
                       "
                     >
                       View Official Profile
-
-                      <ExternalLink className="h-4 w-4 text-[#D4AF37] transition-transform duration-300 group-hover:translate-x-0.5" />
-                    </a>
+                      <ArrowRight className="h-4 w-4 text-[#D4AF37] transition-transform duration-300 group-hover:translate-x-0.5" />
+                    </Link>
                   </div>
                 </div>
               </motion.div>
@@ -577,15 +504,7 @@ function BAIslamicStudiesPeoplePage() {
    QUICK NAVIGATION
 ========================================================= */
 
-function QuickNav({
-  title,
-  href,
-  active,
-}: {
-  title: string;
-  href: string;
-  active: boolean;
-}) {
+function QuickNav({ title, href, active }: { title: string; href: string; active: boolean }) {
   return (
     <Link
       to={href}
@@ -610,11 +529,7 @@ function QuickNav({
           className={`
             text-sm
             font-bold
-            ${
-              active
-                ? "text-[#2F6F4E]"
-                : "text-[#111111] group-hover:text-[#2F6F4E]"
-            }
+            ${active ? "text-[#2F6F4E]" : "text-[#111111] group-hover:text-[#2F6F4E]"}
           `}
         >
           {title}
@@ -627,11 +542,7 @@ function QuickNav({
             transition-all
             duration-300
             group-hover:translate-x-1
-            ${
-              active
-                ? "text-[#2F6F4E]"
-                : "text-black/25 group-hover:text-[#2F6F4E]"
-            }
+            ${active ? "text-[#2F6F4E]" : "text-black/25 group-hover:text-[#2F6F4E]"}
           `}
         />
       </div>
@@ -648,11 +559,7 @@ function QuickNav({
           bg-[#D4AF37]
           transition-transform
           duration-300
-          ${
-            active
-              ? "scale-x-100"
-              : "scale-x-0 group-hover:scale-x-100"
-          }
+          ${active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}
         `}
       />
     </Link>
@@ -663,22 +570,12 @@ function QuickNav({
    DETAIL ROW
 ========================================================= */
 
-function DetailRow({
-  label,
-  value,
-}: {
-  label: string;
-  value: ReactNode;
-}) {
+function DetailRow({ label, value }: { label: string; value: ReactNode }) {
   return (
     <div className="grid grid-cols-1 border-b border-black/6 bg-white px-4 py-4 sm:grid-cols-[180px_1fr] sm:gap-5">
-      <div className="text-sm font-bold text-[#2F6F4E]">
-        {label}
-      </div>
+      <div className="text-sm font-bold text-[#2F6F4E]">{label}</div>
 
-      <div className="mt-1.5 text-sm font-medium leading-5 text-[#111111] sm:mt-0">
-        {value}
-      </div>
+      <div className="mt-1.5 text-sm font-medium leading-5 text-[#111111] sm:mt-0">{value}</div>
     </div>
   );
 }

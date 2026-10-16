@@ -1,13 +1,6 @@
 import { college } from "@/data/site";
 import { Link } from "@tanstack/react-router";
-import {
-  ArrowRight,
-  BookOpen,
-  LogIn,
-  Mail,
-  Phone,
-  UserPlus,
-} from "lucide-react";
+import { ArrowRight, BookOpen, LogIn, Mail, Phone, UserPlus } from "lucide-react";
 
 export function TopHeader() {
   return (
@@ -98,48 +91,49 @@ export function TopHeader() {
           "
         >
           {/* PHONE */}
-          {college.numbers.slice(0, 1).map((n) => (
-            <a
-              key={n.tel}
-              href={`tel:${n.tel}`}
-              className="
-                group
-                hidden
-                items-center
-                gap-2
-                text-xs
-                font-medium
-                text-white/80
-                transition-colors
-                duration-200
-                sm:flex
-                hover:text-white
-              "
-            >
-              <span
+          <div className="hidden items-center gap-3 sm:flex">
+            {college.numbers.map((n) => (
+              <a
+                key={n.label}
+                href={`tel:${n.tel}`}
                 className="
+                  group
                   flex
-                  size-6
-                  shrink-0
                   items-center
-                  justify-center
-                  rounded-full
-                  bg-white/[0.08]
-                  text-[#d1ad5b]
-                  transition-all
+                  gap-1.5
+                  text-[10px]
+                  font-medium
+                  text-white/80
+                  transition-colors
                   duration-200
-                  group-hover:bg-[#d1ad5b]
-                  group-hover:text-[#741b1b]
+                  hover:text-white
                 "
               >
-                <Phone className="size-3" />
-              </span>
+                <span
+                  className="
+                    flex
+                    size-5
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-full
+                    bg-white/[0.08]
+                    text-[#d1ad5b]
+                    transition-all
+                    duration-200
+                    group-hover:bg-[#172554]
+                    group-hover:text-[#741b1b]
+                  "
+                >
+                  <Phone className="size-3" />
+                </span>
 
-              <span className="whitespace-nowrap">
-                {n.value}
-              </span>
-            </a>
-          ))}
+                <span className="whitespace-nowrap">
+                  {n.label} - {n.value}
+                </span>
+              </a>
+            ))}
+          </div>
 
           {/* DIVIDER */}
           <span
@@ -183,16 +177,14 @@ export function TopHeader() {
                 text-[#d1ad5b]
                 transition-all
                 duration-200
-                group-hover:bg-[#d1ad5b]
+                group-hover:bg-[#172554]
                 group-hover:text-[#741b1b]
               "
             >
               <Mail className="size-3" />
             </span>
 
-            <span className="truncate">
-              {college.email}
-            </span>
+            <span className="truncate">{college.email}</span>
           </a>
         </div>
 
@@ -250,13 +242,9 @@ export function TopHeader() {
               "
             />
 
-            <span className="hidden sm:inline">
-              LMS Login
-            </span>
+            <span className="hidden sm:inline">LMS Login</span>
 
-            <span className="sm:hidden">
-              LMS
-            </span>
+            <span className="sm:hidden">LMS</span>
           </a>
 
           {/* Divider */}
@@ -320,9 +308,7 @@ export function TopHeader() {
               <LogIn className="size-3" />
             </span>
 
-            <span>
-              Login
-            </span>
+            <span>Login</span>
           </a>
 
           {/* SIGN UP / NEW REGISTRATION */}
@@ -372,9 +358,7 @@ export function TopHeader() {
               <UserPlus className="size-3" />
             </span>
 
-            <span>
-              Sign Up
-            </span>
+            <span>Sign Up</span>
           </a>
 
           {/* APPLY NOW */}
@@ -407,13 +391,9 @@ export function TopHeader() {
               sm:text-xs
             "
           >
-            <span className="sm:hidden">
-              Apply
-            </span>
+            <span className="sm:hidden">Apply</span>
 
-            <span className="hidden sm:inline">
-              Apply Now
-            </span>
+            <span className="hidden sm:inline">Apply Now</span>
 
             <ArrowRight
               className="

@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { SiteLayout } from "@/components/site/SiteLayout";
+import { CourseInfoLink, type CourseSection } from "@/components/site/CourseInfoLink";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -25,15 +26,12 @@ const MBA_BROCHURE_PDF = "/pdfs/mba-brochure.pdf";
 const MBA_REGULATION_PDF = "/pdfs/mba-regulations.pdf";
 
 const circularFont = {
-  fontFamily:
-    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
+  fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
 };
 
 function MBAPage() {
   const [showBrochureForm, setShowBrochureForm] = useState(false);
-  const [resourceType, setResourceType] = useState<
-    "brochure" | "regulation"
-  >("brochure");
+  const [resourceType, setResourceType] = useState<"brochure" | "regulation">("brochure");
 
   const openResource = (type: "brochure" | "regulation") => {
     setResourceType(type);
@@ -42,10 +40,7 @@ function MBAPage() {
 
   return (
     <SiteLayout>
-      <main
-        className="min-h-screen bg-[#f7f8f4] text-[#111111]"
-        style={circularFont}
-      >
+      <main className="min-h-screen bg-[#f7f8f4] text-[#111111]" style={circularFont}>
         {/* =========================================================
             COMPACT VIOLET HEADER
         ========================================================= */}
@@ -64,9 +59,7 @@ function MBAPage() {
               <span>
                 <ArrowRight size={12} className="rotate-180" />
               </span>
-
               Back to Programmes
-
               <span className="pointer-events-none absolute -bottom-1 left-0 h-[2px] w-0 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-full" />
             </Link>
 
@@ -83,8 +76,8 @@ function MBAPage() {
               <div className="mt-1.5 h-[2px] w-9 rounded-full bg-[#d4af37]" />
 
               <p className="mt-1.5 max-w-3xl text-[10px] leading-5 text-white/75 sm:text-[11px]">
-                MBA Online Learning (OL) Programme offered by the B.S.
-                Abdur Rahman Crescent Institute of Science and Technology.
+                MBA Online Learning (OL) Programme offered by the B.S. Abdur Rahman Crescent
+                Institute of Science and Technology.
               </p>
 
               <div className="mt-2.5">
@@ -94,9 +87,7 @@ function MBAPage() {
                   className="group relative inline-flex w-fit items-center gap-1.5 rounded-full bg-[#d4af37] px-3.5 py-1.5 text-[9px] font-bold text-[#111111]"
                 >
                   Apply Now
-
                   <ArrowRight size={12} />
-
                   <span className="pointer-events-none absolute -bottom-1 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-8" />
                 </Link>
               </div>
@@ -128,7 +119,7 @@ function MBAPage() {
               />
 
               <HashQuickCard
-                href="#vision"
+                section="vision"
                 icon={<Eye size={16} />}
                 title="Vision"
                 description="Our academic vision"
@@ -136,7 +127,7 @@ function MBAPage() {
               />
 
               <HashQuickCard
-                href="#mission"
+                section="mission"
                 icon={<Target size={16} />}
                 title="Mission"
                 description="Our core mission"
@@ -146,20 +137,65 @@ function MBAPage() {
           </div>
         </section>
 
+        <section className="mx-auto max-w-7xl px-5 pt-3 sm:px-6 lg:px-8">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <LinkActionCard
+              courseSlug="mba"
+              icon={<BookOpen size={15} />}
+              title="Eligibility & fee"
+              accent="#5b1d5f"
+            />
+
+            <LinkActionCard
+              to="/mba/syllabus"
+              icon={<BookOpen size={15} />}
+              title="Syllabus"
+              accent="#1d355f"
+            />
+
+            <button
+              type="button"
+              onClick={() => openResource("regulation")}
+              className="group relative flex items-center gap-3 overflow-hidden rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-left shadow-sm"
+            >
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#d4af37]/10 text-[#8a6d12]">
+                <FileText size={15} />
+              </span>
+              <span className="text-[10px] font-semibold text-[#111111]">Regulations</span>
+              <ArrowRight
+                size={12}
+                className="ml-auto text-slate-300 transition-transform duration-300 group-hover:translate-x-0.5"
+              />
+              <span className="pointer-events-none absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-10" />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => openResource("brochure")}
+              className="group relative flex items-center gap-3 overflow-hidden rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-left shadow-sm"
+            >
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#6b4c9a]/10 text-[#6b4c9a]">
+                <Download size={15} />
+              </span>
+              <span className="text-[10px] font-semibold text-[#111111]">Download Brochure</span>
+              <ArrowRight
+                size={12}
+                className="ml-auto text-slate-300 transition-transform duration-300 group-hover:translate-x-0.5"
+              />
+              <span className="pointer-events-none absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-10" />
+            </button>
+          </div>
+        </section>
+
         {/* =========================================================
             MAIN CONTENT
         ========================================================= */}
         <section className="mx-auto max-w-7xl px-5 py-6 sm:px-6 lg:px-8 lg:py-8">
-
           {/* =======================================================
               OVERVIEW
           ======================================================= */}
-          <section
-            id="overview"
-            className="scroll-mt-24"
-          >
+          <section id="overview" className="scroll-mt-24">
             <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-10">
-
               {/* LEFT VISUAL CARD */}
               <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_8px_25px_rgba(0,0,0,0.06)] sm:p-8">
                 <div className="absolute right-0 top-0 h-20 w-20 rounded-bl-full bg-[#6b4c9a]/10" />
@@ -223,26 +259,22 @@ function MBAPage() {
 
                 <div className="mt-4 space-y-3 text-[11px] leading-6 text-[#111111] sm:text-[12px] sm:leading-6.5">
                   <p>
-                    MBA Online Learning (OL) programme of the B.S. Abdur Rahman
-                    Crescent Institute of Science and Technology are developed
-                    in accordance with the guidelines of the UGC OL
-                    Regulations 2020 and in line with the vision and mission of
-                    the Institute.
+                    MBA Online Learning (OL) programme of the B.S. Abdur Rahman Crescent Institute
+                    of Science and Technology are developed in accordance with the guidelines of the
+                    UGC OL Regulations 2020 and in line with the vision and mission of the
+                    Institute.
                   </p>
 
                   <p>
-                    Typically, the curriculum and syllabus contents under both
-                    programmes are similar to our regular MBA programme,
-                    nevertheless delivered through Online mode using
-                    state-of-the-art IT infrastructure and web based
-                    technologies.
+                    Typically, the curriculum and syllabus contents under both programmes are
+                    similar to our regular MBA programme, nevertheless delivered through Online mode
+                    using state-of-the-art IT infrastructure and web based technologies.
                   </p>
 
                   <p>
-                    The programmes are targeted to working adults as well as
-                    freshers who aspire to upskill their knowledge across
-                    functional areas of management that are evolving in the
-                    dynamic business environment in a flexible learning space.
+                    The programmes are targeted to working adults as well as freshers who aspire to
+                    upskill their knowledge across functional areas of management that are evolving
+                    in the dynamic business environment in a flexible learning space.
                   </p>
                 </div>
               </div>
@@ -253,14 +285,9 @@ function MBAPage() {
               VISION + MISSION
           ======================================================= */}
           <section className="mt-8">
-            <SectionHeading
-              number="01"
-              title="Vision & Mission"
-              accent="#6b4c9a"
-            />
+            <SectionHeading number="01" title="Vision & Mission" accent="#6b4c9a" />
 
             <div className="mt-3 grid gap-5 lg:grid-cols-2">
-
               {/* VISION */}
               <div
                 id="vision"
@@ -276,18 +303,15 @@ function MBAPage() {
                       Academic Direction
                     </span>
 
-                    <h3 className="mt-1 text-xl font-bold text-[#111111]">
-                      Vision
-                    </h3>
+                    <h3 className="mt-1 text-xl font-bold text-[#111111]">Vision</h3>
 
                     <div className="mt-1.5 h-[3px] w-8 rounded-full bg-[#d4af37]" />
                   </div>
                 </div>
 
                 <p className="mt-4 text-[11px] leading-6 text-[#111111] sm:text-[12px] sm:leading-6.5">
-                  To provide a technology based platform for working adults
-                  and aspirants of higher degrees in the field of business
-                  management through in a flexible mode
+                  To provide a technology based platform for working adults and aspirants of higher
+                  degrees in the field of business management through in a flexible mode
                 </p>
 
                 <span className="pointer-events-none absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-12" />
@@ -308,9 +332,7 @@ function MBAPage() {
                       Core Commitment
                     </span>
 
-                    <h3 className="mt-1 text-xl font-bold text-[#111111]">
-                      Mission
-                    </h3>
+                    <h3 className="mt-1 text-xl font-bold text-[#111111]">Mission</h3>
 
                     <div className="mt-1.5 h-[3px] w-8 rounded-full bg-[#d4af37]" />
                   </div>
@@ -322,31 +344,26 @@ function MBAPage() {
 
                 <div className="mt-2.5 space-y-2">
                   <MissionItem>
-                    To provide quality education through OL mode in the field
-                    of management.
+                    To provide quality education through OL mode in the field of management.
                   </MissionItem>
 
                   <MissionItem>
-                    To offer flexible mode of learning for working
-                    professionals to upskill their knowledge in their own
-                    functional areas.
+                    To offer flexible mode of learning for working professionals to upskill their
+                    knowledge in their own functional areas.
                   </MissionItem>
 
                   <MissionItem>
-                    To offer the same curriculum and syllabi of regular MBA
-                    degree programme of the Institute to the aspirants of OL
-                    programmes.
+                    To offer the same curriculum and syllabi of regular MBA degree programme of the
+                    Institute to the aspirants of OL programmes.
                   </MissionItem>
 
                   <MissionItem>
-                    To provide a state-of-the-art infrastructure for efficient
-                    and interactive teaching and learning using web-based
-                    technologies.
+                    To provide a state-of-the-art infrastructure for efficient and interactive
+                    teaching and learning using web-based technologies.
                   </MissionItem>
 
                   <MissionItem>
-                    To offer industry oriented courses to meet the market
-                    demand.
+                    To offer industry oriented courses to meet the market demand.
                   </MissionItem>
                 </div>
 
@@ -358,18 +375,10 @@ function MBAPage() {
           {/* =======================================================
               ELIGIBILITY + FEE
           ======================================================= */}
-          <section
-            id="eligibility-fee"
-            className="mt-8 scroll-mt-24"
-          >
-            <SectionHeading
-              number="02"
-              title="Eligibility & Fee"
-              accent="#0d5c45"
-            />
+          <section id="eligibility-fee" className="mt-8 scroll-mt-24">
+            <SectionHeading number="02" title="Eligibility & Fee" accent="#0d5c45" />
 
             <div className="mt-3 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
-
               {/* ELIGIBILITY */}
               <div className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
                 <div className="flex items-start gap-3">
@@ -392,29 +401,25 @@ function MBAPage() {
 
                 <div className="mt-4 rounded-xl bg-[#0d5c45] p-3.5">
                   <div className="flex items-start gap-2">
-                    <CheckCircle2
-                      size={15}
-                      className="mt-0.5 shrink-0 text-[#f3d15b]"
-                    />
+                    <CheckCircle2 size={15} className="mt-0.5 shrink-0 text-[#f3d15b]" />
 
                     <p className="text-[10px] font-semibold leading-5 text-white sm:text-[11px]">
-                      Any Bachelor Degree (minimum 3 years duration) with a
-                      minimum CGPA of 5.0 / 50% of marks
+                      Any Bachelor Degree (minimum 3 years duration) with a minimum CGPA of 5.0 /
+                      50% of marks
                     </p>
                   </div>
                 </div>
 
                 <div className="mt-4 space-y-3">
                   <EligibilityItem>
-                    Admission is based on the CGPA / Percentage obtained in the
-                    UG degree and performance in the CreScent School of
-                    Business Administration Test (CSBAT).
+                    Admission is based on the CGPA / Percentage obtained in the UG degree and
+                    performance in the CreScent School of Business Administration Test (CSBAT).
                   </EligibilityItem>
 
                   <EligibilityItem>
-                    Applicants who have already appeared in the National level
-                    Entrance Exams like CAT, MAT, XAT, TANCET, etc., and have
-                    secured valid scores are exempted from appearing CSBAT.
+                    Applicants who have already appeared in the National level Entrance Exams like
+                    CAT, MAT, XAT, TANCET, etc., and have secured valid scores are exempted from
+                    appearing CSBAT.
                   </EligibilityItem>
                 </div>
 
@@ -433,9 +438,7 @@ function MBAPage() {
                       Indian & Foreign Nationals
                     </span>
 
-                    <h3 className="mt-1 text-xl font-bold text-[#111111]">
-                      Fee Structure
-                    </h3>
+                    <h3 className="mt-1 text-xl font-bold text-[#111111]">Fee Structure</h3>
 
                     <div className="mt-1.5 h-[3px] w-8 rounded-full bg-[#d4af37]" />
                   </div>
@@ -466,11 +469,7 @@ function MBAPage() {
               PROGRAMME HIGHLIGHTS
           ======================================================= */}
           <section className="mt-8">
-            <SectionHeading
-              number="03"
-              title="Programme Highlights"
-              accent="#1d355f"
-            />
+            <SectionHeading number="03" title="Programme Highlights" accent="#1d355f" />
 
             <div className="mt-3 grid grid-cols-2 gap-3 lg:grid-cols-4">
               <HighlightCard
@@ -502,70 +501,6 @@ function MBAPage() {
               />
             </div>
           </section>
-
-          {/* =======================================================
-              ADDITIONAL LINKS
-          ======================================================= */}
-          <section className="mt-7">
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-
-              <LinkActionCard
-                to="/mba/eligibility-fee"
-                icon={<BookOpen size={15} />}
-                title="Eligibility & fee"
-                accent="#5b1d5f"
-              />
-
-              <LinkActionCard
-                to="/mba/syllabus"
-                icon={<BookOpen size={15} />}
-                title="Syllabus"
-                accent="#1d355f"
-              />
-
-              <button
-                type="button"
-                onClick={() => openResource("regulation")}
-                className="group relative flex items-center gap-3 overflow-hidden rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-left shadow-sm"
-              >
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#d4af37]/10 text-[#8a6d12]">
-                  <FileText size={15} />
-                </span>
-
-                <span className="text-[10px] font-semibold text-[#111111]">
-                  Regulations
-                </span>
-
-                <ArrowRight
-                  size={12}
-                  className="ml-auto text-slate-300 transition-transform duration-300 group-hover:translate-x-0.5"
-                />
-
-                <span className="pointer-events-none absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-10" />
-              </button>
-
-              <button
-                type="button"
-                onClick={() => openResource("brochure")}
-                className="group relative flex items-center gap-3 overflow-hidden rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-left shadow-sm"
-              >
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#6b4c9a]/10 text-[#6b4c9a]">
-                  <Download size={15} />
-                </span>
-
-                <span className="text-[10px] font-semibold text-[#111111]">
-                  Download Brochure
-                </span>
-
-                <ArrowRight
-                  size={12}
-                  className="ml-auto text-slate-300 transition-transform duration-300 group-hover:translate-x-0.5"
-                />
-
-                <span className="pointer-events-none absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-10" />
-              </button>
-            </div>
-          </section>
         </section>
 
         {/* =========================================================
@@ -575,9 +510,7 @@ function MBAPage() {
           <div className="mx-auto max-w-7xl px-5 py-6 sm:px-6 lg:px-8">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="text-[9px] font-medium text-slate-500">
-                  Ready to begin?
-                </p>
+                <p className="text-[9px] font-medium text-slate-500">Ready to begin?</p>
 
                 <h2 className="mt-0.5 text-base font-bold text-[#111111]">
                   Apply for MBA Online Learning
@@ -589,12 +522,10 @@ function MBAPage() {
                 className="group relative inline-flex w-fit items-center justify-center gap-2 rounded-full bg-[#8f1d1d] px-4 py-2 text-[10px] font-semibold text-white"
               >
                 Apply Now
-
                 <ArrowRight
                   size={13}
                   className="transition-transform duration-300 group-hover:translate-x-0.5"
                 />
-
                 <span className="pointer-events-none absolute -bottom-1 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-8" />
               </Link>
             </div>
@@ -630,14 +561,11 @@ function MBAPage() {
                 </p>
 
                 <h3 className="mt-1 text-lg font-bold text-white">
-                  {resourceType === "brochure"
-                    ? "Download Brochure"
-                    : "MBA Regulation"}
+                  {resourceType === "brochure" ? "Download Brochure" : "MBA Regulation"}
                 </h3>
 
                 <p className="mt-1 text-[10px] leading-5 text-white/75">
-                  Please submit your enquiry details to access the requested
-                  resource.
+                  Please submit your enquiry details to access the requested resource.
                 </p>
               </div>
 
@@ -647,20 +575,14 @@ function MBAPage() {
 
                 <div className="mt-4 border-t border-slate-200 pt-4">
                   <a
-                    href={
-                      resourceType === "brochure"
-                        ? MBA_BROCHURE_PDF
-                        : MBA_REGULATION_PDF
-                    }
+                    href={resourceType === "brochure" ? MBA_BROCHURE_PDF : MBA_REGULATION_PDF}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group relative flex w-full items-center justify-center gap-2 rounded-xl bg-[#8f1d1d] px-4 py-2.5 text-[10px] font-semibold text-white"
                   >
                     <Download size={14} />
 
-                    {resourceType === "brochure"
-                      ? "Open Brochure PDF"
-                      : "Open Regulation PDF"}
+                    {resourceType === "brochure" ? "Open Brochure PDF" : "Open Regulation PDF"}
 
                     <span className="pointer-events-none absolute -bottom-1 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-10" />
                   </a>
@@ -689,10 +611,7 @@ function SectionHeading({
 }) {
   return (
     <div className="flex items-center gap-2">
-      <span
-        className="text-[9px] font-bold tracking-[0.14em]"
-        style={{ color: accent }}
-      >
+      <span className="text-[9px] font-bold tracking-[0.14em]" style={{ color: accent }}>
         {number}
       </span>
 
@@ -711,22 +630,23 @@ function SectionHeading({
 
 function HashQuickCard({
   href,
+  section,
   icon,
   title,
   description,
   iconClass,
 }: {
-  href: string;
+  href?: string;
+  section?: Extract<CourseSection, "vision" | "mission">;
   icon: ReactNode;
   title: string;
   description: string;
   iconClass: string;
 }) {
-  return (
-    <a
-      href={href}
-      className="group relative z-10 border-b border-slate-100 px-4 py-3 transition-all duration-300 sm:border-r lg:border-b-0"
-    >
+  const className =
+    "group relative z-10 border-b border-slate-100 px-4 py-3 transition-all duration-300 sm:border-r lg:border-b-0";
+  const content = (
+    <>
       <div className="flex items-center gap-3">
         <div
           className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${iconClass}`}
@@ -735,13 +655,9 @@ function HashQuickCard({
         </div>
 
         <div className="min-w-0">
-          <h3 className="text-[10px] font-bold text-[#111111]">
-            {title}
-          </h3>
+          <h3 className="text-[10px] font-bold text-[#111111]">{title}</h3>
 
-          <p className="mt-0.5 text-[8px] text-slate-500">
-            {description}
-          </p>
+          <p className="mt-0.5 text-[8px] text-slate-500">{description}</p>
         </div>
 
         <ArrowRight
@@ -751,6 +667,16 @@ function HashQuickCard({
       </div>
 
       <span className="pointer-events-none absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-9" />
+    </>
+  );
+
+  return section ? (
+    <CourseInfoLink courseSlug="mba" section={section} className={className}>
+      {content}
+    </CourseInfoLink>
+  ) : (
+    <a href={href} className={className}>
+      {content}
     </a>
   );
 }
@@ -785,13 +711,9 @@ function LinkQuickCard({
         </div>
 
         <div className="min-w-0">
-          <h3 className="text-[10px] font-bold text-[#111111]">
-            {title}
-          </h3>
+          <h3 className="text-[10px] font-bold text-[#111111]">{title}</h3>
 
-          <p className="mt-0.5 text-[8px] text-slate-500">
-            {description}
-          </p>
+          <p className="mt-0.5 text-[8px] text-slate-500">{description}</p>
         </div>
 
         <ArrowRight
@@ -831,9 +753,7 @@ function MiniVisualCard({
           {icon}
         </div>
 
-        <p className="text-[8px] font-semibold text-[#111111]">
-          {title}
-        </p>
+        <p className="text-[8px] font-semibold text-[#111111]">{title}</p>
       </div>
 
       <span className="pointer-events-none absolute bottom-0 left-0 h-[2px] w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-full" />
@@ -850,9 +770,7 @@ function MissionItem({ children }: { children: ReactNode }) {
     <div className="group relative flex items-start gap-2 overflow-hidden rounded-lg bg-[#fffdf8] px-2.5 py-2">
       <span className="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#8f1d1d]" />
 
-      <p className="text-[9px] leading-[1.6] text-[#111111] sm:text-[10px]">
-        {children}
-      </p>
+      <p className="text-[9px] leading-[1.6] text-[#111111] sm:text-[10px]">{children}</p>
 
       <span className="pointer-events-none absolute bottom-0 left-0 h-[1.5px] w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-full" />
     </div>
@@ -866,14 +784,9 @@ function MissionItem({ children }: { children: ReactNode }) {
 function EligibilityItem({ children }: { children: ReactNode }) {
   return (
     <div className="group relative flex items-start gap-2 overflow-hidden border-b border-slate-100 pb-3 last:border-b-0 last:pb-0">
-      <CheckCircle2
-        size={13}
-        className="mt-0.5 shrink-0 text-[#8f1d1d]"
-      />
+      <CheckCircle2 size={13} className="mt-0.5 shrink-0 text-[#8f1d1d]" />
 
-      <p className="text-[9px] leading-[1.6] text-[#111111] sm:text-[10px]">
-        {children}
-      </p>
+      <p className="text-[9px] leading-[1.6] text-[#111111] sm:text-[10px]">{children}</p>
 
       <span className="pointer-events-none absolute bottom-0 left-0 h-[1.5px] w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-full" />
     </div>
@@ -913,9 +826,7 @@ function FeeTable({
           <Landmark size={13} />
         </div>
 
-        <h3 className="text-[10px] font-bold text-[#111111]">
-          {title}
-        </h3>
+        <h3 className="text-[10px] font-bold text-[#111111]">{title}</h3>
       </div>
 
       <table className="w-full border-collapse">
@@ -926,29 +837,19 @@ function FeeTable({
               backgroundColor: accent,
             }}
           >
-            <th className="w-8 px-2.5 py-2 text-left text-[8px]">
-              #
-            </th>
+            <th className="w-8 px-2.5 py-2 text-left text-[8px]">#</th>
 
-            <th className="px-2.5 py-2 text-left text-[8px]">
-              Particulars
-            </th>
+            <th className="px-2.5 py-2 text-left text-[8px]">Particulars</th>
 
-            <th className="w-24 px-2.5 py-2 text-right text-[8px]">
-              Amount
-            </th>
+            <th className="w-24 px-2.5 py-2 text-right text-[8px]">Amount</th>
           </tr>
         </thead>
 
         <tbody>
           <tr className="border-b border-slate-100">
-            <td className="px-2.5 py-2 text-[8px] text-slate-500">
-              1
-            </td>
+            <td className="px-2.5 py-2 text-[8px] text-slate-500">1</td>
 
-            <td className="px-2.5 py-2 text-[9px] font-medium text-[#111111]">
-              Application Fee
-            </td>
+            <td className="px-2.5 py-2 text-[9px] font-medium text-[#111111]">Application Fee</td>
 
             <td className="px-2.5 py-2 text-right text-[9px] font-bold text-[#8f1d1d]">
               {applicationFee}
@@ -956,9 +857,7 @@ function FeeTable({
           </tr>
 
           <tr className="bg-slate-50/60">
-            <td className="px-2.5 py-2 text-[8px] text-slate-500">
-              2
-            </td>
+            <td className="px-2.5 py-2 text-[8px] text-slate-500">2</td>
 
             <td className="px-2.5 py-2 text-[9px] font-medium text-[#111111]">
               Tuition Fee per Semester
@@ -1010,9 +909,7 @@ function HighlightCard({
         {title}
       </h3>
 
-      <p className="mt-1 text-[8px] leading-4 text-[#111111] sm:text-[9px]">
-        {description}
-      </p>
+      <p className="mt-1 text-[8px] leading-4 text-[#111111] sm:text-[9px]">{description}</p>
 
       <span className="pointer-events-none absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-9" />
     </div>
@@ -1025,20 +922,21 @@ function HighlightCard({
 
 function LinkActionCard({
   to,
+  courseSlug,
   icon,
   title,
   accent,
 }: {
-  to: string;
+  to?: "/mca/syllabus" | "/mba/syllabus";
+  courseSlug?: "mca" | "mba";
   icon: ReactNode;
   title: string;
   accent: string;
 }) {
-  return (
-    <Link
-      to={to}
-      className="group relative flex items-center gap-3 overflow-hidden rounded-xl border border-slate-200 bg-white px-3.5 py-3 shadow-sm"
-    >
+  const className =
+    "group relative flex items-center gap-3 overflow-hidden rounded-xl border border-slate-200 bg-white px-3.5 py-3 shadow-sm";
+  const content = (
+    <>
       <span
         className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg"
         style={{
@@ -1049,9 +947,7 @@ function LinkActionCard({
         {icon}
       </span>
 
-      <span className="text-[10px] font-semibold text-[#111111]">
-        {title}
-      </span>
+      <span className="text-[10px] font-semibold text-[#111111]">{title}</span>
 
       <ArrowRight
         size={12}
@@ -1059,6 +955,24 @@ function LinkActionCard({
       />
 
       <span className="pointer-events-none absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-10" />
-    </Link>
+    </>
   );
+
+  if (courseSlug) {
+    return (
+      <CourseInfoLink courseSlug={courseSlug} section="eligibility-fee" className={className}>
+        {content}
+      </CourseInfoLink>
+    );
+  }
+
+  if (to) {
+    return (
+      <Link to={to} className={className}>
+        {content}
+      </Link>
+    );
+  }
+
+  throw new Error("LinkActionCard requires a destination.");
 }

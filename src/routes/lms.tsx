@@ -1,3 +1,4 @@
+
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
@@ -98,7 +99,6 @@ function LMSQuickLinks() {
       className="relative bg-[#F5F1E9] px-5 pb-5 pt-3 sm:px-8 lg:px-12"
     >
       <div className="mx-auto w-full max-w-7xl">
-
         <div className="mb-5 h-[3px] w-full rounded-full bg-gradient-to-r from-[#2F6F4E] via-[#B08A24] to-[#6B4C9A]" />
 
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -128,8 +128,8 @@ function LMSQuickLinks() {
                     group
                     relative
                     flex
-                    h-[96px]
-                    min-h-[96px]
+                    h-[112px]
+                    min-h-[112px]
                     w-full
                     items-center
                     overflow-hidden
@@ -154,7 +154,6 @@ function LMSQuickLinks() {
                   />
 
                   <div className="flex w-full items-center gap-3">
-
                     <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-[#17234B] transition-transform duration-300 group-hover:scale-105">
                       <Icon
                         className="size-4"
@@ -167,7 +166,7 @@ function LMSQuickLinks() {
                     <div className="min-w-0 flex-1">
                       <div className="flex min-w-0 items-center gap-1.5">
                         <span
-                          className="shrink-0 text-[8px] font-bold tracking-[0.12em]"
+                          className="shrink-0 text-sm font-bold tracking-[0.12em]"
                           style={{
                             color: item.accent,
                           }}
@@ -175,12 +174,12 @@ function LMSQuickLinks() {
                           {item.number}
                         </span>
 
-                        <h3 className="min-w-0 truncate text-[11px] font-bold text-[#20242B]">
+                        <h3 className="min-w-0 truncate text-base font-bold text-[#20242B]">
                           {item.title}
                         </h3>
                       </div>
 
-                      <p className="mt-0.5 truncate text-[9px] font-medium text-[#737782]">
+                      <p className="mt-0.5 truncate text-sm font-medium text-[#737782]">
                         {item.description}
                       </p>
                     </div>
@@ -296,7 +295,6 @@ function LMSPage() {
         style={circularFont}
         className="min-h-screen overflow-hidden bg-[#F5F1E9]"
       >
-
         {/* =================================================
             QUICK LINKS
         ================================================= */}
@@ -308,7 +306,6 @@ function LMSPage() {
         ================================================= */}
 
         <section className="relative border-b border-[#dedbd6] bg-[#f5f3f0]">
-
           {/* BACKGROUND ACCENTS */}
 
           <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -320,7 +317,6 @@ function LMSPage() {
           </div>
 
           <div className="relative mx-auto max-w-[1400px] px-5 py-5 sm:px-8 lg:px-10 lg:py-6">
-
             {/* =================================================
                 LABEL
             ================================================= */}
@@ -341,7 +337,7 @@ function LMSPage() {
             >
               <span className="h-[2px] w-7 bg-[#2F6F4E]" />
 
-              <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-[#111111]">
+              <span className="text-sm font-bold uppercase tracking-[0.18em] text-[#111111]">
                 Center for Online Education
               </span>
             </motion.div>
@@ -351,7 +347,6 @@ function LMSPage() {
             ================================================= */}
 
             <div className="grid items-stretch gap-5 lg:grid-cols-[1.08fr_0.92fr]">
-
               {/* LEFT CONTENT */}
 
               <motion.div
@@ -383,7 +378,6 @@ function LMSPage() {
                   lg:px-8
                 "
               >
-
                 {/* LEFT COLOUR STRIPE */}
 
                 <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#2F6F4E] via-[#B08A24] to-[#6B4C9A]" />
@@ -391,12 +385,12 @@ function LMSPage() {
                 <div className="flex items-center gap-2 text-[#111111]">
                   <Laptop className="size-3.5 text-[#2F6F4E]" />
 
-                  <span className="text-[8px] font-bold uppercase tracking-[0.16em]">
+                  <span className="text-sm font-bold uppercase tracking-[0.16em]">
                     Learning Management System
                   </span>
                 </div>
 
-                <h1 className="mt-3 max-w-3xl text-2xl font-bold leading-[1.08] tracking-[-0.02em] text-[#111111] sm:text-3xl lg:text-[2.4rem]">
+                <h1 className="mt-3 max-w-3xl text-3xl font-bold leading-tight tracking-[-0.02em] text-[#111111] sm:text-4xl lg:text-5xl">
                   A smarter{" "}
                   <span className="text-[#2F6F4E]">
                     learning experience
@@ -404,7 +398,7 @@ function LMSPage() {
                   for every learner.
                 </h1>
 
-                <p className="mt-3 max-w-2xl text-[11px] leading-5 text-[#111111] sm:text-xs">
+                <p className="mt-3 max-w-2xl text-base leading-6 text-[#111111] sm:text-base">
                   Our LMS provides a flexible digital learning environment
                   designed to support individual learners with accessible
                   content, powerful analytics, collaboration, personalized
@@ -414,13 +408,12 @@ function LMSPage() {
                 {/* STATS */}
 
                 <div className="mt-4 grid grid-cols-3 border-y border-[#dedbd6] py-3">
-
                   <div className="border-r border-[#dedbd6] pr-3">
                     <p className="font-serif text-lg font-bold text-[#2F6F4E]">
                       08
                     </p>
 
-                    <p className="mt-0.5 text-[8px] font-semibold uppercase tracking-wider text-[#111111]">
+                    <p className="mt-0.5 text-sm font-semibold uppercase tracking-wider text-[#111111]">
                       Features
                     </p>
                   </div>
@@ -430,7 +423,7 @@ function LMSPage() {
                       24/7
                     </p>
 
-                    <p className="mt-0.5 text-[8px] font-semibold uppercase tracking-wider text-[#111111]">
+                    <p className="mt-0.5 text-sm font-semibold uppercase tracking-wider text-[#111111]">
                       Access
                     </p>
                   </div>
@@ -440,7 +433,7 @@ function LMSPage() {
                       360°
                     </p>
 
-                    <p className="mt-0.5 text-[8px] font-semibold uppercase tracking-wider text-[#111111]">
+                    <p className="mt-0.5 text-sm font-semibold uppercase tracking-wider text-[#111111]">
                       Learning
                     </p>
                   </div>
@@ -449,17 +442,17 @@ function LMSPage() {
                 {/* TAGS */}
 
                 <div className="mt-3 flex flex-wrap gap-2">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#2F6F4E] px-2.5 py-1 text-[8px] font-semibold text-white">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#2F6F4E] px-2.5 py-1 text-sm font-semibold text-white">
                     <Laptop className="size-3" />
                     Digital Learning
                   </span>
 
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#6B4C9A] px-2.5 py-1 text-[8px] font-semibold text-white">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#6B4C9A] px-2.5 py-1 text-sm font-semibold text-white">
                     <Sparkles className="size-3" />
                     Personalized
                   </span>
 
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#B08A24] px-2.5 py-1 text-[8px] font-semibold text-white">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#B08A24] px-2.5 py-1 text-sm font-semibold text-white">
                     <LockKeyhole className="size-3" />
                     Secure
                   </span>
@@ -508,16 +501,15 @@ function LMSPage() {
                 <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#2F6F4E] via-[#B08A24] to-[#6B4C9A]" />
 
                 <div className="absolute bottom-0 left-0 right-0 p-5">
-
                   <div className="mb-1.5 flex items-center gap-2">
                     <Laptop className="size-3.5 text-[#D8B84C]" />
 
-                    <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-white">
+                    <span className="text-sm font-bold uppercase tracking-[0.18em] text-white">
                       Learning Management System
                     </span>
                   </div>
 
-                  <h2 className="max-w-md font-serif text-xl font-bold leading-tight text-white">
+                  <h2 className="max-w-md font-serif text-2xl font-bold leading-tight text-white">
                     Flexible technology for connected learning.
                   </h2>
                 </div>
@@ -529,17 +521,15 @@ function LMSPage() {
             ================================================= */}
 
             <div className="mt-5">
-
               <div className="mb-3 flex items-center gap-2">
                 <span className="h-[2px] w-6 bg-gradient-to-r from-[#2F6F4E] to-[#B08A24]" />
 
-                <span className="text-[8px] font-bold uppercase tracking-[0.15em] text-[#111111]">
+                <span className="text-sm font-bold uppercase tracking-[0.15em] text-[#111111]">
                   LMS Features
                 </span>
               </div>
 
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-
                 {lmsFeatures.map((feature, index) => {
                   const Icon = feature.icon;
 
@@ -578,7 +568,6 @@ function LMSPage() {
                         hover:shadow-[0_8px_22px_rgba(0,0,0,0.08)]
                       "
                     >
-
                       {/* COLOUR STRIPE */}
 
                       <div
@@ -593,7 +582,6 @@ function LMSPage() {
                       <div className="absolute bottom-0 left-3 right-3 h-[2px] origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100" />
 
                       <div className="mb-2 flex items-start gap-2.5">
-
                         {/* ICON */}
 
                         <div
@@ -609,7 +597,7 @@ function LMSPage() {
 
                         <div className="min-w-0">
                           <span
-                            className="text-[8px] font-bold uppercase tracking-[0.1em]"
+                            className="text-sm font-bold uppercase tracking-[0.1em]"
                             style={{
                               color: feature.accent,
                             }}
@@ -617,13 +605,13 @@ function LMSPage() {
                             {feature.number}
                           </span>
 
-                          <h3 className="mt-0.5 text-xs font-bold leading-4.5 text-[#111111]">
+                          <h3 className="mt-0.5 text-base font-bold leading-5 text-[#111111]">
                             {feature.title}
                           </h3>
                         </div>
                       </div>
 
-                      <p className="text-[10px] leading-4.5 text-[#111111]">
+                      <p className="text-sm leading-5 text-[#111111]">
                         {feature.text}
                       </p>
                     </motion.article>
@@ -637,7 +625,6 @@ function LMSPage() {
             ================================================= */}
 
             <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-[#dedbd6] pt-4">
-
               <Link
                 to="/studio"
                 className="
@@ -646,7 +633,7 @@ function LMSPage() {
                   inline-flex
                   items-center
                   gap-1.5
-                  text-[10px]
+                  text-base
                   font-semibold
                   text-[#111111]
                 "
@@ -665,7 +652,7 @@ function LMSPage() {
                   inline-flex
                   items-center
                   gap-1.5
-                  text-[10px]
+                  text-base
                   font-semibold
                   text-[#111111]
                 "

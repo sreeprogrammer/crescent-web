@@ -103,10 +103,10 @@ function getAccentClasses(accent: string) {
 
     case "red":
       return {
-        border: "border-[#8f1d1d]/20",
-        line: "bg-[#8f1d1d]",
-        badge: "bg-[#8f1d1d]/10",
-        icon: "text-[#8f1d1d]",
+        border: "border-[#831B1B]/20",
+        line: "bg-[#831B1B]",
+        badge: "bg-[#831B1B]/10",
+        icon: "text-[#831B1B]",
       };
 
     default:
@@ -131,7 +131,7 @@ function ExecutionTeamPage() {
         className="min-h-screen bg-[#f7f7f5] text-black"
       >
         {/* HEADER */}
-        <section className="relative overflow-hidden bg-[#f6dfe5] text-black">
+        <section className="relative overflow-hidden bg-[#831B1B] text-white">
           <div className="absolute -right-20 -top-24 h-56 w-56 rounded-full bg-[#d4af37]/10 blur-3xl" />
           <div className="absolute -bottom-24 -left-20 h-56 w-56 rounded-full bg-[#6b4c9a]/10 blur-3xl" />
 
@@ -143,23 +143,23 @@ function ExecutionTeamPage() {
             >
               <a
                 href="/about"
-                className="mb-3 inline-flex items-center gap-2 text-xs font-medium text-black/70 transition-colors hover:text-[#8f1d1d]"
+                className="mb-3 inline-flex items-center gap-2 text-xs font-medium text-white/75 transition-colors hover:text-white"
               >
                 <ArrowLeft className="h-3.5 w-3.5" />
                 Back to About
               </a>
 
-              <div className="mb-2.5 inline-flex items-center gap-2 rounded-full bg-white/55 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-black"
+              <div className="mb-2.5 inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white"
               >
                 <Users className="h-3 w-3" />
                 Execution Team
               </div>
 
-              <h1 className="text-2xl font-bold tracking-tight text-black sm:text-3xl">
+              <h1 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
                 Execution Team
               </h1>
 
-              <p className="mt-1.5 max-w-2xl text-xs leading-5 text-black/70 sm:text-sm">
+              <p className="mt-1.5 max-w-2xl text-xs leading-5 text-white/75 sm:text-sm">
                 Centre for Distance and Online Education
               </p>
             </motion.div>
@@ -171,10 +171,10 @@ function ExecutionTeamPage() {
           <div className="mx-auto grid max-w-7xl grid-cols-2 gap-2.5 px-5 py-4 sm:grid-cols-4 sm:px-8">
             <a
               href="#director"
-              className="group rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm"
+              className="group rounded-xl border border-slate-200 bg-white p-2.5 text-center shadow-sm"
             >
-              <div className="flex items-center gap-2">
-                <Award className="h-3.5 w-3.5 text-[#8f1d1d]" />
+              <div className="flex items-center justify-center gap-2">
+                <Award className="h-3.5 w-3.5 text-[#831B1B]" />
                 <span className="text-xs font-semibold text-black">
                   Director
                 </span>
@@ -184,9 +184,9 @@ function ExecutionTeamPage() {
 
             <a
               href="#cdoe-team"
-              className="group rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm"
+              className="group rounded-xl border border-slate-200 bg-white p-2.5 text-center shadow-sm"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center gap-2">
                 <Users className="h-3.5 w-3.5 text-[#3f7d58]" />
                 <span className="text-xs font-semibold text-black">
                   CDOE Team
@@ -197,9 +197,9 @@ function ExecutionTeamPage() {
 
             <a
               href="#planning"
-              className="group rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm"
+              className="group rounded-xl border border-slate-200 bg-white p-2.5 text-center shadow-sm"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center gap-2">
                 <BookOpen className="h-3.5 w-3.5 text-[#6b4c9a]" />
                 <span className="text-xs font-semibold text-black">
                   Planning & Monitoring
@@ -210,9 +210,9 @@ function ExecutionTeamPage() {
 
             <a
               href="#former-director"
-              className="group rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm"
+              className="group rounded-xl border border-slate-200 bg-white p-2.5 text-center shadow-sm"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center gap-2">
                 <GraduationCap className="h-3.5 w-3.5 text-[#d4af37]" />
                 <span className="text-xs font-semibold text-black">
                   Former Director
@@ -235,7 +235,7 @@ function ExecutionTeamPage() {
             className="mb-8"
           >
             <div className="mb-4 flex items-center gap-2">
-              <span className="h-7 w-1 rounded-full bg-[#8f1d1d]" />
+              <span className="h-7 w-1 rounded-full bg-[#831B1B]" />
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-black/50">
                   Leadership
@@ -246,13 +246,13 @@ function ExecutionTeamPage() {
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-2xl border border-[#8f1d1d]/20 bg-white shadow-sm">
+            <div className="overflow-hidden rounded-2xl border border-[#831B1B]/20 bg-white shadow-sm">
               <div className="grid md:grid-cols-[1fr_310px]">
                 {/* CONTENT LEFT */}
                 <div className="order-2 p-6 sm:p-7 md:order-1">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#8f1d1d]/10">
-                      <Award className="h-5 w-5 text-[#8f1d1d]" />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#831B1B]/10">
+                      <Award className="h-5 w-5 text-[#831B1B]" />
                     </div>
 
                     <div>
@@ -283,7 +283,7 @@ function ExecutionTeamPage() {
                     className="h-full w-full object-cover"
                   />
 
-                  <div className="absolute bottom-0 left-0 h-1 w-full bg-[#8f1d1d]" />
+                  <div className="absolute bottom-0 left-0 h-1 w-full bg-[#831B1B]" />
                 </div>
               </div>
             </div>

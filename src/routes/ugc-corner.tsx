@@ -1,5 +1,7 @@
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { createFileRoute } from "@tanstack/react-router";
+import ugc from "@/assets/ugc.png";
+import aicte from "@/assets/all india.jpg";
 import {
   BadgeCheck,
   ClipboardList,
@@ -289,7 +291,7 @@ function UgcCornerPage() {
                 <div className="flex items-center gap-5">
                   <div className="flex size-20 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#D9D4CA] bg-white p-2.5">
                     <img
-                      src="/images/ugc-logo.webp"
+                      src={ugc}
                       alt="UGC Logo"
                       className="h-full w-full object-contain"
                     />
@@ -367,7 +369,7 @@ function UgcCornerPage() {
                 <div className="flex items-center gap-5">
                   <div className="flex size-20 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#D9D4CA] bg-white p-2.5">
                     <img
-                      src="/images/aicte-logo.webp"
+                      src={aicte}
                       alt="AICTE Logo"
                       className="h-full w-full object-contain"
                     />

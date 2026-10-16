@@ -16,7 +16,7 @@ import {
   X,
 } from "lucide-react";
 
-import campusPhoto from "@/assets/campus-1.jpg";
+import merlinePhoto from "@/assets/merline.jpeg";
 import { SiteLayout } from "@/components/site/SiteLayout";
 
 /* =========================================================
@@ -420,8 +420,8 @@ function StudentsCornerPage() {
                       <div className="h-[84px] w-[84px] shrink-0 overflow-hidden rounded-xl border-2 border-[#D8B84C]/60 bg-white/10">
 
                         <img
-                          src={campusPhoto}
-                          alt="Ms. P. Paul Merline"
+                          src={merlinePhoto}
+                          alt="Merlin"
                           className="h-full w-full object-cover object-center"
                         />
 
@@ -435,7 +435,7 @@ function StudentsCornerPage() {
                             font-bold
                           "
                         >
-                          Ms. P. Paul Merline
+                          Merlin
                         </p>
 
                         <p

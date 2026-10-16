@@ -1,3 +1,4 @@
+
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
@@ -95,7 +96,6 @@ function StudioQuickLinks() {
       className="relative bg-[#F5F1E9] px-5 pb-5 pt-3 sm:px-8 lg:px-12"
     >
       <div className="mx-auto w-full max-w-7xl">
-
         <div className="mb-5 h-[3px] w-full rounded-full bg-gradient-to-r from-[#2F6F4E] via-[#B08A24] to-[#6B4C9A]" />
 
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -125,8 +125,8 @@ function StudioQuickLinks() {
                     group
                     relative
                     flex
-                    h-[96px]
-                    min-h-[96px]
+                    h-[112px]
+                    min-h-[112px]
                     w-full
                     items-center
                     overflow-hidden
@@ -151,7 +151,6 @@ function StudioQuickLinks() {
                   />
 
                   <div className="flex w-full items-center gap-3">
-
                     <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-[#17234B] transition-transform duration-300 group-hover:scale-105">
                       <Icon
                         className="size-4"
@@ -164,7 +163,7 @@ function StudioQuickLinks() {
                     <div className="min-w-0 flex-1">
                       <div className="flex min-w-0 items-center gap-1.5">
                         <span
-                          className="shrink-0 text-[8px] font-bold tracking-[0.12em]"
+                          className="shrink-0 text-sm font-bold tracking-[0.12em]"
                           style={{
                             color: item.accent,
                           }}
@@ -172,12 +171,12 @@ function StudioQuickLinks() {
                           {item.number}
                         </span>
 
-                        <h3 className="min-w-0 truncate text-[11px] font-bold text-[#20242B]">
+                        <h3 className="min-w-0 truncate text-base font-bold text-[#20242B]">
                           {item.title}
                         </h3>
                       </div>
 
-                      <p className="mt-0.5 truncate text-[9px] font-medium text-[#737782]">
+                      <p className="mt-0.5 truncate text-sm font-medium text-[#737782]">
                         {item.description}
                       </p>
                     </div>
@@ -277,21 +276,12 @@ function StudioPage() {
         style={circularFont}
         className="min-h-screen overflow-hidden bg-[#F5F1E9]"
       >
-
-        {/* =================================================
-            QUICK LINKS
-        ================================================= */}
-
+        {/* QUICK LINKS */}
         <StudioQuickLinks />
 
-        {/* =================================================
-            MAIN SECTION
-        ================================================= */}
-
+        {/* MAIN SECTION */}
         <section className="relative border-b border-[#dedbd6] bg-[#f5f3f0]">
-
           {/* BACKGROUND ACCENTS */}
-
           <div className="pointer-events-none absolute inset-0 overflow-hidden">
             <div className="absolute -right-24 -top-24 size-72 rounded-full bg-[#6B4C9A]/5 blur-3xl" />
 
@@ -301,11 +291,7 @@ function StudioPage() {
           </div>
 
           <div className="relative mx-auto max-w-[1400px] px-5 py-5 sm:px-8 lg:px-10 lg:py-6">
-
-            {/* =================================================
-                LABEL
-            ================================================= */}
-
+            {/* LABEL */}
             <motion.div
               initial={{
                 opacity: 0,
@@ -322,19 +308,14 @@ function StudioPage() {
             >
               <span className="h-[2px] w-7 bg-[#6B4C9A]" />
 
-              <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-[#111111]">
+              <span className="text-sm font-bold uppercase tracking-[0.18em] text-[#111111]">
                 Center for Online Education
               </span>
             </motion.div>
 
-            {/* =================================================
-                HERO
-            ================================================= */}
-
+            {/* HERO */}
             <div className="grid items-stretch gap-5 lg:grid-cols-[1.08fr_0.92fr]">
-
               {/* LEFT CONTENT */}
-
               <motion.div
                 initial={{
                   opacity: 0,
@@ -365,18 +346,17 @@ function StudioPage() {
                 "
               >
                 {/* LEFT COLOUR STRIPE */}
-
                 <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#6B4C9A] via-[#B08A24] to-[#2F6F4E]" />
 
                 <div className="flex items-center gap-2 text-[#111111]">
                   <Clapperboard className="size-3.5 text-[#6B4C9A]" />
 
-                  <span className="text-[8px] font-bold uppercase tracking-[0.16em]">
+                  <span className="text-sm font-bold uppercase tracking-[0.16em]">
                     In-house studio
                   </span>
                 </div>
 
-                <h1 className="mt-3 max-w-3xl text-2xl font-bold leading-[1.08] tracking-[-0.02em] text-[#111111] sm:text-3xl lg:text-[2.4rem]">
+                <h1 className="mt-3 max-w-3xl text-3xl font-bold leading-tight tracking-tight text-[#111111] sm:text-4xl lg:text-5xl">
                   Creating{" "}
                   <span className="text-[#6B4C9A]">
                     quality educational content
@@ -384,7 +364,7 @@ function StudioPage() {
                   for online learning.
                 </h1>
 
-                <p className="mt-3 max-w-2xl text-[11px] leading-5 text-[#111111] sm:text-xs">
+                <p className="mt-3 max-w-2xl text-base leading-5 text-[#111111] sm:text-base">
                   Our in-house studio is equipped with the latest technology
                   and staffed by experienced professionals who produce
                   high-quality educational content that reflects the values and
@@ -392,15 +372,13 @@ function StudioPage() {
                 </p>
 
                 {/* STATS */}
-
                 <div className="mt-4 grid grid-cols-3 border-y border-[#dedbd6] py-3">
-
                   <div className="border-r border-[#dedbd6] pr-3">
                     <p className="font-serif text-lg font-bold text-[#6B4C9A]">
                       01
                     </p>
 
-                    <p className="mt-0.5 text-[8px] font-semibold uppercase tracking-wider text-[#111111]">
+                    <p className="mt-0.5 text-sm font-semibold uppercase tracking-wider text-[#111111]">
                       Studio
                     </p>
                   </div>
@@ -410,7 +388,7 @@ function StudioPage() {
                       07
                     </p>
 
-                    <p className="mt-0.5 text-[8px] font-semibold uppercase tracking-wider text-[#111111]">
+                    <p className="mt-0.5 text-sm font-semibold uppercase tracking-wider text-[#111111]">
                       Features
                     </p>
                   </div>
@@ -420,26 +398,25 @@ function StudioPage() {
                       360°
                     </p>
 
-                    <p className="mt-0.5 text-[8px] font-semibold uppercase tracking-wider text-[#111111]">
+                    <p className="mt-0.5 text-sm font-semibold uppercase tracking-wider text-[#111111]">
                       Learning
                     </p>
                   </div>
                 </div>
 
                 {/* TAGS */}
-
                 <div className="mt-3 flex flex-wrap gap-2">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#6B4C9A] px-2.5 py-1 text-[8px] font-semibold text-white">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#6B4C9A] px-2.5 py-1 text-sm font-semibold text-white">
                     <Clapperboard className="size-3" />
                     Professional Quality
                   </span>
 
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#2F6F4E] px-2.5 py-1 text-[8px] font-semibold text-white">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#2F6F4E] px-2.5 py-1 text-sm font-semibold text-white">
                     <Video className="size-3" />
                     Interactive Content
                   </span>
 
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#B08A24] px-2.5 py-1 text-[8px] font-semibold text-white">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#B08A24] px-2.5 py-1 text-sm font-semibold text-white">
                     <Sparkles className="size-3" />
                     Customization
                   </span>
@@ -447,7 +424,6 @@ function StudioPage() {
               </motion.div>
 
               {/* RIGHT IMAGE */}
-
               <motion.div
                 initial={{
                   opacity: 0,
@@ -488,38 +464,32 @@ function StudioPage() {
                 <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#B08A24] via-[#6B4C9A] to-[#2F6F4E]" />
 
                 <div className="absolute bottom-0 left-0 right-0 p-5">
-
                   <div className="mb-1.5 flex items-center gap-2">
                     <Clapperboard className="size-3.5 text-[#D8B84C]" />
 
-                    <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-white">
+                    <span className="text-sm font-bold uppercase tracking-[0.18em] text-white">
                       In-house Studio
                     </span>
                   </div>
 
-                  <h2 className="max-w-md font-serif text-xl font-bold leading-tight text-white">
+                  <h2 className="max-w-md font-serif text-2xl font-bold leading-tight text-white sm:text-3xl">
                     Professional content for meaningful learning.
                   </h2>
                 </div>
               </motion.div>
             </div>
 
-            {/* =================================================
-                FEATURE SECTION
-            ================================================= */}
-
+            {/* FEATURE SECTION */}
             <div className="mt-5">
-
               <div className="mb-3 flex items-center gap-2">
                 <span className="h-[2px] w-6 bg-gradient-to-r from-[#6B4C9A] to-[#B08A24]" />
 
-                <span className="text-[8px] font-bold uppercase tracking-[0.15em] text-[#111111]">
+                <span className="text-sm font-bold uppercase tracking-[0.15em] text-[#111111]">
                   In-house studio
                 </span>
               </div>
 
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-
                 {studioFeatures.map((feature, index) => (
                   <motion.article
                     key={feature.title}
@@ -556,7 +526,6 @@ function StudioPage() {
                     "
                   >
                     {/* ACCENT STRIPE */}
-
                     <div
                       className="absolute left-0 top-0 h-full w-[3px]"
                       style={{
@@ -565,13 +534,10 @@ function StudioPage() {
                     />
 
                     {/* GOLD HOVER LINE */}
-
                     <div className="absolute bottom-0 left-3 right-3 h-[2px] origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100" />
 
                     <div className="mb-2 flex items-start gap-2.5">
-
                       {/* ICON */}
-
                       <div
                         className="flex size-7 shrink-0 items-center justify-center rounded-lg"
                         style={{
@@ -582,10 +548,9 @@ function StudioPage() {
                       </div>
 
                       {/* TITLE */}
-
                       <div className="min-w-0">
                         <span
-                          className="text-[8px] font-bold uppercase tracking-[0.1em]"
+                          className="text-sm font-bold uppercase tracking-[0.1em]"
                           style={{
                             color: feature.accent,
                           }}
@@ -593,13 +558,13 @@ function StudioPage() {
                           {feature.number}
                         </span>
 
-                        <h3 className="mt-0.5 text-xs font-bold leading-4.5 text-[#111111]">
+                        <h3 className="mt-0.5 text-base font-bold leading-4.5 text-[#111111]">
                           {feature.title}
                         </h3>
                       </div>
                     </div>
 
-                    <p className="text-[10px] leading-4.5 text-[#111111]">
+                    <p className="text-sm leading-4.5 text-[#111111]">
                       {feature.text}
                     </p>
                   </motion.article>
@@ -607,12 +572,8 @@ function StudioPage() {
               </div>
             </div>
 
-            {/* =================================================
-                BOTTOM NAVIGATION
-            ================================================= */}
-
+            {/* BOTTOM NAVIGATION */}
             <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-[#dedbd6] pt-4">
-
               <Link
                 to="/facilities"
                 className="
@@ -621,7 +582,7 @@ function StudioPage() {
                   inline-flex
                   items-center
                   gap-1.5
-                  text-[10px]
+                  text-sm
                   font-semibold
                   text-[#111111]
                 "
@@ -640,7 +601,7 @@ function StudioPage() {
                   inline-flex
                   items-center
                   gap-1.5
-                  text-[10px]
+                  text-sm
                   font-semibold
                   text-[#111111]
                 "

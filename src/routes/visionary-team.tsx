@@ -108,10 +108,10 @@ function getAccentClasses(accent: string) {
 
     case "red":
       return {
-        border: "border-[#8f1d1d]/20",
-        line: "bg-[#8f1d1d]",
-        badge: "bg-[#8f1d1d]/10",
-        icon: "text-[#8f1d1d]",
+        border: "border-[#831B1B]/20",
+        line: "bg-[#831B1B]",
+        badge: "bg-[#831B1B]/10",
+        icon: "text-[#831B1B]",
       };
 
     default:
@@ -136,7 +136,7 @@ function VisionaryTeamPage() {
         className="min-h-screen bg-[#f7f5f7] text-black"
       >
         {/* HEADER */}
-        <section className="relative overflow-hidden bg-[#f6dfe5] text-black">
+        <section className="relative overflow-hidden bg-[#831B1B] text-white">
           <div className="absolute -right-20 -top-24 h-56 w-56 rounded-full bg-[#d4af37]/10 blur-3xl" />
           <div className="absolute -bottom-24 -left-20 h-56 w-56 rounded-full bg-[#6b4c9a]/10 blur-3xl" />
 
@@ -148,22 +148,22 @@ function VisionaryTeamPage() {
             >
               <a
                 href="/about"
-                className="mb-3 inline-flex items-center gap-2 text-xs font-medium text-black/70 transition-colors hover:text-[#8f1d1d]"
+                className="mb-3 inline-flex items-center gap-2 text-xs font-medium text-white/75 transition-colors hover:text-white"
               >
                 <ArrowLeft className="h-3.5 w-3.5" />
                 Back to About
               </a>
 
-              <div className="mb-2.5 inline-flex items-center gap-2 rounded-full bg-white/55 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[#8f1d1d]">
+              <div className="mb-2.5 inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white">
                 <Users className="h-3 w-3" />
                 Leadership
               </div>
 
-              <h1 className="text-2xl font-bold tracking-tight text-black sm:text-3xl">
+              <h1 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
                 Visionary Team
               </h1>
 
-              <p className="mt-1.5 max-w-2xl text-xs leading-5 text-black/70 sm:text-sm">
+              <p className="mt-1.5 max-w-2xl text-xs leading-5 text-white/75 sm:text-sm">
                 Leadership and vision driving excellence in education,
                 innovation and societal development.
               </p>
@@ -176,9 +176,9 @@ function VisionaryTeamPage() {
           <div className="mx-auto grid max-w-7xl grid-cols-2 gap-2.5 px-5 py-4 sm:grid-cols-4 sm:px-8">
             <a
               href="#founder"
-              className="group rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm"
+              className="group rounded-xl border border-slate-200 bg-white p-2.5 text-center shadow-sm"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center gap-2">
                 <Landmark className="h-3.5 w-3.5 text-[#3f7d58]" />
                 <span className="text-xs font-semibold text-black">
                   Founder
@@ -189,9 +189,9 @@ function VisionaryTeamPage() {
 
             <a
               href="#president"
-              className="group rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm"
+              className="group rounded-xl border border-slate-200 bg-white p-2.5 text-center shadow-sm"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center gap-2">
                 <Award className="h-3.5 w-3.5 text-[#d4af37]" />
                 <span className="text-xs font-semibold text-black">
                   President
@@ -202,9 +202,9 @@ function VisionaryTeamPage() {
 
             <a
               href="#chancellor"
-              className="group rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm"
+              className="group rounded-xl border border-slate-200 bg-white p-2.5 text-center shadow-sm"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center gap-2">
                 <Crown className="h-3.5 w-3.5 text-[#6b4c9a]" />
                 <span className="text-xs font-semibold text-black">
                   Chancellor
@@ -215,10 +215,10 @@ function VisionaryTeamPage() {
 
             <a
               href="#administration"
-              className="group rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm"
+              className="group rounded-xl border border-slate-200 bg-white p-2.5 text-center shadow-sm"
             >
-              <div className="flex items-center gap-2">
-                <GraduationCap className="h-3.5 w-3.5 text-[#8f1d1d]" />
+              <div className="flex items-center justify-center gap-2">
+                <GraduationCap className="h-3.5 w-3.5 text-[#831B1B]" />
                 <span className="text-xs font-semibold text-black">
                   Administration
                 </span>
@@ -233,7 +233,7 @@ function VisionaryTeamPage() {
           <div className="mb-6 max-w-3xl">
             <div className="mb-1.5 flex items-center gap-2">
               <span className="h-6 w-1 rounded-full bg-[#d4af37]" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#8f1d1d]">
+              <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#831B1B]">
                 Our Leadership
               </span>
             </div>

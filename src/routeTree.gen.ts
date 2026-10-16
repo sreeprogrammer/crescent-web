@@ -16,6 +16,7 @@ import { Route as BaIslamicStudiesRouteImport } from './routes/ba-islamic-studie
 import { Route as CdoeTeamRouteImport } from './routes/cdoe-team'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DatacenterRouteImport } from './routes/datacenter'
+import { Route as EventsRouteImport } from './routes/events'
 import { Route as ExecutionTeamRouteImport } from './routes/execution-team'
 import { Route as FacilitiesRouteImport } from './routes/facilities'
 import { Route as FacultyRouteImport } from './routes/faculty'
@@ -36,11 +37,15 @@ import { Route as VisionaryTeamRouteImport } from './routes/visionary-team'
 import { Route as BaIslamicStudiesIndexRouteImport } from './routes/ba-islamic-studies/index'
 import { Route as BaIslamicStudiesPeopleRouteImport } from './routes/ba-islamic-studies/people'
 import { Route as BaIslamicStudiesSyllabusRouteImport } from './routes/ba-islamic-studies/syllabus'
+import { Route as CourseInfoCourseSlugRouteImport } from './routes/course-info.$courseSlug'
 import { Route as MbaIndexRouteImport } from './routes/mba/index'
 import { Route as MbaSyllabusRouteImport } from './routes/mba/syllabus'
 import { Route as McaIndexRouteImport } from './routes/mca/index'
 import { Route as McaPeopleRouteImport } from './routes/mca/people'
 import { Route as McaSyllabusRouteImport } from './routes/mca/syllabus'
+import { Route as CourseInfoCourseSlugIndexRouteImport } from './routes/course-info.$courseSlug.index'
+import { Route as CourseInfoCourseSlugSectionRouteImport } from './routes/course-info.$courseSlug.$section'
+import { Route as FacultyProfileCourseSlugFacultySlugRouteImport } from './routes/faculty-profile.$courseSlug.$facultySlug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -75,6 +80,11 @@ const ContactRoute = ContactRouteImport.update({
 const DatacenterRoute = DatacenterRouteImport.update({
   id: '/datacenter',
   path: '/datacenter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExecutionTeamRoute = ExecutionTeamRouteImport.update({
@@ -178,6 +188,11 @@ const BaIslamicStudiesSyllabusRoute =
     path: '/syllabus',
     getParentRoute: () => BaIslamicStudiesRoute,
   } as any)
+const CourseInfoCourseSlugRoute = CourseInfoCourseSlugRouteImport.update({
+  id: '/course-info/$courseSlug',
+  path: '/course-info/$courseSlug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MbaIndexRoute = MbaIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -203,6 +218,24 @@ const McaSyllabusRoute = McaSyllabusRouteImport.update({
   path: '/syllabus',
   getParentRoute: () => McaRoute,
 } as any)
+const CourseInfoCourseSlugIndexRoute =
+  CourseInfoCourseSlugIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => CourseInfoCourseSlugRoute,
+  } as any)
+const CourseInfoCourseSlugSectionRoute =
+  CourseInfoCourseSlugSectionRouteImport.update({
+    id: '/$section',
+    path: '/$section',
+    getParentRoute: () => CourseInfoCourseSlugRoute,
+  } as any)
+const FacultyProfileCourseSlugFacultySlugRoute =
+  FacultyProfileCourseSlugFacultySlugRouteImport.update({
+    id: '/faculty-profile/$courseSlug/$facultySlug',
+    path: '/faculty-profile/$courseSlug/$facultySlug',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -212,6 +245,7 @@ export interface FileRoutesByFullPath {
   '/cdoe-team': typeof CdoeTeamRoute
   '/contact': typeof ContactRoute
   '/datacenter': typeof DatacenterRoute
+  '/events': typeof EventsRoute
   '/execution-team': typeof ExecutionTeamRoute
   '/facilities': typeof FacilitiesRoute
   '/faculty': typeof FacultyRoute
@@ -231,12 +265,16 @@ export interface FileRoutesByFullPath {
   '/visionary-team': typeof VisionaryTeamRoute
   '/ba-islamic-studies/people': typeof BaIslamicStudiesPeopleRoute
   '/ba-islamic-studies/syllabus': typeof BaIslamicStudiesSyllabusRoute
+  '/course-info/$courseSlug': typeof CourseInfoCourseSlugRouteWithChildren
   '/mba/syllabus': typeof MbaSyllabusRoute
   '/mca/people': typeof McaPeopleRoute
   '/mca/syllabus': typeof McaSyllabusRoute
   '/ba-islamic-studies/': typeof BaIslamicStudiesIndexRoute
   '/mba/': typeof MbaIndexRoute
   '/mca/': typeof McaIndexRoute
+  '/course-info/$courseSlug/$section': typeof CourseInfoCourseSlugSectionRoute
+  '/faculty-profile/$courseSlug/$facultySlug': typeof FacultyProfileCourseSlugFacultySlugRoute
+  '/course-info/$courseSlug/': typeof CourseInfoCourseSlugIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -245,6 +283,7 @@ export interface FileRoutesByTo {
   '/cdoe-team': typeof CdoeTeamRoute
   '/contact': typeof ContactRoute
   '/datacenter': typeof DatacenterRoute
+  '/events': typeof EventsRoute
   '/execution-team': typeof ExecutionTeamRoute
   '/facilities': typeof FacilitiesRoute
   '/faculty': typeof FacultyRoute
@@ -268,6 +307,9 @@ export interface FileRoutesByTo {
   '/ba-islamic-studies': typeof BaIslamicStudiesIndexRoute
   '/mba': typeof MbaIndexRoute
   '/mca': typeof McaIndexRoute
+  '/course-info/$courseSlug/$section': typeof CourseInfoCourseSlugSectionRoute
+  '/faculty-profile/$courseSlug/$facultySlug': typeof FacultyProfileCourseSlugFacultySlugRoute
+  '/course-info/$courseSlug': typeof CourseInfoCourseSlugIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -278,6 +320,7 @@ export interface FileRoutesById {
   '/cdoe-team': typeof CdoeTeamRoute
   '/contact': typeof ContactRoute
   '/datacenter': typeof DatacenterRoute
+  '/events': typeof EventsRoute
   '/execution-team': typeof ExecutionTeamRoute
   '/facilities': typeof FacilitiesRoute
   '/faculty': typeof FacultyRoute
@@ -297,12 +340,16 @@ export interface FileRoutesById {
   '/visionary-team': typeof VisionaryTeamRoute
   '/ba-islamic-studies/people': typeof BaIslamicStudiesPeopleRoute
   '/ba-islamic-studies/syllabus': typeof BaIslamicStudiesSyllabusRoute
+  '/course-info/$courseSlug': typeof CourseInfoCourseSlugRouteWithChildren
   '/mba/syllabus': typeof MbaSyllabusRoute
   '/mca/people': typeof McaPeopleRoute
   '/mca/syllabus': typeof McaSyllabusRoute
   '/ba-islamic-studies/': typeof BaIslamicStudiesIndexRoute
   '/mba/': typeof MbaIndexRoute
   '/mca/': typeof McaIndexRoute
+  '/course-info/$courseSlug/$section': typeof CourseInfoCourseSlugSectionRoute
+  '/faculty-profile/$courseSlug/$facultySlug': typeof FacultyProfileCourseSlugFacultySlugRoute
+  '/course-info/$courseSlug/': typeof CourseInfoCourseSlugIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -314,6 +361,7 @@ export interface FileRouteTypes {
     | '/cdoe-team'
     | '/contact'
     | '/datacenter'
+    | '/events'
     | '/execution-team'
     | '/facilities'
     | '/faculty'
@@ -333,12 +381,16 @@ export interface FileRouteTypes {
     | '/visionary-team'
     | '/ba-islamic-studies/people'
     | '/ba-islamic-studies/syllabus'
+    | '/course-info/$courseSlug'
     | '/mba/syllabus'
     | '/mca/people'
     | '/mca/syllabus'
     | '/ba-islamic-studies/'
     | '/mba/'
     | '/mca/'
+    | '/course-info/$courseSlug/$section'
+    | '/faculty-profile/$courseSlug/$facultySlug'
+    | '/course-info/$courseSlug/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -347,6 +399,7 @@ export interface FileRouteTypes {
     | '/cdoe-team'
     | '/contact'
     | '/datacenter'
+    | '/events'
     | '/execution-team'
     | '/facilities'
     | '/faculty'
@@ -370,6 +423,9 @@ export interface FileRouteTypes {
     | '/ba-islamic-studies'
     | '/mba'
     | '/mca'
+    | '/course-info/$courseSlug/$section'
+    | '/faculty-profile/$courseSlug/$facultySlug'
+    | '/course-info/$courseSlug'
   id:
     | '__root__'
     | '/'
@@ -379,6 +435,7 @@ export interface FileRouteTypes {
     | '/cdoe-team'
     | '/contact'
     | '/datacenter'
+    | '/events'
     | '/execution-team'
     | '/facilities'
     | '/faculty'
@@ -398,12 +455,16 @@ export interface FileRouteTypes {
     | '/visionary-team'
     | '/ba-islamic-studies/people'
     | '/ba-islamic-studies/syllabus'
+    | '/course-info/$courseSlug'
     | '/mba/syllabus'
     | '/mca/people'
     | '/mca/syllabus'
     | '/ba-islamic-studies/'
     | '/mba/'
     | '/mca/'
+    | '/course-info/$courseSlug/$section'
+    | '/faculty-profile/$courseSlug/$facultySlug'
+    | '/course-info/$courseSlug/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -414,6 +475,7 @@ export interface RootRouteChildren {
   CdoeTeamRoute: typeof CdoeTeamRoute
   ContactRoute: typeof ContactRoute
   DatacenterRoute: typeof DatacenterRoute
+  EventsRoute: typeof EventsRoute
   ExecutionTeamRoute: typeof ExecutionTeamRoute
   FacilitiesRoute: typeof FacilitiesRoute
   FacultyRoute: typeof FacultyRoute
@@ -431,6 +493,8 @@ export interface RootRouteChildren {
   TechnicalRoute: typeof TechnicalRoute
   UgcCornerRoute: typeof UgcCornerRoute
   VisionaryTeamRoute: typeof VisionaryTeamRoute
+  CourseInfoCourseSlugRoute: typeof CourseInfoCourseSlugRouteWithChildren
+  FacultyProfileCourseSlugFacultySlugRoute: typeof FacultyProfileCourseSlugFacultySlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -482,6 +546,13 @@ declare module '@tanstack/react-router' {
       path: '/datacenter'
       fullPath: '/datacenter'
       preLoaderRoute: typeof DatacenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/execution-team': {
@@ -624,6 +695,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaIslamicStudiesSyllabusRouteImport
       parentRoute: typeof BaIslamicStudiesRoute
     }
+    '/course-info/$courseSlug': {
+      id: '/course-info/$courseSlug'
+      path: '/course-info/$courseSlug'
+      fullPath: '/course-info/$courseSlug'
+      preLoaderRoute: typeof CourseInfoCourseSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/mba/': {
       id: '/mba/'
       path: '/'
@@ -658,6 +736,27 @@ declare module '@tanstack/react-router' {
       fullPath: '/mca/syllabus'
       preLoaderRoute: typeof McaSyllabusRouteImport
       parentRoute: typeof McaRoute
+    }
+    '/course-info/$courseSlug/': {
+      id: '/course-info/$courseSlug/'
+      path: '/'
+      fullPath: '/course-info/$courseSlug/'
+      preLoaderRoute: typeof CourseInfoCourseSlugIndexRouteImport
+      parentRoute: typeof CourseInfoCourseSlugRoute
+    }
+    '/course-info/$courseSlug/$section': {
+      id: '/course-info/$courseSlug/$section'
+      path: '/$section'
+      fullPath: '/course-info/$courseSlug/$section'
+      preLoaderRoute: typeof CourseInfoCourseSlugSectionRouteImport
+      parentRoute: typeof CourseInfoCourseSlugRoute
+    }
+    '/faculty-profile/$courseSlug/$facultySlug': {
+      id: '/faculty-profile/$courseSlug/$facultySlug'
+      path: '/faculty-profile/$courseSlug/$facultySlug'
+      fullPath: '/faculty-profile/$courseSlug/$facultySlug'
+      preLoaderRoute: typeof FacultyProfileCourseSlugFacultySlugRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -703,6 +802,19 @@ const McaRouteChildren: McaRouteChildren = {
 
 const McaRouteWithChildren = McaRoute._addFileChildren(McaRouteChildren)
 
+interface CourseInfoCourseSlugRouteChildren {
+  CourseInfoCourseSlugSectionRoute: typeof CourseInfoCourseSlugSectionRoute
+  CourseInfoCourseSlugIndexRoute: typeof CourseInfoCourseSlugIndexRoute
+}
+
+const CourseInfoCourseSlugRouteChildren: CourseInfoCourseSlugRouteChildren = {
+  CourseInfoCourseSlugSectionRoute: CourseInfoCourseSlugSectionRoute,
+  CourseInfoCourseSlugIndexRoute: CourseInfoCourseSlugIndexRoute,
+}
+
+const CourseInfoCourseSlugRouteWithChildren =
+  CourseInfoCourseSlugRoute._addFileChildren(CourseInfoCourseSlugRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -711,6 +823,7 @@ const rootRouteChildren: RootRouteChildren = {
   CdoeTeamRoute: CdoeTeamRoute,
   ContactRoute: ContactRoute,
   DatacenterRoute: DatacenterRoute,
+  EventsRoute: EventsRoute,
   ExecutionTeamRoute: ExecutionTeamRoute,
   FacilitiesRoute: FacilitiesRoute,
   FacultyRoute: FacultyRoute,
@@ -728,6 +841,9 @@ const rootRouteChildren: RootRouteChildren = {
   TechnicalRoute: TechnicalRoute,
   UgcCornerRoute: UgcCornerRoute,
   VisionaryTeamRoute: VisionaryTeamRoute,
+  CourseInfoCourseSlugRoute: CourseInfoCourseSlugRouteWithChildren,
+  FacultyProfileCourseSlugFacultySlugRoute:
+    FacultyProfileCourseSlugFacultySlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

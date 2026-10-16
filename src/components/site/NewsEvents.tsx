@@ -19,49 +19,55 @@ import { useCallback, useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Section, SectionHeading } from "./Section";
 
-const items = [
+export const newsEvents = [
   {
     title: "Annual Convocation Ceremony",
     date: "12 September 2026",
     image: convocation,
     body: "Graduating distance learners receive their degrees at the main campus auditorium.",
     featured: true,
-    link: "/events/convocation",
+    overview:
+      "The convocation brings together graduates, families and faculty for a meaningful celebration of academic achievement and future readiness.",
   },
   {
     title: "Placement Job Fair",
     date: "28 August 2026",
     image: jobFair,
     body: "Over 40 recruiters meet final-year and alumni candidates across IT, finance and analytics.",
-    link: "/events/job-fair",
+    overview:
+      "Students get direct access to recruiters, networking opportunities and career guidance for upcoming placements and internships.",
   },
   {
     title: "Admission Announcement",
     date: "05 August 2026",
     image: distance,
     body: "Applications for the 2026 UG, PG and certification intake are now open online.",
-    link: "/events/admission",
+    overview:
+      "The admission cycle opens for a new batch with clear guidance on eligibility, timelines and online application support.",
   },
   {
     title: "Academic Seminar Series",
     date: "22 July 2026",
     image: events,
     body: "Faculty-led sessions on research methodology and contemporary policy studies.",
-    link: "/events/seminar",
+    overview:
+      "This seminar series fosters intellectual exchange through keynote talks, panel discussions and interactive faculty sessions.",
   },
   {
     title: "Student Orientation",
     date: "10 July 2026",
     image: campus1,
     body: "A guided walkthrough of the LMS, assessments and mentoring for new enrolments.",
-    link: "/events/orientation",
+    overview:
+      "New students are introduced to academic expectations, learning systems and student support pathways for a smoother start.",
   },
   {
     title: "Skill Development Workshop",
     date: "30 June 2026",
     image: campus2,
     body: "Hands-on workshop on communication, interviews and workplace readiness.",
-    link: "/events/skill-workshop",
+    overview:
+      "The workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.he workshop helps students build confidence in communication, industry-readiness and presentation skills for professional growth.",
   },
 ];
 
@@ -69,9 +75,9 @@ export function NewsEvents() {
   const [index, setIndex] = useState(0);
 
   const featuredEvent =
-    items.find((item) => item.featured) ?? items[0];
+    newsEvents.find((item) => item.featured) ?? newsEvents[0];
 
-  const normalEvents = items.filter(
+  const normalEvents = newsEvents.filter(
     (item) => item !== featuredEvent,
   );
 
@@ -248,7 +254,7 @@ export function NewsEvents() {
             {/* View Event */}
             <div className="mt-4">
               <Link
-                to={featuredEvent.link}
+                to="/events"
                 className="
                   inline-flex
                   items-center
@@ -455,7 +461,7 @@ export function NewsEvents() {
 
                   {/* View Event */}
                   <Link
-                    to={item.link}
+                    to="/events"
                     className="
                       mt-3
                       inline-flex

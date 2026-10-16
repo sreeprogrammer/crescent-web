@@ -1,18 +1,21 @@
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import {
-  ArrowLeft,
-  ArrowUpRight,
-  GraduationCap,
-  Users,
-} from "lucide-react";
+import { ArrowLeft, ArrowUpRight, GraduationCap, Users } from "lucide-react";
 
 import campusPhoto from "@/assets/campus-1.jpg";
+import abdussamadPhoto from "@/assets/abdussamad.jpeg";
+import agalyaPhoto from "@/assets/Agalya.jpeg";
+import ahamedullahPhoto from "@/assets/ahamedullah.png";
+import jeslinPhoto from "@/assets/jeslin.jpeg";
+import maheshwariPhoto from "@/assets/maheshwari.jpeg";
+import rabiyaPhoto from "@/assets/rabiya.jpeg";
+import manjulaPhoto from "@/assets/manjula.jpeg";
+import thowseafPhoto from "@/assets/thowseaf.jpeg";
+import yasarPhoto from "@/assets/yasar-arafath.jpeg";
 
 const circularFont = {
-  fontFamily:
-    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
+  fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
 };
 
 export const Route = createFileRoute("/faculty")({
@@ -28,14 +31,17 @@ const facultySections = [
       {
         name: "Moulavi Dr.S.Abdus Samad Nadwi",
         designation: "Associate Professor",
+        photo: abdussamadPhoto,
       },
       {
         name: "Dr. M. Yasar Arafath Ali",
         designation: "Assistant Professor",
+        photo: yasarPhoto,
       },
       {
         name: "Moulavi Dr. M. Ahamedullah Al Bukhari",
         designation: "Assistant Professor",
+        photo: ahamedullahPhoto,
       },
     ],
   },
@@ -47,14 +53,17 @@ const facultySections = [
       {
         name: "Dr. S. Rabiyathul Basariya",
         designation: "Assistant Professor",
+        photo: rabiyaPhoto,
       },
       {
         name: "Dr. S. Thowseaf",
         designation: "Assistant Professor",
+        photo: thowseafPhoto,
       },
       {
         name: "Dr. V. Agalya",
         designation: "Assistant Professor",
+        photo: agalyaPhoto,
       },
     ],
   },
@@ -66,14 +75,17 @@ const facultySections = [
       {
         name: "Dr. E. Jeslin Renjith",
         designation: "Assistant Professor",
+        photo: jeslinPhoto,
       },
       {
         name: "Dr. P. Maheswari",
         designation: "Assistant Professor",
+        photo: maheshwariPhoto,
       },
       {
         name: "Mrs. S. Manjula",
         designation: "Assistant Professor",
+        photo: manjulaPhoto,
       },
     ],
   },
@@ -107,9 +119,8 @@ function FacultyPage() {
               </h1>
 
               <p className="mt-1 max-w-3xl text-[11px] leading-4.5 text-black/70 sm:text-xs">
-                Dedicated academic professionals supporting teaching,
-                academic guidance, programme coordination and learner
-                development.
+                Dedicated academic professionals supporting teaching, academic guidance, programme
+                coordination and learner development.
               </p>
             </div>
           </div>
@@ -129,8 +140,7 @@ function FacultyPage() {
             </h2>
 
             <p className="mt-0.5 text-[11px] text-black/60">
-              Experienced faculty members supporting every stage of the
-              learning experience.
+              Experienced faculty members supporting every stage of the learning experience.
             </p>
           </div>
 
@@ -155,9 +165,7 @@ function FacultyPage() {
                       {section.label}
                     </p>
 
-                    <h2 className="text-sm font-bold">
-                      {section.title}
-                    </h2>
+                    <h2 className="text-sm font-bold">{section.title}</h2>
                   </div>
                 </div>
 
@@ -181,7 +189,7 @@ function FacultyPage() {
                       {/* TEMPORARY PHOTO */}
                       <div className="relative h-36 w-full overflow-hidden bg-[#f3f3f3] sm:h-32">
                         <img
-                          src={campusPhoto}
+                          src={person.photo ?? campusPhoto}
                           alt={person.name}
                           className="h-full w-full object-cover object-center"
                         />

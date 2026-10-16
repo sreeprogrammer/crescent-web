@@ -2,6 +2,7 @@ import heroImg1 from "@/assets/heroImg1.jpg";
 import heroImg2 from "@/assets/heroImg2.jpg";
 import heroImg3 from "@/assets/heroImg3.jpg";
 import heroImg4 from "@/assets/heroImg4.jpg";
+import ugc from "@/assets/ugc.png";
 
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
@@ -9,7 +10,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
   CheckCircle2,
-  Users,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -52,7 +52,9 @@ export function HeroDE() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+      setCurrentImage(
+        (prev) => (prev + 1) % heroImages.length
+      );
     }, 4500);
 
     return () => clearInterval(interval);
@@ -148,7 +150,17 @@ export function HeroDE() {
             duration: 0.7,
             ease: [0.16, 1, 0.3, 1],
           }}
+
+          /*
+            IMPORTANT:
+            Moves the complete left content slightly right
+            so the fixed "Courses" tab does not cover the text.
+          */
           className="
+            relative
+            left-0
+            lg:left-8
+            xl:left-10
             flex
             min-w-0
             w-full
@@ -295,6 +307,7 @@ export function HeroDE() {
             "
           >
             Empowering Your
+
             <br />
 
             <span className="text-[#111111]">
@@ -596,7 +609,9 @@ export function HeroDE() {
 
               </AnimatePresence>
 
-              {/* NAVY IMAGE OVERLAY */}
+              {/* =================================================
+                  NAVY IMAGE OVERLAY
+              ================================================== */}
 
               <div
                 className="
@@ -610,7 +625,9 @@ export function HeroDE() {
                 "
               />
 
-              {/* INNER BORDER */}
+              {/* =================================================
+                  INNER BORDER
+              ================================================== */}
 
               <div
                 className="
@@ -623,7 +640,9 @@ export function HeroDE() {
                 "
               />
 
-              {/* IMAGE BOTTOM CONTENT */}
+              {/* =================================================
+                  IMAGE BOTTOM CONTENT
+              ================================================== */}
 
               <div
                 className="
@@ -672,9 +691,18 @@ export function HeroDE() {
 
                 </div>
 
-                {/* SLIDER INDICATORS */}
+                {/* =================================================
+                    SLIDER INDICATORS
+                ================================================== */}
 
-                <div className="hidden items-center gap-1.5 sm:flex">
+                <div
+                  className="
+                    hidden
+                    items-center
+                    gap-1.5
+                    sm:flex
+                  "
+                >
 
                   {heroImages.map((_, i) => (
                     <button
@@ -702,210 +730,116 @@ export function HeroDE() {
 
             </div>
 
-            {/* =================================================
-                UGC FLOATING CARD
-            ================================================== */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 12,
-              }}
-              animate={{
-                opacity: 1,
-                y: [0, -5, 0],
-              }}
-              transition={{
-                opacity: {
-                  duration: 0.6,
-                  delay: 0.45,
-                },
-                y: {
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                },
-              }}
-              className="
-                absolute
-                left-4
-                top-4
-                z-20
-                flex
-                max-w-[calc(100%-2rem)]
-                items-center
-                gap-3
-                rounded-2xl
-                border
-                border-white/70
-                bg-white/95
-                px-3
-                py-2.5
-                shadow-[0_12px_30px_rgba(15,23,42,0.18)]
-                backdrop-blur-xl
-                sm:left-8
-                sm:top-8
-                sm:px-4
-                sm:py-3
-              "
-            >
-
-              {/* PHOTO */}
-
-              <span
-                className="
-                  flex
-                  size-10
-                  shrink-0
-                  overflow-hidden
-                  rounded-full
-                  border
-                  border-[#B08A24]/40
-                  bg-[#1d355f]
-                  sm:size-11
-                "
-              >
-                <img
-                  src={heroImg1}
-                  alt="Crescent campus"
-                  className="
-                    h-full
-                    w-full
-                    object-cover
-                  "
-                />
-              </span>
-
-              <span className="min-w-0">
-
-                <span
-                  className="
-                    block
-                    text-[15px]
-                    font-bold
-                    text-[#111111]
-                    sm:text-base
-                  "
-                >
-                  UGC
-                </span>
-
-                <span
-                  className="
-                    block
-                    text-[11px]
-                    font-medium
-                    text-[#111111]/65
-                    sm:text-[13px]
-                  "
-                >
-                  Approved programmes
-                </span>
-
-              </span>
-
-            </motion.div>
-
-            {/* =================================================
-                APPLY FLOATING CARD
-            ================================================== */}
-
-            {/* <motion.div
-              initial={{
-                opacity: 0,
-                y: 12,
-              }}
-              animate={{
-                opacity: 1,
-                y: [0, -5, 0],
-              }}
-              transition={{
-                opacity: {
-                  duration: 0.6,
-                  delay: 0.6,
-                },
-                y: {
-                  duration: 5.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                },
-              }}
-              className="
-                absolute
-                bottom-4
-                right-4
-                z-20
-                flex
-                max-w-[calc(100%-2rem)]
-                items-center
-                gap-3
-                rounded-2xl
-                border
-                border-white/60
-                bg-white/95
-                px-3
-                py-2.5
-                shadow-[0_12px_30px_rgba(15,23,42,0.18)]
-                backdrop-blur-xl
-                sm:bottom-8
-                sm:right-8
-                sm:px-4
-                sm:py-3
-              "
-            >
-
-              <span
-                className="
-                  flex
-                  size-10
-                  shrink-0
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-[#8f1d1d]
-                  text-white
-                  sm:size-11
-                "
-              >
-                <Users className="size-5" />
-              </span>
-
-              <span className="min-w-0">
-
-                <span
-                  className="
-                    block
-                    text-[15px]
-                    font-bold
-                    capitalize
-                    text-[#111111]
-                    sm:text-base
-                  "
-                >
-                  Apply Now
-                </span>
-
-                <span
-                  className="
-                    block
-                    text-[11px]
-                    font-medium
-                    text-[#111111]/65
-                    sm:text-[13px]
-                  "
-                >
-                  Crescent Education
-                </span>
-
-              </span>
-
-            </motion.div> */}
-
           </div>
+
+          {/* =================================================
+              UGC FLOATING CARD
+          ================================================== */}
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 12,
+            }}
+            animate={{
+              opacity: 1,
+              y: [0, -5, 0],
+            }}
+            transition={{
+              opacity: {
+                duration: 0.6,
+                delay: 0.45,
+              },
+              y: {
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              },
+            }}
+            className="
+              absolute
+              left-4
+              top-4
+              z-20
+              flex
+              max-w-[calc(100%-2rem)]
+              items-center
+              gap-3
+              rounded-2xl
+              border
+              border-white/70
+              bg-white/95
+              px-3
+              py-2.5
+              shadow-[0_12px_30px_rgba(15,23,42,0.18)]
+              backdrop-blur-xl
+              sm:left-8
+              sm:top-8
+              sm:px-4
+              sm:py-3
+            "
+          >
+
+            {/* PHOTO */}
+
+            <span
+              className="
+                flex
+                size-10
+                shrink-0
+                overflow-hidden
+                rounded-full
+                border
+                border-[#B08A24]/40
+                bg-[#1d355f]
+                sm:size-11
+              "
+            >
+              <img
+                src={ugc}
+                alt="Crescent campus"
+                className="
+                  h-full
+                  w-full
+                  object-cover
+                "
+              />
+            </span>
+
+            <span className="min-w-0">
+
+              <span
+                className="
+                  block
+                  text-[15px]
+                  font-bold
+                  text-[#111111]
+                  sm:text-base
+                "
+              >
+                UGC
+              </span>
+
+              <span
+                className="
+                  block
+                  text-[11px]
+                  font-medium
+                  text-[#111111]/65
+                  sm:text-[13px]
+                "
+              >
+                Approved programmes
+              </span>
+
+            </span>
+
+          </motion.div>
 
         </motion.div>
 
       </div>
+
     </section>
   );
 }

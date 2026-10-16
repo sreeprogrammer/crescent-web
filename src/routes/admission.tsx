@@ -11,6 +11,8 @@ import {
 } from "lucide-react";
 
 import overviewImage from "@/assets/campus-1.jpg";
+import admissionNotification from "@/assets/Admission_Notification_AY_2023.pdf";
+import programmeBrochure from "@/assets/programme-brochure.pdf";
 
 /* =========================================================
    ROUTE
@@ -42,6 +44,7 @@ function AdmissionQuickLinks() {
       icon: UserPlus,
       href: "#registration",
       accent: "#8F3030",
+      external: false,
     },
     {
       number: "02",
@@ -50,22 +53,25 @@ function AdmissionQuickLinks() {
       icon: LogIn,
       href: "#login",
       accent: "#30265F",
+      external: false,
     },
     {
       number: "03",
       title: "Documents Required",
       description: "Check required documents",
       icon: FileText,
-      href: "#documents",
+      href: programmeBrochure,
       accent: "#B08A24",
+      external: true,
     },
     {
       number: "04",
       title: "Admission Notification",
       description: "View admission updates",
       icon: Bell,
-      href: "#notification",
+      href: admissionNotification,
       accent: "#427D76",
+      external: true,
     },
   ];
 
@@ -119,11 +125,14 @@ function AdmissionQuickLinks() {
         >
           {links.map((item) => {
             const Icon = item.icon;
+            const isExternal = item.external;
 
             return (
               <a
                 key={item.number}
                 href={item.href}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noreferrer" : undefined}
                 className="
                   group
                   relative
@@ -590,7 +599,9 @@ function AdmissionOverview() {
               </Link>
 
               <a
-                href="#notification"
+                href={admissionNotification}
+                target="_blank"
+                rel="noreferrer"
                 className="
                   inline-flex
                   w-full

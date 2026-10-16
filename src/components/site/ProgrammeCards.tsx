@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
-  certificationCourses,
-  pgProgrammes,
-  ugProgrammes,
-} from "@/data/site";
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { certificationCourses, pgProgrammes, ugProgrammes } from "@/data/site";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
-import { Link } from "@tanstack/react-router";
-import { AnimatePresence, motion } from "framer-motion";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   BookOpen,
@@ -17,7 +20,6 @@ import {
   Download,
   GraduationCap,
   Sparkles,
-  X,
 } from "lucide-react";
 
 import { Reveal } from "./Reveal";
@@ -40,8 +42,7 @@ import programmeBrochure from "@/assets/programme-brochure.pdf";
 ========================================================= */
 
 const circularFont = {
-  fontFamily:
-    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
+  fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
 };
 
 /* =========================================================
@@ -68,6 +69,8 @@ type ProgrammeCardProps = {
   type: "ug" | "pg" | "certification";
 };
 
+type ProgrammeCategory = "ug" | "pg" | "certification";
+
 /* =========================================================
    PROGRAMME ROUTES
 ========================================================= */
@@ -87,18 +90,81 @@ function getProgrammeRoute(programme: Programme) {
     return "/mba";
   }
 
-  return "/programmes";
+  return undefined;
+}
+
+function getProgrammeSlug(programme: Programme) {
+  return programme.name
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-");
+}
+
+function ProgrammeExploreLink({
+  programme,
+  programmeRoute,
+}: {
+  programme: Programme;
+  programmeRoute: ReturnType<typeof getProgrammeRoute>;
+}) {
+  const className = `
+    inline-flex
+    h-9
+    flex-1
+    cursor-pointer
+    items-center
+    justify-center
+    gap-2
+    whitespace-nowrap
+    rounded-full
+    border
+    border-[#172554]/20
+    bg-white
+    px-2.5
+    text-[clamp(0.68rem,0.62rem+0.18vw,0.82rem)]
+    font-semibold
+    text-[#111111]
+    shadow-none
+    transition-all
+    duration-300
+    hover:border-[#172554]
+    hover:bg-[#172554]
+    hover:text-white
+    focus-visible:outline-none
+    focus-visible:ring-1
+    focus-visible:ring-ring
+  `;
+  const children = (
+    <>
+      Explore
+      <ArrowRight className="size-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" />
+    </>
+  );
+
+  if (programmeRoute) {
+    return (
+      <Link to={programmeRoute} className={className}>
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <Link
+      to="/course-info/$courseSlug"
+      params={{ courseSlug: getProgrammeSlug(programme) }}
+      className={className}
+    >
+      {children}
+    </Link>
+  );
 }
 
 /* =========================================================
    PROGRAMME CARD
 ========================================================= */
 
-function ProgrammeCard({
-  programme,
-  index,
-  type,
-}: ProgrammeCardProps) {
+function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
   const [showBrochureForm, setShowBrochureForm] = useState(false);
   const [brochureUnlocked, setBrochureUnlocked] = useState(false);
 
@@ -239,11 +305,7 @@ function ProgrammeCard({
                 text-[#111111]
               "
             >
-              {isCertification
-                ? "Certification"
-                : isPG
-                  ? "Postgraduate"
-                  : "Undergraduate"}
+              {isCertification ? "Certification" : isPG ? "Postgraduate" : "Undergraduate"}
             </span>
           </div>
 
@@ -359,9 +421,7 @@ function ProgrammeCard({
                 >
                   <Download className="size-3.5 shrink-0 text-[#8F1D1D]" />
 
-                  <span className="truncate">
-                    Download Brochure
-                  </span>
+                  <span className="truncate">Download Brochure</span>
                 </button>
               ) : (
                 <a
@@ -390,9 +450,7 @@ function ProgrammeCard({
                 >
                   <Download className="size-3.5 shrink-0" />
 
-                  <span className="truncate">
-                    Download Brochure
-                  </span>
+                  <span className="truncate">Download Brochure</span>
                 </a>
               )}
             </div>
@@ -470,34 +528,7 @@ function ProgrammeCard({
           <div className="relative mt-auto flex gap-1.5 pt-3">
             {/* EXPLORE */}
 
-            <Button
-              variant="outline"
-              size="pill"
-              className="
-                h-9
-                flex-1
-                rounded-full
-                border-[#172554]/20
-                bg-white
-                px-2.5
-                text-[clamp(0.68rem,0.62rem+0.18vw,0.82rem)]
-                font-semibold
-                text-[#111111]
-                shadow-none
-                transition-all
-                duration-300
-                hover:border-[#172554]
-                hover:bg-[#172554]
-                hover:text-white
-              "
-              asChild
-            >
-              <Link to={programmeRoute}>
-                Explore
-
-                <ArrowRight className="size-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" />
-              </Link>
-            </Button>
+            <ProgrammeExploreLink programme={programme} programmeRoute={programmeRoute} />
 
             {/* APPLY */}
 
@@ -521,12 +552,8 @@ function ProgrammeCard({
               "
               asChild
             >
-              <Link
-                to="/admission"
-                hash="how-to-apply"
-              >
+              <Link to="/admission" hash="how-to-apply">
                 Apply Now
-
                 <ArrowRight className="size-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" />
               </Link>
             </Button>
@@ -559,272 +586,46 @@ function ProgrammeCard({
           BROCHURE ENQUIRY MODAL
       ======================================================= */}
 
-      <AnimatePresence>
-        {showBrochureForm && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="
-              fixed
-              inset-0
-              z-[100]
-              flex
-              items-center
-              justify-center
-              bg-[#0B1224]/80
-              px-4
-              py-5
-              backdrop-blur-md
-            "
-            onClick={() => setShowBrochureForm(false)}
-          >
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 20,
-                scale: 0.96,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                scale: 1,
-              }}
-              exit={{
-                opacity: 0,
-                y: 20,
-                scale: 0.96,
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 260,
-                damping: 24,
-              }}
-              className="
-                relative
-                max-h-[92vh]
-                w-full
-                max-w-lg
-                overflow-y-auto
-                rounded-[1.5rem]
-                border
-                border-white/20
-                bg-white
-                shadow-[0_30px_80px_rgba(0,0,0,0.3)]
-              "
-              onClick={(event) => event.stopPropagation()}
-            >
-              {/* ================================================= */}
-              {/* MODAL HEADER */}
-              {/* ================================================= */}
+      <Dialog open={showBrochureForm} onOpenChange={setShowBrochureForm}>
+        <DialogContent className="max-h-[90vh] overflow-y-auto rounded-[1.75rem] sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle className="font-display text-xl">
+              Download brochure
+            </DialogTitle>
+            <DialogDescription>
+              Share your details and an admission counsellor will call you back.
+            </DialogDescription>
+          </DialogHeader>
 
-              <div
-                className="
-                  relative
-                  overflow-hidden
-                  bg-[#172554]
-                  px-5
-                  py-5
-                "
-              >
-                {/* GOLD GLOW */}
-
-                <div
-                  className="
-                    pointer-events-none
-                    absolute
-                    -right-10
-                    -top-10
-                    size-28
-                    rounded-full
-                    bg-[#D4AF37]/15
-                    blur-2xl
-                  "
-                />
-
-                {/* RED GLOW */}
-
-                <div
-                  className="
-                    pointer-events-none
-                    absolute
-                    -bottom-8
-                    -left-8
-                    size-24
-                    rounded-full
-                    bg-[#8F1D1D]/25
-                    blur-2xl
-                  "
-                />
-
-                {/* CLOSE */}
-
-                <button
-                  type="button"
-                  onClick={() => setShowBrochureForm(false)}
-                  aria-label="Close enquiry form"
-                  className="
-                    absolute
-                    right-3
-                    top-3
-                    flex
-                    size-9
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-white/20
-                    bg-white/10
-                    text-white
-                    transition-all
-                    duration-300
-                    hover:bg-white/20
-                  "
-                >
-                  <X className="size-4" />
-                </button>
-
-                <div className="relative">
-                  <div className="mb-2 flex items-center gap-2">
-                    <span className="h-1 w-6 rounded-full bg-[#D4AF37]" />
-
-                    <span
-                      className="
-                        text-[clamp(0.6rem,0.55rem+0.18vw,0.75rem)]
-                        font-bold
-                        uppercase
-                        tracking-[0.2em]
-                        text-[#D4AF37]
-                      "
-                    >
-                      Programme Brochure
-                    </span>
-                  </div>
-
-                  <h2
-                    className="
-                      text-[clamp(1.3rem,1.1rem+0.7vw,1.8rem)]
-                      font-bold
-                      leading-tight
-                      text-white
-                    "
-                    style={circularFont}
-                  >
-                    Get the Programme Brochure
-                  </h2>
-
-                  <p
-                    className="
-                      mt-1
-                      max-w-sm
-                      text-[clamp(0.75rem,0.68rem+0.2vw,0.9rem)]
-                      leading-5
-                      text-white/65
-                    "
-                    style={circularFont}
-                  >
-                    Fill in your details to unlock the programme brochure.
-                  </p>
-                </div>
+          {!brochureUnlocked ? (
+            <EnquiryForm idPrefix="brochure" onSubmitted={handleBrochureSubmit} />
+          ) : (
+            <div className="rounded-[1rem] border border-[#D4AF37]/30 bg-[#fffaf0] p-5 text-center">
+              <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-[#172554] text-[#D4AF37]">
+                <CheckCircle2 className="size-6" />
               </div>
 
-              {/* ================================================= */}
-              {/* ENQUIRY FORM */}
-              {/* ================================================= */}
+              <h3 className="mt-3 text-[clamp(1rem,0.9rem+0.3vw,1.25rem)] font-bold text-[#111111]">
+                Brochure Unlocked
+              </h3>
 
-              {!brochureUnlocked ? (
-                <div className="p-5">
-                  <EnquiryForm
-                    language="en"
-                    onSubmitted={handleBrochureSubmit}
-                  />
-                </div>
-              ) : (
-                <div className="p-5">
-                  <div
-                    className="
-                      rounded-[1rem]
-                      border
-                      border-[#D4AF37]/30
-                      bg-[#fffaf0]
-                      p-5
-                      text-center
-                    "
-                  >
-                    <div
-                      className="
-                        mx-auto
-                        flex
-                        size-12
-                        items-center
-                        justify-center
-                        rounded-full
-                        bg-[#172554]
-                        text-[#D4AF37]
-                      "
-                    >
-                      <CheckCircle2 className="size-6" />
-                    </div>
+              <p className="mt-1 text-[clamp(0.72rem,0.65rem+0.2vw,0.85rem)] leading-5 text-black/60">
+                Your details have been submitted successfully.
+              </p>
 
-                    <h3
-                      className="
-                        mt-3
-                        text-[clamp(1rem,0.9rem+0.3vw,1.25rem)]
-                        font-bold
-                        text-[#111111]
-                      "
-                      style={circularFont}
-                    >
-                      Brochure Unlocked
-                    </h3>
-
-                    <p
-                      className="
-                        mt-1
-                        text-[clamp(0.72rem,0.65rem+0.2vw,0.85rem)]
-                        leading-5
-                        text-black/60
-                      "
-                      style={circularFont}
-                    >
-                      Your details have been submitted successfully.
-                    </p>
-
-                    <a
-                      href={programmeBrochure}
-                      download
-                      onClick={() => setShowBrochureForm(false)}
-                      className="
-                        mt-4
-                        inline-flex
-                        items-center
-                        justify-center
-                        gap-2
-                        rounded-full
-                        bg-[#8F1D1D]
-                        px-5
-                        py-3
-                        text-[clamp(0.7rem,0.65rem+0.18vw,0.85rem)]
-                        font-bold
-                        text-white
-                        shadow-[0_7px_18px_rgba(143,29,29,0.16)]
-                        transition-all
-                        duration-300
-                        hover:bg-[#172554]
-                      "
-                      style={circularFont}
-                    >
-                      <Download className="size-4" />
-
-                      Download PDF
-                    </a>
-                  </div>
-                </div>
-              )}
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <a
+                href={programmeBrochure}
+                download
+                onClick={() => setShowBrochureForm(false)}
+                className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-[#8F1D1D] px-5 py-3 text-[clamp(0.7rem,0.65rem+0.18vw,0.85rem)] font-bold text-white shadow-[0_7px_18px_rgba(143,29,29,0.16)] transition-all duration-300 hover:bg-[#172554]"
+              >
+                <Download className="size-4" />
+                Download PDF
+              </a>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
@@ -877,11 +678,7 @@ function ProgrammeSection({
                 text-[#8F1D1D]
               "
             >
-              {type === "ug"
-                ? "UG Programmes"
-                : type === "pg"
-                  ? "PG Programmes"
-                  : "Professional"}
+              {type === "ug" ? "UG Programmes" : type === "pg" ? "PG Programmes" : "Professional"}
             </span>
 
             <span className="size-1.5 shrink-0 rounded-full bg-[#D4AF37]" />
@@ -937,7 +734,6 @@ function ProgrammeSection({
           "
         >
           <BookOpen className="size-3 shrink-0 text-[#8F1D1D]" />
-
           {items.length} Programme
           {items.length > 1 ? "s" : ""}
         </div>
@@ -949,12 +745,7 @@ function ProgrammeSection({
 
       <div className="grid gap-2.5 md:grid-cols-2 lg:grid-cols-3">
         {items.map((programme, index) => (
-          <ProgrammeCard
-            key={programme.name}
-            programme={programme}
-            index={index}
-            type={type}
-          />
+          <ProgrammeCard key={programme.name} programme={programme} index={index} type={type} />
         ))}
       </div>
     </div>
@@ -965,11 +756,23 @@ function ProgrammeSection({
    MAIN PROGRAMME CARDS
 ========================================================= */
 
-export function ProgrammeCards({
-  withHeading = true,
-}: {
-  withHeading?: boolean;
-}) {
+export function ProgrammeCards({ withHeading = true }: { withHeading?: boolean }) {
+  const [activeCategory, setActiveCategory] = useState<ProgrammeCategory>("ug");
+  const hash = useRouterState({ select: (state) => state.location.hash });
+
+  useEffect(() => {
+    const category = hash.replace(/^#/, "");
+    if (category === "ug" || category === "pg" || category === "certification") {
+      setActiveCategory(category);
+    }
+  }, [hash]);
+
+  const categories: { id: ProgrammeCategory; label: string }[] = [
+    { id: "ug", label: "UG" },
+    { id: "pg", label: "PG" },
+    { id: "certification", label: "Certification" },
+  ];
+
   return (
     <Section
       id="programmes"
@@ -997,42 +800,63 @@ export function ProgrammeCards({
       {/* PROGRAMME SECTIONS */}
       {/* ================================================= */}
 
-      <div
-        className={
-          withHeading
-            ? "mt-1.5 space-y-2.5"
-            : "space-y-2.5"
-        }
-      >
-        {/* UG */}
+      <div className={withHeading ? "mt-1.5" : ""}>
+        <div
+          className="mx-auto mb-5 mt-4 flex flex-wrap justify-center gap-2 px-3 py-2"
+          role="tablist"
+          aria-label="Programme category"
+        >
+          {categories.map((category) => (
+            <button
+              key={category.id}
+              id={category.id}
+              type="button"
+              role="tab"
+              aria-selected={activeCategory === category.id}
+              aria-controls="programme-category-panel"
+              onClick={() => setActiveCategory(category.id)}
+              className={`rounded-full border px-5 py-2.5 text-xs font-bold transition-colors ${
+                activeCategory === category.id
+                  ? "border-[#172554] bg-[#172554] text-white"
+                  : "border-[#172554]/15 bg-white text-[#172554] hover:border-[#D4AF37] hover:bg-[#F4F1E8]"
+              }`}
+            >
+              {category.label}
+            </button>
+          ))}
+        </div>
 
-        <ProgrammeSection
-          id="ug"
-          title="Undergraduate Programmes"
-          subtitle="Flexible degree pathways for learners beginning their higher education journey."
-          type="ug"
-          items={ugProgrammes}
-        />
+        <div id="programme-category-panel" role="tabpanel" aria-labelledby={activeCategory}>
+          {activeCategory === "ug" && (
+            <ProgrammeSection
+              id="ug-programmes"
+              title="Undergraduate Programmes"
+              subtitle="Flexible degree pathways for learners beginning their higher education journey."
+              type="ug"
+              items={ugProgrammes}
+            />
+          )}
 
-        {/* PG */}
+          {activeCategory === "pg" && (
+            <ProgrammeSection
+              id="pg-programmes"
+              title="Postgraduate Programmes"
+              subtitle="Advanced programmes for career growth, academic development and professional leadership."
+              type="pg"
+              items={pgProgrammes}
+            />
+          )}
 
-        <ProgrammeSection
-          id="pg"
-          title="Postgraduate Programmes"
-          subtitle="Advanced programmes for career growth, academic development and professional leadership."
-          type="pg"
-          items={pgProgrammes}
-        />
-
-        {/* CERTIFICATION */}
-
-        <ProgrammeSection
-          id="certification"
-          title="Certified Programme"
-          subtitle="Short-term, career-focused learning designed to build practical digital skills."
-          type="certification"
-          items={certificationCourses}
-        />
+          {activeCategory === "certification" && (
+            <ProgrammeSection
+              id="certification-programmes"
+              title="Certified Programme"
+              subtitle="Short-term, career-focused learning designed to build practical digital skills."
+              type="certification"
+              items={certificationCourses}
+            />
+          )}
+        </div>
       </div>
 
       {/* ================================================= */}
@@ -1161,12 +985,8 @@ export function ProgrammeCards({
             "
             asChild
           >
-            <Link
-              to="/admission"
-              hash="how-to-apply"
-            >
+            <Link to="/admission" hash="how-to-apply">
               Apply Now
-
               <ArrowRight className="size-3.5 shrink-0" />
             </Link>
           </Button>

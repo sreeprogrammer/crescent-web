@@ -5,7 +5,6 @@ import {
   ArrowLeft,
   ArrowRight,
   BookOpen,
-  ExternalLink,
   GraduationCap,
   Mail,
   Phone,
@@ -13,74 +12,25 @@ import {
   X,
 } from "lucide-react";
 
-import campusPhoto from "@/assets/campus-1.jpg";
-import programmeBrochure from "@/assets/programme-brochure.pdf";
 import { SiteLayout } from "@/components/site/SiteLayout";
+import { getFacultyForCourse, type FacultyProfile } from "@/data/facultyProfiles";
 
 const circularFont = {
-  fontFamily:
-    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
+  fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
 };
 
 export const Route = createFileRoute("/mca/people")({
   component: MCAPeoplePage,
 });
 
-type Faculty = {
-  name: string;
-  designation: string;
-  natureOfEmployment: string;
-  qualification: string;
-  phone: string;
-  email: string;
-  photo: string;
-  profileUrl: string;
-};
-
-const faculty: Faculty[] = [
-  {
-    name: "Dr.E.Jeslin Renjith",
-    designation: "Assistant Professor",
-    natureOfEmployment: "Regular",
-    qualification: "MCA, M.Phil, SET, Ph.D",
-    phone: "9790965499",
-    email: "jeslin@crescent.education",
-    photo: campusPhoto,
-    profileUrl: programmeBrochure,
-  },
-  {
-    name: "Maheswari P",
-    designation: "Assistant Professor",
-    natureOfEmployment: "Regular",
-    qualification: "MCA., M.Phil.",
-    phone: "9080147779",
-    email: "maheswari@crescent.education",
-    photo: campusPhoto,
-    profileUrl: programmeBrochure,
-  },
-  {
-    name: "S.MANJULA",
-    designation: "Assistant Professor",
-    natureOfEmployment: "Regular",
-    qualification: "MCA., SET., Ph.D (Pursuing)",
-    phone: "9962582595",
-    email: "Manjula.s@crescent.education",
-    photo: campusPhoto,
-    profileUrl: programmeBrochure,
-  },
-];
+const faculty = getFacultyForCourse("mca");
 
 function MCAPeoplePage() {
-  const [selectedFaculty, setSelectedFaculty] = useState<Faculty | null>(
-    null,
-  );
+  const [selectedFaculty, setSelectedFaculty] = useState<FacultyProfile | null>(null);
 
   return (
     <SiteLayout>
-      <div
-        style={circularFont}
-        className="min-h-screen bg-white text-[#111111]"
-      >
+      <div style={circularFont} className="min-h-screen bg-white text-[#111111]">
         {/* HEADER */}
         <section className="bg-gradient-to-r from-[#6b4c9a] via-[#64438f] to-[#533579] text-white">
           <div className="mx-auto max-w-6xl px-5 py-3.5 sm:px-6 sm:py-4">
@@ -100,13 +50,11 @@ function MCAPeoplePage() {
                 Postgraduate Programme
               </div>
 
-              <h1 className="text-xl font-bold leading-tight tracking-tight sm:text-2xl">
-                People
-              </h1>
+              <h1 className="text-xl font-bold leading-tight tracking-tight sm:text-2xl">People</h1>
 
               <p className="mt-1 max-w-3xl text-[11px] leading-4.5 text-white/75 sm:text-xs">
-                Meet the faculty members supporting teaching, academic
-                guidance and learner development in MCA.
+                Meet the faculty members supporting teaching, academic guidance and learner
+                development in MCA.
               </p>
             </div>
           </div>
@@ -116,27 +64,15 @@ function MCAPeoplePage() {
         <section className="border-b border-black/5 bg-white">
           <div className="mx-auto max-w-6xl px-5 py-2.5 sm:px-6">
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-              <QuickNav
-                title="Overview"
-                href="/mca"
-                active={false}
-              />
+              <QuickNav title="Overview" href="/mca" active={false} />
 
-              <QuickNav
-                title="People"
-                href="/mca/people"
-                active
-              />
+              <QuickNav title="People" href="/mca/people" active />
 
-              <QuickNav
-                title="Syllabus"
-                href="/mca/syllabus"
-                active={false}
-              />
+              <QuickNav title="Syllabus" href="/mca/syllabus" active={false} />
 
               <QuickNav
                 title="Eligibility & Fee"
-                href="/mca/eligibility-fee"
+                href="/course-info/mca/eligibility-fee"
                 active={false}
               />
             </div>
@@ -152,13 +88,10 @@ function MCAPeoplePage() {
               Faculty Team
             </div>
 
-            <h2 className="text-lg font-bold leading-tight sm:text-xl">
-              Faculty — MCA
-            </h2>
+            <h2 className="text-lg font-bold leading-tight sm:text-xl">Faculty — MCA</h2>
 
             <p className="mt-0.5 max-w-2xl text-[11px] leading-4 text-black/60">
-              Academic professionals supporting teaching, guidance and
-              learner development.
+              Academic professionals supporting teaching, guidance and learner development.
             </p>
           </div>
 
@@ -202,9 +135,7 @@ function MCAPeoplePage() {
                     Faculty
                   </p>
 
-                  <h3 className="mt-1 text-sm font-bold leading-5 text-[#111111]">
-                    {person.name}
-                  </h3>
+                  <h3 className="mt-1 text-sm font-bold leading-5 text-[#111111]">{person.name}</h3>
 
                   <p className="mt-0.5 text-[10px] font-semibold text-[#6b4c9a]">
                     {person.designation}
@@ -221,9 +152,7 @@ function MCAPeoplePage() {
                     className="group/info relative mt-3 inline-flex items-center gap-1.5 text-[10px] font-semibold text-[#111111]"
                   >
                     More Info
-
                     <ArrowRight className="size-3 text-[#D4AF37] transition-transform duration-300 group-hover/info:translate-x-0.5" />
-
                     <span className="absolute -bottom-1 left-0 right-0 h-0.5 origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover/info:scale-x-100" />
                   </button>
                 </div>
@@ -236,8 +165,8 @@ function MCAPeoplePage() {
             <BookOpen className="size-4 shrink-0 text-[#6b4c9a]" />
 
             <p className="text-[9px] leading-4 text-black/60">
-              Our MCA faculty team supports academic learning, guidance and
-              the overall development of learners.
+              Our MCA faculty team supports academic learning, guidance and the overall development
+              of learners.
             </p>
           </div>
         </main>
@@ -331,20 +260,14 @@ function MCAPeoplePage() {
                   </div>
 
                   <div className="overflow-hidden rounded-xl border border-black/7">
-                    <DetailRow
-                      label="Designation"
-                      value={selectedFaculty.designation}
-                    />
+                    <DetailRow label="Designation" value={selectedFaculty.designation} />
 
                     <DetailRow
                       label="Nature of Employment"
                       value={selectedFaculty.natureOfEmployment}
                     />
 
-                    <DetailRow
-                      label="Qualification"
-                      value={selectedFaculty.qualification}
-                    />
+                    <DetailRow label="Qualification" value={selectedFaculty.qualification} />
 
                     {/* PHONE */}
                     <div className="grid grid-cols-1 border-b border-black/6 bg-[#F5F1E9]/50 px-3.5 py-3 sm:grid-cols-[170px_1fr] sm:gap-4">
@@ -397,27 +320,25 @@ function MCAPeoplePage() {
                   {/* OFFICIAL PROFILE */}
                   <div className="mt-4 flex flex-col gap-2 border-t border-black/5 pt-4 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                      <p className="text-[10px] font-semibold text-[#111111]">
-                        Faculty Profile
-                      </p>
+                      <p className="text-[10px] font-semibold text-[#111111]">Faculty Profile</p>
 
                       <p className="mt-0.5 text-[9px] text-black/50">
                         View the faculty profile document.
                       </p>
                     </div>
 
-                    <a
-                      href={selectedFaculty.profileUrl}
-                      target="_blank"
-                      rel="noreferrer"
+                    <Link
+                      to="/faculty-profile/$courseSlug/$facultySlug"
+                      params={{
+                        courseSlug: selectedFaculty.courseSlug,
+                        facultySlug: selectedFaculty.slug,
+                      }}
                       className="group relative inline-flex shrink-0 items-center justify-center gap-1.5 rounded-lg bg-[#6b4c9a] px-3.5 py-2 text-[9px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5"
                     >
                       View Official Profile
-
-                      <ExternalLink className="size-3 text-[#D4AF37]" />
-
+                      <ArrowRight className="size-3 text-[#D4AF37]" />
                       <span className="absolute bottom-0 left-2 right-2 h-0.5 origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </motion.div>
@@ -430,29 +351,17 @@ function MCAPeoplePage() {
 }
 
 /* QUICK NAV */
-function QuickNav({
-  title,
-  href,
-  active,
-}: {
-  title: string;
-  href: string;
-  active: boolean;
-}) {
+function QuickNav({ title, href, active }: { title: string; href: string; active: boolean }) {
   return (
     <Link
       to={href}
       className={`group relative rounded-lg border px-3 py-2.5 transition-all duration-300 ${
-        active
-          ? "border-[#6b4c9a]/20 bg-[#6b4c9a]/5"
-          : "border-black/6 bg-white hover:bg-[#F5F1E9]"
+        active ? "border-[#6b4c9a]/20 bg-[#6b4c9a]/5" : "border-black/6 bg-white hover:bg-[#F5F1E9]"
       }`}
     >
       <div className="flex items-center justify-between gap-2">
         <span
-          className={`text-[9px] font-semibold ${
-            active ? "text-[#6b4c9a]" : "text-[#111111]"
-          }`}
+          className={`text-[9px] font-semibold ${active ? "text-[#6b4c9a]" : "text-[#111111]"}`}
         >
           {title}
         </span>
@@ -474,22 +383,12 @@ function QuickNav({
 }
 
 /* DETAIL ROW */
-function DetailRow({
-  label,
-  value,
-}: {
-  label: string;
-  value: React.ReactNode;
-}) {
+function DetailRow({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <div className="grid grid-cols-1 border-b border-black/6 bg-white px-3.5 py-3 sm:grid-cols-[170px_1fr] sm:gap-4">
-      <div className="text-[9px] font-semibold text-[#6b4c9a]">
-        {label}
-      </div>
+      <div className="text-[9px] font-semibold text-[#6b4c9a]">{label}</div>
 
-      <div className="mt-1 text-[10px] font-medium leading-4 text-[#111111] sm:mt-0">
-        {value}
-      </div>
+      <div className="mt-1 text-[10px] font-medium leading-4 text-[#111111] sm:mt-0">{value}</div>
     </div>
   );
 }
