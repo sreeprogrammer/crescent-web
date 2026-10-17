@@ -9,15 +9,13 @@ import {
   FileText,
   GraduationCap,
   Headphones,
-  Mail,
-  Phone,
   ShieldCheck,
-  UserRound,
   X,
 } from "lucide-react";
 
 import merlinePhoto from "@/assets/merline.jpeg";
 import { SiteLayout } from "@/components/site/SiteLayout";
+import { EnquiryForm } from "@/components/site/EnquiryForm";
 
 /* =========================================================
    FONT
@@ -723,305 +721,16 @@ function StudentsCornerPage() {
 
                 {/* FORM */}
 
-                <form
-                  className="space-y-4 px-5 py-6"
-                  onSubmit={(event) => {
-                    event.preventDefault();
-                    setIsComplaintOpen(false);
-                  }}
-                >
+                <div className="px-5 py-6">
+                  <EnquiryForm
+                    idPrefix="student-complaint"
+                    submissionType="student-complaint"
+                    onSubmitted={() => setIsComplaintOpen(false)}
+                  />
 
-                  {/* NAME */}
-
-                  <div>
-
-                    <label
-                      htmlFor="student-name"
-                      className="
-                        mb-1.5
-                        block
-                        text-[clamp(0.75rem,0.7rem+0.15vw,0.88rem)]
-                        font-bold
-                        text-[#111111]
-                      "
-                    >
-                      Name of Student
-                    </label>
-
-                    <div className="relative">
-
-                      <UserRound className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#6B4C9A]" />
-
-                      <input
-                        id="student-name"
-                        name="studentName"
-                        type="text"
-                        required
-                        placeholder="Enter your name"
-                        className="
-                          h-11
-                          w-full
-                          rounded-lg
-                          border
-                          border-[#dedbd6]
-                          bg-[#F8F7F4]
-                          pl-10
-                          pr-3
-                          text-[clamp(0.8rem,0.75rem+0.15vw,0.95rem)]
-                          text-[#111111]
-                          outline-none
-                          transition-all
-                          placeholder:text-black/35
-                          focus:border-[#6B4C9A]
-                          focus:bg-white
-                          focus:ring-2
-                          focus:ring-[#6B4C9A]/10
-                        "
-                      />
-
-                    </div>
-                  </div>
-
-                  {/* RRN + PHONE */}
-
-                  <div className="grid gap-4 sm:grid-cols-2">
-
-                    <div>
-
-                      <label
-                        htmlFor="student-rrn"
-                        className="
-                          mb-1.5
-                          block
-                          text-[clamp(0.75rem,0.7rem+0.15vw,0.88rem)]
-                          font-bold
-                          text-[#111111]
-                        "
-                      >
-                        RRN
-                      </label>
-
-                      <input
-                        id="student-rrn"
-                        name="rrn"
-                        type="text"
-                        required
-                        placeholder="Enter RRN"
-                        className="
-                          h-11
-                          w-full
-                          rounded-lg
-                          border
-                          border-[#dedbd6]
-                          bg-[#F8F7F4]
-                          px-3
-                          text-[clamp(0.8rem,0.75rem+0.15vw,0.95rem)]
-                          text-[#111111]
-                          outline-none
-                          transition-all
-                          placeholder:text-black/35
-                          focus:border-[#2F6F4E]
-                          focus:bg-white
-                          focus:ring-2
-                          focus:ring-[#2F6F4E]/10
-                        "
-                      />
-
-                    </div>
-
-                    <div>
-
-                      <label
-                        htmlFor="student-phone"
-                        className="
-                          mb-1.5
-                          block
-                          text-[clamp(0.75rem,0.7rem+0.15vw,0.88rem)]
-                          font-bold
-                          text-[#111111]
-                        "
-                      >
-                        Phone
-                      </label>
-
-                      <div className="relative">
-
-                        <Phone className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#8F1D1D]" />
-
-                        <input
-                          id="student-phone"
-                          name="phone"
-                          type="tel"
-                          required
-                          placeholder="Enter phone number"
-                          className="
-                            h-11
-                            w-full
-                            rounded-lg
-                            border
-                            border-[#dedbd6]
-                            bg-[#F8F7F4]
-                            pl-10
-                            pr-3
-                            text-[clamp(0.8rem,0.75rem+0.15vw,0.95rem)]
-                            text-[#111111]
-                            outline-none
-                            transition-all
-                            placeholder:text-black/35
-                            focus:border-[#8F1D1D]
-                            focus:bg-white
-                            focus:ring-2
-                            focus:ring-[#8F1D1D]/10
-                          "
-                        />
-
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* EMAIL */}
-
-                  <div>
-
-                    <label
-                      htmlFor="student-email"
-                      className="
-                        mb-1.5
-                        block
-                        text-[clamp(0.75rem,0.7rem+0.15vw,0.88rem)]
-                        font-bold
-                        text-[#111111]
-                      "
-                    >
-                      Email
-                    </label>
-
-                    <div className="relative">
-
-                      <Mail className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#B08A24]" />
-
-                      <input
-                        id="student-email"
-                        name="email"
-                        type="email"
-                        required
-                        placeholder="Enter email address"
-                        className="
-                          h-11
-                          w-full
-                          rounded-lg
-                          border
-                          border-[#dedbd6]
-                          bg-[#F8F7F4]
-                          pl-10
-                          pr-3
-                          text-[clamp(0.8rem,0.75rem+0.15vw,0.95rem)]
-                          text-[#111111]
-                          outline-none
-                          transition-all
-                          placeholder:text-black/35
-                          focus:border-[#B08A24]
-                          focus:bg-white
-                          focus:ring-2
-                          focus:ring-[#B08A24]/10
-                        "
-                      />
-
-                    </div>
-                  </div>
-
-                  {/* GRIEVANCE */}
-
-                  <div>
-
-                    <label
-                      htmlFor="student-grievance"
-                      className="
-                        mb-1.5
-                        block
-                        text-[clamp(0.75rem,0.7rem+0.15vw,0.88rem)]
-                        font-bold
-                        text-[#111111]
-                      "
-                    >
-                      State Your Grievance
-                    </label>
-
-                    <textarea
-                      id="student-grievance"
-                      name="grievance"
-                      required
-                      rows={5}
-                      placeholder="State your grievance clearly..."
-                      className="
-                        w-full
-                        resize-none
-                        rounded-lg
-                        border
-                        border-[#dedbd6]
-                        bg-[#F8F7F4]
-                        px-3
-                        py-3
-                        text-[clamp(0.8rem,0.75rem+0.15vw,0.95rem)]
-                        leading-6
-                        text-[#111111]
-                        outline-none
-                        transition-all
-                        placeholder:text-black/35
-                        focus:border-[#30265F]
-                        focus:bg-white
-                        focus:ring-2
-                        focus:ring-[#30265F]/10
-                      "
-                    />
-
-                  </div>
-
-                  {/* SUBMIT */}
-
-                  <button
-                    type="submit"
-                    className="
-                      group
-                      relative
-                      flex
-                      h-11
-                      w-full
-                      items-center
-                      justify-center
-                      gap-2
-                      overflow-hidden
-                      rounded-lg
-                      bg-[#17234B]
-                      text-[clamp(0.8rem,0.75rem+0.15vw,0.95rem)]
-                      font-bold
-                      text-white
-                      transition-all
-                      duration-300
-                      hover:-translate-y-0.5
-                    "
-                  >
-                    <span>Submit</span>
-
-                    <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-
-                    <span className="absolute bottom-0 left-5 right-5 h-0.5 origin-left scale-x-0 bg-[#D8B84C] transition-transform duration-300 group-hover:scale-x-100" />
-                  </button>
-
-                  {/* NOTE */}
-
-                  <div className="rounded-lg border-l-[3px] border-[#D8B84C] bg-[#F5F1E9] px-3.5 py-3">
-
-                    <p
-                      className="
-                        text-[clamp(0.75rem,0.7rem+0.15vw,0.88rem)]
-                        leading-5
-                        text-[#111111]/75
-                      "
-                    >
-                      <span className="font-bold text-[#8F1D1D]">
-                        Note:
-                      </span>{" "}
+                  <div className="mt-5 rounded-lg border-l-[3px] border-[#D8B84C] bg-[#F5F1E9] px-3.5 py-3">
+                    <p className="text-[clamp(0.75rem,0.7rem+0.15vw,0.88rem)] leading-5 text-[#111111]/75">
+                      <span className="font-bold text-[#8F1D1D]">Note:</span>{" "}
                       You can also email your grievance to:{" "}
                       <a
                         href="mailto:cdoesupport@crescent.education"
@@ -1031,9 +740,8 @@ function StudentsCornerPage() {
                       </a>{" "}
                       or submit your grievance in person to the Nodal Officer.
                     </p>
-
                   </div>
-                </form>
+                </div>
               </motion.div>
             </motion.div>
           )}

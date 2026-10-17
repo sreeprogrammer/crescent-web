@@ -13,11 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import {
-  pgProgrammes,
-  ugProgrammes,
-  certificationProgrammes,
-} from "@/data/site";
+import { pgProgrammes, ugProgrammes, certificationProgrammes } from "@/data/site";
 
 // ==================================================
 // TYPES
@@ -25,6 +21,7 @@ import {
 
 interface EnquiryFormProps {
   idPrefix?: string;
+  submissionType?: "enquiry" | "student-complaint";
   onSubmitted?: () => void;
 }
 
@@ -39,6 +36,7 @@ interface ContactApiResponse {
 
 export function EnquiryForm({
   idPrefix = "enq",
+  submissionType = "enquiry",
   onSubmitted,
 }: EnquiryFormProps) {
   // ------------------------------------------------
@@ -46,6 +44,7 @@ export function EnquiryForm({
   // ------------------------------------------------
 
   const [programme, setProgramme] = useState("");
+  const [rrn, setRrn] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -64,9 +63,7 @@ export function EnquiryForm({
   // SUBMIT FORM
   // ==================================================
 
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement>
-  ) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Prevent duplicate submissions
@@ -80,8 +77,10 @@ export function EnquiryForm({
       return;
     }
 
+    const isStudentComplaint = submissionType === "student-complaint";
+
     // Programme validation
-    if (!programme.trim()) {
+    if (!isStudentComplaint && !programme.trim()) {
       setError("Please select a programme.");
       return;
     }
@@ -96,6 +95,7 @@ export function EnquiryForm({
       // ----------------------------------------------
 
       const formData = new FormData(form);
+      const complaintRrn = String(formData.get("rrn") || "").trim();
 
       // ----------------------------------------------
       // CREATE SUBMISSION ID
@@ -106,9 +106,7 @@ export function EnquiryForm({
       const submissionId =
         typeof globalThis.crypto?.randomUUID === "function"
           ? globalThis.crypto.randomUUID()
-          : `${Date.now()}-${Math.random()
-              .toString(36)
-              .slice(2)}-${Math.random()
+          : `${Date.now()}-${Math.random().toString(36).slice(2)}-${Math.random()
               .toString(36)
               .slice(2)}`;
 
@@ -118,45 +116,41 @@ export function EnquiryForm({
 
       const data = {
         submissionId,
+        submissionType,
 
         name: String(formData.get("name") || "").trim(),
 
         email: String(formData.get("email") || "").trim(),
 
-        phonenumber: String(
-          formData.get("phonenumber") || ""
-        ).trim(),
+        phonenumber: String(formData.get("phonenumber") || "").trim(),
 
-        program: programme.trim(),
+        rrn: complaintRrn,
 
-        message: String(
-          formData.get("message") || ""
-        ).trim(),
+        program: isStudentComplaint ? "Student Complaint" : programme.trim(),
+
+        message: String(formData.get("message") || "").trim(),
       };
 
       // ----------------------------------------------
       // API URL
       // ----------------------------------------------
 
-      const API_URL = (
-        import.meta.env.VITE_CONTACT_API_URL ||
-        "http://localhost:5000"
-      ).replace(/\/+$/, "");
+      const API_URL = (import.meta.env.VITE_CONTACT_API_URL || "http://localhost:5000").replace(
+        /\/+$/,
+        "",
+      );
 
       // ----------------------------------------------
       // SEND REQUEST TO EXPRESS
       // ----------------------------------------------
 
-      const response = await fetch(
-        `${API_URL}/api/contact`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch(`${API_URL}/api/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
       // ----------------------------------------------
       // READ RESPONSE SAFELY
@@ -169,9 +163,7 @@ export function EnquiryForm({
       try {
         result = JSON.parse(responseText) as ContactApiResponse;
       } catch {
-        throw new Error(
-          `The server returned an invalid response (HTTP ${response.status}).`
-        );
+        throw new Error(`The server returned an invalid response (HTTP ${response.status}).`);
       }
 
       // ----------------------------------------------
@@ -179,26 +171,21 @@ export function EnquiryForm({
       // ----------------------------------------------
 
       if (!response.ok || !result.success) {
-        throw new Error(
-          result.message ||
-            `Failed to submit enquiry (HTTP ${response.status}).`
-        );
+        throw new Error(result.message || `Failed to submit enquiry (HTTP ${response.status}).`);
       }
 
       // ----------------------------------------------
       // SUCCESS
       // ----------------------------------------------
 
-      setMessage(
-        result.message ||
-          "Thank you! Your enquiry has been submitted successfully."
-      );
+      setMessage(result.message || "Thank you! Your enquiry has been submitted successfully.");
 
       // Reset HTML form
       form.reset();
 
       // Reset controlled React Select
       setProgramme("");
+      setRrn("");
 
       // Clear only enquiry-related storage.
       // Storage cleanup must not turn a successful
@@ -207,10 +194,7 @@ export function EnquiryForm({
         localStorage.removeItem("enquiryForm");
         sessionStorage.removeItem("enquiryForm");
       } catch (storageError) {
-        console.warn(
-          "Could not clear enquiry form storage:",
-          storageError
-        );
+        console.warn("Could not clear enquiry form storage:", storageError);
       }
 
       // Close modal if a callback was provided
@@ -218,11 +202,7 @@ export function EnquiryForm({
     } catch (err) {
       console.error("Enquiry submission error:", err);
 
-      setError(
-        err instanceof Error
-          ? err.message
-          : "Failed to submit enquiry. Please try again."
-      );
+      setError(err instanceof Error ? err.message : "Failed to submit enquiry. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -233,15 +213,12 @@ export function EnquiryForm({
   // ==================================================
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="grid gap-5"
-    >
+    <form onSubmit={handleSubmit} className="grid gap-5">
       {/* NAME */}
 
       <div className="grid gap-2">
         <Label htmlFor={`${idPrefix}-name`}>
-          Student name
+          {submissionType === "student-complaint" ? "Name of Student" : "Student name"}
         </Label>
 
         <Input
@@ -260,9 +237,7 @@ export function EnquiryForm({
         {/* EMAIL */}
 
         <div className="grid gap-2">
-          <Label htmlFor={`${idPrefix}-email`}>
-            Email address
-          </Label>
+          <Label htmlFor={`${idPrefix}-email`}>Email address</Label>
 
           <Input
             id={`${idPrefix}-email`}
@@ -277,9 +252,7 @@ export function EnquiryForm({
         {/* PHONE */}
 
         <div className="grid gap-2">
-          <Label htmlFor={`${idPrefix}-phone`}>
-            Phone number
-          </Label>
+          <Label htmlFor={`${idPrefix}-phone`}>Phone number</Label>
 
           <Input
             id={`${idPrefix}-phone`}
@@ -294,48 +267,60 @@ export function EnquiryForm({
         </div>
       </div>
 
+      {submissionType === "student-complaint" && (
+        <div className="grid gap-2">
+          <Label htmlFor={`${idPrefix}-rrn`}>RRN</Label>
+          <Input
+            id={`${idPrefix}-rrn`}
+            name="rrn"
+            type="text"
+            required
+            value={rrn}
+            onChange={(event) => setRrn(event.target.value)}
+            disabled={loading}
+          />
+        </div>
+      )}
+
       {/* PROGRAMME */}
 
-      <div className="grid gap-2">
-        <Label htmlFor={`${idPrefix}-programme`}>
-          Programme of interest
-        </Label>
+      {submissionType !== "student-complaint" && (
+        <div className="grid gap-2">
+          <Label htmlFor={`${idPrefix}-programme`}>Programme of interest</Label>
 
-        <Select
-          value={programme}
-          onValueChange={(value) => {
-            setProgramme(value);
-            setError("");
-          }}
-          disabled={loading}
-        >
-          <SelectTrigger
-            id={`${idPrefix}-programme`}
-            className="rounded-xl"
-            aria-required="true"
-            aria-invalid={!programme && !!error}
+          <Select
+            value={programme}
+            onValueChange={(value) => {
+              setProgramme(value);
+              setError("");
+            }}
+            disabled={loading}
           >
-            <SelectValue placeholder="Select a programme" />
-          </SelectTrigger>
+            <SelectTrigger
+              id={`${idPrefix}-programme`}
+              className="rounded-xl"
+              aria-required="true"
+              aria-invalid={!programme && !!error}
+            >
+              <SelectValue placeholder="Select a programme" />
+            </SelectTrigger>
 
-          <SelectContent>
-            {options.map((option) => (
-              <SelectItem
-                key={option}
-                value={option}
-              >
-                {option}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
+            <SelectContent>
+              {options.map((option) => (
+                <SelectItem key={option} value={option}>
+                  {option}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      )}
 
       {/* MESSAGE */}
 
       <div className="grid gap-2">
         <Label htmlFor={`${idPrefix}-message`}>
-          Message
+          {submissionType === "student-complaint" ? "State Your Grievance" : "Message"}
         </Label>
 
         <Textarea
@@ -343,29 +328,27 @@ export function EnquiryForm({
           name="message"
           rows={4}
           required
+          placeholder={
+            submissionType === "student-complaint" ? "State your grievance clearly..." : undefined
+          }
           disabled={loading}
         />
       </div>
 
       {/* SUBMIT BUTTON */}
 
-      <Button
-        type="submit"
-        variant="hero"
-        size="pill-lg"
-        className="w-full"
-        disabled={loading}
-      >
-        {loading ? "Submitting..." : "Submit enquiry"}
+      <Button type="submit" variant="hero" size="pill-lg" className="w-full" disabled={loading}>
+        {loading
+          ? "Submitting..."
+          : submissionType === "student-complaint"
+            ? "Submit complaint"
+            : "Submit enquiry"}
       </Button>
 
       {/* SUCCESS MESSAGE */}
 
       {message && (
-        <p
-          aria-live="polite"
-          className="text-sm text-green-600"
-        >
+        <p aria-live="polite" className="text-sm text-green-600">
           {message}
         </p>
       )}
@@ -373,10 +356,7 @@ export function EnquiryForm({
       {/* ERROR MESSAGE */}
 
       {error && (
-        <p
-          role="alert"
-          className="text-sm text-red-600"
-        >
+        <p role="alert" className="text-sm text-red-600">
           {error}
         </p>
       )}
