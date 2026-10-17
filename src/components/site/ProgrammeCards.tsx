@@ -64,6 +64,40 @@ type ProgrammeCardProps = {
 
 type ProgrammeCategory = "ug" | "pg" | "certification";
 
+const programmeCategories: Record<
+  ProgrammeCategory,
+  {
+    label: string;
+    title: string;
+    subtitle: string;
+    items: Programme[];
+  }
+> = {
+  ug: {
+    label: "UG",
+    title: "Undergraduate Programmes",
+    subtitle:
+      "Flexible degree pathways for learners beginning their higher education journey.",
+    items: ugProgrammes,
+  },
+  pg: {
+    label: "PG",
+    title: "Postgraduate Programmes",
+    subtitle:
+      "Advanced programmes for career growth, academic development and professional leadership.",
+    items: pgProgrammes,
+  },
+  certification: {
+    label: "Certification",
+    title: "Certified Programme",
+    subtitle:
+      "Short-term, career-focused learning designed to build practical digital skills.",
+    items: certificationCourses,
+  },
+};
+
+const programmeCategoryIds = Object.keys(programmeCategories) as ProgrammeCategory[];
+
 /* =========================================================
    PROGRAMME ROUTES
 ========================================================= */
@@ -726,11 +760,7 @@ export function ProgrammeCards({ withHeading = true }: { withHeading?: boolean }
     }
   }, [hash]);
 
-  const categories: { id: ProgrammeCategory; label: string }[] = [
-    { id: "ug", label: "UG" },
-    { id: "pg", label: "PG" },
-    { id: "certification", label: "Certification" },
-  ];
+  const selectedCategory = programmeCategories[activeCategory];
 
   return (
     <Section
@@ -765,56 +795,34 @@ export function ProgrammeCards({ withHeading = true }: { withHeading?: boolean }
           role="tablist"
           aria-label="Programme category"
         >
-          {categories.map((category) => (
+          {programmeCategoryIds.map((categoryId) => (
             <button
-              key={category.id}
-              id={category.id}
+              key={categoryId}
+              id={categoryId}
               type="button"
               role="tab"
-              aria-selected={activeCategory === category.id}
+              aria-selected={activeCategory === categoryId}
               aria-controls="programme-category-panel"
-              onClick={() => setActiveCategory(category.id)}
+              onClick={() => setActiveCategory(categoryId)}
               className={`rounded-full border px-5 py-2.5 text-xs font-bold transition-colors ${
-                activeCategory === category.id
+                activeCategory === categoryId
                   ? "border-[#172554] bg-[#172554] text-white"
                   : "border-[#172554]/15 bg-white text-[#172554] hover:border-[#D4AF37] hover:bg-[#F4F1E8]"
               }`}
             >
-              {category.label}
+              {programmeCategories[categoryId].label}
             </button>
           ))}
         </div>
 
         <div id="programme-category-panel" role="tabpanel" aria-labelledby={activeCategory}>
-          {activeCategory === "ug" && (
-            <ProgrammeSection
-              id="ug-programmes"
-              title="Undergraduate Programmes"
-              subtitle="Flexible degree pathways for learners beginning their higher education journey."
-              type="ug"
-              items={ugProgrammes}
-            />
-          )}
-
-          {activeCategory === "pg" && (
-            <ProgrammeSection
-              id="pg-programmes"
-              title="Postgraduate Programmes"
-              subtitle="Advanced programmes for career growth, academic development and professional leadership."
-              type="pg"
-              items={pgProgrammes}
-            />
-          )}
-
-          {activeCategory === "certification" && (
-            <ProgrammeSection
-              id="certification-programmes"
-              title="Certified Programme"
-              subtitle="Short-term, career-focused learning designed to build practical digital skills."
-              type="certification"
-              items={certificationCourses}
-            />
-          )}
+          <ProgrammeSection
+            id={`${activeCategory}-programmes`}
+            title={selectedCategory.title}
+            subtitle={selectedCategory.subtitle}
+            type={activeCategory}
+            items={selectedCategory.items}
+          />
         </div>
       </div>
 
