@@ -17,17 +17,17 @@ import {
   Target,
   Users,
   Eye,
-  X,
 } from "lucide-react";
 
-import { EnquiryForm } from "@/components/site/EnquiryForm";
+import { EnquiryFormDialog } from "@/components/site/EnquiryFormDialog";
+import mcaBrochurePdf from "@/assets/ODL MCA Website Brochure09012026.pdf";
+import mcaRegulationsPdf from "@/assets/DeanAA-MBA-MCA-ODL-and-OL-Regulations2021-24.11.2021-F.pdf";
 
 export const Route = createFileRoute("/mca/")({
   component: MCAPage,
 });
 
-const MCA_BROCHURE_PDF = "/pdfs/mca-brochure.pdf";
-const MCA_REGULATION_PDF = "/pdfs/mca-regulations.pdf";
+const MCA_BROCHURE_PDF = mcaBrochurePdf;
 
 const circularFont = {
   fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
@@ -35,12 +35,6 @@ const circularFont = {
 
 function MCAPage() {
   const [showBrochureForm, setShowBrochureForm] = useState(false);
-  const [resourceType, setResourceType] = useState<"brochure" | "regulation">("brochure");
-
-  const openResource = (type: "brochure" | "regulation") => {
-    setResourceType(type);
-    setShowBrochureForm(true);
-  };
 
   return (
     <SiteLayout>
@@ -149,9 +143,10 @@ function MCAPage() {
               accent="#1d355f"
             />
 
-            <button
-              type="button"
-              onClick={() => openResource("regulation")}
+            <a
+              href={mcaRegulationsPdf}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative flex items-center gap-3 overflow-hidden rounded-xl border border-slate-200 bg-white px-3.5 py-3.5 text-left shadow-sm"
             >
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#d4af37]/10 text-[#8a6d12]">
@@ -166,11 +161,11 @@ function MCAPage() {
               />
 
               <span className="pointer-events-none absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-10" />
-            </button>
+            </a>
 
             <button
               type="button"
-              onClick={() => openResource("brochure")}
+              onClick={() => setShowBrochureForm(true)}
               className="group relative flex items-center gap-3 overflow-hidden rounded-xl border border-slate-200 bg-white px-3.5 py-3.5 text-left shadow-sm"
             >
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#6b4c9a]/10 text-[#6b4c9a]">
@@ -347,60 +342,15 @@ function MCAPage() {
           </div>
         </section>
 
-        {/* BROCHURE / REGULATION ENQUIRY MODAL */}
-        {showBrochureForm && (
-          <div
-            className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/55 px-4 py-6 backdrop-blur-sm"
-            onClick={() => setShowBrochureForm(false)}
-          >
-            <div
-              className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-white shadow-2xl"
-              onClick={(event) => event.stopPropagation()}
-            >
-              <button
-                type="button"
-                onClick={() => setShowBrochureForm(false)}
-                aria-label="Close enquiry form"
-                className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#111111] shadow-md"
-              >
-                <X size={19} />
-              </button>
-
-              <div className="bg-[#6b4c9a] px-5 py-5 pr-14">
-                <p className="text-sm font-bold uppercase tracking-[0.15em] text-[#f3d15b]">
-                  MCA Online Learning
-                </p>
-
-                <h3 className="mt-2 text-2xl font-bold text-white">
-                  {resourceType === "brochure" ? "Download Brochure" : "MCA Regulation"}
-                </h3>
-
-                <p className="mt-2 text-base leading-6 text-white/80">
-                  Please submit your enquiry details to access the requested resource.
-                </p>
-              </div>
-
-              <div className="p-4 sm:p-5">
-                <EnquiryForm />
-
-                <div className="mt-4 border-t border-slate-200 pt-4">
-                  <a
-                    href={resourceType === "brochure" ? MCA_BROCHURE_PDF : MCA_REGULATION_PDF}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative flex w-full items-center justify-center gap-2 rounded-xl bg-[#8f1d1d] px-4 py-3 text-sm font-semibold text-white"
-                  >
-                    <Download size={17} />
-
-                    {resourceType === "brochure" ? "Open Brochure PDF" : "Open Regulation PDF"}
-
-                    <span className="pointer-events-none absolute -bottom-1 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-10" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+        <EnquiryFormDialog
+          open={showBrochureForm}
+          onOpenChange={setShowBrochureForm}
+          title="Download Brochure"
+          description="Please submit your enquiry details to access the requested resource."
+          idPrefix="mca-resource"
+          downloadHref={MCA_BROCHURE_PDF}
+          downloadLabel="Download Brochure PDF"
+        />
       </main>
     </SiteLayout>
   );

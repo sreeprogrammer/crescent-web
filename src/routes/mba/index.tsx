@@ -13,17 +13,17 @@ import {
   Target,
   Users,
   Eye,
-  X,
 } from "lucide-react";
 
-import { EnquiryForm } from "@/components/site/EnquiryForm";
+import { EnquiryFormDialog } from "@/components/site/EnquiryFormDialog";
+import mbaBrochurePdf from "@/assets/ODL MBA Website Brochure09012026.pdf";
+import mbaRegulationsPdf from "@/assets/DeanAA-MBA-MCA-ODL-and-OL-Regulations2021-24.11.2021-F.pdf";
 
 export const Route = createFileRoute("/mba/")({
   component: MBAPage,
 });
 
-const MBA_BROCHURE_PDF = "/pdfs/mba-brochure.pdf";
-const MBA_REGULATION_PDF = "/pdfs/mba-regulations.pdf";
+const MBA_BROCHURE_PDF = mbaBrochurePdf;
 
 const circularFont = {
   fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
@@ -31,12 +31,6 @@ const circularFont = {
 
 function MBAPage() {
   const [showBrochureForm, setShowBrochureForm] = useState(false);
-  const [resourceType, setResourceType] = useState<"brochure" | "regulation">("brochure");
-
-  const openResource = (type: "brochure" | "regulation") => {
-    setResourceType(type);
-    setShowBrochureForm(true);
-  };
 
   return (
     <SiteLayout>
@@ -153,9 +147,10 @@ function MBAPage() {
               accent="#1d355f"
             />
 
-            <button
-              type="button"
-              onClick={() => openResource("regulation")}
+            <a
+              href={mbaRegulationsPdf}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative flex items-center gap-3 overflow-hidden rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-left shadow-sm"
             >
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#d4af37]/10 text-[#8a6d12]">
@@ -167,11 +162,11 @@ function MBAPage() {
                 className="ml-auto text-slate-300 transition-transform duration-300 group-hover:translate-x-0.5"
               />
               <span className="pointer-events-none absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-10" />
-            </button>
+            </a>
 
             <button
               type="button"
-              onClick={() => openResource("brochure")}
+              onClick={() => setShowBrochureForm(true)}
               className="group relative flex items-center gap-3 overflow-hidden rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-left shadow-sm"
             >
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#6b4c9a]/10 text-[#6b4c9a]">
@@ -532,65 +527,15 @@ function MBAPage() {
           </div>
         </section>
 
-        {/* =========================================================
-            BROCHURE / REGULATION ENQUIRY MODAL
-        ========================================================= */}
-        {showBrochureForm && (
-          <div
-            className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/55 px-4 py-6 backdrop-blur-sm"
-            onClick={() => setShowBrochureForm(false)}
-          >
-            <div
-              className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-white shadow-2xl"
-              onClick={(event) => event.stopPropagation()}
-            >
-              {/* CLOSE */}
-              <button
-                type="button"
-                onClick={() => setShowBrochureForm(false)}
-                aria-label="Close enquiry form"
-                className="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#111111] shadow-md"
-              >
-                <X size={17} />
-              </button>
-
-              {/* MODAL HEADER */}
-              <div className="bg-[#6b4c9a] px-5 py-4 pr-14">
-                <p className="text-[8px] font-bold uppercase tracking-[0.18em] text-[#f3d15b]">
-                  MBA Online Learning
-                </p>
-
-                <h3 className="mt-1 text-lg font-bold text-white">
-                  {resourceType === "brochure" ? "Download Brochure" : "MBA Regulation"}
-                </h3>
-
-                <p className="mt-1 text-[10px] leading-5 text-white/75">
-                  Please submit your enquiry details to access the requested resource.
-                </p>
-              </div>
-
-              {/* FORM */}
-              <div className="p-4 sm:p-5">
-                <EnquiryForm />
-
-                <div className="mt-4 border-t border-slate-200 pt-4">
-                  <a
-                    href={resourceType === "brochure" ? MBA_BROCHURE_PDF : MBA_REGULATION_PDF}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative flex w-full items-center justify-center gap-2 rounded-xl bg-[#8f1d1d] px-4 py-2.5 text-[10px] font-semibold text-white"
-                  >
-                    <Download size={14} />
-
-                    {resourceType === "brochure" ? "Open Brochure PDF" : "Open Regulation PDF"}
-
-                    <span className="pointer-events-none absolute -bottom-1 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-10" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+        <EnquiryFormDialog
+          open={showBrochureForm}
+          onOpenChange={setShowBrochureForm}
+          title="Download Brochure"
+          description="Please submit your enquiry details to access the requested resource."
+          idPrefix="mba-resource"
+          downloadHref={MBA_BROCHURE_PDF}
+          downloadLabel="Download Brochure PDF"
+        />
       </main>
     </SiteLayout>
   );

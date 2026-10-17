@@ -13,10 +13,11 @@ import {
   Target,
   Eye,
   Download,
-  X,
 } from "lucide-react";
 
-import { EnquiryForm } from "@/components/site/EnquiryForm";
+import { EnquiryFormDialog } from "@/components/site/EnquiryFormDialog";
+import baIslamicBrochurePdf from "@/assets/ODL B.A. Islamic Studies Website Brochure09012026.pdf";
+import baIslamicRegulationsPdf from "@/assets/DeanAA-BAIslamic-StudiesR2021.pdf";
 
 export const Route = createFileRoute("/ba-islamic-studies/")({
   component: BAIslamicStudiesPage,
@@ -26,7 +27,7 @@ const circularFont = {
   fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
 };
 
-const BROCHURE_PDF = "/pdfs/ba-islamic-studies-brochure.pdf";
+const BROCHURE_PDF = baIslamicBrochurePdf;
 
 function BAIslamicStudiesPage() {
   const [showBrochureForm, setShowBrochureForm] = useState(false);
@@ -151,8 +152,10 @@ function BAIslamicStudiesPage() {
               <span className="pointer-events-none absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-10" />
             </Link>
 
-            <Link
-              to="/ba-islamic-studies/regulations"
+            <a
+              href={baIslamicRegulationsPdf}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative z-10 flex items-center gap-3 overflow-hidden rounded-xl border border-slate-200 bg-white px-4 py-3.5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
             >
               <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#d4af37]/20 text-[#8a6d12]">
@@ -161,7 +164,7 @@ function BAIslamicStudiesPage() {
               <span className="text-sm font-semibold text-[#111111]">Regulations</span>
               <ArrowRight className="ml-auto size-4 text-slate-300 transition-transform duration-300 group-hover:translate-x-1" />
               <span className="pointer-events-none absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-10" />
-            </Link>
+            </a>
 
             <button
               type="button"
@@ -391,62 +394,15 @@ function BAIslamicStudiesPage() {
           </div>
         </section>
 
-        {/* =========================================================
-            BROCHURE ENQUIRY FORM
-        ========================================================= */}
-        {showBrochureForm && (
-          <div
-            className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/55 px-4 py-6 backdrop-blur-sm"
-            onMouseDown={(event) => {
-              if (event.target === event.currentTarget) {
-                setShowBrochureForm(false);
-              }
-            }}
-          >
-            <div className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-white shadow-2xl">
-              {/* CLOSE */}
-              <button
-                type="button"
-                onClick={() => setShowBrochureForm(false)}
-                aria-label="Close brochure enquiry form"
-                className="absolute right-3 top-3 z-10 flex size-9 items-center justify-center rounded-full bg-white text-[#111111] shadow-md transition-all duration-300 hover:scale-105"
-              >
-                <X className="size-5" />
-              </button>
-
-              {/* HEADER */}
-              <div className="bg-[#0d5c45] px-6 py-5 pr-16">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#d4af37]">
-                  BA Islamic Studies
-                </p>
-
-                <h3 className="mt-1 text-xl font-bold text-white sm:text-2xl">Download Brochure</h3>
-
-                <p className="mt-2 text-sm leading-6 text-white/75">
-                  Please submit your enquiry details to access the brochure.
-                </p>
-              </div>
-
-              {/* FORM */}
-              <div className="p-5 sm:p-6">
-                <EnquiryForm />
-
-                <div className="mt-5 border-t border-slate-200 pt-5">
-                  <a
-                    href={BROCHURE_PDF}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative flex w-full items-center justify-center gap-2 rounded-xl bg-[#8f1d1d] px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
-                  >
-                    <Download className="size-4" />
-                    Open Brochure PDF
-                    <span className="pointer-events-none absolute -bottom-1 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-12" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+        <EnquiryFormDialog
+          open={showBrochureForm}
+          onOpenChange={setShowBrochureForm}
+          title="BA Islamic Studies brochure"
+          description="Share your details and an admission counsellor will call you back."
+          downloadHref={BROCHURE_PDF}
+          downloadLabel="Download BA Islamic Studies brochure"
+          idPrefix="ba-islamic-studies-brochure"
+        />
       </main>
     </SiteLayout>
   );

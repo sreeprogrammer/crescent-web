@@ -2,6 +2,33 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { createFileRoute } from "@tanstack/react-router";
 import ugc from "@/assets/ugc.png";
 import aicte from "@/assets/all india.jpg";
+import compliance2022_2023Pdf from "@/assets/2022-2023.pdf";
+import compliance2023_2024Pdf from "@/assets/2023-2024.pdf";
+import compliance2024_2025Pdf from "@/assets/2024-2025.pdf";
+import ciqa2021_2022Pdf from "@/assets/CIQA2021-2022.pdf";
+import ciqa2022_2023Pdf from "@/assets/CIQA2022-2023.pdf";
+import ciqa2023_2024Pdf from "@/assets/CIQA2023-2024.pdf";
+import ciqa2024_2025Pdf from "@/assets/CIQA2024-2025.pdf";
+import application2021_2022Pdf from "@/assets/App2021-2022.pdf";
+import application2022_2023Pdf from "@/assets/APP2022-2023.pdf";
+import application2023_2024Pdf from "@/assets/APP2023-2024.pdf";
+import application2024_2025Pdf from "@/assets/APP2024-2025.pdf";
+import application2026_2027Pdf from "@/assets/APP2026-2027.pdf";
+import application2026_2027PublicPolicyPdf from "@/assets/APP2026-2027 (BA Public Policy).pdf";
+import admissionAy2021Pdf from "@/assets/AY 2021.pdf";
+import admissionAy2022Pdf from "@/assets/AY 2022.pdf";
+import admissionAy2023Pdf from "@/assets/AY 2023.pdf";
+import admissionAy2024Pdf from "@/assets/AY 2024.pdf";
+import admissionAy2025Pdf from "@/assets/AY 2025.pdf";
+import admissionCy2022Pdf from "@/assets/CY 2022.pdf";
+import admissionCy2023Pdf from "@/assets/CY 2023.pdf";
+import admissionAy2021Cy2022Pdf from "@/assets/AY 2021 & CY 2022.pdf";
+import publicNoticeMarch19Pdf from "@/assets/Public Notice March 19 2024.pdf";
+import publicNoticeAugust19Pdf from "@/assets/Public Notice August 19 2024.pdf";
+import publicNoticeMarch20Pdf from "@/assets/Public Notice March 20 2023.pdf";
+import publicNoticeSeptember19Pdf from "@/assets/Public Notice Sep 19 2023.pdf";
+import aicteProgrammesPdf from "@/assets/AICTE for offering UG Programmes.pdf";
+import { ResourceDocumentsDialog } from "@/components/site/ResourceDocumentsDialog";
 import {
   BadgeCheck,
   ClipboardList,
@@ -58,6 +85,82 @@ const officialLinks = {
   compliance: "/pdf/compliance.pdf",
   ugcApplication: "/pdf/ugc-application.pdf",
   ciqaAnnualReport: "/pdf/ciqa-annual-report.pdf",
+};
+
+const ugcNotifications = [
+  { title: "Public Notice March 19 2024", href: publicNoticeMarch19Pdf },
+  { title: "Public Notice August 19 2024", href: publicNoticeAugust19Pdf },
+  { title: "Public Notice March 20 2023", href: publicNoticeMarch20Pdf },
+  { title: "Public Notice Sep 19 2023", href: publicNoticeSeptember19Pdf },
+  { title: "AICTE for offering UG Programmes", href: aicteProgrammesPdf },
+];
+
+const resourceDialogs: Record<
+  string,
+  {
+    title: string;
+    description: string;
+    documents: { title: string; href?: string }[];
+  }
+> = {
+  "ugc-notification": {
+    title: "UGC Notifications",
+    description: "Select a notice to open its PDF.",
+    documents: ugcNotifications,
+  },
+  compliance: {
+    title: "Compliance Reports",
+    description: "Select an academic year to open its PDF.",
+    documents: [
+      { title: "2022-2023", href: compliance2022_2023Pdf },
+      { title: "2023-2024", href: compliance2023_2024Pdf },
+      { title: "2024-2025", href: compliance2024_2025Pdf },
+    ],
+  },
+  "ugc-applications": {
+    title: "UGC Applications",
+    description: "Select an application year to open its PDF.",
+    documents: [
+      { title: "2021-2022", href: application2021_2022Pdf },
+      { title: "2022-2023", href: application2022_2023Pdf },
+      { title: "2023-2024", href: application2023_2024Pdf },
+      { title: "2024-2025", href: application2024_2025Pdf },
+      { title: "2026-2027", href: application2026_2027Pdf },
+      {
+        title: "2026-2027 (BA Public Policy)",
+        href: application2026_2027PublicPolicyPdf,
+      },
+    ],
+  },
+  "ciqa-annual-reports": {
+    title: "CIQA Annual Reports",
+    description: "Select an academic year to open its PDF.",
+    documents: [
+      { title: "2021-2022", href: ciqa2021_2022Pdf },
+      { title: "2022-2023", href: ciqa2022_2023Pdf },
+      { title: "2023-2024", href: ciqa2023_2024Pdf },
+      { title: "2024-2025", href: ciqa2024_2025Pdf },
+      { title: "2025-2026" },
+    ],
+  },
+  "admission-list": {
+    title: "Student Admission List",
+    description: "Select an available admission document to open its PDF.",
+    documents: [
+      { title: "Details of the Admission: 2025-2026", isHeading: true },
+      { title: "AY 2025", href: admissionAy2025Pdf },
+      { title: "Details of the Admission: 2024-2025", isHeading: true },
+      { title: "AY 2024", href: admissionAy2024Pdf },
+      { title: "Details of the Admission: 2023-2024", isHeading: true },
+      { title: "AY 2023", href: admissionAy2023Pdf },
+      { title: "CY 2023", href: admissionCy2023Pdf },
+      { title: "Details of the Admission: 2022-2023", isHeading: true },
+      { title: "AY 2022", href: admissionAy2022Pdf },
+      { title: "CY 2022", href: admissionCy2022Pdf },
+      { title: "Details of the Admission: 2021-2022", isHeading: true },
+      { title: "AY 2021 & CY 2022", href: admissionAy2021Cy2022Pdf },
+    ],
+  },
 };
 
 /* =========================================================
@@ -485,6 +588,9 @@ function UgcCornerPage() {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {resources.map((resource, index) => {
                 const Icon = resource.icon;
+                const resourceDialog = resourceDialogs[resource.id];
+                const actionClassName =
+                  "flex items-center gap-1.5 rounded-lg bg-[#30265F] px-3.5 py-2 text-sm font-bold text-white shadow-sm transition-all duration-300 hover:bg-[#8F3030]";
 
                 return (
                   <motion.article
@@ -606,43 +712,32 @@ function UgcCornerPage() {
                         Official Resource
                       </span>
 
-                      <motion.a
-                        href={resource.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{
-                          x: 2,
-                        }}
-                        whileTap={{
-                          scale: 0.97,
-                        }}
-                        className="
-                          flex
-                          items-center
-                          gap-1.5
-                          rounded-lg
-                          bg-[#30265F]
-                          px-3.5
-                          py-2
-                          text-sm
-                          font-bold
-                          text-white
-                          shadow-sm
-                          transition-all
-                          duration-300
-                          hover:bg-[#8F3030]
-                        "
-                      >
-                        {resource.type === "PDF" ? (
-                          <FileDown className="size-3.5" />
-                        ) : (
-                          <ExternalLink className="size-3.5" />
-                        )}
-
-                        {resource.label}
-
-                        <ArrowUpRight className="size-3.5" />
-                      </motion.a>
+                      {resourceDialog ? (
+                        <ResourceDocumentsDialog
+                          title={resourceDialog.title}
+                          description={resourceDialog.description}
+                          documents={resourceDialog.documents}
+                          triggerLabel={resource.label}
+                          triggerClassName={actionClassName}
+                        />
+                      ) : (
+                        <motion.a
+                          href={resource.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ x: 2 }}
+                          whileTap={{ scale: 0.97 }}
+                          className={actionClassName}
+                        >
+                          {resource.type === "PDF" ? (
+                            <FileDown className="size-3.5" />
+                          ) : (
+                            <ExternalLink className="size-3.5" />
+                          )}
+                          {resource.label}
+                          <ArrowUpRight className="size-3.5" />
+                        </motion.a>
+                      )}
                     </div>
                   </motion.article>
                 );

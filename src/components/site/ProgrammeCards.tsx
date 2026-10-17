@@ -1,15 +1,8 @@
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import { certificationCourses, pgProgrammes, ugProgrammes } from "@/data/site";
-import { EnquiryForm } from "@/components/site/EnquiryForm";
+import { EnquiryFormDialog } from "@/components/site/EnquiryFormDialog";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
@@ -172,10 +165,6 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
   const isCertification = type === "certification";
 
   const programmeRoute = getProgrammeRoute(programme);
-
-  const handleBrochureSubmit = () => {
-    setBrochureUnlocked(true);
-  };
 
   return (
     <>
@@ -586,46 +575,16 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
           BROCHURE ENQUIRY MODAL
       ======================================================= */}
 
-      <Dialog open={showBrochureForm} onOpenChange={setShowBrochureForm}>
-        <DialogContent className="max-h-[90vh] overflow-y-auto rounded-[1.75rem] sm:max-w-lg">
-          <DialogHeader>
-            <DialogTitle className="font-display text-xl">
-              Download brochure
-            </DialogTitle>
-            <DialogDescription>
-              Share your details and an admission counsellor will call you back.
-            </DialogDescription>
-          </DialogHeader>
-
-          {!brochureUnlocked ? (
-            <EnquiryForm idPrefix="brochure" onSubmitted={handleBrochureSubmit} />
-          ) : (
-            <div className="rounded-[1rem] border border-[#D4AF37]/30 bg-[#fffaf0] p-5 text-center">
-              <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-[#172554] text-[#D4AF37]">
-                <CheckCircle2 className="size-6" />
-              </div>
-
-              <h3 className="mt-3 text-[clamp(1rem,0.9rem+0.3vw,1.25rem)] font-bold text-[#111111]">
-                Brochure Unlocked
-              </h3>
-
-              <p className="mt-1 text-[clamp(0.72rem,0.65rem+0.2vw,0.85rem)] leading-5 text-black/60">
-                Your details have been submitted successfully.
-              </p>
-
-              <a
-                href={programmeBrochure}
-                download
-                onClick={() => setShowBrochureForm(false)}
-                className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-[#8F1D1D] px-5 py-3 text-[clamp(0.7rem,0.65rem+0.18vw,0.85rem)] font-bold text-white shadow-[0_7px_18px_rgba(143,29,29,0.16)] transition-all duration-300 hover:bg-[#172554]"
-              >
-                <Download className="size-4" />
-                Download PDF
-              </a>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+      <EnquiryFormDialog
+        open={showBrochureForm}
+        onOpenChange={setShowBrochureForm}
+        onSubmitted={() => setBrochureUnlocked(true)}
+        title={`Download ${programme.name} brochure`}
+        description="Share your details and an admission counsellor will call you back."
+        downloadHref={programmeBrochure}
+        downloadLabel={`Download ${programme.name} brochure`}
+        idPrefix={`brochure-${getProgrammeSlug(programme)}`}
+      />
     </>
   );
 }

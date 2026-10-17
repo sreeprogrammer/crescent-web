@@ -382,7 +382,7 @@ export function SiteFooter() {
             </ul>
 
             {/* Mini Cards */}
-            <div className="mt-3 flex gap-2">
+            {/* <div className="mt-3 flex gap-2">
               <a
                 href="/admissions"
                 className="
@@ -458,7 +458,7 @@ export function SiteFooter() {
                   Academics
                 </span>
               </a>
-            </div>
+            </div> */}
           </div>
 
           {/* =================================================

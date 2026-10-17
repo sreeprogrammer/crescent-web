@@ -11,7 +11,12 @@ import {
   Users,
 } from "lucide-react";
 
-import campusPhoto from "@/assets/campus-1.jpg";
+import founderPhoto from "@/assets/founder.png";
+import presidentPhoto from "@/assets/president.png";
+import chancellorPhoto from "@/assets/Chancellor.png";
+import proChancellorPhoto from "@/assets/prochancellor.png";
+import viceChancellorPhoto from "@/assets/vice-chansoller.png";
+import registrarPhoto from "@/assets/registrar.png";
 
 const circularFont = {
   fontFamily:
@@ -22,7 +27,7 @@ const visionaryTeam = [
   {
     name: "Alhaj Dr. B.S.Abdur Rahman",
     role: "Founder",
-    image: campusPhoto,
+    image: founderPhoto,
     accent: "green",
     description:
       "A visionary who always trusted that education can be the crucial factor in improving the socio economic status of people, went ahead in proving it by establishing many educational organizations for the poor and women. He Founded the Seethakathi Trust, Est. 1967 and All India Islamic Foundation (AIIF) Est.1979 to ensure the poor and deprived are benefited in the form of education . A total of 12 Educational Institutions comprising of a leading Engineering University, a Women’s College, an Arabic college for men, 2 boys schools, 3 girls schools, a women nursing college, a teachers training institute, B. Ed college for women and 2 hospitals and orphanages in both urban and rural areas in the State of Tamil Nadu are his contribution to the society with the only motive of providing quality education to the poor",
@@ -30,7 +35,7 @@ const visionaryTeam = [
   {
     name: "Mr. BSA Arif Buhary Rahman",
     role: "President",
-    image: campusPhoto,
+    image: presidentPhoto,
     accent: "gold",
     description:
       "The educational institutions have a great responsibility of creating holistic human beings, who have learned enough skills to earn, life ethics and social responsibility. B. S. Abdur Rahman crescent Institute of Science and technology being in the education arena for more than three decades has been successful in creating graduates with good technical skills, exhibiting great leadership skills and socially responsible citizens. The limitation was that the university was not able to extend this expertise to people around the globe and people who could not attend regular classes. The initiative of offering programmes through online and distance mode will help us overcome this barrier and spread our wings across the globe. Apart from degree programmes, certification programmes of international standards will help students from rural India learn technologies that are of great demand globally.",
@@ -38,7 +43,7 @@ const visionaryTeam = [
   {
     name: "Mrs.Qurrath Jameela",
     role: "Chancellor",
-    image: campusPhoto,
+    image: chancellorPhoto,
     accent: "violet",
     description:
       "B S Abdur Rahman Crescent Institute of Science and Technology, an Institute with a profound legacy is committed to futuristic education, women empowerment and societal upliftment. Embracing the digital age, this renowned institution aims to provide holistic education and ensure that students are armed with the expertise and skills needed to flourish in a dynamic global landscape.",
@@ -48,7 +53,7 @@ const visionaryTeam = [
   {
     name: "Mr. Abdul Qadir Abdul Rahman Buhari",
     role: "Pro-Chancellor",
-    image: campusPhoto,
+    image: proChancellorPhoto,
     accent: "red",
     description:
       "The physical presence of students in a classroom is not the only way to learn anymore. Online learning has created a disruption in today’s education revolution. More than the degree the skills of an individual is very imperative in the industry today. The change in technology every day necessitates unlearning and relearning to be an integral part of every learner. The Online and Distance education programmes are a boon to the people who would upskill and always be relevant in the Industry. The sharing of knowledge has become global. This gives the learner an edge to be a global competitor. The online and distance education of BSACIST will be a big player in creating employable graduates and also help in upgrading their skills.",
@@ -56,7 +61,7 @@ const visionaryTeam = [
   {
     name: "Dr. A. Peer Mohamed",
     role: "Vice-Chancellor i/c",
-    image: campusPhoto,
+    image: viceChancellorPhoto,
     accent: "navy",
     description:
       "An educationist for more than three decades, I believe that there is a big need for adapting to new technologies. The Online Distance education programme is an advantage to the learners both to upgrade their skill set and also to improve the qualification. This enhances the chances of better employment opportunities. This also gives a greater flexibility of learning whenever you can and wherever you are. The online and distance education courses at BSAUCIST are tailored to cater to people who are willing to upgrade their skills and seek better employment and also for people who are more willing to increase their academic qualification.",
@@ -64,7 +69,7 @@ const visionaryTeam = [
   {
     name: "Dr. N.Raja Hussain",
     role: "Registrar",
-    image: campusPhoto,
+    image: registrarPhoto,
     accent: "green",
     description:
       "The introduction of flexible learning technologies, the online education market is expected to grow multifold in the next few years. Adapting to the technological disruptions is very vital to all the educational institutions. The foresight of the institution in starting the online and distance education department is an exemplary achievement. The strength of the leading team and faculty are important in making all new initiatives a success. BSAUCIST has unarguably the best team and leaders which will make learning a great experience. The mentoring skills of our faculty would help every learner to have a unique experience while upgrading their qualifications and improving their knowledge.",

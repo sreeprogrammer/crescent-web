@@ -9,7 +9,13 @@ import {
   Users,
 } from "lucide-react";
 
-import campusPhoto from "@/assets/campus-1.jpg";
+import jayaPhoto from "@/assets/jaya.png";
+import aishaBanuPhoto from "@/assets/DR.AISHABANU.png";
+import thowseafPhoto from "@/assets/thowseaf.jpeg";
+import lathaTamilselvanPhoto from "@/assets/DR.LATHATAMILSELVAN.png";
+import thariniPhoto from "@/assets/Dr.C.Tharini.png";
+import sharmilaSankarPhoto from "@/assets/DR.SHARMILASANKAR.png";
+import formerDirectorPhoto from "@/assets/director.png";
 
 const circularFont = {
   fontFamily:
@@ -19,7 +25,7 @@ const circularFont = {
 const director = {
   name: "Dr.A.Jaya",
   role: "Professor & Director",
-  image: campusPhoto,
+  image: jayaPhoto,
   description:
     "The Centre for Distance and Online Education committed to provide quality education through Online and Distance mode. We understand that each student has unique needs and learning styles. Our OL and ODL programs are designed to cater to all types of learners, whether you prefer to learn in a traditional classroom setting or from the comfort of your own home. Our highly qualified and experienced faculty members are dedicated to ensuring that you receive the best possible education and guidance to help you achieve your academic and career goals. We believe that education is a lifelong journey. As a director, we are committed to providing you with the necessary knowledge and skills to succeed in today's ever-changing world. We encourage you to take advantage of all the resources and opportunities available to you and to actively participate in your learning experience.",
 };
@@ -28,14 +34,14 @@ const cdoeTeam = [
   {
     name: "Dr. W. Aisha Banu",
     role: "Professor & HOD CSE",
-    image: campusPhoto,
+    image: aishaBanuPhoto,
     accent: "green",
   },
   {
     name: "Dr. S. Thowseaf",
     role: "Assistant Professor/CDOE",
     extra: "Assistant Director",
-    image: campusPhoto,
+    image: thowseafPhoto,
     accent: "gold",
   },
 ];
@@ -45,25 +51,25 @@ const planningCommittee = [
     name: "Dr. Latha Tamilselvan",
     role: "Professor & Director",
     extra: "MIS",
-    image: campusPhoto,
+    image: lathaTamilselvanPhoto,
     accent: "violet",
   },
   {
     name: "Dr. C. Tharini",
     role: "Professor & Dean SECS",
-    image: campusPhoto,
+    image: thariniPhoto,
     accent: "green",
   },
   {
     name: "Dr. Sharmila Sankar",
     role: "Professor & Dean SCIMS",
-    image: campusPhoto,
+    image: sharmilaSankarPhoto,
     accent: "red",
   },
   {
     name: "Dr. Aisha Banu",
     role: "Professor & HOD CSE",
-    image: campusPhoto,
+    image: aishaBanuPhoto,
     accent: "gold",
   },
 ];
@@ -72,7 +78,7 @@ const formerDirector = {
   name: "Dr.V.Rhymend Uthariaraj",
   role: "Former Director",
   year: "2021-2023",
-  image: campusPhoto,
+  image: formerDirectorPhoto,
 };
 
 function getAccentClasses(accent: string) {
