@@ -1,12 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import {
-  Bot,
-  CircleCheck,
-  Sparkles,
-} from "lucide-react";
+import { Bot, CircleCheck, Sparkles } from "lucide-react";
 
-import crescentLogo from "../../../assets/crescent-logo.png.asset.png";
+import crescentLogo from "../../../assets/logo.jpeg";
 
 import ChatInput from "./ChatInput";
 import EnquiryForm from "./EnquiryForm";
@@ -41,15 +37,9 @@ export function ChatWindow() {
 
   const t = ui[language];
 
-  const remaining = Math.max(
-    MAX_QUESTIONS - questionCount,
-    0,
-  );
+  const remaining = Math.max(MAX_QUESTIONS - questionCount, 0);
 
-  const quickPrompts = useMemo(
-    () => suggestions[language],
-    [language],
-  );
+  const quickPrompts = useMemo(() => suggestions[language], [language]);
 
   /* ================================
      AUTO SCROLL
@@ -210,7 +200,8 @@ export function ChatWindow() {
             className="
               relative
               flex
-              size-[52px]
+              h-16
+              w-40
               shrink-0
               items-center
               justify-center
@@ -231,8 +222,8 @@ export function ChatWindow() {
               src={crescentLogo}
               alt="Crescent Logo"
               className="
-                h-[42px]
-                w-[42px]
+                h-auto
+                w-[150px]
                 object-contain
               "
             />
@@ -257,14 +248,9 @@ export function ChatWindow() {
 
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-1.5">
-              <p className="truncate text-[15px] font-bold tracking-tight">
-                {t.headerTitle}
-              </p>
+              <p className="truncate text-[15px] font-bold tracking-tight">{t.headerTitle}</p>
 
-              <CircleCheck
-                className="size-4 shrink-0 text-[#e0bd68]"
-                aria-hidden
-              />
+              <CircleCheck className="size-4 shrink-0 text-[#e0bd68]" aria-hidden />
             </div>
 
             <p className="mt-0.5 truncate text-[11px] font-medium text-white/70">
@@ -283,17 +269,9 @@ export function ChatWindow() {
           {/* HEADER ACTIONS */}
 
           <div className="flex shrink-0 items-center gap-1.5">
-            <PdfDownloadButton
-              messages={messages}
-              language={language}
-              label={t.downloadPdf}
-            />
+            <PdfDownloadButton messages={messages} language={language} label={t.downloadPdf} />
 
-            <ThemeToggle
-              theme={theme}
-              onToggle={toggleTheme}
-              label={t.theme}
-            />
+            <ThemeToggle theme={theme} onToggle={toggleTheme} label={t.theme} />
           </div>
         </div>
 
@@ -323,10 +301,7 @@ export function ChatWindow() {
               backdrop-blur-md
             "
           >
-            <LanguageSwitcher
-              language={language}
-              onChange={setLanguage}
-            />
+            <LanguageSwitcher language={language} onChange={setLanguage} />
           </div>
 
           {/* QUESTIONS */}
@@ -350,18 +325,13 @@ export function ChatWindow() {
               backdrop-blur-md
             "
           >
-            <Sparkles
-              className="size-3.5 text-[#e0bd68]"
-              aria-hidden
-            />
+            <Sparkles className="size-3.5 text-[#e0bd68]" aria-hidden />
 
             <span className="text-[10px] font-semibold text-white/85">
               {remaining}/{MAX_QUESTIONS}
             </span>
 
-            <span className="text-[10px] text-white/60">
-              {t.questionsLeft}
-            </span>
+            <span className="text-[10px] text-white/60">{t.questionsLeft}</span>
           </div>
         </div>
       </header>
@@ -414,10 +384,7 @@ export function ChatWindow() {
           ================================================= */}
 
           {messages.map((message) => (
-            <MessageBubble
-              key={message.id}
-              message={message}
-            />
+            <MessageBubble key={message.id} message={message} />
           ))}
 
           {/* =================================================
@@ -466,20 +433,13 @@ export function ChatWindow() {
                     shadow-sm
                   "
                 >
-                  <Bot
-                    className="size-4 text-[#e0bd68]"
-                    aria-hidden
-                  />
+                  <Bot className="size-4 text-[#e0bd68]" aria-hidden />
                 </div>
 
                 <div>
-                  <p className="text-[11px] font-bold text-[#172c5b]">
-                    {t.suggestionsTitle}
-                  </p>
+                  <p className="text-[11px] font-bold text-[#172c5b]">{t.suggestionsTitle}</p>
 
-                  <p className="text-[9px] text-slate-500">
-                    Choose a question to get started
-                  </p>
+                  <p className="text-[9px] text-slate-500">Choose a question to get started</p>
                 </div>
               </div>
 
@@ -566,10 +526,7 @@ export function ChatWindow() {
         "
       >
         {showEnquiryForm ? (
-          <EnquiryForm
-            language={language}
-            onSubmitted={completeEnquiry}
-          />
+          <EnquiryForm language={language} onSubmitted={completeEnquiry} />
         ) : (
           <>
             <ChatInput
@@ -600,9 +557,7 @@ export function ChatWindow() {
                 </span>
               </div>
 
-              <span className="text-[9px] text-slate-400">
-                Enter ↵ / Shift+Enter
-              </span>
+              <span className="text-[9px] text-slate-400">Enter ↵ / Shift+Enter</span>
             </div>
           </>
         )}

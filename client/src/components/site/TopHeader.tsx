@@ -62,24 +62,22 @@ export function TopHeader() {
           relative
           mx-auto
           flex
-          min-h-[42px]
+          min-h-[44px]
           w-full
           max-w-[1900px]
           items-center
           justify-between
           gap-2
           px-2
-          sm:min-h-[48px]
+          sm:min-h-[50px]
           sm:gap-4
           sm:px-6
-          lg:min-h-[52px]
+          lg:min-h-[56px]
           lg:px-10
           xl:px-12
         "
       >
-        {/* ===============================
-            LEFT SIDE
-        ================================ */}
+        {/* LEFT SIDE */}
         <div
           className="
             flex
@@ -90,56 +88,56 @@ export function TopHeader() {
             sm:gap-5
           "
         >
-          {/* PHONE */}
+          {/* PHONE NUMBERS */}
           <div className="hidden items-center gap-3 sm:flex">
-            {college.numbers.map((n) => (
-              <a
-                key={n.label}
-                href={`tel:${n.tel}`}
-                className="
-                  group
-                  flex
-                  items-center
-                  gap-1.5
-                  text-[10px]
-                  font-medium
-                  text-white/80
-                  transition-colors
-                  duration-200
-                  hover:text-white
-                "
-              >
-                <span
+            {college.numbers
+              .filter((n) => n.label === "MBA")
+              .map((n) => (
+                <a
+                  key={n.label}
+                  href={`tel:${n.tel}`}
                   className="
+                    group
                     flex
-                    size-5
-                    shrink-0
                     items-center
-                    justify-center
-                    rounded-full
-                    bg-white/[0.08]
-                    text-[#d1ad5b]
-                    transition-all
+                    gap-1.5
+                    text-xs
+                    font-medium
+                    text-white/85
+                    transition-colors
                     duration-200
-                    group-hover:bg-[#172554]
-                    group-hover:text-[#741b1b]
+                    hover:text-white
                   "
                 >
-                  <Phone className="size-3" />
-                </span>
+                  <span
+                    className="
+                      flex
+                      size-6
+                      shrink-0
+                      items-center
+                      justify-center
+                      rounded-full
+                      bg-white/[0.08]
+                      text-[#d1ad5b]
+                      transition-all
+                      duration-200
+                      group-hover:bg-[#172554]
+                      group-hover:text-[#d1ad5b]
+                    "
+                  >
+                    <Phone className="size-4" />
+                  </span>
 
-                <span className="whitespace-nowrap">
-                  {n.label} - {n.value}
-                </span>
-              </a>
-            ))}
+                  <span className="whitespace-nowrap">Admission - {n.value}</span>
+                </a>
+              ))}
           </div>
 
           {/* DIVIDER */}
           <span
             className="
               hidden
-              h-4
+              h-5
               w-px
               shrink-0
               bg-[#d1ad5b]/25
@@ -156,19 +154,19 @@ export function TopHeader() {
               min-w-0
               items-center
               gap-2
-              text-xs
+              text-sm
               font-medium
-              text-white/80
+              text-white/85
               transition-colors
               duration-200
-              md:flex
               hover:text-white
+              md:flex
             "
           >
             <span
               className="
                 flex
-                size-6
+                size-7
                 shrink-0
                 items-center
                 justify-center
@@ -178,26 +176,24 @@ export function TopHeader() {
                 transition-all
                 duration-200
                 group-hover:bg-[#172554]
-                group-hover:text-[#741b1b]
+                group-hover:text-[#d1ad5b]
               "
             >
-              <Mail className="size-3" />
+              <Mail className="size-4" />
             </span>
 
             <span className="truncate">{college.email}</span>
           </a>
         </div>
 
-        {/* ===============================
-            RIGHT SIDE
-        ================================ */}
+        {/* RIGHT SIDE */}
         <div
           className="
             flex
             shrink-0
             items-center
-            gap-1
-            sm:gap-1.5
+            gap-1.5
+            sm:gap-2
           "
         >
           {/* LMS LOGIN */}
@@ -208,14 +204,14 @@ export function TopHeader() {
               flex
               shrink-0
               items-center
-              gap-1
+              gap-1.5
               rounded-full
               border
               border-[#172554]/40
               bg-[#172554]
-              px-2
-              py-1.5
-              text-[10px]
+              px-2.5
+              py-2
+              text-xs
               font-semibold
               text-white
               shadow-[0_4px_12px_rgba(0,0,0,0.15)]
@@ -225,34 +221,32 @@ export function TopHeader() {
               hover:bg-[#102044]
               hover:shadow-[0_6px_16px_rgba(0,0,0,0.22)]
               sm:gap-2
-              sm:px-3
-              sm:text-xs
-              sm:py-1.5
+              sm:px-4
+              sm:text-sm
             "
           >
             <BookOpen
               className="
-                size-3
+                size-4
                 shrink-0
                 text-[#d1ad5b]
                 transition-transform
                 duration-300
                 group-hover:scale-110
-                sm:size-3.5
+                sm:size-[18px]
               "
             />
 
             <span className="hidden sm:inline">LMS Login</span>
-
             <span className="sm:hidden">LMS</span>
           </a>
 
-          {/* Divider */}
+          {/* DIVIDER */}
           <span
             className="
               mx-0.5
               hidden
-              h-5
+              h-6
               w-px
               bg-white/20
               sm:block
@@ -267,14 +261,14 @@ export function TopHeader() {
               flex
               shrink-0
               items-center
-              gap-1
+              gap-1.5
               rounded-full
               border
               border-white/10
               bg-white/[0.06]
-              px-2
-              py-1.5
-              text-[10px]
+              px-2.5
+              py-2
+              text-xs
               font-semibold
               text-white/90
               backdrop-blur-md
@@ -286,13 +280,13 @@ export function TopHeader() {
               hover:text-white
               sm:gap-2
               sm:px-4
-              sm:text-xs
+              sm:text-sm
             "
           >
             <span
               className="
                 flex
-                size-5
+                size-6
                 shrink-0
                 items-center
                 justify-center
@@ -305,13 +299,13 @@ export function TopHeader() {
                 group-hover:text-[#741b1b]
               "
             >
-              <LogIn className="size-3" />
+              <LogIn className="size-4" />
             </span>
 
             <span>Login</span>
           </a>
 
-          {/* SIGN UP / NEW REGISTRATION */}
+          {/* SIGN UP */}
           <a
             href="https://odladmission.crescent-institute.edu.in/login/signup.php?"
             className="
@@ -325,8 +319,8 @@ export function TopHeader() {
               border-[#d1ad5b]/35
               bg-[#d1ad5b]/[0.07]
               px-3
-              py-1.5
-              text-xs
+              py-2
+              text-sm
               font-semibold
               text-[#f0d995]
               transition-all
@@ -342,7 +336,7 @@ export function TopHeader() {
             <span
               className="
                 flex
-                size-5
+                size-6
                 shrink-0
                 items-center
                 justify-center
@@ -355,7 +349,7 @@ export function TopHeader() {
                 group-hover:text-[#741b1b]
               "
             >
-              <UserPlus className="size-3" />
+              <UserPlus className="size-4" />
             </span>
 
             <span>Sign Up</span>
@@ -370,12 +364,12 @@ export function TopHeader() {
               flex
               shrink-0
               items-center
-              gap-1
+              gap-1.5
               rounded-full
               bg-[#d1ad5b]
-              px-2.5
-              py-1.5
-              text-[10px]
+              px-3
+              py-2
+              text-xs
               font-bold
               text-[#4b1111]
               shadow-[0_5px_16px_rgba(209,173,91,0.25)]
@@ -385,24 +379,23 @@ export function TopHeader() {
               hover:bg-[#e2c477]
               hover:shadow-[0_8px_20px_rgba(209,173,91,0.35)]
               sm:ml-1
-              sm:gap-1.5
+              sm:gap-2
               sm:px-5
-              sm:py-2
-              sm:text-xs
+              sm:py-2.5
+              sm:text-sm
             "
           >
             <span className="sm:hidden">Apply</span>
-
             <span className="hidden sm:inline">Apply Now</span>
 
             <ArrowRight
               className="
-                size-3
+                size-4
                 shrink-0
                 transition-transform
                 duration-300
                 group-hover:translate-x-0.5
-                sm:size-3.5
+                sm:size-[18px]
               "
             />
           </Link>

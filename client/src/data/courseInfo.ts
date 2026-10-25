@@ -58,8 +58,7 @@ export const courseInfo: CourseInfo[] = [
     duration: "3 Years",
     eligibility:
       "Higher Secondary Examination of the 10+2 curriculum (Academic stream), or an equivalent examination accepted by the Institution.",
-    description:
-      "Explore classical and contemporary Islamic thought, civilisation and ethics.",
+    description: "Explore classical and contemporary Islamic thought, civilisation and ethics.",
     vision: islamicStudiesVision,
     mission: islamicStudiesMission,
     fees: {
@@ -74,8 +73,7 @@ export const courseInfo: CourseInfo[] = [
     level: "Undergraduate",
     duration: "3 Years",
     eligibility: "10+2 in any stream",
-    description:
-      "Build foundations in governance, economics and policy analysis.",
+    description: "Build foundations in governance, economics and policy analysis.",
     vision: sharedVision,
     mission: sharedMission,
   },
@@ -99,8 +97,7 @@ export const courseInfo: CourseInfo[] = [
     duration: "2 Years",
     eligibility:
       "Any undergraduate degree in Computer Applications, Computer Science or Engineering with a minimum CGPA of 5.0 / 50% of marks. Alternative subject combinations are described in the MCA admission requirements.",
-    description:
-      "Study software engineering, data, application development and applied computing.",
+    description: "Study software engineering, data, application development and applied computing.",
     vision:
       "Aspires to provide quality education in the field of computer applications with state-of-the-art computational facilities and undertake quality research in collaboration with industries and universities to produce committed professionals and academicians to meet the needs of the industries and society.",
     mission: [
@@ -112,7 +109,7 @@ export const courseInfo: CourseInfo[] = [
     ],
     fees: {
       application: "₹1,000",
-      tuition: "₹30,000",
+      tuition: "₹20,000 per semester",
       foreignApplication: "$15",
       foreignTuition: "$750",
     },
@@ -138,7 +135,7 @@ export const courseInfo: CourseInfo[] = [
     ],
     fees: {
       application: "₹1,000",
-      tuition: "₹40,000",
+      tuition: "₹25,000 per semester",
       foreignApplication: "$15",
       foreignTuition: "$1,000",
     },

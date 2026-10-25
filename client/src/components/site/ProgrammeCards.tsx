@@ -22,7 +22,12 @@ import { Section, SectionHeading } from "./Section";
    PROGRAMME PHOTO
 ========================================================= */
 
-import programmePhoto from "@/assets/campus-1.jpg";
+import baEnglishPhoto from "@/assets/BA English_ A Literary Study.png";
+import baPublicPolicyPhoto from "@/assets/BA Public Policy_ Governance and Justice.png";
+import islamicStudiesPhoto from "@/assets/islamic-studies.png";
+import mcaPhoto from "@/assets/MCA Tech Workstation_ Coding and Innovation.png";
+import mbaPhoto from "@/assets/MBA Leadership at Golden Hour.png";
+import mobileAppPhoto from "@/assets/Mobile App Development Workspace.png";
 
 /* =========================================================
    PROGRAMME BROCHURE
@@ -63,6 +68,28 @@ type ProgrammeCardProps = {
 };
 
 type ProgrammeCategory = "ug" | "pg" | "certification";
+
+function getProgrammeImage(programme: Programme, type: ProgrammeCategory) {
+  if (type === "certification") {
+    return mobileAppPhoto;
+  }
+
+  switch (programme.name) {
+    case "BA English":
+      return baEnglishPhoto;
+    case "BA Public Policy":
+      return baPublicPolicyPhoto;
+    case "BA Islamic Studies":
+    case "MA Islamic Studies":
+      return islamicStudiesPhoto;
+    case "MCA":
+      return mcaPhoto;
+    case "MBA":
+      return mbaPhoto;
+    default:
+      return undefined;
+  }
+}
 
 const programmeCategories: Record<
   ProgrammeCategory,
@@ -199,10 +226,11 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
   const isCertification = type === "certification";
 
   const programmeRoute = getProgrammeRoute(programme);
+  const programmeImage = getProgrammeImage(programme, type);
 
   return (
     <>
-      <Reveal delay={(index % 3) * 0.05}>
+      <Reveal delay={(index % 3) * 0.05} className="h-full">
         <motion.article
           whileHover={{
             y: -5,
@@ -216,14 +244,15 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
             group
             relative
             flex
-            min-h-[214px]
+            h-full
+            min-h-[490px]
             flex-col
             overflow-hidden
             rounded-[1.2rem]
             border
             border-[#172554]/10
             bg-white
-            p-3.5
+            p-0
             shadow-[0_5px_18px_rgba(15,23,42,0.055)]
             transition-all
             duration-300
@@ -238,6 +267,7 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
           <div
             className="
               absolute
+              z-10
               inset-x-0
               top-0
               h-[3px]
@@ -248,12 +278,25 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
             "
           />
 
-          {/* ================================================= */}
-          {/* SOFT DECORATION */}
-          {/* ================================================= */}
+          <div className="relative h-48 w-full shrink-0 overflow-hidden bg-[#172554] sm:h-52">
+            <img
+              src={programmeImage}
+              alt={`${programme.name} programme`}
+              loading="lazy"
+              width={960}
+              height={520}
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/75 via-[#172554]/10 to-transparent" />
+          </div>
 
-          <div
-            className="
+          <div className="relative flex flex-1 flex-col p-4 sm:p-5">
+            {/* ================================================= */}
+            {/* SOFT DECORATION */}
+            {/* ================================================= */}
+
+            <div
+              className="
               pointer-events-none
               absolute
               -right-12
@@ -265,10 +308,10 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
               transition-all
               duration-500
             "
-          />
+            />
 
-          <div
-            className="
+            <div
+              className="
               pointer-events-none
               absolute
               -bottom-10
@@ -282,17 +325,17 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
               duration-500
               group-hover:opacity-100
             "
-          />
+            />
 
-          {/* ================================================= */}
-          {/* HEADER */}
-          {/* ================================================= */}
+            {/* ================================================= */}
+            {/* HEADER */}
+            {/* ================================================= */}
 
-          <div className="relative flex items-center justify-between gap-2">
-            {/* ICON */}
+            <div className="relative flex items-center justify-between gap-2">
+              {/* ICON */}
 
-            <div
-              className="
+              <div
+                className="
                 flex
                 size-10
                 shrink-0
@@ -305,18 +348,18 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
                 transition-all
                 duration-300
               "
-            >
-              {isCertification ? (
-                <Sparkles className="size-4" />
-              ) : (
-                <GraduationCap className="size-4" />
-              )}
-            </div>
+              >
+                {isCertification ? (
+                  <Sparkles className="size-4" />
+                ) : (
+                  <GraduationCap className="size-4" />
+                )}
+              </div>
 
-            {/* PROGRAMME TYPE */}
+              {/* PROGRAMME TYPE */}
 
-            <span
-              className="
+              <span
+                className="
                 rounded-full
                 bg-[#F4F1E8]
                 px-2.5
@@ -327,30 +370,30 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
                 tracking-[0.11em]
                 text-[#111111]
               "
-            >
-              {isCertification ? "Certification" : isPG ? "Postgraduate" : "Undergraduate"}
-            </span>
-          </div>
+              >
+                {isCertification ? "Certification" : isPG ? "Postgraduate" : "Undergraduate"}
+              </span>
+            </div>
 
-          {/* ================================================= */}
-          {/* TITLE */}
-          {/* ================================================= */}
+            {/* ================================================= */}
+            {/* TITLE */}
+            {/* ================================================= */}
 
-          <div className="relative mt-3">
-            <h4
-              className="
+            <div className="relative mt-3">
+              <h4
+                className="
                 text-[clamp(1rem,0.9rem+0.35vw,1.15rem)]
                 font-bold
                 leading-tight
                 tracking-[-0.01em]
                 text-[#111111]
               "
-            >
-              {programme.name}
-            </h4>
+              >
+                {programme.name}
+              </h4>
 
-            <p
-              className="
+              <p
+                className="
                 mt-1
                 line-clamp-1
                 text-[clamp(0.68rem,0.62rem+0.2vw,0.8rem)]
@@ -358,23 +401,23 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
                 leading-5
                 text-[#111111]
               "
-            >
-              {programme.full}
-            </p>
-          </div>
+              >
+                {programme.full}
+              </p>
+            </div>
 
-          {/* ================================================= */}
-          {/* DETAILS + PHOTO */}
-          {/* ================================================= */}
+            {/* ================================================= */}
+            {/* DETAILS + PHOTO */}
+            {/* ================================================= */}
 
-          <div className="relative mt-3 grid grid-cols-[1fr_62px] gap-2.5">
-            {/* LEFT SIDE */}
+            <div className="relative mt-3 grid grid-cols-1 gap-2.5">
+              {/* LEFT SIDE */}
 
-            <div className="flex flex-col gap-1.5">
-              {/* DURATION */}
+              <div className="flex flex-col gap-1.5">
+                {/* DURATION */}
 
-              <div
-                className="
+                <div
+                  className="
                   rounded-[0.7rem]
                   border
                   border-[#172554]/10
@@ -385,43 +428,43 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
                   duration-300
                   group-hover:border-[#172554]/15
                 "
-              >
-                <div className="flex items-center gap-1.5 text-[#172554]">
-                  <Clock3 className="size-3.5 shrink-0" />
+                >
+                  <div className="flex items-center gap-1.5 text-[#172554]">
+                    <Clock3 className="size-3.5 shrink-0" />
 
-                  <span
-                    className="
+                    <span
+                      className="
                       text-[clamp(0.6rem,0.55rem+0.15vw,0.72rem)]
                       font-bold
                       uppercase
                       tracking-wide
                       text-[#111111]
                     "
-                  >
-                    Duration
-                  </span>
-                </div>
+                    >
+                      Duration
+                    </span>
+                  </div>
 
-                <p
-                  className="
+                  <p
+                    className="
                     mt-1
                     line-clamp-1
                     text-[clamp(0.68rem,0.62rem+0.2vw,0.8rem)]
                     font-bold
                     text-[#111111]
                   "
-                >
-                  {programme.duration}
-                </p>
-              </div>
+                  >
+                    {programme.duration}
+                  </p>
+                </div>
 
-              {/* DOWNLOAD BROCHURE */}
+                {/* DOWNLOAD BROCHURE */}
 
-              {!brochureUnlocked ? (
-                <button
-                  type="button"
-                  onClick={() => setShowBrochureForm(true)}
-                  className="
+                {!brochureUnlocked ? (
+                  <button
+                    type="button"
+                    onClick={() => setShowBrochureForm(true)}
+                    className="
                     flex
                     w-full
                     items-center
@@ -441,17 +484,17 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
                     hover:border-[#D4AF37]
                     hover:bg-[#D4AF37]/10
                   "
-                >
-                  <Download className="size-3.5 shrink-0 text-[#8F1D1D]" />
+                  >
+                    <Download className="size-3.5 shrink-0 text-[#8F1D1D]" />
 
-                  <span className="truncate">Download Brochure</span>
-                </button>
-              ) : (
-                <a
-                  href={programmeBrochure}
-                  download
-                  onClick={() => setShowBrochureForm(false)}
-                  className="
+                    <span className="truncate">Download Brochure</span>
+                  </button>
+                ) : (
+                  <a
+                    href={programmeBrochure}
+                    download
+                    onClick={() => setShowBrochureForm(false)}
+                    className="
                     flex
                     w-full
                     items-center
@@ -470,94 +513,52 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
                     duration-300
                     hover:bg-[#E2C45A]
                   "
-                >
-                  <Download className="size-3.5 shrink-0" />
+                  >
+                    <Download className="size-3.5 shrink-0" />
 
-                  <span className="truncate">Download Brochure</span>
-                </a>
-              )}
+                    <span className="truncate">Download Brochure</span>
+                  </a>
+                )}
+              </div>
             </div>
 
+            <p className="relative mt-3 line-clamp-2 text-xs leading-5 text-slate-600">
+              <span className="font-semibold text-[#172554]">Eligibility:</span>{" "}
+              {programme.eligibility}
+            </p>
+
             {/* ================================================= */}
-            {/* RIGHT SIDE SQUARE PHOTO */}
+            {/* SMALL PREMIUM INDICATOR */}
             {/* ================================================= */}
 
-            <div
-              className="
-                relative
-                aspect-square
-                w-[62px]
-                overflow-hidden
-                rounded-[0.7rem]
-                border
-                border-[#D4AF37]/25
-                bg-[#F4F1E8]
-              "
-            >
-              <img
-                src={programmePhoto}
-                alt="Programme"
-                loading="lazy"
-                width={300}
-                height={300}
+            <div className="mt-2.5 flex items-center gap-1.5">
+              <CheckCircle2 className="size-3.5 shrink-0 text-[#8F1D1D]" />
+
+              <span
                 className="
-                  h-full
-                  w-full
-                  object-cover
-                  transition-transform
-                  duration-500
-                  group-hover:scale-105
-                "
-              />
-
-              {/* SUBTLE GOLD OVERLAY */}
-
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  inset-0
-                  bg-gradient-to-t
-                  from-[#172554]/20
-                  via-transparent
-                  to-transparent
-                "
-              />
-            </div>
-          </div>
-
-          {/* ================================================= */}
-          {/* SMALL PREMIUM INDICATOR */}
-          {/* ================================================= */}
-
-          <div className="mt-2.5 flex items-center gap-1.5">
-            <CheckCircle2 className="size-3.5 shrink-0 text-[#8F1D1D]" />
-
-            <span
-              className="
                 text-[clamp(0.62rem,0.57rem+0.15vw,0.75rem)]
                 font-semibold
                 text-black/55
               "
-            >
-              Flexible distance learning
-            </span>
-          </div>
+              >
+                Flexible distance learning
+              </span>
+            </div>
 
-          {/* ================================================= */}
-          {/* BUTTONS */}
-          {/* ================================================= */}
+            {/* ================================================= */}
+            {/* BUTTONS */}
+            {/* ================================================= */}
 
-          <div className="relative mt-auto flex gap-1.5 pt-3">
-            {/* EXPLORE */}
+            <div className="relative mt-auto flex gap-1.5 pt-3">
+              {/* EXPLORE */}
 
-            <ProgrammeExploreLink programme={programme} programmeRoute={programmeRoute} />
+              <ProgrammeExploreLink programme={programme} programmeRoute={programmeRoute} />
 
-            {/* APPLY */}
+              {/* APPLY */}
 
-            <Button
-              size="pill"
-              className="
+              <Button
+                size="pill"
+                className="
                 h-9
                 flex-1
                 rounded-full
@@ -573,13 +574,14 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
                 hover:bg-[#172554]
                 hover:shadow-[0_6px_15px_rgba(23,37,84,0.18)]
               "
-              asChild
-            >
-              <Link to="/admission" hash="how-to-apply">
-                Apply Now
-                <ArrowRight className="size-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" />
-              </Link>
-            </Button>
+                asChild
+              >
+                <Link to="/admission" hash="how-to-apply">
+                  Apply Now
+                  <ArrowRight className="size-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" />
+                </Link>
+              </Button>
+            </div>
           </div>
 
           {/* ================================================= */}

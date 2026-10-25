@@ -4,13 +4,12 @@ import { TopHeader } from "./TopHeader";
 
 export function SiteHeader() {
   return (
-    <header className="w-full min-w-0 overflow-x-hidden">
-      <TopHeader />
-
-      <div className="sticky top-0 z-40 w-full min-w-0">
+    <>
+      <div className="sticky top-0 z-[60] w-full min-w-0">
+        <TopHeader />
         <MainNav />
-        <Marquee />
       </div>
-    </header>
+      <Marquee />
+    </>
   );
 }

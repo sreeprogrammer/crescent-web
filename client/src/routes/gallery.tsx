@@ -2,10 +2,10 @@ import { GalleryGrid } from "@/components/site/GalleryGrid";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { createFileRoute } from "@tanstack/react-router";
 
-const title = "Gallery — Campus, Convocation, Job Fair & Events";
+const title = "Gallery — Job Fairs, Convocation & Events";
 
 const description =
-  "Browse photographs from distance education classes, campus life, convocation ceremonies, job fairs, academic events and our faculty.";
+  "Browse photographs from Crescent CDOE job fairs, convocation ceremonies and events.";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
@@ -27,17 +27,13 @@ export const Route = createFileRoute("/gallery")({
 ========================================================= */
 
 const circularFont = {
-  fontFamily:
-    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
+  fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
 };
 
 function GalleryPage() {
   return (
     <SiteLayout>
-      <main
-        style={circularFont}
-        className="min-h-screen overflow-hidden bg-[#f7f4ee]"
-      >
+      <main style={circularFont} className="min-h-screen overflow-hidden bg-[#f7f4ee]">
         {/* =====================================================
             GALLERY HEADER
             HERO CONTENT REMOVED
@@ -57,9 +53,7 @@ function GalleryPage() {
               <div className="mt-3 h-[3px] w-20 rounded-full bg-[#b08a24]" />
 
               <p className="mt-4 max-w-4xl text-[12px] font-medium leading-6 text-[#5e6470] sm:text-[13px]">
-                Browse photographs from distance education classes, campus
-                life, convocation ceremonies, job fairs, academic events and
-                our faculty.
+                Browse photographs from Crescent CDOE job fairs, convocation ceremonies and events.
               </p>
             </div>
           </div>
@@ -75,25 +69,6 @@ function GalleryPage() {
         >
           <div className="mx-auto max-w-7xl">
             {/* Compact gallery heading */}
-
-            <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <p className="text-[9px] font-bold uppercase tracking-[0.24em] text-[#8f1d1d]">
-                  Explore moments
-                </p>
-
-                <h2 className="mt-1 text-2xl font-bold tracking-tight text-black sm:text-3xl">
-                  Life at Crescent
-                </h2>
-
-                <div className="mt-2 h-[3px] w-16 rounded-full bg-[#b08a24]" />
-              </div>
-
-              <p className="max-w-md text-xs leading-5 text-black sm:text-right">
-                Browse campus memories, academic activities, student
-                achievements and important moments from our community.
-              </p>
-            </div>
 
             {/* Existing gallery */}
 
@@ -112,9 +87,7 @@ function GalleryPage() {
                 Experience Crescent
               </p>
 
-              <h3 className="mt-1 text-lg font-bold">
-                Ready to become part of our journey?
-              </h3>
+              <h3 className="mt-1 text-lg font-bold">Ready to become part of our journey?</h3>
             </div>
 
             <a

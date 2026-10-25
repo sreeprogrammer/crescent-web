@@ -12,7 +12,7 @@ import {
 
 import overviewImage from "@/assets/campus-1.jpg";
 import admissionNotification from "@/assets/Admission_Notification_AY_2023.pdf";
-import programmeBrochure from "@/assets/programme-brochure.pdf";
+import requiredDocuments from "@/assets/document-requied.pdf";
 
 /* =========================================================
    ROUTE
@@ -60,7 +60,7 @@ function AdmissionQuickLinks() {
       title: "Documents Required",
       description: "Check required documents",
       icon: FileText,
-      href: programmeBrochure,
+      href: requiredDocuments,
       accent: "#B08A24",
       external: true,
     },

@@ -522,9 +522,9 @@ export const faqs: BotFaqEntry[] = [
       ur: "MBA کی فیس کتنی ہے؟",
     },
     {
-      en: "MBA fee is Rs. 40,000 per year and Rs. 80,000 for the full 2 year programme.",
-      ta: "MBA கட்டணம் ஆண்டுக்கு ரூ. 40,000. முழு 2 ஆண்டுகளுக்கு ரூ. 80,000.",
-      ur: "MBA کی فیس 40,000 روپے سالانہ اور مکمل 2 سال کے لیے 80,000 روپے ہے۔",
+      en: "MBA fee is Rs. 25,000 per semester and Rs. 1,00,000 for the full 2 year programme.",
+      ta: "MBA கட்டணம் ஒரு செமஸ்டருக்கு ரூ. 25,000. முழு 2 ஆண்டுகளுக்கு ரூ. 1,00,000.",
+      ur: "MBA کی فیس فی سمسٹر 25,000 روپے اور پورے 2 سالہ پروگرام کے لیے 1,00,000 روپے ہے۔",
     },
     ["MBA eligibility", "MBA specialisations", "Fee payment methods"]
   ),
@@ -611,9 +611,9 @@ export const faqs: BotFaqEntry[] = [
       ur: "MCA کی فیس کتنی ہے؟",
     },
     {
-      en: "MCA fee is Rs. 35,000 per year and Rs. 70,000 for the full 2 year programme. Exam fees are separate.",
-      ta: "MCA கட்டணம் ஆண்டுக்கு ரூ. 35,000. முழு 2 ஆண்டுகளுக்கு ரூ. 70,000. தேர்வுக் கட்டணம் தனியாகும்.",
-      ur: "MCA کی فیس 35,000 روپے سالانہ اور مکمل 2 سال کے لیے 70,000 روپے ہے۔ امتحانی فیس الگ ہے۔",
+      en: "MCA fee is Rs. 20,000 per semester and Rs. 80,000 for the full 2 year programme. Exam fees are separate.",
+      ta: "MCA கட்டணம் ஒரு செமஸ்டருக்கு ரூ. 20,000. முழு 2 ஆண்டுகளுக்கு ரூ. 80,000. தேர்வுக் கட்டணம் தனியாகும்.",
+      ur: "MCA کی فیس فی سمسٹر 20,000 روپے اور پورے 2 سالہ پروگرام کے لیے 80,000 روپے ہے۔ امتحانی فیس الگ ہے۔",
     },
     ["MCA eligibility", "Fee payment methods", "PG courses"]
   ),
@@ -817,9 +817,9 @@ export const faqs: BotFaqEntry[] = [
       ur: "فیس اسٹرکچر کیا ہے؟",
     },
     {
-      en: "Annual fees: MBA Rs. 40,000, MCA Rs. 35,000, MA Islamic Studies Rs. 22,000, BA Public Policy Rs. 20,000, BA English Rs. 18,000 and BA Islamic Studies Rs. 15,000.",
-      ta: "ஆண்டு கட்டணம்: MBA ரூ.40,000, MCA ரூ.35,000, MA Islamic Studies ரூ.22,000, BA Public Policy ரூ.20,000, BA English ரூ.18,000, BA Islamic Studies ரூ.15,000.",
-      ur: "سالانہ فیس: MBA 40,000، MCA 35,000، MA اسلامک اسٹڈیز 22,000، BA پبلک پالیسی 20,000، BA انگریزی 18,000 اور BA اسلامک اسٹڈیز 15,000 روپے۔",
+      en: "MBA tuition is Rs. 25,000 per semester, MCA tuition is Rs. 20,000 per semester, and BA Islamic Studies tuition is Rs. 15,000 per year. Other programme fees vary.",
+      ta: "MBA கல்விக் கட்டணம் ஒரு செமஸ்டருக்கு ரூ. 25,000; MCA கல்விக் கட்டணம் ஒரு செமஸ்டருக்கு ரூ. 20,000; BA Islamic Studies கல்விக் கட்டணம் ஆண்டுக்கு ரூ. 15,000. பிற படிப்புகளின் கட்டணங்கள் மாறுபடும்.",
+      ur: "MBA کی ٹیوشن فیس فی سمسٹر 25,000 روپے، MCA کی فی سمسٹر 20,000 روپے، اور BA اسلامیات کی فی سال 15,000 روپے ہے۔ دیگر پروگراموں کی فیس مختلف ہے۔",
     },
     ["MBA fees", "MCA fees", "BA English fees", "Scholarships"]
   ),

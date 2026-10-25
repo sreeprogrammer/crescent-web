@@ -2,6 +2,7 @@ import heroImg1 from "@/assets/heroImg1.jpg";
 import heroImg2 from "@/assets/heroImg2.jpg";
 import heroImg3 from "@/assets/heroImg3.jpg";
 import heroImg4 from "@/assets/heroImg4.jpg";
+import banner from "@/assets/banner.png";
 import ugc from "@/assets/ugc.png";
 
 import { Button } from "@/components/ui/button";
@@ -49,6 +50,7 @@ const features = [
 
 export function HeroDE() {
   const [currentImage, setCurrentImage] = useState(0);
+  const [loadedImage, setLoadedImage] = useState<string | null>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -574,11 +576,19 @@ export function HeroDE() {
               "
             >
 
+              <img
+                src={banner}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+
               <AnimatePresence mode="wait">
 
                 <motion.img
                   key={currentImage}
                   src={heroImages[currentImage]}
+                  onLoad={() => setLoadedImage(heroImages[currentImage])}
                   alt="Crescent Distance Education campus"
                   width={1600}
                   height={1000}
@@ -594,7 +604,7 @@ export function HeroDE() {
                     scale: 1.04,
                   }}
                   animate={{
-                    opacity: 1,
+                    opacity: loadedImage === heroImages[currentImage] ? 1 : 0,
                     scale: 1,
                   }}
                   exit={{

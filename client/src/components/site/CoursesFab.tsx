@@ -1,62 +1,100 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
-import {
-  ArrowRight,
-  BookOpen,
-  GraduationCap,
-  Layers3,
-  X,
-} from "lucide-react";
+import { ArrowRight, BookOpen, GraduationCap, Layers3, X } from "lucide-react";
 
 const programmes = [
   {
     title: "BA English",
     type: "Undergraduate",
-    href: "/ba-english",
+    slug: "ba-english",
     accent: "#8F1D1D",
   },
   {
     title: "BA Islamic Studies",
     type: "Undergraduate",
-    href: "/ba-islamic-studies",
+    slug: "ba-islamic-studies",
     accent: "#2F6F4E",
   },
   {
     title: "BA Public Policy",
     type: "Undergraduate",
-    href: "/ba-public-policy",
+    slug: "ba-public-policy",
     accent: "#B08A24",
   },
   {
     title: "MA Islamic Studies",
     type: "Postgraduate",
-    href: "/ma-islamic-studies",
+    slug: "ma-islamic-studies",
     accent: "#6B4C9A",
   },
   {
     title: "MBA",
     type: "Postgraduate",
-    href: "/mba",
+    slug: "mba",
     accent: "#30265F",
   },
   {
     title: "MCA",
     type: "Postgraduate",
-    href: "/mca",
+    slug: "mca",
     accent: "#427D76",
   },
 ];
 
+type Programme = (typeof programmes)[number];
+
+function getProgrammeRoute(programme: Programme) {
+  switch (programme.slug) {
+    case "ba-islamic-studies":
+      return "/ba-islamic-studies" as const;
+    case "mba":
+      return "/mba" as const;
+    case "mca":
+      return "/mca" as const;
+    default:
+      return undefined;
+  }
+}
+
+function ProgrammeLink({
+  programme,
+  children,
+  className,
+  onClick,
+}: {
+  programme: Programme;
+  children: ReactNode;
+  className: string;
+  onClick: () => void;
+}) {
+  const route = getProgrammeRoute(programme);
+
+  if (route) {
+    return (
+      <Link to={route} onClick={onClick} className={className}>
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <Link
+      to="/course-info/$courseSlug"
+      params={{ courseSlug: programme.slug }}
+      onClick={onClick}
+      className={className}
+    >
+      {children}
+    </Link>
+  );
+}
+
 export function CoursesFab() {
   const [open, setOpen] = useState(false);
 
-  const undergraduate = programmes.filter(
-    (item) => item.type === "Undergraduate",
-  );
+  const undergraduate = programmes.filter((item) => item.type === "Undergraduate");
 
-  const postgraduate = programmes.filter(
-    (item) => item.type === "Postgraduate",
-  );
+  const postgraduate = programmes.filter((item) => item.type === "Postgraduate");
 
   return (
     <>
@@ -142,11 +180,7 @@ export function CoursesFab() {
           transition-transform
           duration-300
           ease-out
-          ${
-            open
-              ? "translate-x-0"
-              : "-translate-x-full"
-          }
+          ${open ? "translate-x-0" : "-translate-x-full"}
         `}
       >
         {/* =================================================
@@ -154,7 +188,6 @@ export function CoursesFab() {
         ================================================= */}
 
         <div className="relative bg-[#17234B] px-5 py-5 text-white">
-
           <div className="absolute right-0 top-0 h-1 w-full bg-gradient-to-r from-[#2F6F4E] via-[#D4AF37] to-[#6B4C9A]" />
 
           <button
@@ -190,9 +223,7 @@ export function CoursesFab() {
                 Academic Programmes
               </p>
 
-              <h2 className="mt-0.5 text-base font-bold">
-                Explore Courses
-              </h2>
+              <h2 className="mt-0.5 text-base font-bold">Explore Courses</h2>
             </div>
           </div>
 
@@ -206,11 +237,9 @@ export function CoursesFab() {
         ================================================= */}
 
         <div className="flex-1 overflow-y-auto px-4 py-4">
-
           {/* UNDERGRADUATE */}
 
           <div className="mb-5">
-
             <div className="mb-2.5 flex items-center gap-2">
               <span className="h-[2px] w-5 bg-[#2F6F4E]" />
 
@@ -221,9 +250,9 @@ export function CoursesFab() {
 
             <div className="space-y-2">
               {undergraduate.map((programme) => (
-                <Link
+                <ProgrammeLink
                   key={programme.title}
-                  to={programme.href}
+                  programme={programme}
                   onClick={() => setOpen(false)}
                   className="
                     group
@@ -262,13 +291,9 @@ export function CoursesFab() {
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <p className="text-[11px] font-bold text-[#111111]">
-                      {programme.title}
-                    </p>
+                    <p className="text-[11px] font-bold text-[#111111]">{programme.title}</p>
 
-                    <p className="mt-0.5 text-[8px] text-[#737782]">
-                      Explore Programme
-                    </p>
+                    <p className="mt-0.5 text-[8px] text-[#737782]">Explore Programme</p>
                   </div>
 
                   <ArrowRight
@@ -283,7 +308,7 @@ export function CoursesFab() {
                   />
 
                   <span className="absolute bottom-0 left-3 right-3 h-[2px] origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100" />
-                </Link>
+                </ProgrammeLink>
               ))}
             </div>
           </div>
@@ -291,7 +316,6 @@ export function CoursesFab() {
           {/* POSTGRADUATE */}
 
           <div>
-
             <div className="mb-2.5 flex items-center gap-2">
               <span className="h-[2px] w-5 bg-[#6B4C9A]" />
 
@@ -302,9 +326,9 @@ export function CoursesFab() {
 
             <div className="space-y-2">
               {postgraduate.map((programme) => (
-                <Link
+                <ProgrammeLink
                   key={programme.title}
-                  to={programme.href}
+                  programme={programme}
                   onClick={() => setOpen(false)}
                   className="
                     group
@@ -343,13 +367,9 @@ export function CoursesFab() {
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <p className="text-[11px] font-bold text-[#111111]">
-                      {programme.title}
-                    </p>
+                    <p className="text-[11px] font-bold text-[#111111]">{programme.title}</p>
 
-                    <p className="mt-0.5 text-[8px] text-[#737782]">
-                      Explore Programme
-                    </p>
+                    <p className="mt-0.5 text-[8px] text-[#737782]">Explore Programme</p>
                   </div>
 
                   <ArrowRight
@@ -364,7 +384,7 @@ export function CoursesFab() {
                   />
 
                   <span className="absolute bottom-0 left-3 right-3 h-[2px] origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100" />
-                </Link>
+                </ProgrammeLink>
               ))}
             </div>
           </div>

@@ -91,8 +91,12 @@ function FacultyProfilePage() {
 
             <dl className="divide-y divide-slate-100">
               <DetailRow label="Designation" value={faculty.designation} />
-              <DetailRow label="Nature of Employment" value={faculty.natureOfEmployment} />
-              <DetailRow label="Qualification" value={faculty.qualification} />
+              {faculty.natureOfEmployment && (
+                <DetailRow label="Nature of Employment" value={faculty.natureOfEmployment} />
+              )}
+              {faculty.qualification && (
+                <DetailRow label="Qualification" value={faculty.qualification} />
+              )}
               {faculty.phone && (
                 <div className="grid gap-2 px-5 py-4 sm:grid-cols-[200px_1fr] sm:gap-5 sm:px-6">
                   <dt className="flex items-center gap-2 text-sm font-semibold text-[#2f6f4e]">
@@ -109,20 +113,22 @@ function FacultyProfilePage() {
                   </dd>
                 </div>
               )}
-              <div className="grid gap-2 px-5 py-4 sm:grid-cols-[200px_1fr] sm:gap-5 sm:px-6">
-                <dt className="flex items-center gap-2 text-sm font-semibold text-[#2f6f4e]">
-                  <Mail className="size-4 text-[#d4af37]" />
-                  Email ID
-                </dt>
-                <dd>
-                  <a
-                    href={`mailto:${faculty.email}`}
-                    className="break-all text-sm hover:text-[#2f6f4e] hover:underline"
-                  >
-                    {faculty.email}
-                  </a>
-                </dd>
-              </div>
+              {faculty.email && (
+                <div className="grid gap-2 px-5 py-4 sm:grid-cols-[200px_1fr] sm:gap-5 sm:px-6">
+                  <dt className="flex items-center gap-2 text-sm font-semibold text-[#2f6f4e]">
+                    <Mail className="size-4 text-[#d4af37]" />
+                    Email ID
+                  </dt>
+                  <dd>
+                    <a
+                      href={`mailto:${faculty.email}`}
+                      className="break-all text-sm hover:text-[#2f6f4e] hover:underline"
+                    >
+                      {faculty.email}
+                    </a>
+                  </dd>
+                </div>
+              )}
             </dl>
           </article>
 

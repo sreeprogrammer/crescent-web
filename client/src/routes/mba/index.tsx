@@ -1,9 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import {
-  CourseInfoLink,
-  type CourseSection,
-} from "@/components/site/CourseInfoLink";
+import { CourseInfoLink, type CourseSection } from "@/components/site/CourseInfoLink";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -37,10 +34,7 @@ function MBAPage() {
 
   return (
     <SiteLayout>
-      <main
-        className="min-h-screen bg-[#f7f8f4] text-[#111111]"
-        style={circularFont}
-      >
+      <main className="min-h-screen bg-[#f7f8f4] text-[#111111]" style={circularFont}>
         {/* HEADER */}
         <section className="relative overflow-hidden bg-[#6b4c9a]">
           <div className="absolute inset-0 bg-gradient-to-br from-[#6b4c9a] via-[#64438f] to-[#533579]" />
@@ -70,8 +64,8 @@ function MBAPage() {
               <div className="mt-3 h-[3px] w-12 rounded-full bg-[#d4af37]" />
 
               <p className="mt-4 max-w-3xl text-base leading-7 text-white/85 sm:text-lg sm:leading-8">
-                MBA Online Learning (OL) Programme offered by the B.S. Abdur
-                Rahman Crescent Institute of Science and Technology.
+                MBA Online Learning (OL) Programme offered by the B.S. Abdur Rahman Crescent
+                Institute of Science and Technology.
               </p>
 
               <div className="mt-5">
@@ -258,26 +252,22 @@ function MBAPage() {
 
                 <div className="mt-6 space-y-5 text-base leading-8 text-[#111111] sm:text-lg sm:leading-8">
                   <p>
-                    MBA Online Learning (OL) programme of the B.S. Abdur Rahman
-                    Crescent Institute of Science and Technology are developed
-                    in accordance with the guidelines of the UGC OL Regulations
-                    2020 and in line with the vision and mission of the
+                    MBA Online Learning (OL) programme of the B.S. Abdur Rahman Crescent Institute
+                    of Science and Technology are developed in accordance with the guidelines of the
+                    UGC OL Regulations 2020 and in line with the vision and mission of the
                     Institute.
                   </p>
 
                   <p>
-                    Typically, the curriculum and syllabus contents under both
-                    programmes are similar to our regular MBA programme,
-                    nevertheless delivered through Online mode using
-                    state-of-the-art IT infrastructure and web based
-                    technologies.
+                    Typically, the curriculum and syllabus contents under both programmes are
+                    similar to our regular MBA programme, nevertheless delivered through Online mode
+                    using state-of-the-art IT infrastructure and web based technologies.
                   </p>
 
                   <p>
-                    The programmes are targeted to working adults as well as
-                    freshers who aspire to upskill their knowledge across
-                    functional areas of management that are evolving in the
-                    dynamic business environment in a flexible learning space.
+                    The programmes are targeted to working adults as well as freshers who aspire to
+                    upskill their knowledge across functional areas of management that are evolving
+                    in the dynamic business environment in a flexible learning space.
                   </p>
                 </div>
               </div>
@@ -285,115 +275,11 @@ function MBAPage() {
           </section>
 
           {/* VISION AND MISSION */}
-          <section className="mt-12">
-            <SectionHeading
-              number="01"
-              title="Vision & Mission"
-              accent="#6b4c9a"
-            />
-
-            <div className="mt-6 grid gap-5 lg:grid-cols-2">
-              {/* VISION */}
-              <div
-                id="vision"
-                className="group relative scroll-mt-24 overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-7"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#1d355f]/10 text-[#1d355f]">
-                    <Eye size={22} />
-                  </div>
-
-                  <div>
-                    <span className="text-xs font-bold uppercase tracking-[0.15em] text-[#1d355f] sm:text-sm">
-                      Academic Direction
-                    </span>
-
-                    <h3 className="mt-2 text-2xl font-bold text-[#111111] sm:text-3xl">
-                      Vision
-                    </h3>
-
-                    <div className="mt-3 h-[3px] w-9 rounded-full bg-[#d4af37]" />
-                  </div>
-                </div>
-
-                <p className="mt-5 text-base leading-8 text-[#111111] sm:text-lg">
-                  To provide a technology based platform for working adults
-                  and aspirants of higher degrees in the field of business
-                  management through in a flexible mode
-                </p>
-
-                <span className="pointer-events-none absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-12" />
-              </div>
-
-              {/* MISSION */}
-              <div
-                id="mission"
-                className="group relative scroll-mt-24 overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-7"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#8f1d1d]/10 text-[#8f1d1d]">
-                    <Target size={22} />
-                  </div>
-
-                  <div>
-                    <span className="text-xs font-bold uppercase tracking-[0.15em] text-[#8f1d1d] sm:text-sm">
-                      Core Commitment
-                    </span>
-
-                    <h3 className="mt-2 text-2xl font-bold text-[#111111] sm:text-3xl">
-                      Mission
-                    </h3>
-
-                    <div className="mt-3 h-[3px] w-9 rounded-full bg-[#d4af37]" />
-                  </div>
-                </div>
-
-                <p className="mt-5 text-base font-semibold leading-7 text-[#111111] sm:text-lg">
-                  The programme aims:
-                </p>
-
-                <div className="mt-4 space-y-3">
-                  <MissionItem>
-                    To provide quality education through OL mode in the field
-                    of management.
-                  </MissionItem>
-
-                  <MissionItem>
-                    To offer flexible mode of learning for working
-                    professionals to upskill their knowledge in their own
-                    functional areas.
-                  </MissionItem>
-
-                  <MissionItem>
-                    To offer the same curriculum and syllabi of regular MBA
-                    degree programme of the Institute to the aspirants of OL
-                    programmes.
-                  </MissionItem>
-
-                  <MissionItem>
-                    To provide a state-of-the-art infrastructure for efficient
-                    and interactive teaching and learning using web-based
-                    technologies.
-                  </MissionItem>
-
-                  <MissionItem>
-                    To offer industry oriented courses to meet the market
-                    demand.
-                  </MissionItem>
-                </div>
-
-                <span className="pointer-events-none absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-12" />
-              </div>
-            </div>
-          </section>
+          
 
           {/* ELIGIBILITY AND FEE */}
           <section id="eligibility-fee" className="mt-12 scroll-mt-24">
-            <SectionHeading
-              number="02"
-              title="Eligibility & Fee"
-              accent="#0d5c45"
-            />
+            <SectionHeading number="02" title="Eligibility & Fee" accent="#0d5c45" />
 
             <div className="mt-6 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
               {/* ELIGIBILITY */}
@@ -418,30 +304,25 @@ function MBAPage() {
 
                 <div className="mt-5 rounded-xl bg-[#0d5c45] p-4 sm:p-5">
                   <div className="flex items-start gap-3">
-                    <CheckCircle2
-                      size={20}
-                      className="mt-1 shrink-0 text-[#f3d15b]"
-                    />
+                    <CheckCircle2 size={20} className="mt-1 shrink-0 text-[#f3d15b]" />
 
                     <p className="text-base font-semibold leading-7 text-white sm:text-lg">
-                      Any Bachelor Degree (minimum 3 years duration) with a
-                      minimum CGPA of 5.0 / 50% of marks
+                      Any Bachelor Degree (minimum 3 years duration) with a minimum CGPA of 5.0 /
+                      50% of marks
                     </p>
                   </div>
                 </div>
 
                 <div className="mt-5 space-y-4">
                   <EligibilityItem>
-                    Admission is based on the CGPA / Percentage obtained in
-                    the UG degree and performance in the CreScent School of
-                    Business Administration Test (CSBAT).
+                    Admission is based on the CGPA / Percentage obtained in the UG degree and
+                    performance in the CreScent School of Business Administration Test (CSBAT).
                   </EligibilityItem>
 
                   <EligibilityItem>
-                    Applicants who have already appeared in the National
-                    level Entrance Exams like CAT, MAT, XAT, TANCET, etc., and
-                    have secured valid scores are exempted from appearing
-                    CSBAT.
+                    Applicants who have already appeared in the National level Entrance Exams like
+                    CAT, MAT, XAT, TANCET, etc., and have secured valid scores are exempted from
+                    appearing CSBAT.
                   </EligibilityItem>
                 </div>
 
@@ -449,53 +330,12 @@ function MBAPage() {
               </div>
 
               {/* FEE */}
-              <div className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-7">
-                <div className="flex items-start gap-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#d4af37]/20 text-[#8a6d12]">
-                    <Landmark size={22} />
-                  </div>
-
-                  <div>
-                    <span className="text-xs font-bold uppercase tracking-[0.15em] text-[#8a6d12] sm:text-sm">
-                      Indian & Foreign Nationals
-                    </span>
-
-                    <h3 className="mt-2 text-2xl font-bold text-[#111111] sm:text-3xl">
-                      Fee Structure
-                    </h3>
-
-                    <div className="mt-3 h-[3px] w-9 rounded-full bg-[#d4af37]" />
-                  </div>
-                </div>
-
-                <div className="mt-5 space-y-4">
-                  <FeeTable
-                    title="Indian Nationals"
-                    accent="#0d5c45"
-                    applicationFee="₹1,000"
-                    tuitionFee="₹40,000"
-                  />
-
-                  <FeeTable
-                    title="Foreign Nationals"
-                    accent="#6b4c9a"
-                    applicationFee="$15"
-                    tuitionFee="$1,000"
-                  />
-                </div>
-
-                <span className="pointer-events-none absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-12" />
-              </div>
             </div>
           </section>
 
           {/* PROGRAMME HIGHLIGHTS */}
           <section className="mt-12">
-            <SectionHeading
-              number="03"
-              title="Programme Highlights"
-              accent="#1d355f"
-            />
+            <SectionHeading number="03" title="Programme Highlights" accent="#1d355f" />
 
             <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <HighlightCard
@@ -534,9 +374,7 @@ function MBAPage() {
           <div className="mx-auto max-w-7xl px-5 py-8 sm:px-6 sm:py-10 lg:px-8">
             <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="text-base font-medium text-slate-500 sm:text-lg">
-                  Ready to begin?
-                </p>
+                <p className="text-base font-medium text-slate-500 sm:text-lg">Ready to begin?</p>
 
                 <h2 className="mt-2 text-2xl font-bold leading-tight text-[#111111] sm:text-3xl">
                   Apply for MBA Online Learning
@@ -585,10 +423,7 @@ function SectionHeading({
 }) {
   return (
     <div className="flex items-center gap-3">
-      <span
-        className="text-base font-bold tracking-[0.12em] sm:text-lg"
-        style={{ color: accent }}
-      >
+      <span className="text-base font-bold tracking-[0.12em] sm:text-lg" style={{ color: accent }}>
         {number}
       </span>
 
@@ -627,13 +462,9 @@ function HashQuickCard({
         </div>
 
         <div className="min-w-0">
-          <h3 className="text-base font-bold leading-6 text-[#111111] sm:text-lg">
-            {title}
-          </h3>
+          <h3 className="text-base font-bold leading-6 text-[#111111] sm:text-lg">{title}</h3>
 
-          <p className="mt-1 text-sm leading-6 text-slate-500 sm:text-base">
-            {description}
-          </p>
+          <p className="mt-1 text-sm leading-6 text-slate-500 sm:text-base">{description}</p>
         </div>
 
         <ArrowRight
@@ -650,11 +481,7 @@ function HashQuickCard({
     "group relative z-10 border-b border-slate-100 px-4 py-5 transition-all duration-300 hover:bg-slate-50 sm:border-r sm:px-5 lg:border-b-0";
 
   return section ? (
-    <CourseInfoLink
-      courseSlug="mba"
-      section={section}
-      className={className}
-    >
+    <CourseInfoLink courseSlug="mba" section={section} className={className}>
       {content}
     </CourseInfoLink>
   ) : (
@@ -691,13 +518,9 @@ function LinkQuickCard({
         </div>
 
         <div className="min-w-0">
-          <h3 className="text-base font-bold leading-6 text-[#111111] sm:text-lg">
-            {title}
-          </h3>
+          <h3 className="text-base font-bold leading-6 text-[#111111] sm:text-lg">{title}</h3>
 
-          <p className="mt-1 text-sm leading-6 text-slate-500 sm:text-base">
-            {description}
-          </p>
+          <p className="mt-1 text-sm leading-6 text-slate-500 sm:text-base">{description}</p>
         </div>
 
         <ArrowRight
@@ -734,9 +557,7 @@ function MiniVisualCard({
           {icon}
         </div>
 
-        <p className="text-sm font-semibold leading-6 text-[#111111] sm:text-base">
-          {title}
-        </p>
+        <p className="text-sm font-semibold leading-6 text-[#111111] sm:text-base">{title}</p>
       </div>
 
       <span className="pointer-events-none absolute bottom-0 left-0 h-[2px] w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-full" />
@@ -750,9 +571,7 @@ function MissionItem({ children }: { children: ReactNode }) {
     <div className="group relative flex items-start gap-3 overflow-hidden rounded-lg bg-[#fffdf8] px-4 py-3">
       <span className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-[#8f1d1d]" />
 
-      <p className="text-base leading-7 text-[#111111] sm:text-lg sm:leading-8">
-        {children}
-      </p>
+      <p className="text-base leading-7 text-[#111111] sm:text-lg sm:leading-8">{children}</p>
 
       <span className="pointer-events-none absolute bottom-0 left-0 h-[1.5px] w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-full" />
     </div>
@@ -763,14 +582,9 @@ function MissionItem({ children }: { children: ReactNode }) {
 function EligibilityItem({ children }: { children: ReactNode }) {
   return (
     <div className="group relative flex items-start gap-3 overflow-hidden border-b border-slate-100 pb-4 last:border-b-0 last:pb-0">
-      <CheckCircle2
-        size={19}
-        className="mt-1 shrink-0 text-[#8f1d1d]"
-      />
+      <CheckCircle2 size={19} className="mt-1 shrink-0 text-[#8f1d1d]" />
 
-      <p className="text-base leading-7 text-[#111111] sm:text-lg sm:leading-8">
-        {children}
-      </p>
+      <p className="text-base leading-7 text-[#111111] sm:text-lg sm:leading-8">{children}</p>
 
       <span className="pointer-events-none absolute bottom-0 left-0 h-[1.5px] w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-full" />
     </div>
@@ -807,18 +621,14 @@ function FeeTable({
           <Landmark size={20} />
         </div>
 
-        <h3 className="text-base font-bold leading-6 text-[#111111] sm:text-lg">
-          {title}
-        </h3>
+        <h3 className="text-base font-bold leading-6 text-[#111111] sm:text-lg">{title}</h3>
       </div>
 
       <div className="overflow-x-auto">
         <table className="w-full border-collapse">
           <thead>
             <tr className="text-white" style={{ backgroundColor: accent }}>
-              <th className="w-12 px-3 py-3 text-left text-sm font-semibold sm:text-base">
-                #
-              </th>
+              <th className="w-12 px-3 py-3 text-left text-sm font-semibold sm:text-base">#</th>
 
               <th className="px-3 py-3 text-left text-sm font-semibold sm:text-base">
                 Particulars
@@ -885,10 +695,7 @@ function HighlightCard({
         {icon}
       </div>
 
-      <h3
-        className="text-lg font-bold leading-6 sm:text-xl"
-        style={{ color: accent }}
-      >
+      <h3 className="text-lg font-bold leading-6 sm:text-xl" style={{ color: accent }}>
         {title}
       </h3>
 
@@ -930,9 +737,7 @@ function LinkActionCard({
         {icon}
       </span>
 
-      <span className="text-base font-semibold leading-6 text-[#111111] sm:text-lg">
-        {title}
-      </span>
+      <span className="text-base font-semibold leading-6 text-[#111111] sm:text-lg">{title}</span>
 
       <ArrowRight
         size={18}
@@ -945,11 +750,7 @@ function LinkActionCard({
 
   if (courseSlug) {
     return (
-      <CourseInfoLink
-        courseSlug={courseSlug}
-        section="eligibility-fee"
-        className={className}
-      >
+      <CourseInfoLink courseSlug={courseSlug} section="eligibility-fee" className={className}>
         {content}
       </CourseInfoLink>
     );

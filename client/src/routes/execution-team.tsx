@@ -1,25 +1,15 @@
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import {
-  ArrowLeft,
-  Award,
-  BookOpen,
-  GraduationCap,
-  Users,
-} from "lucide-react";
+import { ArrowLeft, Award, GraduationCap, Users } from "lucide-react";
 
 import jayaPhoto from "@/assets/jaya.png";
 import aishaBanuPhoto from "@/assets/DR.AISHABANU.png";
 import thowseafPhoto from "@/assets/thowseaf.jpeg";
-import lathaTamilselvanPhoto from "@/assets/DR.LATHATAMILSELVAN.png";
-import thariniPhoto from "@/assets/Dr.C.Tharini.png";
-import sharmilaSankarPhoto from "@/assets/DR.SHARMILASANKAR.png";
 import formerDirectorPhoto from "@/assets/director.png";
 
 const circularFont = {
-  fontFamily:
-    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
+  fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
 };
 
 const director = {
@@ -42,34 +32,6 @@ const cdoeTeam = [
     role: "Assistant Professor/CDOE",
     extra: "Assistant Director",
     image: thowseafPhoto,
-    accent: "gold",
-  },
-];
-
-const planningCommittee = [
-  {
-    name: "Dr. Latha Tamilselvan",
-    role: "Professor & Director",
-    extra: "MIS",
-    image: lathaTamilselvanPhoto,
-    accent: "violet",
-  },
-  {
-    name: "Dr. C. Tharini",
-    role: "Professor & Dean SECS",
-    image: thariniPhoto,
-    accent: "green",
-  },
-  {
-    name: "Dr. Sharmila Sankar",
-    role: "Professor & Dean SCIMS",
-    image: sharmilaSankarPhoto,
-    accent: "red",
-  },
-  {
-    name: "Dr. Aisha Banu",
-    role: "Professor & HOD CSE",
-    image: aishaBanuPhoto,
     accent: "gold",
   },
 ];
@@ -132,10 +94,7 @@ export const Route = createFileRoute("/execution-team")({
 function ExecutionTeamPage() {
   return (
     <SiteLayout>
-      <div
-        style={circularFont}
-        className="min-h-screen bg-[#f7f7f5] text-black"
-      >
+      <div style={circularFont} className="min-h-screen bg-[#f7f7f5] text-black">
         {/* HEADER */}
         <section className="relative overflow-hidden bg-[#831B1B] text-white">
           <div className="absolute -right-20 -top-24 h-56 w-56 rounded-full bg-[#d4af37]/10 blur-3xl" />
@@ -155,8 +114,7 @@ function ExecutionTeamPage() {
                 Back to About
               </a>
 
-              <div className="mb-2.5 inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white"
-              >
+              <div className="mb-2.5 inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white">
                 <Users className="h-3 w-3" />
                 Execution Team
               </div>
@@ -174,16 +132,14 @@ function ExecutionTeamPage() {
 
         {/* QUICK NAV */}
         <section className="border-b border-slate-200 bg-white">
-          <div className="mx-auto grid max-w-7xl grid-cols-2 gap-2.5 px-5 py-4 sm:grid-cols-4 sm:px-8">
+          <div className="mx-auto grid max-w-7xl grid-cols-2 gap-2.5 px-5 py-4 sm:grid-cols-3 sm:px-8">
             <a
               href="#director"
               className="group rounded-xl border border-slate-200 bg-white p-2.5 text-center shadow-sm"
             >
               <div className="flex items-center justify-center gap-2">
                 <Award className="h-3.5 w-3.5 text-[#831B1B]" />
-                <span className="text-xs font-semibold text-black">
-                  Director
-                </span>
+                <span className="text-xs font-semibold text-black">Director</span>
               </div>
               <div className="mt-2 h-0.5 w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-7" />
             </a>
@@ -194,22 +150,7 @@ function ExecutionTeamPage() {
             >
               <div className="flex items-center justify-center gap-2">
                 <Users className="h-3.5 w-3.5 text-[#3f7d58]" />
-                <span className="text-xs font-semibold text-black">
-                  CDOE Team
-                </span>
-              </div>
-              <div className="mt-2 h-0.5 w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-7" />
-            </a>
-
-            <a
-              href="#planning"
-              className="group rounded-xl border border-slate-200 bg-white p-2.5 text-center shadow-sm"
-            >
-              <div className="flex items-center justify-center gap-2">
-                <BookOpen className="h-3.5 w-3.5 text-[#6b4c9a]" />
-                <span className="text-xs font-semibold text-black">
-                  Planning & Monitoring
-                </span>
+                <span className="text-xs font-semibold text-black">CDOE Team</span>
               </div>
               <div className="mt-2 h-0.5 w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-7" />
             </a>
@@ -220,9 +161,7 @@ function ExecutionTeamPage() {
             >
               <div className="flex items-center justify-center gap-2">
                 <GraduationCap className="h-3.5 w-3.5 text-[#d4af37]" />
-                <span className="text-xs font-semibold text-black">
-                  Former Director
-                </span>
+                <span className="text-xs font-semibold text-black">Former Director</span>
               </div>
               <div className="mt-2 h-0.5 w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-7" />
             </a>
@@ -246,9 +185,7 @@ function ExecutionTeamPage() {
                 <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-black/50">
                   Leadership
                 </p>
-                <h2 className="text-xl font-bold text-black sm:text-2xl">
-                  Director
-                </h2>
+                <h2 className="text-xl font-bold text-black sm:text-2xl">Director</h2>
               </div>
             </div>
 
@@ -303,9 +240,7 @@ function ExecutionTeamPage() {
                 <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-black/50">
                   Team
                 </p>
-                <h2 className="text-xl font-bold text-black sm:text-2xl">
-                  CDOE Team
-                </h2>
+                <h2 className="text-xl font-bold text-black sm:text-2xl">CDOE Team</h2>
               </div>
             </div>
 
@@ -330,9 +265,7 @@ function ExecutionTeamPage() {
                           className="h-full w-full object-cover"
                         />
 
-                        <div
-                          className={`absolute bottom-0 left-0 h-1 w-full ${styles.line}`}
-                        />
+                        <div className={`absolute bottom-0 left-0 h-1 w-full ${styles.line}`} />
                       </div>
 
                       <div className="p-5">
@@ -345,79 +278,13 @@ function ExecutionTeamPage() {
                         </h3>
 
                         {person.extra && (
-                          <p className="mt-1.5 text-xs font-medium text-black/70">
-                            {person.extra}
-                          </p>
+                          <p className="mt-1.5 text-xs font-medium text-black/70">{person.extra}</p>
                         )}
 
                         <div
                           className={`mt-4 h-0.5 w-8 ${styles.line} transition-all duration-300 group-hover:w-14`}
                         />
                       </div>
-                    </div>
-                  </motion.article>
-                );
-              })}
-            </div>
-          </section>
-
-          {/* PLANNING & MONITORING */}
-          <section id="planning" className="mb-8">
-            <div className="mb-4 flex items-center gap-2">
-              <span className="h-7 w-1 rounded-full bg-[#6b4c9a]" />
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-black/50">
-                  Committee
-                </p>
-                <h2 className="text-xl font-bold text-black sm:text-2xl">
-                  Planning & Monitoring Committee
-                </h2>
-              </div>
-            </div>
-
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {planningCommittee.map((person, index) => {
-                const styles = getAccentClasses(person.accent);
-
-                return (
-                  <motion.article
-                    key={`${person.name}-${index}`}
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
-                    transition={{ duration: 0.4, delay: index * 0.05 }}
-                    className={`group overflow-hidden rounded-2xl border ${styles.border} bg-white shadow-sm`}
-                  >
-                    <div className="relative h-52 overflow-hidden bg-slate-100">
-                      <img
-                        src={person.image}
-                        alt={person.name}
-                        className="h-full w-full object-cover"
-                      />
-
-                      <div
-                        className={`absolute bottom-0 left-0 h-1 w-full ${styles.line}`}
-                      />
-                    </div>
-
-                    <div className="p-4">
-                      <h3 className="text-base font-bold leading-5 text-black">
-                        {person.name}
-                      </h3>
-
-                      <p className="mt-1.5 text-xs leading-5 text-black/70">
-                        {person.role}
-                      </p>
-
-                      {person.extra && (
-                        <p className="mt-0.5 text-xs font-medium text-black">
-                          {person.extra}
-                        </p>
-                      )}
-
-                      <div
-                        className={`mt-3 h-0.5 w-7 ${styles.line} transition-all duration-300 group-hover:w-12`}
-                      />
                     </div>
                   </motion.article>
                 );
@@ -439,9 +306,7 @@ function ExecutionTeamPage() {
                 <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-black/50">
                   Previous Leadership
                 </p>
-                <h2 className="text-xl font-bold text-black sm:text-2xl">
-                  Former Director
-                </h2>
+                <h2 className="text-xl font-bold text-black sm:text-2xl">Former Director</h2>
               </div>
             </div>
 
@@ -462,13 +327,9 @@ function ExecutionTeamPage() {
                     {formerDirector.role}
                   </p>
 
-                  <h3 className="mt-1 text-xl font-bold text-black">
-                    {formerDirector.name}
-                  </h3>
+                  <h3 className="mt-1 text-xl font-bold text-black">{formerDirector.name}</h3>
 
-                  <p className="mt-2 text-sm font-semibold text-black">
-                    {formerDirector.year}
-                  </p>
+                  <p className="mt-2 text-sm font-semibold text-black">{formerDirector.year}</p>
 
                   <div className="mt-4 h-0.5 w-9 bg-[#d4af37]" />
                 </div>

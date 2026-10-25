@@ -58,7 +58,7 @@ export function PageHero({
           -top-24
           size-64
           rounded-full
-          bg-[#8f1d1d]/8
+          bg-[#741B1B]/8
           blur-3xl
         "
       />
@@ -93,7 +93,7 @@ export function PageHero({
             font-bold
             uppercase
             tracking-[0.2em]
-            text-[#8f1d1d]
+            text-[#741B1B]
             shadow-sm
             backdrop-blur
           "

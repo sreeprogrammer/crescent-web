@@ -37,12 +37,11 @@ function EventsPage() {
                 Latest updates
               </div>
 
-              <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
-                News & Events
-              </h1>
+              <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">News & Events</h1>
 
               <p className="mt-2 max-w-2xl text-sm leading-6 text-white/75">
-                Explore upcoming programmes, campus events, admissions and student opportunities at Crescent CDOE.
+                Explore upcoming programmes, campus events, admissions and student opportunities at
+                Crescent CDOE.
               </p>
             </div>
           </div>
@@ -57,14 +56,14 @@ function EventsPage() {
                 className="overflow-hidden rounded-2xl border border-[#d9dee7] bg-white shadow-[0_6px_24px_rgba(15,23,42,0.04)]"
               >
                 <AccordionTrigger className="flex w-full items-center justify-between gap-4 px-4 py-4 text-left sm:px-5">
-                  <div className="flex items-center gap-4">
+                  <div className="flex min-w-0 flex-1 items-center gap-4">
                     <img
                       src={item.image}
                       alt={item.title}
                       className="h-16 w-16 rounded-xl object-cover sm:h-20 sm:w-20"
                     />
 
-                    <div>
+                    <div className="min-w-0">
                       <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#7f1d1d]">
                         {item.date}
                       </p>
@@ -74,8 +73,8 @@ function EventsPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 text-[#172554]">
-                    <span className="hidden text-[10px] font-semibold uppercase tracking-[0.14em] text-[#172554]/70 sm:inline">
+                  <div className="shrink-0 flex items-center gap-2 text-[#172554]">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#172554]/70">
                       Details
                     </span>
                     <ChevronRight className="h-4 w-4 transition-transform duration-300 group-data-[state=open]:rotate-90" />
@@ -101,9 +100,7 @@ function EventsPage() {
                         <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#7f1d1d]">
                           Event overview
                         </p>
-                        <p className="mt-2 text-sm leading-6 text-[#2b2a2a]">
-                          {item.overview}
-                        </p>
+                        <p className="mt-2 text-sm leading-6 text-[#2b2a2a]">{item.overview}</p>
                       </div>
                     </div>
                   </div>

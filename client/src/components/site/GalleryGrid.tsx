@@ -1,26 +1,11 @@
-import campus1 from "@/assets/campus-1.jpg";
-import campus2 from "@/assets/campus-2.jpg";
-import campus3 from "@/assets/campus-3.jpg";
-import campus4 from "@/assets/campus-4.jpg";
 import convocationImg from "@/assets/convocation.jpg";
-import distance from "@/assets/distance-learning.jpg";
 import eventsImg from "@/assets/events.jpg";
-import facultyImg from "@/assets/faculty.jpg";
-import heroCampus from "@/assets/hero-campus.jpg";
 import jobFairImg from "@/assets/job-fair.jpg";
-import research from "@/assets/research.jpg";
 
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import {
-  ArrowUpRight,
-  Camera,
-  ChevronRight,
-  Images,
-  Maximize2,
-  Sparkles,
-} from "lucide-react";
+import { ArrowUpRight, Camera, ChevronRight, Images, Maximize2, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { Section } from "./Section";
 
@@ -31,14 +16,6 @@ type Photo = {
 };
 
 export const galleryCategories = [
-  {
-    id: "distance-education",
-    label: "Distance Education",
-  },
-  {
-    id: "campus",
-    label: "Campus",
-  },
   {
     id: "convocation",
     label: "Convocation",
@@ -51,48 +28,9 @@ export const galleryCategories = [
     id: "events",
     label: "Events",
   },
-  {
-    id: "faculty",
-    label: "Faculty",
-  },
 ];
 
 const photos: Photo[] = [
-  {
-    src: distance,
-    alt: "Student attending an online class from home",
-    category: "distance-education",
-  },
-  {
-    src: research,
-    alt: "Learner researching on a laptop",
-    category: "distance-education",
-  },
-  {
-    src: campus3,
-    alt: "Digital library workspace",
-    category: "distance-education",
-  },
-  {
-    src: heroCampus,
-    alt: "Main campus building",
-    category: "campus",
-  },
-  {
-    src: campus1,
-    alt: "Students on the campus lawn",
-    category: "campus",
-  },
-  {
-    src: campus2,
-    alt: "Campus corridor and study areas",
-    category: "campus",
-  },
-  {
-    src: campus4,
-    alt: "Campus architecture at dusk",
-    category: "campus",
-  },
   {
     src: convocationImg,
     alt: "Graduates celebrating at convocation",
@@ -108,32 +46,22 @@ const photos: Photo[] = [
     alt: "Academic seminar in the auditorium",
     category: "events",
   },
-  {
-    src: facultyImg,
-    alt: "Faculty members of the centre",
-    category: "faculty",
-  },
 ];
 
 export function GalleryGrid() {
   const [active, setActive] = useState<string>("all");
   const [preview, setPreview] = useState<Photo | null>(null);
 
-  const filtered =
-    active === "all"
-      ? photos
-      : photos.filter((photo) => photo.category === active);
+  const filtered = active === "all" ? photos : photos.filter((photo) => photo.category === active);
 
   const activeLabel =
     active === "all"
       ? "All Moments"
-      : galleryCategories.find((item) => item.id === active)?.label ??
-        "Gallery";
+      : (galleryCategories.find((item) => item.id === active)?.label ?? "Gallery");
 
   return (
     <Section id="gallery" className="!py-8 sm:!py-10">
       <div className="mx-auto max-w-7xl">
-
         {/* =====================================================
             PREMIUM INTRO
         ===================================================== */}
@@ -149,7 +77,7 @@ export function GalleryGrid() {
               <span className="h-px w-7 bg-[#d4af37]" />
 
               <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#8f1d1d]">
-                Campus Stories
+                Crescent Moments
               </span>
 
               <Sparkles className="size-3.5 text-[#d4af37]" />
@@ -161,8 +89,7 @@ export function GalleryGrid() {
             </h2>
 
             <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
-              Explore the learning experience, campus life, celebrations,
-              events and people behind Crescent CDOE.
+              Explore moments from Crescent CDOE job fairs, convocation ceremonies and events.
             </p>
           </div>
 
@@ -177,9 +104,7 @@ export function GalleryGrid() {
                 Gallery
               </p>
 
-              <p className="text-sm font-bold">
-                {photos.length} Moments
-              </p>
+              <p className="text-sm font-bold">{photos.length} Moments</p>
             </div>
           </div>
         </motion.div>
@@ -189,36 +114,31 @@ export function GalleryGrid() {
         ===================================================== */}
         <div className="mb-7 overflow-x-auto pb-1 scrollbar-none">
           <div className="flex min-w-max items-center gap-2 rounded-2xl border border-[#172554]/10 bg-white/60 p-1.5 shadow-[0_8px_25px_rgba(23,37,84,0.06)] backdrop-blur-xl">
+            {[{ id: "all", label: "All Moments" }, ...galleryCategories].map((category) => {
+              const selected = active === category.id;
 
-            {[{ id: "all", label: "All Moments" }, ...galleryCategories].map(
-              (category) => {
-                const selected = active === category.id;
+              return (
+                <button
+                  key={category.id}
+                  type="button"
+                  onClick={() => setActive(category.id)}
+                  className={cn(
+                    "group relative flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-semibold transition-all duration-300",
+                    selected
+                      ? "bg-[#172554] text-white shadow-md"
+                      : "text-slate-500 hover:bg-[#8f1d1d]/8 hover:text-[#8f1d1d]",
+                  )}
+                >
+                  {selected && <span className="size-1.5 rounded-full bg-[#d4af37]" />}
 
-                return (
-                  <button
-                    key={category.id}
-                    type="button"
-                    onClick={() => setActive(category.id)}
-                    className={cn(
-                      "group relative flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-semibold transition-all duration-300",
-                      selected
-                        ? "bg-[#172554] text-white shadow-md"
-                        : "text-slate-500 hover:bg-[#8f1d1d]/8 hover:text-[#8f1d1d]",
-                    )}
-                  >
-                    {selected && (
-                      <span className="size-1.5 rounded-full bg-[#d4af37]" />
-                    )}
+                  {category.label}
 
-                    {category.label}
-
-                    {!selected && (
-                      <ChevronRight className="size-3 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" />
-                    )}
-                  </button>
-                );
-              },
-            )}
+                  {!selected && (
+                    <ChevronRight className="size-3 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" />
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -229,9 +149,7 @@ export function GalleryGrid() {
           <div className="flex items-center gap-2">
             <Camera className="size-4 text-[#8f1d1d]" />
 
-            <span className="text-sm font-bold text-[#172554]">
-              {activeLabel}
-            </span>
+            <span className="text-sm font-bold text-[#172554]">{activeLabel}</span>
 
             <span className="rounded-full bg-[#d4af37]/15 px-2 py-0.5 text-[10px] font-bold text-[#8f1d1d]">
               {filtered.length}
@@ -247,10 +165,7 @@ export function GalleryGrid() {
         {/* =====================================================
             PREMIUM MASONRY GALLERY
         ===================================================== */}
-        <motion.div
-          layout
-          className="columns-1 gap-4 sm:columns-2 lg:columns-3"
-        >
+        <motion.div layout className="columns-1 gap-4 sm:columns-2 lg:columns-3">
           {filtered.map((photo, i) => (
             <motion.button
               key={`${photo.src}-${i}`}
@@ -296,9 +211,7 @@ export function GalleryGrid() {
                 <span className="absolute inset-x-0 bottom-0 p-4">
                   <span className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-[#d4af37]/30 bg-[#172554]/65 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.15em] text-[#d4af37] backdrop-blur-md">
                     <span className="size-1.5 rounded-full bg-[#d4af37]" />
-                    {galleryCategories.find(
-                      (item) => item.id === photo.category,
-                    )?.label}
+                    {galleryCategories.find((item) => item.id === photo.category)?.label}
                   </span>
 
                   <span className="block max-w-[90%] text-sm font-semibold leading-5 text-white">
@@ -322,13 +235,9 @@ export function GalleryGrid() {
           <div className="rounded-3xl border border-dashed border-[#d4af37]/40 bg-[#f7f4ee] px-6 py-12 text-center">
             <Images className="mx-auto size-8 text-[#8f1d1d]" />
 
-            <p className="mt-3 text-sm font-semibold text-[#172554]">
-              No images available
-            </p>
+            <p className="mt-3 text-sm font-semibold text-[#172554]">No images available</p>
 
-            <p className="mt-1 text-xs text-slate-500">
-              More moments will be added soon.
-            </p>
+            <p className="mt-1 text-xs text-slate-500">More moments will be added soon.</p>
           </div>
         )}
 
@@ -355,14 +264,9 @@ export function GalleryGrid() {
       {/* =====================================================
           IMAGE PREVIEW
       ===================================================== */}
-      <Dialog
-        open={!!preview}
-        onOpenChange={(open) => !open && setPreview(null)}
-      >
+      <Dialog open={!!preview} onOpenChange={(open) => !open && setPreview(null)}>
         <DialogContent className="max-w-5xl overflow-hidden rounded-[1.5rem] border border-[#d4af37]/30 bg-[#172554] p-2 shadow-2xl">
-          <DialogTitle className="sr-only">
-            {preview?.alt ?? "Gallery image"}
-          </DialogTitle>
+          <DialogTitle className="sr-only">{preview?.alt ?? "Gallery image"}</DialogTitle>
 
           {preview && (
             <div className="relative overflow-hidden rounded-[1.15rem]">
@@ -378,14 +282,10 @@ export function GalleryGrid() {
                 <div className="flex items-end justify-between gap-4">
                   <div>
                     <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#d4af37]">
-                      {galleryCategories.find(
-                        (item) => item.id === preview.category,
-                      )?.label}
+                      {galleryCategories.find((item) => item.id === preview.category)?.label}
                     </p>
 
-                    <p className="mt-1 text-sm font-semibold text-white">
-                      {preview.alt}
-                    </p>
+                    <p className="mt-1 text-sm font-semibold text-white">{preview.alt}</p>
                   </div>
 
                   <div className="hidden size-9 items-center justify-center rounded-xl bg-[#8f1d1d] sm:flex">

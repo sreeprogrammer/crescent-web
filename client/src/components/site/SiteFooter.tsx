@@ -1,18 +1,15 @@
-import logo from "@/assets/crescent-logo.png.asset.png";
+import logo from "@/assets/logo.jpeg";
 import developerPlaceholder1 from "@/assets/developer-placeholder-1.svg";
 import developerPlaceholder3 from "@/assets/developer-placeholder-3.svg";
 import mdinthisarPhoto from "@/assets/me.jpeg";
 import {
   ArrowUpRight,
-  BookOpen,
   ChevronRight,
   Facebook,
-  GraduationCap,
   Instagram,
   Linkedin,
   Mail,
   MapPin,
-  Phone,
   Youtube,
 } from "lucide-react";
 
@@ -31,18 +28,10 @@ const quickLinks = [
   { label: "About Us", href: "/about" },
   { label: "Admissions", href: "/admissions" },
   { label: "Academics", href: "/academics" },
-  { label: "Placements", href: "/placements" },
-  { label: "Careers", href: "/careers" },
+  // { label: "Placements", href: "/placements" },
+  // { label: "Careers", href: "/careers" },
   { label: "Contact Us", href: "/contact" },
-];
-
-const studentResources = [
-  { label: "Student Corner", href: "https://crescent.education/" },
-  { label: "Examinations", href: "https://crescent.education/" },
-  { label: "Library", href: "https://crescent.education/" },
-  { label: "Placements", href: "https://crescent.education/" },
-  { label: "Academic Calendar", href: "https://crescent.education/" },
-  { label: "Grievance Redressal", href: "https://crescent.education/" },
+  { label: "Student Corner", href: "/students-corner" },
 ];
 
 const socialLinks = [
@@ -112,22 +101,25 @@ export function SiteFooter() {
         <div
           className="
             grid
+            grid-cols-1
+            items-start
             gap-8
-            lg:grid-cols-[1.3fr_0.8fr_0.9fr_1fr]
+            text-center
+            lg:grid-cols-3
             lg:gap-10
           "
         >
           {/* =================================================
               BRAND + CONTACT
           ================================================= */}
-          <div>
+          <div className="flex w-full min-w-0 flex-col items-start text-left">
             {/* Logo */}
             <a href="/" className="inline-flex items-center" aria-label="Crescent Institute Home">
               <img
                 src={logo}
                 alt="B.S. Abdur Rahman Crescent Institute of Science and Technology"
                 className="
-                  h-[72px]
+                  h-[88px]
                   w-auto
                   object-contain
                 "
@@ -152,7 +144,7 @@ export function SiteFooter() {
             </p>
 
             {/* Contact Details */}
-            <div className="mt-4 space-y-2.5">
+            <div className="mt-4 w-full space-y-2.5">
               {/* Address */}
               <div className="flex items-start gap-3">
                 <span
@@ -178,6 +170,7 @@ export function SiteFooter() {
                     text-[12px]
                     leading-5
                     text-[#596273]
+                    text-left
                   "
                 >
                   GST Road, Vandalur,
@@ -189,7 +182,7 @@ export function SiteFooter() {
               </div>
 
               {/* Department numbers */}
-              <div className="space-y-1.5 pl-11">
+              <div className="space-y-1.5 text-left">
                 {college.numbers.map((number) => (
                   <a
                     key={number.label}
@@ -202,7 +195,6 @@ export function SiteFooter() {
                 ))}
               </div>
 
-
               {/* Email */}
               <a
                 href={`mailto:${college.email}`}
@@ -210,6 +202,7 @@ export function SiteFooter() {
                   group
                   flex
                   items-center
+                  justify-start
                   gap-3
                   text-[12px]
                   text-[#596273]
@@ -245,9 +238,9 @@ export function SiteFooter() {
           {/* =================================================
               QUICK LINKS
           ================================================= */}
-          <div>
+          <div className="flex w-full flex-col items-center">
             {/* Heading */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center gap-3">
               <span className="h-8 w-[3px] rounded-full bg-[#7f1d1d]" />
 
               <div>
@@ -275,7 +268,7 @@ export function SiteFooter() {
               </div>
             </div>
 
-            <ul className="mt-3 space-y-0.5">
+            <ul className="mt-3 w-fit space-y-0.5">
               {quickLinks.map((item) => (
                 <li key={item.label}>
                   <a
@@ -284,6 +277,7 @@ export function SiteFooter() {
                       group
                       flex
                       items-center
+                      justify-start
                       gap-1.5
                       rounded-md
                       py-1.5
@@ -310,163 +304,14 @@ export function SiteFooter() {
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* =================================================
-              STUDENT RESOURCES
-          ================================================= */}
-          <div>
-            {/* Heading */}
-            <div className="flex items-center gap-3">
-              <span className="h-8 w-[3px] rounded-full bg-[#d4af37]" />
-
-              <div>
-                <p
-                  className="
-                    text-[9px]
-                    font-bold
-                    tracking-[0.2em]
-                    text-[#a87916]
-                  "
-                >
-                  STUDENTS
-                </p>
-
-                <h3
-                  className="
-                    mt-0.5
-                    text-[17px]
-                    font-bold
-                    text-[#172554]
-                  "
-                >
-                  Student Resources
-                </h3>
-              </div>
-            </div>
-
-            <ul className="mt-3 space-y-0.5">
-              {studentResources.map((item) => (
-                <li key={item.label}>
-                  <a
-                    href={item.href}
-                    className="
-                      group
-                      flex
-                      items-center
-                      gap-1.5
-                      rounded-md
-                      py-1.5
-                      text-[12px]
-                      font-medium
-                      text-[#596273]
-                      transition-all
-                      duration-200
-                      hover:translate-x-1
-                      hover:text-[#172554]
-                    "
-                  >
-                    <ChevronRight
-                      className="
-                        size-3
-                        text-[#a87916]
-                        transition-transform
-                        group-hover:translate-x-0.5
-                      "
-                    />
-
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            {/* Mini Cards */}
-            {/* <div className="mt-3 flex gap-2">
-              <a
-                href="/admissions"
-                className="
-                  group
-                  flex
-                  items-center
-                  gap-2
-                  rounded-xl
-                  border
-                  border-[#dce1e8]
-                  bg-[#f8f9fb]
-                  px-3
-                  py-2
-                  transition-all
-                  duration-300
-                  hover:-translate-y-1
-                  hover:border-[#d4af37]
-                  hover:bg-[#fffaf0]
-                "
-              >
-                <GraduationCap
-                  className="
-                    size-4
-                    text-[#7f1d1d]
-                  "
-                />
-
-                <span
-                  className="
-                    text-[10px]
-                    font-semibold
-                    text-[#3f4a5c]
-                  "
-                >
-                  Admissions
-                </span>
-              </a>
-
-              <a
-                href="/academics"
-                className="
-                  group
-                  flex
-                  items-center
-                  gap-2
-                  rounded-xl
-                  border
-                  border-[#dce1e8]
-                  bg-[#f8f9fb]
-                  px-3
-                  py-2
-                  transition-all
-                  duration-300
-                  hover:-translate-y-1
-                  hover:border-[#d4af37]
-                  hover:bg-[#fffaf0]
-                "
-              >
-                <BookOpen
-                  className="
-                    size-4
-                    text-[#172554]
-                  "
-                />
-
-                <span
-                  className="
-                    text-[10px]
-                    font-semibold
-                    text-[#3f4a5c]
-                  "
-                >
-                  Academics
-                </span>
-              </a>
-            </div> */}
           </div>
 
           {/* =================================================
               CONNECT WITH US
           ================================================= */}
-          <div>
+          <div className="flex w-full flex-col items-center">
             {/* Heading */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center gap-3">
               <span className="h-8 w-[3px] rounded-full bg-[#7f1d1d]" />
 
               <div>
@@ -497,6 +342,7 @@ export function SiteFooter() {
             <p
               className="
                 mt-3
+                mx-auto
                 max-w-sm
                 text-[12px]
                 leading-5
@@ -508,7 +354,7 @@ export function SiteFooter() {
             </p>
 
             {/* Social Icons */}
-            <div className="mt-4 flex gap-2">
+            <div className="mt-4 flex justify-center gap-2">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
 
@@ -548,6 +394,7 @@ export function SiteFooter() {
               className="
                 group
                 mt-4
+                mx-auto
                 flex
                 w-fit
                 items-center
@@ -595,8 +442,10 @@ export function SiteFooter() {
               href={`mailto:${college.email}`}
               className="
                 mt-3
+                mx-auto
                 inline-flex
                 items-center
+                justify-center
                 gap-2
                 text-[11px]
                 font-semibold
@@ -634,14 +483,12 @@ export function SiteFooter() {
             max-w-7xl
             flex-col
             items-center
-            justify-between
+            justify-center
             gap-2
             px-5
             py-3
             text-center
             sm:px-8
-            md:flex-row
-            md:text-left
             lg:px-10
           "
         >
@@ -709,7 +556,7 @@ export function SiteFooter() {
             Institute of Science and Technology All rights reserved.
           </p>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-center gap-4">
             <a
               href="/privacy"
               className="

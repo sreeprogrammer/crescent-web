@@ -1,17 +1,12 @@
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { navItems, college } from "@/data/site";
 import { cn } from "@/lib/utils";
 import { Link } from "@tanstack/react-router";
 import { Menu, ShieldCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import logo from "@/assets/crescent-logo.png.asset.png";
+import logo from "@/assets/logo.jpeg";
 
 function Logo() {
   return (
@@ -33,13 +28,13 @@ function Logo() {
         src={logo}
         alt={`${college.name} logo`}
         className="
-          h-[42px]
+          h-[52px]
           w-auto
           max-w-[205px]
           object-contain
-          sm:h-[50px]
+          sm:h-[60px]
           sm:max-w-none
-          lg:h-[52px]
+          lg:h-[68px]
         "
       />
     </Link>
@@ -80,9 +75,7 @@ export function MainNav() {
         // =====================================================
         // PREMIUM GLASS BACKGROUND
         // =====================================================
-        scrolled
-          ? "bg-white/96 backdrop-blur-2xl"
-          : "bg-[#fffdf9]/92 backdrop-blur-xl",
+        scrolled ? "bg-white/96 backdrop-blur-2xl" : "bg-[#fffdf9]/92 backdrop-blur-xl",
 
         // =====================================================
         // SHADOW
@@ -168,15 +161,13 @@ export function MainNav() {
           "px-3 sm:px-5 lg:px-6 xl:px-7",
 
           // MOBILE
-          scrolled
-            ? "min-h-[58px]"
-            : "min-h-[62px]",
+          scrolled ? "min-h-[60px]" : "min-h-[64px]",
 
           // TABLET
-          "sm:min-h-[68px]",
+          "sm:min-h-[72px]",
 
           // DESKTOP
-          "lg:min-h-[76px]",
+          "lg:min-h-[80px]",
 
           "transition-all duration-500",
         )}
@@ -203,10 +194,7 @@ export function MainNav() {
           "
         >
           {navItems.map((item) => (
-            <li
-              key={item.label}
-              className="shrink-0"
-            >
+            <li key={item.label} className="shrink-0">
               <Link
                 to={item.to}
                 activeOptions={{
@@ -322,10 +310,7 @@ export function MainNav() {
               MOBILE MENU
           ================================================== */}
 
-          <Sheet
-            open={open}
-            onOpenChange={setOpen}
-          >
+          <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button
                 variant="outline"
@@ -359,9 +344,7 @@ export function MainNav() {
                   "
                 />
 
-                <span className="sr-only">
-                  Open navigation menu
-                </span>
+                <span className="sr-only">Open navigation menu</span>
               </Button>
             </SheetTrigger>
 
@@ -487,12 +470,7 @@ export function MainNav() {
                     "hover:after:opacity-100",
                   )}
                   activeProps={{
-                    className: cn(
-                      "font-bold",
-                      "text-[#7f1d1d]",
-                      "after:w-12",
-                      "after:opacity-100",
-                    ),
+                    className: cn("font-bold", "text-[#7f1d1d]", "after:w-12", "after:opacity-100"),
                   }}
                 >
                   FAQ
@@ -515,11 +493,7 @@ export function MainNav() {
                 "
                 asChild
               >
-                <Link
-                  to="/admission"
-                  hash="how-to-apply"
-                  onClick={() => setOpen(false)}
-                >
+                <Link to="/admission" hash="how-to-apply" onClick={() => setOpen(false)}>
                   Apply Now
                 </Link>
               </Button>
@@ -553,13 +527,9 @@ export function MainNav() {
                   </div>
 
                   <div>
-                    <p className="text-xs font-bold text-[#172554]">
-                      UGC Approved
-                    </p>
+                    <p className="text-xs font-bold text-[#172554]">UGC Approved</p>
 
-                    <p className="mt-0.5 text-[11px] text-[#737b87]">
-                      Recognised programmes
-                    </p>
+                    <p className="mt-0.5 text-[11px] text-[#737b87]">Recognised programmes</p>
                   </div>
                 </div>
               </div>

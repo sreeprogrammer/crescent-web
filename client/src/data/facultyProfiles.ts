@@ -1,9 +1,12 @@
 import campusPhoto from "@/assets/campus-1.jpg";
+import agalyaPhoto from "@/assets/Agalya.jpeg";
 import abdussamadPhoto from "@/assets/abdussamad.jpeg";
 import ahamedullahPhoto from "@/assets/ahamedullah.png";
 import jeslinPhoto from "@/assets/jeslin.jpeg";
 import maheshwariPhoto from "@/assets/maheshwari.jpeg";
 import manjulaPhoto from "@/assets/manjula.jpeg";
+import rabiyaPhoto from "@/assets/rabiya.jpeg";
+import thowseafPhoto from "@/assets/thowseaf.jpeg";
 import yasarPhoto from "@/assets/yasar-arafath.jpeg";
 
 export type FacultyProfile = {
@@ -12,10 +15,10 @@ export type FacultyProfile = {
   courseName: string;
   name: string;
   designation: string;
-  natureOfEmployment: string;
-  qualification: string;
-  phone: string;
-  email: string;
+  natureOfEmployment?: string;
+  qualification?: string;
+  phone?: string;
+  email?: string;
   photo: string;
   detailedProfile?: {
     education: string[];
@@ -592,6 +595,202 @@ export const facultyProfiles: FacultyProfile[] = [
       invitedRoles: [],
       awards: [
         "Best Paper Award for “Accessing E-Learning Tool Udemy: To Make Your Passion Into a Passive Income” at the International Conference on Emerging Trends in Online Teaching, Assessment and Learning (eTotal), 24-25 February 2023.",
+      ],
+    },
+  },
+  {
+    slug: "dr-s-rabiyathul-basariya",
+    courseSlug: "mba",
+    courseName: "MBA",
+    name: "Dr. S. Rabiyathul Basariya",
+    designation: "Assistant Professor",
+    photo: rabiyaPhoto,
+  },
+  {
+    slug: "dr-s-thowseaf",
+    courseSlug: "mba",
+    courseName: "MBA",
+    name: "Dr. S. Thowseaf",
+    designation: "Assistant Director & Assistant Professor",
+    qualification: "Ph.D. in Management, MBA, B.Tech. (E.C.E.), SET",
+    phone: "+91-7358167123",
+    email: "thowseaf786@gmail.com",
+    photo: thowseafPhoto,
+    detailedProfile: {
+      education: [
+        "Ph.D. in Management — Alagappa University, 2015–2019; course work examination: 70.67%.",
+        "M.B.A. — Dhaanish Ahmed College (Anna University), 2013–2015; 72.90%.",
+        "B.Tech. in E.C.E. — B.S. Abdur Rahman University, 2009–2013; 70.70%.",
+        "HSC — S.R.D.F. Vivekananda Vidyalaya, 2009; 86.33%.",
+        "State Eligibility Test (SET) for Lectureship — passed in the General Category.",
+      ],
+      experience: [
+        "Assistant Director & Assistant Professor, Centre for Distance and Online Education, B.S. Abdur Rahman Crescent Institute of Science and Technology — July 2022 to present.",
+        "Head of Department, B.B.A., Quade Milleth College (Shift-II) — January 2019 to July 2022.",
+        "NSS Programme Officer, Quade Milleth College (Shift-II), Madras University — July 2019 to July 2022.",
+        "Full-Time Research Scholar in Management, Alagappa University — October 2015 to January 2019.",
+        "Freelance Research Associate, ARS Market Research Services — July 2013 to October 2015.",
+      ],
+      teachingCourses: [
+        "Business Administration",
+        "Fundamentals of Research",
+        "Human Resources",
+        "International Business Administration",
+        "Marketing",
+        "International Trade Finance",
+        "Finance",
+      ],
+      researchInterests: [
+        "Business and social research",
+        "Fundamentals of research",
+        "Human resources",
+        "International business",
+        "Marketing",
+        "International trade finance",
+        "Finance",
+      ],
+      supervision: [],
+      professionalActivities: [
+        "Editor, RcHub Publishing House.",
+        "NSS Programme Officer, Quade Milleth College (Shift-II), Madras University, July 2019 to July 2022.",
+        "Competencies: teaching, research and administration.",
+      ],
+      training: [
+        "SPSS certification programmes: 2.",
+        "Computer applications: MS Office, SPSS, E-Views and AMOS.",
+      ],
+      books: ["Two books authored."],
+      journalPublications: [
+        "38 articles published.",
+        "48 publications with ISSN and ISBN.",
+      ],
+      conferencePublications: [],
+      conferencePresentations: ["19 conferences attended."],
+      seminars: ["13 seminars attended."],
+      workshops: ["3 workshops attended."],
+      invitedRoles: [],
+      awards: ["Young Scientist Award."],
+    },
+  },
+  {
+    slug: "dr-v-agalya",
+    courseSlug: "mba",
+    courseName: "MBA",
+    name: "Dr. V. Agalya",
+    designation: "Assistant Professor",
+    natureOfEmployment: "Regular",
+    qualification: "B.A., M.A., M.Phil., MBA, Ph.D.",
+    phone: "9941265449",
+    email: "agalyav@crescent.education",
+    photo: agalyaPhoto,
+    detailedProfile: {
+      education: [
+        "Ph.D. — Business Administration, January 2020, Manonmaniam Sundaranar University, Tirunelveli.",
+        "MBA — Business Administration, 2012, Anna University, Chennai.",
+        "M.Phil. — Economics, 2009, Vinayaga Mission University, Salem.",
+        "M.A. — Economics, 2008, University of Madras, Chennai.",
+        "B.A. — Economics, 2002, University of Madras, Chennai.",
+      ],
+      experience: [
+        "Assistant Professor — SRM Institute of Science and Technology, College of Science and Humanities, Department of Business Administration, Vadapalani, Chennai. August 2022 to January 2023 (6 months).",
+        "Assistant Professor & Head — Dr. M.G.R. Educational and Research Institute, Department of Economics, Maduravoyal, Chennai. February 2021 to July 2022 (1 year 6 months).",
+        "Coordinator - ESPAC (Energy, Sponsored Project and Consultancy) — B.S. Abdur Rahman Crescent Institute of Science and Technology, Vandalur, Chennai. July 2019 to February 2021 (1 year 8 months).",
+        "Assistant Professor — Karpaga Vinayaga College of Engineering & Technology, Mathuranthagam, Chennai. July 2016 to April 2019 (2 years 10 months).",
+        "Assistant Professor — GKM College of Engineering & Technology, Chennai. September 2012 to December 2015 (3 years 3 months).",
+        "HR - Admin Executive — GKM College of Engineering & Technology, Chennai. March 2006 to December 2015 (11 years 9 months).",
+        "Admin Assistant — SSD Oil Mills Ltd (Supreme Edible Oil), Chennai. August 2003 to November 2004 (1 year 3 months).",
+      ],
+      teachingCourses: [
+        "Principles of Management",
+        "Sales and Distribution Marketing",
+        "International Marketing",
+        "Services Marketing",
+        "Business Analytics",
+        "Human Resource Management",
+        "Organisational Behaviour",
+        "Logistics & Supply Chain Management",
+        "Strategic Management",
+        "Project Management",
+        "Material Management",
+        "Managing Disruptive Technologies",
+      ],
+      researchInterests: [
+        "SERVQUAL Model",
+        "Gap Analysis",
+        "Business Analytics",
+        "HRIS",
+      ],
+      supervision: [
+        "Ph.D. thesis titled 'An Empirical Study on Employees Problems and Prospects in Leather Industries with Special Reference to Chennai City.'",
+        "Research project titled 'A Study on Employees Performance Appraisal with Special Reference to Teaching Professional in GKM College of Engineering and Technology.'",
+        "Research project titled 'A Study on Employee Attrition with Special Reference to New Joinees in IP Rings Ltd (India Pistons Limited).'",
+        "Research project titled 'A Study on Women Self Help Group at Thiruvallur District.'",
+      ],
+      professionalActivities: [
+        "Head of the Department, Department of Economics, Dr. M.G.R. Educational and Research Institute, 2021-2022.",
+        "Research Coordinator, ESPAC, 2019-2021.",
+        "Department level NAAC Coordinator, 2016-2018 and 2021.",
+        "Department level ISO Coordinator, 2012-2015.",
+        "Board of Study member in Department of Economics (UG & PG), Dr. M.G.R. Educational and Research Institute, 2021-2022.",
+        "Prepared syllabus for B.A. and M.A. Economics programmes during 2021-2022.",
+      ],
+      training: [
+        "Two Days Faculty Orientation Programme on Salient Attributes for Professional Development, SRM Institute of Science and Technology, Chennai.",
+        "Two Days FDP/Workshop on How Teachers Can Make a Difference Through Outcome Based Education, Teaching Learning Center (TLC), IIT Madras, Chennai.",
+        "Six Days FDP on Recent Trends of Research in Commerce and Business Studies, SRM Institute of Science and Technology, Chennai.",
+        "Five Days National Level e-Workshop on Innovation Techniques in SPSS and Data Analysis, Sathyabama Institute of Science and Technology, Chennai.",
+        "Five Days online Faculty Development Programme on Mentoring Teaching & Pedagogy in Technical Education, Dr. M.G.R. Educational and Research Institute, 29 November to 3 December 2021.",
+        "FDP on Learning Statistics and Data Interpretation Using SPSS (SERIE-1), Saveetha Engineering College, Chennai.",
+        "FDP on Research Methodology Shiksha - 5 Series, Dr. M.G.R. Educational and Research Institute, Chennai.",
+        "FDP on Innovation & Entrepreneurship, 30 Hours, Dr. M.G.R. Educational and Research Institute in association with IEEE.",
+      ],
+      books: [],
+      journalPublications: [
+        "Analytical Study on Parents' Attitude Towards the Education of Girl Children with Special Reference to Villupuram District, Tamil Nadu — The Seybold Report, Volume 17, Issue 10, 2022, pp. 133-148, DOI 10.5281/zenodo.7155359.",
+        "The Effect of Digital India Program with Reference to Chennai City — An Critical Analysis — The Seybold Report, Volume 17, Issue 8, 2022, pp. 1363-1379, DOI 10.5281/zenodo.7009806.",
+        "Business Continuity and Decision Making after the Covid 19 — an Overview — Annals of R.S.C.B., ISSN 1583-6258, Vol. 25, Issue 6, 2021, pp. 10966-10978.",
+        "Examining Occupational Hazards of Employees in Leather Manufacturing Industry — Annals of R.S.C.B., ISSN 1583-6258, Vol. 25, Issue 4, 2021, pp. 18593-18602.",
+        "Performance of Indian Mutual Funds, Risk and Returns during Covid-19 — An Overview — Turkish Online Journal of Qualitative Inquiry, Volume 12, Issue 7.",
+        "A Study on Quality of Work-Life of Employees in Leather Goods Manufacturing Industries at Chennai — PARISHODH JOURNAL, UGC Care List - Group I, Vol. IX, Issue III, March 2020, pp. 6214-6224.",
+        "Recent Trends in Development of Workplace Policies and Procedure in Leather Goods Manufacturing Companies Chennai — International Journal of Management Studies, Vol. V, Issue 4(1), October 2018.",
+        "A Study on Employees Safety and Health Hazards Measures of Leather Goods Manufacturing Companies — SUMEDHA Journal of Management, Vol. 5, No. 2, 2016, pp. 63-73.",
+      ],
+      conferencePublications: [],
+      conferencePresentations: [
+        "Impact of Utilizing Artificial Intelligence on Business — An Investigative Study — 6th International Conference on Management, Accounting, Banking, Economics and Business Research for Sustainable Development, B.S. Abdur Rahman Crescent Institute of Science and Technology, Chennai, 1 March 2023.",
+        "Analyze the Effectiveness of Digital India Programme with Reference to Chennai City — BIZAD 2022, 8th International Conference on Technology Agility and Transformed Management Practices during Pandemic, SRM Institute of Science and Technology, Kattankulathur, 16 March 2022.",
+        "A Study on Quality of Work-Life of Employees in Leather Goods Manufacturing Industries at Chennai — International Conference on Innovations and Challenges in Global Business (ICICGB 2020), The New College, Chennai.",
+        "Analyzing the Effectiveness on Employees Retention in Leather Industries at Chennai, Tamil Nadu, India — First International Conference on Indian Context, Nature, Science, Information Media, General Management, Humanities and Technology (INSIGHT'20), S.A. College of Arts and Science, Chennai.",
+        "Examining Occupational Hazards of Employees in Leather Manufacturing Industry — Third International Conference on Interdisciplinary Global Applied Research (ICIGAR-2020), Fortune Park, Vellore.",
+        "A Study on Employees Work Life Balance in Leather Goods Manufacturing Industries at Chennai City — 7th International Conference in Futuristic Trends in Master of Business Administration (ICFETM2K18).",
+        "A Study on Indian Leather Industries — Growth and Prospects — International Conference on Recent Trends in Science, Engineering & Management (ICRTSEM-2017).",
+      ],
+      seminars: [
+        "International Conference on Advance Research and Innovation in Engineering, Science, Technology and Management - 2015.",
+        "National Conference on Business in the New Millennium: The Ever-Changing Landscape - 2018 — 'Recent Trends in Development of Work Policies and Procedures in Leather Goods Manufacturing Industries.'",
+        "National Conference on Emerging Trends in Management - 2016 — 'A Study on Employees Welfare Measures and Social Security Benefits in Leather Goods Manufacturing Companies at Chennai.'",
+      ],
+      workshops: [
+        "One-day workshop on Empowering Research, New Prince Shri Bhavani College of Engineering and Technology, 16 August 2019.",
+        "E-Quiz programme of National Sports Day 2020, Department of Physical Education, B.S. Abdur Rahman Crescent Institute of Science and Technology, Chennai.",
+        "Live Webinar on Cyber Forensics and the Current Challenges, Department of Information Technology, School of Computer, Information and Mathematical Sciences, 13 June 2020.",
+        "Webinar on Soft Skills Needed to Face the After Pandemic Scenario, Department of Mechanical Engineering, T.J.S. Engineering College, 12 June 2020.",
+        "State level online Tamil talent test, May 2020, Department of Tamil, B.S. Abdur Rahman Crescent Institute of Science and Technology, Chennai.",
+      ],
+      invitedRoles: [
+        "Invited as speaker and chief guest for Faculty Development Programme on 'NAAC Accreditation for Academic Excellence', M.M.E.S Women's Arts and Science College, Melvisharam, Vellore, 17 December 2022.",
+        "Invited as speaker and chief guest for webinar on 'Controlling Cost Fluctuations in a Quick Service Restaurant — Economic Aspect to be adopted', HMCT, Dr. M.G.R. E&RI, Chennai, 4 October 2021.",
+        "Conducted webinar on 'Research Methodology' with Dr. K. Malathi, Department of Economics, University of Madras.",
+        "Organized guest lecture on 'Insurance Market' with Mr. R.M. Muthukaruppan, Internal Auditor, Royal Sundaram General Insurance Co. Ltd.",
+      ],
+      awards: [
+        "NPTEL — Successfully completed and Elite ranked in 8-week course on Marketing Management I.",
+        "NPTEL — Successfully completed 12-week course in Financial Accounting.",
+        "Training of Trainers (ToT) on Social Accountability Tools and Techniques for Good Governance, NIRD & PR, Government of India, Hyderabad.",
+        "Institute level Programme Mentor for Entrepreneurship Development Cell by TN EDII, conducted by Anna University.",
+        "Research manuscript peer-reviewer for Asian Research Journal of Arts & Social Sciences and Asian Journal of Medicine and Health.",
+        "Won Best Performer Award for excellence in administration work in 2007-2008.",
+        "Received cash rewards for producing 100% results in university examination.",
       ],
     },
   },

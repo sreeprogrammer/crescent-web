@@ -2,6 +2,8 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { createFileRoute } from "@tanstack/react-router";
 import ugc from "@/assets/ugc.png";
 import aicte from "@/assets/all india.jpg";
+import ugcDisclosurePdf from "@/assets/ugc.pdf";
+import aicteDisclosurePdf from "@/assets/AICTE.pdf";
 import compliance2022_2023Pdf from "@/assets/2022-2023.pdf";
 import compliance2023_2024Pdf from "@/assets/2023-2024.pdf";
 import compliance2024_2025Pdf from "@/assets/2024-2025.pdf";
@@ -79,8 +81,8 @@ const circularFont = {
 
 const officialLinks = {
   admissionList: "/admission-list.pdf",
-  ugcMandatoryDisclosure: "/pdf/ugc-mandatory-disclosure.pdf",
-  aicteMandatoryDisclosure: "/pdf/aicte-mandatory-disclosure.pdf",
+  ugcMandatoryDisclosure: ugcDisclosurePdf,
+  aicteMandatoryDisclosure: aicteDisclosurePdf,
   ugcNotification: "/pdf/ugc-notification.pdf",
   compliance: "/pdf/compliance.pdf",
   ugcApplication: "/pdf/ugc-application.pdf",
