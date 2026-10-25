@@ -1,3 +1,4 @@
+import { circularFont } from "@/lib/fonts";
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
@@ -17,10 +18,6 @@ import {
   getFacultyForCourse,
   type FacultyProfile,
 } from "@/data/facultyProfiles";
-
-const circularFont = {
-  fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 export const Route = createFileRoute("/mca/people")({
   component: MCAPeoplePage,

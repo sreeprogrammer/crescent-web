@@ -1,3 +1,4 @@
+import { circularFont } from "@/lib/fonts";
 import { useState } from "react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { CourseInfoLink, type CourseSection } from "@/components/site/CourseInfoLink";
@@ -22,10 +23,6 @@ import baIslamicRegulationsPdf from "@/assets/DeanAA-BAIslamic-StudiesR2021.pdf"
 export const Route = createFileRoute("/ba-islamic-studies/")({
   component: BAIslamicStudiesPage,
 });
-
-const circularFont = {
-  fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 const BROCHURE_PDF = baIslamicBrochurePdf;
 

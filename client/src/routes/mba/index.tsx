@@ -1,3 +1,4 @@
+import { circularFont } from "@/lib/fonts";
 import { useState, type ReactNode } from "react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { CourseInfoLink, type CourseSection } from "@/components/site/CourseInfoLink";
@@ -24,10 +25,6 @@ export const Route = createFileRoute("/mba/")({
 });
 
 const MBA_BROCHURE_PDF = mbaBrochurePdf;
-
-const circularFont = {
-  fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 function MBAPage() {
   const [showBrochureForm, setShowBrochureForm] = useState(false);

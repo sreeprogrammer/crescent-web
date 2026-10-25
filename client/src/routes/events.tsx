@@ -1,3 +1,4 @@
+import { circularFont } from "@/lib/fonts";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import {
   Accordion,
@@ -8,10 +9,6 @@ import {
 import { newsEvents } from "@/components/site/NewsEvents";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, CalendarDays, ChevronRight } from "lucide-react";
-
-const circularFont = {
-  fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 export const Route = createFileRoute("/events")({
   component: EventsPage,

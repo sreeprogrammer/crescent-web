@@ -1,3 +1,4 @@
+import { circularFont } from "@/lib/fonts";
 import { useState, type ReactNode } from "react";
 
 import programmePhoto from "@/assets/campus-1.jpg";
@@ -20,11 +21,6 @@ import {
 /* ========================================================= */
 /* FONT */
 /* ========================================================= */
-
-const circularFont = {
-  fontFamily:
-    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 /* ========================================================= */
 /* PAGE SEO */

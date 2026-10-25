@@ -1,3 +1,4 @@
+import { circularFont } from "@/lib/fonts";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
@@ -11,11 +12,6 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
-
-const circularFont = {
-  fontFamily:
-    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 const title = "Programmes Offered — UG, PG & Certification";
 

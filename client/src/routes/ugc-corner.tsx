@@ -1,3 +1,4 @@
+import { circularFont } from "@/lib/fonts";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { createFileRoute } from "@tanstack/react-router";
 import ugc from "@/assets/ugc.png";
@@ -69,11 +70,6 @@ export const Route = createFileRoute("/ugc-corner")({
 /* =========================================================
    FONT
 ========================================================= */
-
-const circularFont = {
-  fontFamily:
-    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 /* =========================================================
    OFFICIAL DOCUMENT LINKS

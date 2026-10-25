@@ -1,3 +1,4 @@
+import { circularFont } from "@/lib/fonts";
 import { GalleryGrid } from "@/components/site/GalleryGrid";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { createFileRoute } from "@tanstack/react-router";
@@ -25,10 +26,6 @@ export const Route = createFileRoute("/gallery")({
    FONT
    Same font style used in Admission page
 ========================================================= */
-
-const circularFont = {
-  fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 function GalleryPage() {
   return (

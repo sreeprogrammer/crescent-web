@@ -1,3 +1,4 @@
+import { circularFont } from "@/lib/fonts";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
@@ -56,11 +57,6 @@ export const Route = createFileRoute("/about")({
 /* =========================================================
    FONT
 ========================================================= */
-
-const circularFont = {
-  fontFamily:
-    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 /* =========================================================
    ABOUT QUICK LINKS

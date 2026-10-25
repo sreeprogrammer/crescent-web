@@ -90,6 +90,7 @@
 
 :root {
   --radius: 1.5rem;
+  --font-circular: "Circular Std", "Circular", "Poppins", "Inter", Arial, sans-serif;
 
   --navy: oklch(0.28 0.075 263.5);
   --navy-foreground: oklch(0.97 0.008 250);

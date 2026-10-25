@@ -1,3 +1,4 @@
+import { circularFont } from "@/lib/fonts";
 import { useState } from "react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
@@ -20,11 +21,6 @@ import { EnquiryForm } from "@/components/site/EnquiryForm";
 /* =========================================================
    FONT
 ========================================================= */
-
-const circularFont = {
-  fontFamily:
-    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 /* =========================================================
    ROUTE

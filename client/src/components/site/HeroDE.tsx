@@ -1,3 +1,4 @@
+import { circularFont } from "@/lib/fonts";
 import heroImg1 from "@/assets/heroImg1.jpg";
 import heroImg2 from "@/assets/heroImg2.jpg";
 import heroImg3 from "@/assets/heroImg3.jpg";
@@ -17,11 +18,6 @@ import { useEffect, useState } from "react";
 /* =========================================================
    FONT
 ========================================================= */
-
-const circularFont = {
-  fontFamily:
-    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 /* =========================================================
    HERO IMAGES

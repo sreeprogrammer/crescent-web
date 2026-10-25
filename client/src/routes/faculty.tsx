@@ -1,3 +1,4 @@
+import { circularFont } from "@/lib/fonts";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
@@ -12,10 +13,6 @@ import maheshwariPhoto from "@/assets/maheshwari.jpeg";
 import manjulaPhoto from "@/assets/manjula.jpeg";
 import thowseafPhoto from "@/assets/thowseaf.jpeg";
 import yasarPhoto from "@/assets/yasar-arafath.jpeg";
-
-const circularFont = {
-  fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 export const Route = createFileRoute("/faculty")({
   component: FacultyPage,

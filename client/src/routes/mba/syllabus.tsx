@@ -1,3 +1,4 @@
+import { circularFont } from "@/lib/fonts";
 import { useState } from "react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import {
@@ -10,11 +11,6 @@ import {
 
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { EnquiryForm } from "@/college-navigator-bot/src/chat-components/EnquiryForm";
-
-const circularFont = {
-  fontFamily:
-    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 const SYLLABUS_PDF = "/pdfs/mba-syllabus.pdf";
 

@@ -1,3 +1,4 @@
+import { circularFont } from "@/lib/fonts";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -38,10 +39,6 @@ import programmeBrochure from "@/assets/programme-brochure.pdf";
 /* =========================================================
    FONT
 ========================================================= */
-
-const circularFont = {
-  fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 /* =========================================================
    PREMIUM COLOURS

@@ -1,3 +1,4 @@
+import { circularFont } from "@/lib/fonts";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
@@ -17,11 +18,6 @@ import chancellorPhoto from "@/assets/Chancellor.png";
 import proChancellorPhoto from "@/assets/prochancellor.png";
 import viceChancellorPhoto from "@/assets/vice-chansoller.png";
 import registrarPhoto from "@/assets/registrar.png";
-
-const circularFont = {
-  fontFamily:
-    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 const visionaryTeam = [
   {

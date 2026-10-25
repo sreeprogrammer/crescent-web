@@ -1,3 +1,4 @@
+import { circularFont } from "@/lib/fonts";
 import { useState, type ReactNode } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
@@ -14,10 +15,6 @@ import {
 
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { getFacultyForCourse, type FacultyProfile } from "@/data/facultyProfiles";
-
-const circularFont = {
-  fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 export const Route = createFileRoute("/ba-islamic-studies/people")({
   component: BAIslamicStudiesPeoplePage,

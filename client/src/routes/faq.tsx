@@ -1,3 +1,4 @@
+import { circularFont } from "@/lib/fonts";
 import { useState } from "react";
 import {
   ChevronDown,
@@ -59,11 +60,6 @@ const faqItems = [
       "Student career and placement support may include guidance, career resources and opportunities made available through the institute. Specific placement services can vary by programme and eligibility.",
   },
 ];
-
-const circularFont = {
-  fontFamily:
-    "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 function FaqPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);

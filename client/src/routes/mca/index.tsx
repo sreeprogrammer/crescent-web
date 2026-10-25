@@ -1,4 +1,4 @@
-
+import { circularFont } from "@/lib/fonts";
 import { useState, type ReactNode } from "react";
 
 import { SiteLayout } from "@/components/site/SiteLayout";
@@ -28,10 +28,6 @@ export const Route = createFileRoute("/mca/")({
 });
 
 const MCA_BROCHURE_PDF = mcaBrochurePdf;
-
-const circularFont = {
-  fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 function MCAPage() {
   const [showBrochureForm, setShowBrochureForm] = useState(false);

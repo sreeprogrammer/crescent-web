@@ -1,3 +1,4 @@
+import { circularFont } from "@/lib/fonts";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
@@ -7,10 +8,6 @@ import jayaPhoto from "@/assets/jaya.png";
 import aishaBanuPhoto from "@/assets/DR.AISHABANU.png";
 import thowseafPhoto from "@/assets/thowseaf.jpeg";
 import formerDirectorPhoto from "@/assets/director.png";
-
-const circularFont = {
-  fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 const director = {
   name: "Dr.A.Jaya",

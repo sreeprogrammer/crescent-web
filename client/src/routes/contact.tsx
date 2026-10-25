@@ -1,4 +1,4 @@
-
+import { circularFont } from "@/lib/fonts";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
@@ -21,10 +21,6 @@ export const Route = createFileRoute("/contact")({
   }),
   component: ContactPage,
 });
-
-const circularFont = {
-  fontFamily: "'Circular Std', 'Circular', 'Poppins', 'Inter', Arial, sans-serif",
-};
 
 function ContactPage() {
   return (
