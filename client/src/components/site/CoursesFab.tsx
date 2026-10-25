@@ -1,59 +1,30 @@
 import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, BookOpen, GraduationCap, Layers3, X } from "lucide-react";
+import {
+  courseDrawerAccents,
+  courseDrawerProgrammeSlugs,
+  getCourseInfo,
+} from "@/data/programmes";
 
-const programmes = [
-  {
-    title: "BA English",
-    type: "Undergraduate",
-    slug: "ba-english",
-    accent: "#8F1D1D",
-  },
-  {
-    title: "BA Islamic Studies",
-    type: "Undergraduate",
-    slug: "ba-islamic-studies",
-    accent: "#2F6F4E",
-  },
-  {
-    title: "BA Public Policy",
-    type: "Undergraduate",
-    slug: "ba-public-policy",
-    accent: "#B08A24",
-  },
-  {
-    title: "MA Islamic Studies",
-    type: "Postgraduate",
-    slug: "ma-islamic-studies",
-    accent: "#6B4C9A",
-  },
-  {
-    title: "MBA",
-    type: "Postgraduate",
-    slug: "mba",
-    accent: "#30265F",
-  },
-  {
-    title: "MCA",
-    type: "Postgraduate",
-    slug: "mca",
-    accent: "#427D76",
-  },
-];
+const programmes = courseDrawerProgrammeSlugs.map((slug) => {
+  const course = getCourseInfo(slug);
+  if (!course) {
+    throw new Error(`Course drawer references unknown programme "${slug}".`);
+  }
+
+  return {
+    title: course.name,
+    type: course.level,
+    slug: course.slug,
+    accent: courseDrawerAccents[slug],
+  };
+});
 
 type Programme = (typeof programmes)[number];
 
 function getProgrammeRoute(programme: Programme) {
-  switch (programme.slug) {
-    case "ba-islamic-studies":
-      return "/ba-islamic-studies" as const;
-    case "mba":
-      return "/mba" as const;
-    case "mca":
-      return "/mca" as const;
-    default:
-      return undefined;
-  }
+  return getCourseInfo(programme.slug)?.landingRoute;
 }
 
 function ProgrammeLink({

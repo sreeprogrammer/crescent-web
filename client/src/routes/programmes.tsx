@@ -6,6 +6,10 @@ import programmePhoto from "@/assets/campus-1.jpg";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { ProgrammeCards } from "@/components/site/ProgrammeCards";
 import { SiteLayout } from "@/components/site/SiteLayout";
+import {
+  getRequiredCourseInfo,
+  type ProgrammePageRoute,
+} from "@/data/programmes";
 
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
@@ -643,26 +647,26 @@ function ProgrammesPage() {
                   count="3 Programmes"
                 >
                   <ProgrammeDrawerItem
-                    title="BA English"
+                    title={getRequiredCourseInfo("ba-english").name}
                     description="English language, literature and communication"
                     icon={BookOpen}
-                    link="/ba-english"
+                    link={getRequiredCourseInfo("ba-english").listingRoute}
                     onNavigate={closeProgrammeDrawer}
                   />
 
                   <ProgrammeDrawerItem
-                    title="BA Islamic Studies"
+                    title={getRequiredCourseInfo("ba-islamic-studies").name}
                     description="Islamic studies and academic learning"
                     icon={GraduationCap}
-                    link="/ba-islamic-studies"
+                    link={getRequiredCourseInfo("ba-islamic-studies").listingRoute}
                     onNavigate={closeProgrammeDrawer}
                   />
 
                   <ProgrammeDrawerItem
-                    title="BA Public Policy"
+                    title={getRequiredCourseInfo("ba-public-policy").name}
                     description="Policy, governance and administration"
                     icon={BookOpen}
-                    link="/ba-public-policy"
+                    link={getRequiredCourseInfo("ba-public-policy").listingRoute}
                     onNavigate={closeProgrammeDrawer}
                   />
                 </ProgrammeDrawerSection>
@@ -674,26 +678,26 @@ function ProgrammesPage() {
                   count="3 Programmes"
                 >
                   <ProgrammeDrawerItem
-                    title="MA Islamic Studies"
+                    title={getRequiredCourseInfo("ma-islamic-studies").name}
                     description="Advanced Islamic studies and research"
                     icon={BookOpen}
-                    link="/ma-islamic-studies"
+                    link={getRequiredCourseInfo("ma-islamic-studies").listingRoute}
                     onNavigate={closeProgrammeDrawer}
                   />
 
                   <ProgrammeDrawerItem
-                    title="MBA"
+                    title={getRequiredCourseInfo("mba").name}
                     description="Management, leadership and business skills"
                     icon={GraduationCap}
-                    link="/mba"
+                    link={getRequiredCourseInfo("mba").listingRoute}
                     onNavigate={closeProgrammeDrawer}
                   />
 
                   <ProgrammeDrawerItem
-                    title="MCA"
+                    title={getRequiredCourseInfo("mca").name}
                     description="Computing, programming and software development"
                     icon={GraduationCap}
-                    link="/mca"
+                    link={getRequiredCourseInfo("mca").listingRoute}
                     onNavigate={closeProgrammeDrawer}
                   />
                 </ProgrammeDrawerSection>
@@ -705,10 +709,10 @@ function ProgrammesPage() {
                   count="1 Programme"
                 >
                   <ProgrammeDrawerItem
-                    title="Mobile Application Development"
+                    title={getRequiredCourseInfo("mobile-application-development").name}
                     description="Practical skills for modern app development"
                     icon={Sparkles}
-                    link="/mobile-application-development"
+                    link={getRequiredCourseInfo("mobile-application-development").listingRoute}
                     onNavigate={closeProgrammeDrawer}
                   />
                 </ProgrammeDrawerSection>
@@ -1004,15 +1008,6 @@ function ProgrammeDrawerSection({
 /* PROGRAMME DRAWER ITEM */
 /* ========================================================= */
 
-type ProgrammeLink =
-  | "/ba-english"
-  | "/ba-islamic-studies"
-  | "/ba-public-policy"
-  | "/ma-islamic-studies"
-  | "/mba"
-  | "/mca"
-  | "/mobile-application-development";
-
 function ProgrammeDrawerItem({
   title,
   description,
@@ -1023,16 +1018,10 @@ function ProgrammeDrawerItem({
   title: string;
   description: string;
   icon: typeof GraduationCap;
-  link: ProgrammeLink;
+  link: ProgrammePageRoute;
   onNavigate: () => void;
 }) {
-  return (
-    <Link
-      to={link}
-      onClick={onNavigate}
-      className="group block"
-      style={circularFont}
-    >
+  const content = (
       <div
         className="
           relative
@@ -1148,7 +1137,34 @@ function ProgrammeDrawerItem({
           />
         </div>
       </div>
-    </Link>
+  );
+
+  if (
+    link === "/ba-islamic-studies" ||
+    link === "/mba" ||
+    link === "/mca"
+  ) {
+    return (
+      <Link
+        to={link}
+        onClick={onNavigate}
+        className="group block"
+        style={circularFont}
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <a
+      href={link}
+      onClick={onNavigate}
+      className="group block"
+      style={circularFont}
+    >
+      {content}
+    </a>
   );
 }
 

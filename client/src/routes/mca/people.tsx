@@ -13,11 +13,9 @@ import {
   X,
 } from "lucide-react";
 
+import { QuickNav } from "@/components/site/QuickNav";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import {
-  getFacultyForCourse,
-  type FacultyProfile,
-} from "@/data/facultyProfiles";
+import { getFacultyForCourse, type FacultyProfile } from "@/data/facultyProfiles";
 
 export const Route = createFileRoute("/mca/people")({
   component: MCAPeoplePage,
@@ -26,15 +24,11 @@ export const Route = createFileRoute("/mca/people")({
 const faculty = getFacultyForCourse("mca");
 
 function MCAPeoplePage() {
-  const [selectedFaculty, setSelectedFaculty] =
-    useState<FacultyProfile | null>(null);
+  const [selectedFaculty, setSelectedFaculty] = useState<FacultyProfile | null>(null);
 
   return (
     <SiteLayout>
-      <div
-        style={circularFont}
-        className="min-h-screen bg-white text-[#111111]"
-      >
+      <div style={circularFont} className="min-h-screen bg-white text-[#111111]">
         {/* HEADER */}
         <section className="bg-gradient-to-r from-[#6b4c9a] via-[#64438f] to-[#533579] text-white">
           <div className="mx-auto max-w-6xl px-5 py-5 sm:px-6 sm:py-6">
@@ -59,8 +53,8 @@ function MCAPeoplePage() {
               </h1>
 
               <p className="mt-2 max-w-3xl text-sm leading-6 text-white/80 sm:text-base sm:leading-7">
-                Meet the faculty members supporting teaching, academic
-                guidance and learner development in MCA.
+                Meet the faculty members supporting teaching, academic guidance and learner
+                development in MCA.
               </p>
             </div>
           </div>
@@ -70,13 +64,14 @@ function MCAPeoplePage() {
         <section className="border-b border-black/5 bg-white">
           <div className="mx-auto max-w-6xl px-5 py-3 sm:px-6 sm:py-4">
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-              <QuickNav title="Overview" href="/mca" active={false} />
+              <QuickNav variant="mca" title="Overview" href="/mca" active={false} />
 
-              <QuickNav title="People" href="/mca/people" active />
+              <QuickNav variant="mca" title="People" href="/mca/people" active />
 
-              <QuickNav title="Syllabus" href="/mca/syllabus" active={false} />
+              <QuickNav variant="mca" title="Syllabus" href="/mca/syllabus" active={false} />
 
               <QuickNav
+                variant="mca"
                 title="Eligibility & Fee"
                 href="/course-info/mca/eligibility-fee"
                 active={false}
@@ -94,13 +89,10 @@ function MCAPeoplePage() {
               Faculty Team
             </div>
 
-            <h2 className="text-2xl font-bold leading-tight sm:text-3xl">
-              Faculty — MCA
-            </h2>
+            <h2 className="text-2xl font-bold leading-tight sm:text-3xl">Faculty — MCA</h2>
 
             <p className="mt-2 max-w-2xl text-sm leading-6 text-black/60 sm:text-base sm:leading-7">
-              Academic professionals supporting teaching, guidance and
-              learner development.
+              Academic professionals supporting teaching, guidance and learner development.
             </p>
           </div>
 
@@ -176,8 +168,8 @@ function MCAPeoplePage() {
             <BookOpen className="mt-0.5 size-5 shrink-0 text-[#6b4c9a] sm:mt-0" />
 
             <p className="text-sm leading-6 text-black/65 sm:text-base sm:leading-7">
-              Our MCA faculty team supports academic learning, guidance
-              and the overall development of learners.
+              Our MCA faculty team supports academic learning, guidance and the overall development
+              of learners.
             </p>
           </div>
         </main>
@@ -271,20 +263,14 @@ function MCAPeoplePage() {
                   </div>
 
                   <div className="overflow-hidden rounded-xl border border-black/7">
-                    <DetailRow
-                      label="Designation"
-                      value={selectedFaculty.designation}
-                    />
+                    <DetailRow label="Designation" value={selectedFaculty.designation} />
 
                     <DetailRow
                       label="Nature of Employment"
                       value={selectedFaculty.natureOfEmployment}
                     />
 
-                    <DetailRow
-                      label="Qualification"
-                      value={selectedFaculty.qualification}
-                    />
+                    <DetailRow label="Qualification" value={selectedFaculty.qualification} />
 
                     {/* PHONE */}
                     <div className="grid grid-cols-1 border-b border-black/6 bg-[#F5F1E9]/50 px-4 py-4 sm:grid-cols-[190px_1fr] sm:gap-5">
@@ -337,9 +323,7 @@ function MCAPeoplePage() {
                   {/* OFFICIAL PROFILE */}
                   <div className="mt-5 flex flex-col gap-3 border-t border-black/5 pt-5 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                      <p className="text-base font-semibold text-[#111111]">
-                        Faculty Profile
-                      </p>
+                      <p className="text-base font-semibold text-[#111111]">Faculty Profile</p>
 
                       <p className="mt-1 text-sm leading-5 text-black/55">
                         View the faculty profile document.
@@ -369,63 +353,11 @@ function MCAPeoplePage() {
   );
 }
 
-/* QUICK NAV */
-function QuickNav({
-  title,
-  href,
-  active,
-}: {
-  title: string;
-  href: string;
-  active: boolean;
-}) {
-  return (
-    <Link
-      to={href}
-      className={`group relative rounded-lg border px-4 py-3 transition-all duration-300 sm:py-3.5 ${
-        active
-          ? "border-[#6b4c9a]/20 bg-[#6b4c9a]/5"
-          : "border-black/6 bg-white hover:bg-[#F5F1E9]"
-      }`}
-    >
-      <div className="flex items-center justify-between gap-2">
-        <span
-          className={`text-sm font-semibold sm:text-base ${
-            active ? "text-[#6b4c9a]" : "text-[#111111]"
-          }`}
-        >
-          {title}
-        </span>
-
-        <ArrowRight
-          className={`size-4 shrink-0 ${
-            active ? "text-[#6b4c9a]" : "text-black/30"
-          } transition-transform duration-300 group-hover:translate-x-0.5`}
-        />
-      </div>
-
-      <span
-        className={`absolute bottom-0 left-2 right-2 h-0.5 origin-left bg-[#D4AF37] transition-transform duration-300 ${
-          active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-        }`}
-      />
-    </Link>
-  );
-}
-
 /* DETAIL ROW */
-function DetailRow({
-  label,
-  value,
-}: {
-  label: string;
-  value: React.ReactNode;
-}) {
+function DetailRow({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <div className="grid grid-cols-1 border-b border-black/6 bg-white px-4 py-4 sm:grid-cols-[190px_1fr] sm:gap-5">
-      <div className="text-sm font-semibold leading-6 text-[#6b4c9a] sm:text-base">
-        {label}
-      </div>
+      <div className="text-sm font-semibold leading-6 text-[#6b4c9a] sm:text-base">{label}</div>
 
       <div className="mt-2 text-sm font-medium leading-6 text-[#111111] sm:mt-0 sm:text-base">
         {value}

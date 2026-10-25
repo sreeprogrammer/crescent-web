@@ -1,28 +1,22 @@
 import { circularFont } from "@/lib/fonts";
-import { useState } from "react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import {
   ArrowLeft,
-  BookOpen,
   Download,
   GraduationCap,
-  X,
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { EnquiryForm } from "@/college-navigator-bot/src/chat-components/EnquiryForm";
+import {
+  SyllabusDownloadDialog,
+} from "@/components/site/SyllabusDownloadDialog";
+import { useSyllabusDownload } from "@/components/site/useSyllabusDownload";
+import {
+  SyllabusSemesterTable as SemesterTable,
+  type SyllabusCourse as Course,
+} from "@/components/site/SyllabusSemesterTable";
 
 const SYLLABUS_PDF = "/pdfs/ba-islamic-studies-syllabus.pdf";
-
-type Course = {
-  no: number;
-  category: string;
-  code: string;
-  title: string;
-  l: number | string;
-  t: number | string;
-  p: number | string;
-  credits: number;
-};
 
 const semester1: Course[] = [
   {
@@ -645,132 +639,8 @@ const electives6: Course[] = [
   },
 ];
 
-function SemesterTable({
-  semester,
-  courses,
-  total,
-}: {
-  semester: string;
-  courses: Course[];
-  total: number;
-}) {
-  return (
-    <section className="mb-8">
-      <div className="mb-3 flex items-center gap-3">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0d5c45] text-white">
-          <BookOpen size={16} />
-        </div>
-
-        <h2
-          className="text-xl font-bold text-[#111111]"
-          style={circularFont}
-        >
-          {semester}
-        </h2>
-      </div>
-
-      <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
-        <table className="w-full min-w-[900px] border-collapse text-left">
-          <thead>
-            <tr className="bg-[#0d5c45] text-white">
-              <th className="px-3 py-3 text-xs font-semibold">#</th>
-              <th className="px-3 py-3 text-xs font-semibold">Category</th>
-              <th className="px-3 py-3 text-xs font-semibold">
-                Course Code
-              </th>
-              <th className="px-3 py-3 text-xs font-semibold">
-                Course Title
-              </th>
-              <th className="px-3 py-3 text-center text-xs font-semibold">
-                L
-              </th>
-              <th className="px-3 py-3 text-center text-xs font-semibold">
-                T
-              </th>
-              <th className="px-3 py-3 text-center text-xs font-semibold">
-                P
-              </th>
-              <th className="px-3 py-3 text-center text-xs font-semibold">
-                Credits
-              </th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {courses.map((course) => (
-              <tr
-                key={`${semester}-${course.no}-${course.code}`}
-                className="border-t border-slate-100 transition-colors hover:bg-[#fffaf0]"
-              >
-                <td className="px-3 py-3 text-sm font-medium text-[#111111]">
-                  {course.no}
-                </td>
-
-                <td className="px-3 py-3">
-                  <span className="inline-flex rounded-md bg-[#d4af37]/10 px-2 py-1 text-xs font-semibold text-[#8f1d1d]">
-                    {course.category}
-                  </span>
-                </td>
-
-                <td className="px-3 py-3 text-sm font-medium text-[#1d355f]">
-                  {course.code || "—"}
-                </td>
-
-                <td className="px-3 py-3 text-sm leading-6 text-[#111111]">
-                  {course.title}
-                </td>
-
-                <td className="px-3 py-3 text-center text-sm text-[#111111]">
-                  {course.l}
-                </td>
-
-                <td className="px-3 py-3 text-center text-sm text-[#111111]">
-                  {course.t}
-                </td>
-
-                <td className="px-3 py-3 text-center text-sm text-[#111111]">
-                  {course.p}
-                </td>
-
-                <td className="px-3 py-3 text-center text-sm font-bold text-[#0d5c45]">
-                  {course.credits}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-
-          <tfoot>
-            <tr className="border-t-2 border-[#d4af37] bg-[#fffaf0]">
-              <td
-                colSpan={7}
-                className="px-3 py-3 text-right text-sm font-bold text-[#111111]"
-              >
-                Total Credits
-              </td>
-
-              <td className="px-3 py-3 text-center text-sm font-bold text-[#8f1d1d]">
-                {total}
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-    </section>
-  );
-}
-
 function SyllabusPage() {
-  const [showEnquiry, setShowEnquiry] = useState(false);
-  const [syllabusUnlocked, setSyllabusUnlocked] = useState(false);
-
-  const handleSyllabusSubmit = () => {
-    setSyllabusUnlocked(true);
-  };
-
-  const openSyllabusForm = () => {
-    setSyllabusUnlocked(false);
-    setShowEnquiry(true);
-  };
+  const syllabusDownload = useSyllabusDownload();
 
   return (
     <SiteLayout>
@@ -806,7 +676,7 @@ function SyllabusPage() {
               {/* Header Download - Opens Form */}
               <button
                 type="button"
-                onClick={openSyllabusForm}
+                onClick={syllabusDownload.show}
                 className="mt-4 inline-flex items-center gap-2 rounded-lg bg-[#d4af37] px-3.5 py-2 text-xs font-bold text-[#111111] shadow-sm transition-all hover:bg-[#e2c45a]"
               >
                 <Download size={15} />
@@ -828,7 +698,7 @@ function SyllabusPage() {
               {/* Opens enquiry form - does not navigate */}
               <button
                 type="button"
-                onClick={openSyllabusForm}
+                onClick={syllabusDownload.show}
                 className="mt-2 inline-flex items-center gap-2 text-sm font-bold text-[#8f1d1d] transition-colors hover:text-[#0d5c45]"
               >
                 <Download size={15} />
@@ -854,6 +724,7 @@ function SyllabusPage() {
               semester="SEMESTER Ⅰ"
               courses={semester1}
               total={22}
+              theme="green"
             />
 
             {/* Semester II */}
@@ -861,6 +732,7 @@ function SyllabusPage() {
               semester="SEMESTER Ⅱ"
               courses={semester2}
               total={22}
+              theme="green"
             />
 
             {/* Semester III */}
@@ -868,6 +740,7 @@ function SyllabusPage() {
               semester="SEMESTER Ⅲ"
               courses={semester3}
               total={24}
+              theme="green"
             />
 
             {/* Semester IV */}
@@ -875,6 +748,7 @@ function SyllabusPage() {
               semester="SEMESTER Ⅳ"
               courses={semester4}
               total={24}
+              theme="green"
             />
 
             {/* Semester V */}
@@ -882,6 +756,7 @@ function SyllabusPage() {
               semester="SEMESTER V"
               courses={semester5}
               total={24}
+              theme="green"
             />
 
             {/* Semester VI */}
@@ -889,6 +764,7 @@ function SyllabusPage() {
               semester="SEMESTER VI"
               courses={semester6}
               total={24}
+              theme="green"
             />
 
             {/* Overall Total */}
@@ -924,6 +800,7 @@ function SyllabusPage() {
               semester="Semester III"
               courses={electives3}
               total={9}
+              theme="green"
             />
 
             {/* Semester IV Electives */}
@@ -931,6 +808,7 @@ function SyllabusPage() {
               semester="Semester IV"
               courses={electives4}
               total={9}
+              theme="green"
             />
 
             {/* Semester V Electives */}
@@ -938,6 +816,7 @@ function SyllabusPage() {
               semester="Semester V"
               courses={electives5}
               total={12}
+              theme="green"
             />
 
             {/* Semester VI Electives */}
@@ -945,6 +824,7 @@ function SyllabusPage() {
               semester="Semester VI"
               courses={electives6}
               total={12}
+              theme="green"
             />
 
             {/* Bottom navigation */}
@@ -962,7 +842,7 @@ function SyllabusPage() {
               {/* Opens enquiry form instead of directly downloading */}
               <button
                 type="button"
-                onClick={openSyllabusForm}
+                onClick={syllabusDownload.show}
                 className="group relative inline-flex w-fit items-center gap-2 overflow-hidden rounded-xl bg-[#8f1d1d] px-4 py-2.5 text-sm font-semibold text-white transition-all"
               >
                 <Download size={16} />
@@ -974,81 +854,21 @@ function SyllabusPage() {
           </div>
         </section>
 
-        {/* Enquiry Form Modal */}
-        {showEnquiry && (
-          <div className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/60 px-4 py-5 backdrop-blur-sm">
-            <div className="relative max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-white shadow-2xl">
-              {/* Close Button */}
-              <button
-                type="button"
-                onClick={() => setShowEnquiry(false)}
-                aria-label="Close enquiry form"
-                className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white text-slate-700 shadow-md transition-all hover:bg-slate-100"
-              >
-                <X size={18} />
-              </button>
-
-              {!syllabusUnlocked ? (
-                <div className="p-4 pt-6 sm:p-6 sm:pt-7">
-                  <div className="mb-5 pr-10">
-                    <div className="mb-2 h-1 w-10 rounded-full bg-[#d4af37]" />
-
-                    <h2
-                      className="text-xl font-bold text-[#111111]"
-                      style={circularFont}
-                    >
-                      Download BA Islamic Studies Syllabus
-                    </h2>
-
-                    <p className="mt-1.5 text-xs leading-5 text-slate-600">
-                      Please fill in your details to access the syllabus PDF.
-                    </p>
-                  </div>
-
-                  <EnquiryForm
-                    language="en"
-                    onSubmitted={handleSyllabusSubmit}
-                  />
-                </div>
-              ) : (
-                <div className="p-6 text-center sm:p-8">
-                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#0d5c45]/10 text-[#0d5c45]">
-                    <Download size={25} />
-                  </div>
-
-                  <h2
-                    className="mt-4 text-xl font-bold text-[#111111]"
-                    style={circularFont}
-                  >
-                    Syllabus Ready
-                  </h2>
-
-                  <p className="mt-2 text-sm leading-6 text-slate-600">
-                    Thank you for submitting your details. You can now
-                    download the BA Islamic Studies syllabus.
-                  </p>
-
-                  <a
-                    href={SYLLABUS_PDF}
-                    download
-                    className="mt-5 inline-flex items-center justify-center gap-2 rounded-xl bg-[#0d5c45] px-5 py-3 text-sm font-bold text-white shadow-sm transition-all hover:bg-[#0a4b38]"
-                  >
-                    <Download size={17} />
-                    Download Syllabus PDF
-                  </a>
-
-                  <button
-                    type="button"
-                    onClick={() => setShowEnquiry(false)}
-                    className="mt-3 block w-full text-xs font-semibold text-slate-500 transition-colors hover:text-[#8f1d1d]"
-                  >
-                    Close
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
+        <SyllabusDownloadDialog
+          open={syllabusDownload.open}
+          unlocked={syllabusDownload.unlocked}
+          title="Download BA Islamic Studies Syllabus"
+          description="Please fill in your details to access the syllabus PDF."
+          successDescription="Thank you for submitting your details. You can now download the BA Islamic Studies syllabus."
+          pdfHref={SYLLABUS_PDF}
+          theme="green"
+          onClose={syllabusDownload.close}
+        >
+          <EnquiryForm
+            language="en"
+            onSubmitted={syllabusDownload.unlock}
+          />
+        </SyllabusDownloadDialog>
       </main>
     </SiteLayout>
   );

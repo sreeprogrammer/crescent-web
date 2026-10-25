@@ -1,3 +1,9 @@
+import {
+  certificationProgrammeListings,
+  pgProgrammeListings,
+  ugProgrammeListings,
+} from "@/data/programmes";
+
 export const college = {
   name: "Crescent Institute",
   unit: "Centre for Distance and Online Education",
@@ -250,132 +256,39 @@ export const navItems: NavItem[] = [
   },
 ];
 
-/* =========================================================
-   DEGREE PROGRAMMES
-========================================================= */
+const toProgrammeSummary = (programme: (typeof ugProgrammeListings)[number]) => ({
+  name: programme.name,
+  desc: programme.description,
+  duration: programme.duration,
+});
 
 export const degreeProgrammes = [
   {
     group: "Undergraduate",
-    items: [
-      {
-        name: "BA English",
-        desc: "Literature, language and communication for modern careers.",
-        duration: "3 Years",
-      },
-      {
-        name: "BA Islamic Studies",
-        desc: "Classical and contemporary Islamic thought, civilisation and ethics.",
-        duration: "3 Years",
-      },
-      {
-        name: "BA Public Policy",
-        desc: "Governance, economics and policy analysis fundamentals.",
-        duration: "3 Years",
-      },
-    ],
+    items: ugProgrammeListings.map(toProgrammeSummary),
   },
-
   {
     group: "Postgraduate",
-    items: [
-      {
-        name: "MA Islamic Studies",
-        desc: "Advanced study and research in Islamic sciences, civilisation and thought.",
-        duration: "2 Years",
-      },
-      {
-        name: "MCA",
-        desc: "Software engineering, data, application development and applied computing.",
-        duration: "2 Years",
-      },
-      {
-        name: "MBA",
-        desc: "Management, finance, analytics, entrepreneurship and leadership practice.",
-        duration: "2 Years",
-      },
-    ],
+    items: pgProgrammeListings.map(toProgrammeSummary),
   },
 ];
 
-/* =========================================================
-   CERTIFICATION PROGRAMMES
-========================================================= */
+export const certificationProgrammes = certificationProgrammeListings.map(
+  toProgrammeSummary,
+);
 
-export const certificationProgrammes = [
-  {
-    name: "Mobile Application Development",
-    desc: "Build modern Android and iOS applications using contemporary cross-platform technologies.",
-    duration: "6 Months",
-  },
-];
+const toProgrammeDetails = (programme: (typeof ugProgrammeListings)[number]) => ({
+  slug: programme.slug,
+  name: programme.name,
+  full: programme.full,
+  duration: programme.duration,
+  eligibility: programme.eligibility,
+});
 
-/* =========================================================
-   UNDERGRADUATE PROGRAMMES
-========================================================= */
-
-export const ugProgrammes = [
-  {
-    name: "BA English",
-    full: "Bachelor of Arts in English",
-    duration: "3 Years",
-    eligibility: "10+2 in any stream",
-  },
-
-  {
-    name: "BA Islamic Studies",
-    full: "Bachelor of Arts in Islamic Studies",
-    duration: "3 Years",
-    eligibility: "10+2 in any stream",
-  },
-
-  {
-    name: "BA Public Policy",
-    full: "Bachelor of Arts in Public Policy",
-    duration: "3 Years",
-    eligibility: "10+2 in any stream",
-  },
-];
-
-/* =========================================================
-   POSTGRADUATE PROGRAMMES
-========================================================= */
-
-export const pgProgrammes = [
-  {
-    name: "MA Islamic Studies",
-    full: "Master of Arts in Islamic Studies",
-    duration: "2 Years",
-    eligibility: "Bachelor's degree",
-  },
-
-  {
-    name: "MCA",
-    full: "Master of Computer Applications",
-    duration: "2 Years",
-    eligibility: "Bachelor's degree with Mathematics",
-  },
-
-  {
-    name: "MBA",
-    full: "Master of Business Administration",
-    duration: "2 Years",
-    eligibility: "Any Bachelor's degree",
-  },
-];
-
-/* =========================================================
-   CERTIFICATION COURSES
-========================================================= */
-
-export const certificationCourses = [
-  {
-    name: "Mobile Application Development",
-    full: "Professional Certification Programme",
-    duration: "6 Months",
-    eligibility: "12th / Diploma / Degree",
-  },
-];
+export const ugProgrammes = ugProgrammeListings.map(toProgrammeDetails);
+export const pgProgrammes = pgProgrammeListings.map(toProgrammeDetails);
+export const certificationCourses =
+  certificationProgrammeListings.map(toProgrammeDetails);
 
 /* =========================================================
    ADMISSION PROCESS

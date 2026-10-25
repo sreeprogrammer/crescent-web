@@ -13,6 +13,7 @@ import {
   X,
 } from "lucide-react";
 
+import { QuickNav } from "@/components/site/QuickNav";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { getFacultyForCourse, type FacultyProfile } from "@/data/facultyProfiles";
 
@@ -71,17 +72,19 @@ function BAIslamicStudiesPeoplePage() {
         <section className="border-b border-black/5 bg-white">
           <div className="mx-auto max-w-7xl px-5 py-4 sm:px-8 lg:px-12">
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-              <QuickNav title="Overview" href="/ba-islamic-studies" active={false} />
+              <QuickNav variant="ba" title="Overview" href="/ba-islamic-studies" active={false} />
 
-              <QuickNav title="People" href="/ba-islamic-studies/people" active />
+              <QuickNav variant="ba" title="People" href="/ba-islamic-studies/people" active />
 
               <QuickNav
+                variant="ba"
                 title="Vision"
                 href="/course-info/ba-islamic-studies/vision"
                 active={false}
               />
 
               <QuickNav
+                variant="ba"
                 title="Mission"
                 href="/course-info/ba-islamic-studies/mission"
                 active={false}
@@ -494,72 +497,6 @@ function BAIslamicStudiesPeoplePage() {
         </AnimatePresence>
       </div>
     </SiteLayout>
-  );
-}
-
-/* =========================================================
-   QUICK NAVIGATION
-========================================================= */
-
-function QuickNav({ title, href, active }: { title: string; href: string; active: boolean }) {
-  return (
-    <Link
-      to={href}
-      className={`
-        group
-        relative
-        rounded-xl
-        border
-        px-4
-        py-3
-        transition-all
-        duration-300
-        ${
-          active
-            ? "border-[#2F6F4E]/20 bg-[#2F6F4E]/5"
-            : "border-black/6 bg-white hover:-translate-y-0.5 hover:bg-[#F5F1E9]"
-        }
-      `}
-    >
-      <div className="flex items-center justify-between gap-3">
-        <span
-          className={`
-            text-sm
-            font-bold
-            ${active ? "text-[#2F6F4E]" : "text-[#111111] group-hover:text-[#2F6F4E]"}
-          `}
-        >
-          {title}
-        </span>
-
-        <ArrowRight
-          className={`
-            h-4
-            w-4
-            transition-all
-            duration-300
-            group-hover:translate-x-1
-            ${active ? "text-[#2F6F4E]" : "text-black/25 group-hover:text-[#2F6F4E]"}
-          `}
-        />
-      </div>
-
-      <span
-        className={`
-          absolute
-          bottom-0
-          left-3
-          right-3
-          h-[2px]
-          origin-left
-          rounded-full
-          bg-[#D4AF37]
-          transition-transform
-          duration-300
-          ${active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}
-        `}
-      />
-    </Link>
   );
 }
 

@@ -3,21 +3,26 @@ import { motion } from "framer-motion";
 import { ui } from "../chat-data/translations";
 import { cn } from "../chat-lib/utils";
 import type { EnquiryData, Language } from "../chat-types/chat";
+import { getRequiredCourseInfo } from "../../../data/programmes";
 
 interface Props {
   language: Language;
   onSubmitted: (data: EnquiryData) => void;
 }
 
-const COURSES = [
-  "MCA",
-  "MBA",
-  "MA Islamic Studies",
-  "BA English",
-  "BA Islamic Studies",
-  "BA Public Policy",
-  "Mobile Application Development",
-];
+const COURSE_SLUGS = [
+  "mca",
+  "mba",
+  "ma-islamic-studies",
+  "ba-english",
+  "ba-islamic-studies",
+  "ba-public-policy",
+  "mobile-application-development",
+] as const;
+
+const COURSES = COURSE_SLUGS.map(
+  (slug) => getRequiredCourseInfo(slug).name,
+);
 
 type Errors = Partial<Record<keyof EnquiryData, string>>;
 

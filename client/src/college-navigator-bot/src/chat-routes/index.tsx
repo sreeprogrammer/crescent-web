@@ -12,6 +12,7 @@ import {
 
 import { HeroDE } from "../components/site/HeroDE";
 import { SiteLayout } from "../components/site/SiteLayout";
+import { getRequiredCourseInfo } from "../../../data/programmes";
 import ChatWidget from "../chat-components/ChatWidget";
 
 const title =
@@ -112,13 +113,13 @@ const advantages = [
 const programmes = [
   {
     tag: "POSTGRADUATE",
-    title: "MBA",
+    title: getRequiredCourseInfo("mba").name,
     description:
       "Build business knowledge, leadership skills and professional confidence through flexible learning.",
   },
   {
     tag: "POSTGRADUATE",
-    title: "MCA",
+    title: getRequiredCourseInfo("mca").name,
     description:
       "Develop advanced computing and application skills through a structured distance learning experience.",
   },

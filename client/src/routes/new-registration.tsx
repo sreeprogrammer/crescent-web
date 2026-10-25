@@ -19,6 +19,10 @@ import {
   UserPlus,
 } from "lucide-react";
 import { FormEvent, useState } from "react";
+import {
+  getCourseInfo,
+  registrationProgrammeOptions,
+} from "@/data/programmes";
 
 /* =========================================================
    ROUTE
@@ -353,23 +357,18 @@ function ProgrammeSelect({
   value: string;
   onChange: (value: string) => void;
 }) {
-  const programmes = [
-    {
-      value: "MBA",
-      name: "MBA",
-      full: "Master of Business Administration",
-    },
-    {
-      value: "MCA",
-      name: "MCA",
-      full: "Master of Computer Applications",
-    },
-    {
-      value: "BAIS",
-      name: "BA Islamic Studies",
-      full: "Bachelor of Arts in Islamic Studies",
-    },
-  ];
+  const programmes = registrationProgrammeOptions.map(({ slug, value }) => {
+    const course = getCourseInfo(slug);
+    if (!course) {
+      throw new Error(`Registration form references unknown programme "${slug}".`);
+    }
+
+    return {
+      value,
+      name: course.name,
+      full: course.fullName,
+    };
+  });
 
   return (
     <div className="space-y-1.5">

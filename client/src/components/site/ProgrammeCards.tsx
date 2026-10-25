@@ -1,5 +1,6 @@
 import { circularFont } from "@/lib/fonts";
 import { useEffect, useState } from "react";
+import { getCourseInfo } from "@/data/programmes";
 
 import { Button } from "@/components/ui/button";
 import { certificationCourses, pgProgrammes, ugProgrammes } from "@/data/site";
@@ -52,6 +53,7 @@ const YELLOW = "#D4AF37";
 const BLACK = "#111111";
 
 type Programme = {
+  slug: string;
   name: string;
   full: string;
   duration: string;
@@ -71,17 +73,17 @@ function getProgrammeImage(programme: Programme, type: ProgrammeCategory) {
     return mobileAppPhoto;
   }
 
-  switch (programme.name) {
-    case "BA English":
+  switch (programme.slug) {
+    case "ba-english":
       return baEnglishPhoto;
-    case "BA Public Policy":
+    case "ba-public-policy":
       return baPublicPolicyPhoto;
-    case "BA Islamic Studies":
-    case "MA Islamic Studies":
+    case "ba-islamic-studies":
+    case "ma-islamic-studies":
       return islamicStudiesPhoto;
-    case "MCA":
+    case "mca":
       return mcaPhoto;
-    case "MBA":
+    case "mba":
       return mbaPhoto;
     default:
       return undefined;
@@ -127,28 +129,7 @@ const programmeCategoryIds = Object.keys(programmeCategories) as ProgrammeCatego
 ========================================================= */
 
 function getProgrammeRoute(programme: Programme) {
-  const name = programme.name.trim().toLowerCase();
-
-  if (name === "ba islamic studies") {
-    return "/ba-islamic-studies";
-  }
-
-  if (name === "mca") {
-    return "/mca";
-  }
-
-  if (name === "mba") {
-    return "/mba";
-  }
-
-  return undefined;
-}
-
-function getProgrammeSlug(programme: Programme) {
-  return programme.name
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-");
+  return getCourseInfo(programme.slug)?.landingRoute;
 }
 
 function ProgrammeExploreLink({
@@ -203,7 +184,7 @@ function ProgrammeExploreLink({
   return (
     <Link
       to="/course-info/$courseSlug"
-      params={{ courseSlug: getProgrammeSlug(programme) }}
+      params={{ courseSlug: programme.slug }}
       className={className}
     >
       {children}
@@ -616,7 +597,7 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
         description="Share your details and an admission counsellor will call you back."
         downloadHref={programmeBrochure}
         downloadLabel={`Download ${programme.name} brochure`}
-        idPrefix={`brochure-${getProgrammeSlug(programme)}`}
+        idPrefix={`brochure-${programme.slug}`}
       />
     </>
   );
