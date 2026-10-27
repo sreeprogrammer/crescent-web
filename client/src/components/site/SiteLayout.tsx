@@ -3,23 +3,29 @@ import { EnquiryFab } from "./EnquiryFab";
 import { FloatingActions } from "./FloatingActions";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
-import { CoursesFab } from "./CoursesFab";
+import { EventsFab, EventsModalProvider } from "./EventsFab";
+import { AdmissionTimeline } from "./AdmissionTimeline";
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-background">
-      <SiteHeader />
+    <EventsModalProvider>
+      <div className="min-h-screen bg-background">
+        <SiteHeader />
 
-      <main className="m-0 p-0">
-        {children}
-      </main>
+        <main className="m-0 p-0">
+          {children}
+        </main>
 
-      <SiteFooter />
+        <SiteFooter />
 
-      <FloatingActions />
-      <EnquiryFab />
-      <CoursesFab />
-    </div>
+        <FloatingActions />
+        <AdmissionTimeline />
+        <div className="fixed bottom-20 left-3 z-[9999] flex flex-row gap-2 sm:bottom-auto sm:left-auto sm:right-0 sm:top-[44%] sm:-translate-y-1/2 sm:flex-col sm:gap-3">
+          <EventsFab />
+          <EnquiryFab />
+        </div>
+      </div>
+    </EventsModalProvider>
   );
 }
 

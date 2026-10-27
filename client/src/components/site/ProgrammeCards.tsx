@@ -95,29 +95,22 @@ const programmeCategories: Record<
   {
     label: string;
     title: string;
-    subtitle: string;
     items: Programme[];
   }
 > = {
   ug: {
     label: "UG",
     title: "Undergraduate Programmes",
-    subtitle:
-      "Flexible degree pathways for learners beginning their higher education journey.",
     items: ugProgrammes,
   },
   pg: {
     label: "PG",
     title: "Postgraduate Programmes",
-    subtitle:
-      "Advanced programmes for career growth, academic development and professional leadership.",
     items: pgProgrammes,
   },
   certification: {
     label: "Certification",
     title: "Certified Programme",
-    subtitle:
-      "Short-term, career-focused learning designed to build practical digital skills.",
     items: certificationCourses,
   },
 };
@@ -610,13 +603,11 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
 function ProgrammeSection({
   id,
   title,
-  subtitle,
   items,
   type,
 }: {
   id: string;
   title: string;
-  subtitle: string;
   items: Programme[];
   type: "ug" | "pg" | "certification";
 }) {
@@ -672,20 +663,6 @@ function ProgrammeSection({
             {title}
           </h3>
 
-          {/* SUBTITLE */}
-
-          <p
-            className="
-              mt-1
-              max-w-2xl
-              text-[clamp(0.7rem,0.64rem+0.2vw,0.85rem)]
-              leading-5
-              text-black/55
-            "
-            style={circularFont}
-          >
-            {subtitle}
-          </p>
         </div>
 
         {/* COUNT */}
@@ -760,7 +737,6 @@ export function ProgrammeCards({ withHeading = true }: { withHeading?: boolean }
           <SectionHeading
             eyebrow="Programmes Offered"
             title="Build your future with the right programme"
-            description="Explore focused undergraduate, postgraduate and professional certification programmes designed for flexible learning."
           />
         </div>
       )}
@@ -799,146 +775,12 @@ export function ProgrammeCards({ withHeading = true }: { withHeading?: boolean }
           <ProgrammeSection
             id={`${activeCategory}-programmes`}
             title={selectedCategory.title}
-            subtitle={selectedCategory.subtitle}
             type={activeCategory}
             items={selectedCategory.items}
           />
         </div>
       </div>
 
-      {/* ================================================= */}
-      {/* PREMIUM BOTTOM CTA */}
-      {/* ================================================= */}
-
-      <div
-        className="
-          relative
-          mt-3
-          overflow-hidden
-          rounded-[1.15rem]
-          bg-gradient-to-r
-          from-[#172554]
-          via-[#1E3A8A]
-          to-[#8F1D1D]
-          px-4
-          py-3
-          shadow-[0_10px_26px_rgba(23,37,84,0.15)]
-          sm:px-5
-        "
-      >
-        {/* GOLD GLOW */}
-
-        <div
-          className="
-            pointer-events-none
-            absolute
-            -right-14
-            -top-14
-            size-32
-            rounded-full
-            bg-[#D4AF37]/15
-            blur-3xl
-          "
-        />
-
-        {/* RED GLOW */}
-
-        <div
-          className="
-            pointer-events-none
-            absolute
-            -bottom-12
-            -left-12
-            size-28
-            rounded-full
-            bg-[#8F1D1D]/25
-            blur-3xl
-          "
-        />
-
-        <div
-          className="
-            relative
-            flex
-            flex-col
-            gap-2
-            sm:flex-row
-            sm:items-center
-            sm:justify-between
-          "
-        >
-          {/* CTA CONTENT */}
-
-          <div className="min-w-0">
-            <div className="flex items-center gap-1.5">
-              <CheckCircle2 className="size-3.5 shrink-0 text-[#D4AF37]" />
-
-              <p
-                className="
-                  text-[clamp(0.6rem,0.55rem+0.15vw,0.75rem)]
-                  font-bold
-                  uppercase
-                  tracking-[0.18em]
-                  text-[#D4AF37]
-                "
-              >
-                Admissions 2026–2027
-              </p>
-            </div>
-
-            <h3
-              className="
-                mt-0.5
-                text-[clamp(0.95rem,0.8rem+0.45vw,1.2rem)]
-                font-bold
-                leading-tight
-                text-white
-              "
-            >
-              Ready to start your next chapter?
-            </h3>
-
-            <p
-              className="
-                mt-0.5
-                text-[clamp(0.65rem,0.6rem+0.18vw,0.8rem)]
-                leading-5
-                text-white/65
-              "
-            >
-              Apply online and begin your learning journey with CDOE.
-            </p>
-          </div>
-
-          {/* CTA BUTTON */}
-
-          <Button
-            size="pill-lg"
-            className="
-              shrink-0
-              rounded-full
-              border-0
-              bg-[#D4AF37]
-              px-4
-              py-2.5
-              text-[clamp(0.68rem,0.62rem+0.18vw,0.82rem)]
-              font-bold
-              text-[#111111]
-              shadow-[0_7px_18px_rgba(0,0,0,0.15)]
-              transition-all
-              duration-300
-              hover:-translate-y-0.5
-              hover:bg-[#E2C45A]
-            "
-            asChild
-          >
-            <Link to="/admission" hash="how-to-apply">
-              Apply Now
-              <ArrowRight className="size-3.5 shrink-0" />
-            </Link>
-          </Button>
-        </div>
-      </div>
     </Section>
   );
 }

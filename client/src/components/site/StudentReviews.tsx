@@ -1,16 +1,9 @@
 
-import review1 from "@/assets/review-1.jpg";
-import review2 from "@/assets/review-2.jpg";
-import review3 from "@/assets/review-3.jpg";
-import review4 from "@/assets/review-4.jpg";
-
 import { AnimatePresence, motion } from "framer-motion";
 
 import {
   ChevronLeft,
   ChevronRight,
-  Quote,
-  Star,
 } from "lucide-react";
 
 import { useCallback, useEffect, useState } from "react";
@@ -20,53 +13,24 @@ const reviews = [
   {
     name: "Sana Fathima",
     programme: "MBA · Class of 2024",
-    photo: review1,
-    rating: 5,
     text: "I completed my MBA while working full time. Weekend live classes and recorded lectures made it genuinely possible, and the mentors never let me fall behind.",
   },
   {
     name: "Rahul Menon",
     programme: "BCA · Class of 2025",
-    photo: review2,
-    rating: 5,
     text: "The admission team guided me through every document. I was enrolled in four days without visiting the campus once — the whole process felt effortless.",
   },
   {
     name: "Aisha Begum",
     programme: "M.Com. · Class of 2024",
-    photo: review3,
-    rating: 5,
     text: "Study material on the LMS was beautifully structured and my mentor replied to doubts within hours. Real academic support, not just slides on a portal.",
   },
   {
     name: "Vignesh Kumar",
     programme: "B.Com. · Class of 2025",
-    photo: review4,
-    rating: 5,
     text: "A UGC recognised degree with an affordable fee plan let me finish my graduation while supporting my family. It changed the direction of my career.",
   },
 ];
-
-function Stars({ rating }: { rating: number }) {
-  return (
-    <div
-      className="flex items-center gap-0.5"
-      aria-label={`${rating} out of 5 stars`}
-    >
-      {Array.from({ length: 5 }).map((_, i) => (
-        <Star
-          key={i}
-          className={
-            i < rating
-              ? "size-4 fill-[#d4af37] text-[#d4af37]"
-              : "size-4 text-[#c7c7c7]"
-          }
-          aria-hidden
-        />
-      ))}
-    </div>
-  );
-}
 
 export function StudentReviews() {
   const [index, setIndex] = useState(0);
@@ -157,77 +121,14 @@ export function StudentReviews() {
               >
 
                 {/* Top Row */}
-                <div className="flex items-center justify-between">
-
-                  {/* Student */}
-                  <div className="flex items-center gap-3">
-
-                    <div className="relative">
-                      <img
-                        src={r.photo}
-                        alt={`${r.name}, ${r.programme}`}
-                        loading="lazy"
-                        width={512}
-                        height={512}
-                        className="
-                          size-12
-                          rounded-full
-                          object-cover
-                          border-2
-                          border-[#d4af37]
-                        "
-                      />
-
-                      {/* Quote Badge */}
-                      <span
-                        className="
-                          absolute
-                          -bottom-1
-                          -right-1
-                          flex
-                          size-5
-                          items-center
-                          justify-center
-                          rounded-full
-                          bg-[#7f1d1d]
-                          text-white
-                          shadow-sm
-                        "
-                      >
-                        <Quote className="size-3" />
-                      </span>
-                    </div>
-
-                    <figcaption>
-                      {/* Student Name */}
-                      <span
-                        className="
-                          block
-                          text-[16px]
-                          font-bold
-                          text-[#172554]
-                        "
-                      >
-                        {r.name}
-                      </span>
-
-                      {/* Programme */}
-                      <span
-                        className="
-                          mt-0.5
-                          block
-                          text-[12px]
-                          text-[#4b4b4b]
-                        "
-                      >
-                        {r.programme}
-                      </span>
-                    </figcaption>
-                  </div>
-
-                  {/* Rating */}
-                  <Stars rating={r.rating} />
-                </div>
+                <figcaption>
+                  <span className="block text-[16px] font-bold text-[#172554]">
+                    {r.name}
+                  </span>
+                  <span className="mt-0.5 block text-[12px] text-[#4b4b4b]">
+                    {r.programme}
+                  </span>
+                </figcaption>
 
                 {/* Gold Divider */}
                 <div

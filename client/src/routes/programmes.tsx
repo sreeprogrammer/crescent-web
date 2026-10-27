@@ -153,41 +153,9 @@ function ProgrammesPage() {
 
               {/* DESCRIPTION */}
 
-              <p
-                className="
-                  mt-3
-                  max-w-xl
-                  text-[clamp(0.82rem,0.72rem+0.28vw,1rem)]
-                  leading-[1.6]
-                  text-[#111111]/80
-                "
-              >
-                Explore flexible undergraduate, postgraduate and professional
-                programmes designed for learners who want quality education
-                without putting their career on hold.
-              </p>
+              
 
-              {/* QUICK FEATURES */}
-
-              <div className="mt-4 grid max-w-lg grid-cols-3 gap-2 sm:gap-2.5">
-                <MiniFeature
-                  icon={GraduationCap}
-                  title="UG"
-                  text="Programmes"
-                />
-
-                <MiniFeature
-                  icon={BookOpen}
-                  title="PG"
-                  text="Programmes"
-                />
-
-                <MiniFeature
-                  icon={Sparkles}
-                  title="Career"
-                  text="Focused"
-                />
-              </div>
+            
 
               {/* APPLY BUTTON */}
 

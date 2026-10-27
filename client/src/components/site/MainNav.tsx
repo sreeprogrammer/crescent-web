@@ -67,7 +67,7 @@ export function MainNav() {
         // =====================================================
         // MAIN CONTAINER
         // =====================================================
-        "relative z-50 mx-auto w-[calc(100%-12px)] max-w-[1820px]",
+        "sticky top-0 z-[60] mx-auto w-[calc(100%-12px)] max-w-[1820px]",
         "mt-1.5 sm:mt-3",
         "rounded-[18px] sm:rounded-[24px] lg:rounded-[28px]",
         "border border-[#e6e8eb]",

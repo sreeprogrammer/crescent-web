@@ -1,5 +1,4 @@
 import { circularFont } from "@/lib/fonts";
-import { AdmissionTimeline } from "@/components/site/AdmissionTimeline";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
@@ -706,7 +705,7 @@ function AdmissionOverview() {
                     text-[#D8B84C]
                   "
                 >
-                  Admissions 2026–2027
+                  Admissions
                 </p>
 
                 <p
@@ -767,7 +766,6 @@ function AdmissionPage() {
         ================================================= */}
 
         <div className="bg-[#F5F1E9]">
-          <AdmissionTimeline />
         </div>
 
         {/* =================================================

@@ -8,7 +8,14 @@ import {
   Send,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { admissionSteps } from "@/data/site";
 import { Reveal } from "./Reveal";
 import { Section } from "./Section";
@@ -23,10 +30,58 @@ const stepIcons = [
 ];
 
 export function AdmissionTimeline() {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const openFromHash = () => {
+      if (window.location.hash === "#how-to-apply") {
+        setOpen(true);
+      }
+    };
+
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
+    return () => window.removeEventListener("hashchange", openFromHash);
+  }, []);
+
   return (
+    <>
+      <button
+        type="button"
+        aria-label="Open Apply Guide"
+        onClick={() => setOpen(true)}
+        className="fixed left-0 top-[44%] z-[9999] hidden -translate-y-1/2 items-center justify-center rounded-r-2xl bg-[#172554] px-2.5 py-4 text-white shadow-lg transition-all duration-300 hover:bg-[#7f1d1d] sm:flex"
+      >
+        <span className="flex flex-col items-center gap-2">
+          <GraduationCap className="size-5 shrink-0" aria-hidden />
+          <span className="[writing-mode:vertical-rl] rotate-180 text-sm font-semibold tracking-[0.08em]">
+            Apply Guide
+          </span>
+        </span>
+      </button>
+
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent
+          overlayClassName="z-[10000] bg-black/55 backdrop-blur-sm"
+          className="left-3 top-1/2 z-[10001] flex max-h-[82dvh] w-[calc(100vw-2rem)] translate-x-0 -translate-y-1/2 flex-col gap-0 overflow-hidden rounded-2xl border-slate-200 bg-white p-0 text-white shadow-2xl sm:left-6 sm:w-[min(30rem,calc(100vw-3rem))]"
+        >
+          <header className="flex shrink-0 items-center gap-2.5 bg-[#172554] px-4 py-3 pr-12">
+            <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-white/10 text-[#d4af37]">
+              <GraduationCap className="size-5" aria-hidden />
+            </div>
+            <div>
+              <DialogTitle className="text-base font-bold text-white">
+                Apply Guide
+              </DialogTitle>
+              <DialogDescription className="mt-0.5 text-xs leading-4 text-white/75">
+                Follow these six steps to begin your learning journey.
+              </DialogDescription>
+            </div>
+          </header>
+          <div className="min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-contain">
     <Section
       id="how-to-apply"
-      className="relative overflow-hidden !py-6 sm:!py-8"
+      className="relative min-w-0 overflow-hidden !py-3"
     >
       {/* =====================================================
           BACKGROUND DECORATION
@@ -45,7 +100,7 @@ export function AdmissionTimeline() {
         ================================================== */}
 
         <Reveal>
-          <div className="mx-auto mb-6 max-w-3xl text-center">
+          <div className="mx-auto mb-4 max-w-3xl text-center">
 
             {/* ADMISSION PROCESS PILL */}
 
@@ -57,17 +112,14 @@ export function AdmissionTimeline() {
                   justify-center
                   rounded-full
                   bg-[#8f1d1d]
-                  px-6
-                  py-2
-                  text-[11px]
+                  px-4
+                  py-1.5
+                  text-[10px]
                   font-bold
                   uppercase
                   tracking-[0.22em]
                   text-white
                   shadow-[0_8px_20px_rgba(143,29,29,0.15)]
-                  sm:px-7
-                  sm:py-2.5
-                  sm:text-xs
                 "
               >
                 ADMISSION PROCESS
@@ -78,7 +130,7 @@ export function AdmissionTimeline() {
 
             <h2
               className="
-                text-[clamp(1.75rem,3vw,2.4rem)]
+                text-2xl
                 font-extrabold
                 leading-tight
                 tracking-tight
@@ -96,10 +148,10 @@ export function AdmissionTimeline() {
             <p
               className="
                 mx-auto
-                mt-2
+                mt-1.5
                 max-w-xl
-                text-[clamp(0.9rem,1vw,1rem)]
-                leading-[1.6]
+                text-sm
+                leading-5
                 text-slate-500
               "
             >
@@ -144,7 +196,7 @@ export function AdmissionTimeline() {
               STEP CARDS
           ================================================== */}
 
-          <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6 lg:gap-2">
+          <ol className="grid grid-cols-1 gap-2">
 
             {admissionSteps.map((step, index) => {
               const Icon = stepIcons[index] ?? CheckCircle2;
@@ -166,8 +218,8 @@ export function AdmissionTimeline() {
                         border
                         border-slate-200/70
                         bg-white/65
-                        px-3.5
-                        py-4
+                        px-3
+                        py-3
                         shadow-[0_6px_20px_rgba(23,37,84,0.06)]
                         backdrop-blur-lg
                         transition-all
@@ -215,7 +267,7 @@ export function AdmissionTimeline() {
                         className="
                           relative
                           z-10
-                          mb-3
+                          mb-2
                           flex
                           items-center
                           justify-between
@@ -225,7 +277,7 @@ export function AdmissionTimeline() {
                         <div
                           className="
                             flex
-                            size-10
+                            size-8
                             items-center
                             justify-center
                             rounded-xl
@@ -240,7 +292,7 @@ export function AdmissionTimeline() {
                             group-hover:bg-[#7f1d1d]
                           "
                         >
-                          <Icon className="size-[18px]" />
+                          <Icon className="size-4" />
                         </div>
 
                         <span
@@ -262,7 +314,7 @@ export function AdmissionTimeline() {
 
                       {/* ACCENT */}
 
-                      <div className="mb-2 flex items-center gap-1">
+                      <div className="mb-1.5 flex items-center gap-1">
 
                         <span
                           className="
@@ -283,7 +335,7 @@ export function AdmissionTimeline() {
 
                       <h3
                         className="
-                          text-[clamp(0.95rem,1vw,1.05rem)]
+                          text-[0.95rem]
                           font-extrabold
                           leading-[1.25]
                           text-[#172554]
@@ -297,9 +349,9 @@ export function AdmissionTimeline() {
 
                       <p
                         className="
-                          mt-2
-                          text-[clamp(0.82rem,0.85vw,0.92rem)]
-                          leading-[1.5]
+                          mt-1
+                          text-sm
+                          leading-5
                           text-slate-500
                         "
                       >
@@ -310,7 +362,7 @@ export function AdmissionTimeline() {
 
                       <div
                         className="
-                          mt-3
+                          mt-2
                           flex
                           items-center
                           gap-1.5
@@ -481,5 +533,9 @@ export function AdmissionTimeline() {
 
       </div>
     </Section>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }

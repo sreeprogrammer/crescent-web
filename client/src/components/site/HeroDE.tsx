@@ -362,20 +362,6 @@ export function HeroDE() {
               DESCRIPTION
           ================================================== */}
 
-          <p
-            className="
-              max-w-[650px]
-              text-[clamp(0.95rem,1.05vw,1.1rem)]
-              font-medium
-              leading-[1.65]
-              text-[#111111]
-            "
-          >
-            Join UGC Approved Undergraduate and Postgraduate
-            Programmes with flexible learning, online admissions
-            and expert student support.
-          </p>
-
           {/* =================================================
               FEATURES
           ================================================== */}

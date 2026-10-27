@@ -6,7 +6,6 @@ import {
   GraduationCap,
   Headphones,
   ShieldCheck,
-  Sparkles,
   Users,
 } from "lucide-react";
 
@@ -15,8 +14,7 @@ import { SiteLayout } from "../components/site/SiteLayout";
 import { getRequiredCourseInfo } from "../../../data/programmes";
 import ChatWidget from "../chat-components/ChatWidget";
 
-const title =
-  "Crescent Distance Education | UG & PG Admissions 2026–2027";
+const title = "Crescent Distance Education | UG & PG Programmes";
 
 const description =
   "UGC approved UG and PG distance education programmes with flexible learning, online admissions and expert student support.";
@@ -644,166 +642,6 @@ function Index() {
                 />
               </Link>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================
-          ADMISSION CTA
-      ===================================================== */}
-
-      <section className="bg-white px-4 py-14 sm:px-6 md:py-16">
-        <div
-          className="
-            relative
-            mx-auto
-            max-w-7xl
-            overflow-hidden
-            rounded-[30px]
-            bg-gradient-to-br
-            from-[#202b55]
-            via-[#253563]
-            to-[#8f1d1d]
-            px-6
-            py-10
-            shadow-[0_20px_55px_rgba(32,43,85,0.20)]
-            sm:px-10
-            lg:px-14
-          "
-        >
-          {/* decorative circles */}
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              -right-20
-              -top-20
-              size-60
-              rounded-full
-              border
-              border-[#d5ad54]/20
-            "
-          />
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              -bottom-28
-              right-32
-              size-72
-              rounded-full
-              bg-[#d5ad54]/10
-              blur-3xl
-            "
-          />
-
-          <div
-            className="
-              relative
-              flex
-              flex-col
-              items-start
-              justify-between
-              gap-7
-              lg:flex-row
-              lg:items-center
-            "
-          >
-            <div>
-              <div className="flex items-center gap-2">
-                <Sparkles className="size-4 text-[#e4c46a]" />
-
-                <span
-                  className="
-                    text-[10px]
-                    font-bold
-                    uppercase
-                    tracking-[0.2em]
-                    text-[#e4c46a]
-                  "
-                >
-                  Admissions 2026–2027
-                </span>
-              </div>
-
-              <h2
-                className="
-                  mt-3
-                  max-w-2xl
-                  text-2xl
-                  font-extrabold
-                  tracking-tight
-                  text-white
-                  sm:text-3xl
-                "
-              >
-                Ready to start your next chapter?
-              </h2>
-
-              <p
-                className="
-                  mt-2
-                  max-w-xl
-                  text-sm
-                  leading-6
-                  text-white/70
-                "
-              >
-                Explore programmes, check eligibility and begin your
-                application journey with Crescent Distance Education.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-3">
-              <Link
-                to="/admission"
-                hash="how-to-apply"
-                className="
-                  inline-flex
-                  items-center
-                  gap-2
-                  rounded-full
-                  bg-[#a82020]
-                  px-6
-                  py-3
-                  text-sm
-                  font-bold
-                  text-white
-                  shadow-lg
-                  transition-all
-                  hover:-translate-y-1
-                  hover:bg-[#c02727]
-                "
-              >
-                Apply Now
-                <ArrowRight className="size-4" />
-              </Link>
-
-              <Link
-                to="/programmes"
-                className="
-                  inline-flex
-                  items-center
-                  gap-2
-                  rounded-full
-                  border
-                  border-white/20
-                  bg-white/10
-                  px-6
-                  py-3
-                  text-sm
-                  font-bold
-                  text-white
-                  backdrop-blur-md
-                  transition-all
-                  hover:bg-white/15
-                "
-              >
-                Explore Courses
-              </Link>
-            </div>
           </div>
         </div>
       </section>

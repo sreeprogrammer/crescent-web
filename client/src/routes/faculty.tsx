@@ -146,9 +146,7 @@ function FacultyPage() {
               Meet Our Faculty
             </h2>
 
-            <p className="mt-1 text-sm leading-5 text-black/60 sm:text-base">
-              Experienced faculty members supporting every stage of the learning experience.
-            </p>
+            
           </div>
 
           {/* FACULTY SECTIONS */}
@@ -177,7 +175,7 @@ function FacultyPage() {
                 </div>
 
                 {/* CARDS */}
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid w-full min-w-0 grid-cols-2 gap-2.5 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3">
                   {section.faculty.map((person, index) => (
                     <motion.article
                       key={person.name}
@@ -188,13 +186,13 @@ function FacultyPage() {
                         duration: 0.3,
                         delay: index * 0.04,
                       }}
-                      className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-black/8 bg-white shadow-sm transition-shadow duration-300 hover:shadow-md"
+                      className="group relative flex h-full w-full min-w-0 flex-col overflow-hidden rounded-xl border border-black/8 bg-white shadow-sm transition-shadow duration-300 hover:shadow-md"
                     >
                       {/* GOLD HOVER LINE */}
                       <div className="absolute bottom-0 left-2 right-2 z-10 h-0.5 origin-left scale-x-0 bg-[#d4af37] transition-transform duration-300 group-hover:scale-x-100" />
 
                       {/* CONSISTENT IMAGE ALIGNMENT */}
-                      <div className="relative aspect-[5/4] w-full overflow-hidden bg-[#f3f3f3]">
+                      <div className="relative h-28 w-full shrink-0 overflow-hidden bg-[#f3f3f3] sm:h-32">
                         <img
                           src={person.photo ?? campusPhoto}
                           alt={person.name}
@@ -207,8 +205,8 @@ function FacultyPage() {
                       </div>
 
                       {/* CARD DETAILS */}
-                      <div className="flex flex-1 flex-col px-4 py-3">
-                        <h3 className="text-sm font-bold leading-5 text-[#111111] sm:text-base">
+                      <div className="flex min-w-0 flex-1 flex-col px-4 py-3">
+                        <h3 className="break-words text-sm font-bold leading-5 text-[#111111] sm:text-base">
                           {person.name}
                         </h3>
 

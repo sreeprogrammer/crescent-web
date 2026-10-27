@@ -1,8 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { AdmissionTimeline } from "@/components/site/AdmissionTimeline";
 import { HeroDE } from "@/components/site/HeroDE";
-import { NewsEvents } from "@/components/site/NewsEvents";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { StudentReviews } from "@/components/site/StudentReviews";
 import { WhyChooseUs } from "@/components/site/WhyChooseUs";
@@ -32,8 +30,6 @@ function Index() {
       <HeroDE />
       <WhoWeAre />
       <WhyChooseUs />
-      <AdmissionTimeline />
-      <NewsEvents />
       <StudentReviews />
     </SiteLayout>
   );

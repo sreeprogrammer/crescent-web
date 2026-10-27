@@ -254,24 +254,6 @@ export function getRequiredCourseInfo(slug: string) {
   return course;
 }
 
-export const courseDrawerProgrammeSlugs = [
-  "ba-english",
-  "ba-islamic-studies",
-  "ba-public-policy",
-  "ma-islamic-studies",
-  "mba",
-  "mca",
-] as const;
-
-export const courseDrawerAccents: Record<(typeof courseDrawerProgrammeSlugs)[number], string> = {
-  "ba-english": "#8F1D1D",
-  "ba-islamic-studies": "#2F6F4E",
-  "ba-public-policy": "#B08A24",
-  "ma-islamic-studies": "#6B4C9A",
-  mba: "#30265F",
-  mca: "#427D76",
-};
-
 export const registrationProgrammeOptions = [
   { slug: "mba", value: "MBA" },
   { slug: "mca", value: "MCA" },

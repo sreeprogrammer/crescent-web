@@ -788,7 +788,7 @@ function NewRegistrationPage() {
                     text-[#8f1d1d]
                   "
                 >
-                  Admissions 2026–2027
+                  Admissions
                 </span>
               </div>
 

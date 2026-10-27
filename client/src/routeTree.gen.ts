@@ -16,7 +16,6 @@ import { Route as BaIslamicStudiesRouteImport } from './routes/ba-islamic-studie
 import { Route as CdoeTeamRouteImport } from './routes/cdoe-team'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DatacenterRouteImport } from './routes/datacenter'
-import { Route as EventsRouteImport } from './routes/events'
 import { Route as ExecutionTeamRouteImport } from './routes/execution-team'
 import { Route as FacilitiesRouteImport } from './routes/facilities'
 import { Route as FacultyRouteImport } from './routes/faculty'
@@ -80,11 +79,6 @@ const ContactRoute = ContactRouteImport.update({
 const DatacenterRoute = DatacenterRouteImport.update({
   id: '/datacenter',
   path: '/datacenter',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EventsRoute = EventsRouteImport.update({
-  id: '/events',
-  path: '/events',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExecutionTeamRoute = ExecutionTeamRouteImport.update({
@@ -245,7 +239,6 @@ export interface FileRoutesByFullPath {
   '/cdoe-team': typeof CdoeTeamRoute
   '/contact': typeof ContactRoute
   '/datacenter': typeof DatacenterRoute
-  '/events': typeof EventsRoute
   '/execution-team': typeof ExecutionTeamRoute
   '/facilities': typeof FacilitiesRoute
   '/faculty': typeof FacultyRoute
@@ -283,7 +276,6 @@ export interface FileRoutesByTo {
   '/cdoe-team': typeof CdoeTeamRoute
   '/contact': typeof ContactRoute
   '/datacenter': typeof DatacenterRoute
-  '/events': typeof EventsRoute
   '/execution-team': typeof ExecutionTeamRoute
   '/facilities': typeof FacilitiesRoute
   '/faculty': typeof FacultyRoute
@@ -320,7 +312,6 @@ export interface FileRoutesById {
   '/cdoe-team': typeof CdoeTeamRoute
   '/contact': typeof ContactRoute
   '/datacenter': typeof DatacenterRoute
-  '/events': typeof EventsRoute
   '/execution-team': typeof ExecutionTeamRoute
   '/facilities': typeof FacilitiesRoute
   '/faculty': typeof FacultyRoute
@@ -361,7 +352,6 @@ export interface FileRouteTypes {
     | '/cdoe-team'
     | '/contact'
     | '/datacenter'
-    | '/events'
     | '/execution-team'
     | '/facilities'
     | '/faculty'
@@ -399,7 +389,6 @@ export interface FileRouteTypes {
     | '/cdoe-team'
     | '/contact'
     | '/datacenter'
-    | '/events'
     | '/execution-team'
     | '/facilities'
     | '/faculty'
@@ -435,7 +424,6 @@ export interface FileRouteTypes {
     | '/cdoe-team'
     | '/contact'
     | '/datacenter'
-    | '/events'
     | '/execution-team'
     | '/facilities'
     | '/faculty'
@@ -475,7 +463,6 @@ export interface RootRouteChildren {
   CdoeTeamRoute: typeof CdoeTeamRoute
   ContactRoute: typeof ContactRoute
   DatacenterRoute: typeof DatacenterRoute
-  EventsRoute: typeof EventsRoute
   ExecutionTeamRoute: typeof ExecutionTeamRoute
   FacilitiesRoute: typeof FacilitiesRoute
   FacultyRoute: typeof FacultyRoute
@@ -546,13 +533,6 @@ declare module '@tanstack/react-router' {
       path: '/datacenter'
       fullPath: '/datacenter'
       preLoaderRoute: typeof DatacenterRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/events': {
-      id: '/events'
-      path: '/events'
-      fullPath: '/events'
-      preLoaderRoute: typeof EventsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/execution-team': {
@@ -823,7 +803,6 @@ const rootRouteChildren: RootRouteChildren = {
   CdoeTeamRoute: CdoeTeamRoute,
   ContactRoute: ContactRoute,
   DatacenterRoute: DatacenterRoute,
-  EventsRoute: EventsRoute,
   ExecutionTeamRoute: ExecutionTeamRoute,
   FacilitiesRoute: FacilitiesRoute,
   FacultyRoute: FacultyRoute,
