@@ -1,7 +1,5 @@
-
 import { memo, useState } from "react";
 import { Download, Loader2 } from "lucide-react";
-import { exportConversationPdf } from "../chat-utils/pdfExport";
 import type { Language, Message } from "../chat-types/chat";
 
 interface Props {
@@ -17,6 +15,7 @@ function PdfDownloadButtonBase({ messages, language, label }: Props) {
     if (busy) return;
     setBusy(true);
     try {
+      const { exportConversationPdf } = await import("../chat-utils/pdfExport");
       await exportConversationPdf(messages, language);
     } finally {
       setBusy(false);

@@ -1,7 +1,4 @@
 import logo from "@/assets/logo.jpeg";
-import developerPlaceholder1 from "@/assets/developer-placeholder-1.svg";
-import developerPlaceholder3 from "@/assets/developer-placeholder-3.svg";
-import mdinthisarPhoto from "@/assets/me.jpeg";
 import {
   ArrowUpRight,
   ChevronRight,
@@ -14,14 +11,6 @@ import {
 } from "lucide-react";
 
 import { college } from "@/data/site";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -499,92 +488,8 @@ export function SiteFooter() {
               text-[#7b8492]
             "
           >
-            © {new Date().getFullYear()} B.S. Abdur Rahman{" "}
-            <Dialog>
-              <DialogTrigger asChild>
-                <button
-                  type="button"
-                  className="cursor-pointer [font:inherit] [color:inherit]"
-                  aria-label="Learn about the website developers"
-                >
-                  Crescent
-                </button>
-              </DialogTrigger>
-              <DialogContent className="max-h-[85vh] max-w-2xl gap-5 overflow-y-auto border-[#e5e7eb] bg-white p-6 text-[#172554] sm:p-8">
-                <DialogHeader className="pr-8 text-left">
-                  <DialogTitle className="text-xl font-semibold text-[#172554]">
-                    About the developers
-                  </DialogTitle>
-                  <DialogDescription className="text-sm leading-relaxed text-[#667085]">
-                    We are MCA students from the 2025–2027 batch and the developers of this website.
-                  </DialogDescription>
-                </DialogHeader>
-
-                <div className="grid gap-3 sm:grid-cols-3">
-                  {[
-                    { instagramId: "mdinthisar", image: mdinthisarPhoto },
-                    { instagramId: "sree_gokul._", image: developerPlaceholder1 },
-                    { instagramId: "trixhz.z", image: developerPlaceholder3 },
-                  ].map(({ instagramId, image }) => (
-                    <div
-                      key={instagramId}
-                      className="relative h-56 overflow-hidden rounded-xl border border-[#e5e7eb] bg-[#fafafa]"
-                    >
-                      <img
-                        src={image}
-                        alt={`Placeholder portrait for @${instagramId}`}
-                        className="absolute inset-0 size-full object-cover"
-                      />
-                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/45 to-transparent px-4 pb-4 pt-12 text-center">
-                        <p className="text-sm font-medium text-white">@{instagramId}</p>
-                        <a
-                          href={`https://www.instagram.com/${instagramId}/`}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="mt-1 inline-flex items-center gap-1 text-xs text-white/90 transition-colors hover:text-white"
-                          aria-label={`Open Instagram profile for ${instagramId}`}
-                        >
-                          <Instagram className="size-3" aria-hidden="true" />
-                          Instagram
-                        </a>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </DialogContent>
-            </Dialog>{" "}
-            Institute of Science and Technology All rights reserved.
+            © {new Date().getFullYear()} Center for Distance Online Education BSACIST
           </p>
-
-          <div className="flex items-center justify-center gap-4">
-            <a
-              href="/privacy"
-              className="
-                text-[10px]
-                font-medium
-                text-[#7b8492]
-                transition-colors
-                hover:text-[#7f1d1d]
-              "
-            >
-              Privacy Policy
-            </a>
-
-            <span className="h-3 w-px bg-[#d9dde4]" />
-
-            <a
-              href="/terms"
-              className="
-                text-[10px]
-                font-medium
-                text-[#7b8492]
-                transition-colors
-                hover:text-[#7f1d1d]
-              "
-            >
-              Terms
-            </a>
-          </div>
         </div>
       </div>
     </footer>

@@ -97,7 +97,7 @@ export function ChatWindow() {
         fixed
         bottom-24
         right-4
-        z-50
+        z-[110]
 
         flex
         h-[min(78vh,650px)]
