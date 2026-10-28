@@ -507,50 +507,94 @@ function AdmissionOverview() {
                 text-[#20242B]
               "
             >
-              Explore programmes and begin your academic journey
+              Steps to Apply Online Application
             </h2>
 
             {/* CONTENT */}
 
-            <p
-              className="
-                mt-5
-                max-w-2xl
-                text-[clamp(0.9rem,0.82rem+0.25vw,1.05rem)]
-                font-medium
-                leading-7
-                text-[#5E6470]
-                sm:leading-8
-              "
-            >
-              <span className="font-bold text-[#30265F]">
-                VIT Group of Institutions offer
-              </span>{" "}
-              70 Undergraduate, 58 Postgraduate, 15 Integrated
-              Programmes, 2 Research programmes and 2 M.Tech
-              Industrial Programmes. In addition to full-time Ph.D
-              Degrees in Engineering and Management Disciplines,
-              Ph.D. in Science and Languages and Integrated Ph.D.
-              programmes in engineering disciplines.
-            </p>
+            <ol className="mt-5 space-y-4">
+              <li className="rounded-2xl border border-[#D9D4CA] bg-white p-4 shadow-sm sm:p-5">
+                <h3 className="flex items-center gap-3 font-bold text-[#30265F]">
+                  <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-[#30265F] text-xs text-[#D8B84C]">
+                    01
+                  </span>
+                  Registration
+                </h3>
+                <ul className="mt-3 list-disc space-y-2 pl-11 text-sm leading-6 text-[#5E6470]">
+                  <li>
+                    Click <strong>Admission</strong> in the menu and select{" "}
+                    <strong>New Registration</strong>.
+                  </li>
+                  <li>
+                    Enter your username, password, email, and other details, then click{" "}
+                    <strong>Create my new account</strong>. Open the activation/verification link
+                    sent to your registered email address to activate your account.
+                  </li>
+                  <li>
+                    If you don’t receive the email in your inbox, check your spam folder.
+                  </li>
+                </ul>
+              </li>
 
-            <p
-              className="
-                mt-4
-                max-w-2xl
-                text-[clamp(0.9rem,0.82rem+0.25vw,1.05rem)]
-                font-medium
-                leading-7
-                text-[#5E6470]
-                sm:leading-8
-              "
-            >
-              Research Centers, integral of respective schools
-              encourage inter-departmental collaborative participation
-              of students in exciting research projects. A student
-              admitted should register in their respective schools
-              depending on the degree / programme selected to pursue.
-            </p>
+              <li className="rounded-2xl border border-[#D9D4CA] bg-white p-4 shadow-sm sm:p-5">
+                <h3 className="flex items-center gap-3 font-bold text-[#30265F]">
+                  <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-[#30265F] text-xs text-[#D8B84C]">
+                    02
+                  </span>
+                  Login
+                </h3>
+                <ul className="mt-3 list-disc space-y-2 pl-11 text-sm leading-6 text-[#5E6470]">
+                  <li>
+                    Go to <strong>Admission</strong> and select <strong>Apply Online</strong>. If
+                    you are already logged in, you’ll go to the Application Dashboard. Otherwise,
+                    log in with your credentials.
+                  </li>
+                  <li>
+                    Existing users can select <strong>Applicant Login</strong> from the{" "}
+                    <strong>Admission</strong> menu and log in with their credentials.
+                  </li>
+                </ul>
+              </li>
+
+              <li className="rounded-2xl border border-[#D9D4CA] bg-white p-4 shadow-sm sm:p-5">
+                <h3 className="flex items-center gap-3 font-bold text-[#30265F]">
+                  <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-[#30265F] text-xs text-[#D8B84C]">
+                    03
+                  </span>
+                  Application Form Entry
+                </h3>
+                <ul className="mt-3 list-disc space-y-2 pl-11 text-sm leading-6 text-[#5E6470]">
+                  <li>
+                    Click <strong>Apply Here</strong>, complete all required fields, and upload the
+                    necessary documents/certificates in the specified format and size.
+                  </li>
+                  <li>
+                    Click <strong>View &amp; Submit Application</strong> to review your
+                    application. If correct, select <strong>Confirm Submission</strong> and click{" "}
+                    <strong>Submit</strong>. To make corrections, choose{" "}
+                    <strong>Edit Application</strong> and update your details.
+                  </li>
+                </ul>
+                <p className="ml-11 mt-3 rounded-xl bg-[#8F3030]/[0.06] px-3 py-2 text-sm font-semibold leading-5 text-[#8F3030]">
+                  Please note: once submitted, the form cannot be edited.
+                </p>
+              </li>
+
+              <li className="rounded-2xl border border-[#D9D4CA] bg-white p-4 shadow-sm sm:p-5">
+                <h3 className="flex items-center gap-3 font-bold text-[#30265F]">
+                  <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-[#30265F] text-xs text-[#D8B84C]">
+                    04
+                  </span>
+                  Payment
+                </h3>
+                <p className="mt-3 pl-11 text-sm leading-6 text-[#5E6470]">
+                  Click <strong>Payment</strong>, then <strong>Pay now</strong> to pay the
+                  application fee by credit card, debit card, net banking, or UPI. After successful
+                  payment, your application number will be generated. Download the application
+                  for your records.
+                </p>
+              </li>
+            </ol>
 
             {/* ACTIONS */}
 

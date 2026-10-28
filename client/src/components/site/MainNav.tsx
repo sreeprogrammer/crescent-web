@@ -354,7 +354,9 @@ export function MainNav() {
 
             <SheetContent
               side="right"
+              overlayClassName="z-[10000]"
               className="
+                z-[10001]
                 w-[86vw]
                 max-w-sm
                 overflow-y-auto

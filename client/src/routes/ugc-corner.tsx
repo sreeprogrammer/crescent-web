@@ -299,11 +299,6 @@ function UgcCornerPage() {
 
               <div className="mt-4 h-1 w-20 rounded-full bg-[#B08A24]" />
 
-              <p className="mt-5 max-w-4xl text-sm font-medium leading-6 text-[#5E6470] sm:text-base sm:leading-7">
-                Information regarding approvals, mandatory disclosures,
-                regulatory compliance and quality assurance related to the
-                Centre for Distance and Online Education.
-              </p>
             </div>
           </div>
         </section>
