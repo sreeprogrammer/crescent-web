@@ -495,9 +495,12 @@ export function MainNav() {
                 "
                 asChild
               >
-                <Link to="/admission" hash="how-to-apply" onClick={() => setOpen(false)}>
+                <a
+                  href="https://odladmission.crescent-institute.edu.in/login/index.php"
+                  onClick={() => setOpen(false)}
+                >
                   Apply Now
-                </Link>
+                </a>
               </Button>
 
               {/* MOBILE INFO */}

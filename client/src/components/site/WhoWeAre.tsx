@@ -1,9 +1,8 @@
+
 import whoWeAreImage from "@/assets/campus-1.jpg";
 import {
   ArrowRight,
-  BookOpen,
   GraduationCap,
-  Users,
   Sparkles,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
@@ -31,7 +30,6 @@ export function WhoWeAre() {
       "
     >
       {/* Background decoration */}
-
       <div
         className="
           pointer-events-none
@@ -61,7 +59,6 @@ export function WhoWeAre() {
       />
 
       {/* Main container */}
-
       <div
         className="
           relative
@@ -75,20 +72,18 @@ export function WhoWeAre() {
         <div
           className="
             grid
-            items-center
+            items-stretch
             gap-7
-            lg:grid-cols-[0.96fr_1.04fr]
+            md:grid-cols-2
+            md:gap-8
             lg:gap-10
             xl:gap-14
           "
         >
           {/* LEFT — IMAGE */}
-
-          <Reveal>
-            <div className="group relative w-full">
-
+          <Reveal className="h-full">
+            <div className="group relative flex h-full w-full flex-col">
               {/* Image frame */}
-
               <div
                 className="
                   overflow-hidden
@@ -117,21 +112,21 @@ export function WhoWeAre() {
                     width={1200}
                     height={850}
                     className="
-                      h-[330px]
+                      h-[280px]
                       w-full
                       object-cover
                       transition-transform
                       duration-700
                       ease-out
                       group-hover:scale-[1.035]
-                      sm:h-[395px]
-                      lg:h-[430px]
-                      xl:h-[455px]
+                      sm:h-[320px]
+                      md:h-[350px]
+                      lg:h-[380px]
+                      xl:h-[400px]
                     "
                   />
 
                   {/* Image overlay */}
-
                   <div
                     className="
                       absolute
@@ -144,7 +139,6 @@ export function WhoWeAre() {
                   />
 
                   {/* Established badge */}
-
                   <div
                     className="
                       absolute
@@ -186,7 +180,6 @@ export function WhoWeAre() {
                   </div>
 
                   {/* Experience card */}
-
                   <div
                     className="
                       absolute
@@ -243,7 +236,6 @@ export function WhoWeAre() {
               </div>
 
               {/* INFO STRIP BELOW PHOTO */}
-
               <div
                 className="
                   mt-3
@@ -261,7 +253,6 @@ export function WhoWeAre() {
                 "
               >
                 <div className="flex items-center gap-2.5">
-
                   <div
                     className="
                       flex
@@ -294,7 +285,6 @@ export function WhoWeAre() {
                       Learn • Grow • Lead
                     </p>
                   </div>
-
                 </div>
 
                 <div className="hidden text-right sm:block">
@@ -306,15 +296,12 @@ export function WhoWeAre() {
                     INSTITUTION
                   </p>
                 </div>
-
               </div>
-
             </div>
           </Reveal>
 
           {/* RIGHT — CONTENT */}
-
-          <Reveal delay={0.1}>
+          <Reveal delay={0.1} className="h-full">
             <div
               className="
                 flex
@@ -324,10 +311,8 @@ export function WhoWeAre() {
                 lg:pr-2
               "
             >
-
               {/* WHO WE ARE */}
-
-              <div className="mb-4 flex justify-center">
+              <div className="mb-4 flex justify-start">
                 <span
                   className="
                     inline-flex
@@ -348,33 +333,15 @@ export function WhoWeAre() {
                 </span>
               </div>
 
-              {/* HEADING */}
-
-              <h2
-                className="
-                  max-w-none
-                  whitespace-normal
-                  text-[clamp(1.85rem,2.5vw,2.7rem)]
-                  font-semibold
-                  leading-[1.12]
-                  tracking-[-0.025em]
-                  text-slate-900
-                "
-              >
-                Empowering learners with knowledge, innovation & excellence.
-              </h2>
-
               {/* Gold divider */}
-
               <div className="mt-4 h-[3px] w-16 rounded-full bg-[#b08a4a]" />
 
-              {/* Body */}
-
+              {/* Body — JUSTIFIED TEXT */}
               <div className="mt-5 max-w-[650px] space-y-3">
-
                 <p
                   className="
-                    text-[clamp(0.95rem,1.05vw,1.08rem)]
+                    text-justify
+                    text-[clamp(1rem,1.1vw,1.125rem)]
                     leading-[1.65]
                     text-slate-600
                   "
@@ -387,7 +354,8 @@ export function WhoWeAre() {
 
                 <p
                   className="
-                    text-[clamp(0.95rem,1.05vw,1.08rem)]
+                    text-justify
+                    text-[clamp(1rem,1.1vw,1.125rem)]
                     leading-[1.65]
                     text-slate-600
                   "
@@ -397,16 +365,10 @@ export function WhoWeAre() {
                   certification programmes with flexible learning, expert
                   faculty, digital resources and continuous academic support.
                 </p>
-
               </div>
 
-              {/* STATS */}
-
-
               {/* Button */}
-
               <div className="mt-5">
-
                 <Link
                   to="/about"
                   className="
@@ -443,12 +405,9 @@ export function WhoWeAre() {
                     "
                   />
                 </Link>
-
               </div>
-
             </div>
           </Reveal>
-
         </div>
       </div>
     </Section>

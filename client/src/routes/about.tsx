@@ -292,6 +292,7 @@ function AboutQuickLinks() {
                         className="
                           mt-1
                           truncate
+                          text-justify
                           text-[clamp(0.72rem,1vw,0.82rem)]
                           font-medium
                           leading-tight
@@ -566,19 +567,20 @@ function AboutPage() {
                   className="
                     mt-4
                     max-w-2xl
+                    text-justify
                     text-[clamp(0.9rem,1.25vw,1rem)]
                     leading-[1.75]
                     text-[#111111]
                   "
                 >
-                  Our institution is committed to creating an inspiring
-                  learning environment that encourages students to think
-                  beyond boundaries, develop their abilities, and prepare
-                  themselves for a changing world. Through quality education,
-                  supportive guidance, and a learner-focused approach, we aim
-                  to make every student&apos;s academic journey meaningful and
-                  purposeful.
+                  This institution is an intellectual destination that challenges conventional
+                  thinking and stimulates passion to redefine learning. The distinctive teaching at
+                  this institution makes the students and scholars to compete with themselves and
+                  each other. Apart from providing top-notch education, our green campus and
+                  well-planned student life are solely dedicated to making students utilize the
+                  ambiance to the fullest.
                 </p>
+
 
                 {/* =================================================
                     PARAGRAPH 2
@@ -588,18 +590,18 @@ function AboutPage() {
                   className="
                     mt-3
                     max-w-2xl
+                    text-justify
                     text-[clamp(0.9rem,1.25vw,1rem)]
                     leading-[1.75]
                     text-[#111111]
                   "
                 >
-                  With a wide range of academic programmes, digital learning
-                  opportunities, student activities, and modern facilities, we
-                  provide an environment where learners can grow academically,
-                  personally, and professionally. Our goal is to build a strong
-                  learning community where every student feels supported,
-                  connected, and confident about the future.
+                  Through our wide array of educational programmes and unique clubs to foster student
+                  development activities, we provide opportunities and experiences that build
+                  community, help you grow personally and professionally, and create a place that
+                  you can call home now and throughout your life.
                 </p>
+
 
                 {/* =================================================
                     STATS

@@ -36,6 +36,8 @@ function EnquiryFormBase({ language, onSubmitted }: Props) {
     message: "",
   });
   const [errors, setErrors] = useState<Errors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionError, setSubmissionError] = useState("");
 
   const update = (key: keyof EnquiryData, value: string) => {
     setData((prev) => ({ ...prev, [key]: value }));
@@ -54,11 +56,59 @@ function EnquiryFormBase({ language, onSubmitted }: Props) {
     return next;
   };
 
-  const submit = (event: FormEvent) => {
+  const submit = async (event: FormEvent) => {
     event.preventDefault();
+    if (isSubmitting) return;
+
     const next = validate();
     setErrors(next);
-    if (Object.keys(next).length === 0) onSubmitted(data);
+    if (Object.keys(next).length > 0) return;
+
+    setIsSubmitting(true);
+    setSubmissionError("");
+
+    try {
+      const apiUrl = (import.meta.env.VITE_CONTACT_API_URL || "http://localhost:5000").replace(
+        /\/+$/,
+        "",
+      );
+      const submissionId =
+        typeof globalThis.crypto?.randomUUID === "function"
+          ? globalThis.crypto.randomUUID()
+          : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      const response = await fetch(`${apiUrl}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          submissionId,
+          name: data.name.trim(),
+          email: data.email.trim(),
+          phonenumber: data.mobile.trim(),
+          program: data.course,
+          message: data.message.trim(),
+        }),
+      });
+
+      const responseText = await response.text();
+      let result: { success?: boolean; message?: string };
+      try {
+        result = JSON.parse(responseText) as { success?: boolean; message?: string };
+      } catch {
+        throw new Error(`The server returned an invalid response (HTTP ${response.status}).`);
+      }
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || `Failed to submit enquiry (HTTP ${response.status}).`);
+      }
+
+      onSubmitted(data);
+    } catch (error) {
+      setSubmissionError(
+        error instanceof Error ? error.message : "Failed to submit enquiry. Please try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const fieldClass = (invalid?: string) =>
@@ -145,11 +195,18 @@ function EnquiryFormBase({ language, onSubmitted }: Props) {
         {errors.message && <p className="mt-1 text-[11px] text-destructive">{errors.message}</p>}
       </div>
 
+      {submissionError && (
+        <p role="alert" className="text-xs text-destructive">
+          {submissionError}
+        </p>
+      )}
+
       <button
         type="submit"
-        className="w-full rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-accent-foreground transition-transform hover:scale-[1.01]"
+        disabled={isSubmitting}
+        className="w-full rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-accent-foreground transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-60"
       >
-        {t.submit}
+        {isSubmitting ? t.submitting : t.submit}
       </button>
     </motion.form>
   );

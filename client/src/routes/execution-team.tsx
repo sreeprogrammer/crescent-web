@@ -4,7 +4,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowLeft, Award, GraduationCap, Users } from "lucide-react";
 
-import jayaPhoto from "@/assets/jaya.png";
+import jayaPhoto from "@/assets/jaya.jpg";
 import aishaBanuPhoto from "@/assets/DR.AISHABANU.png";
 import thowseafPhoto from "@/assets/thowseaf.jpeg";
 import formerDirectorPhoto from "@/assets/director.png";
@@ -208,7 +208,7 @@ function ExecutionTeamPage() {
 
                   <div className="my-5 h-px bg-slate-100" />
 
-                  <p className="text-xs leading-6.5 text-black sm:text-sm sm:leading-7">
+                  <p className="text-justify text-xs leading-6.5 text-black sm:text-sm sm:leading-7">
                     {director.description}
                   </p>
 

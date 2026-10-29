@@ -15,6 +15,7 @@ import TypingIndicator from "./TypingIndicator";
 import { suggestions, ui } from "../chat-data/translations";
 import { useChat } from "../chat-hooks/useChat";
 import { useTheme } from "../chat-hooks/useTheme";
+import { cn } from "../chat-lib/utils";
 import { MAX_QUESTIONS } from "../chat-types/chat";
 
 export function ChatWindow() {
@@ -93,7 +94,8 @@ export function ChatWindow() {
       }}
       role="dialog"
       aria-label={t.headerTitle}
-      className="
+      className={cn(
+        `
         fixed
         bottom-24
         right-4
@@ -119,7 +121,9 @@ export function ChatWindow() {
         ring-black/5
 
         sm:right-6
-      "
+      `,
+        theme === "dark" && "dark",
+      )}
     >
       {/* =====================================================
           PREMIUM TOP ACCENT

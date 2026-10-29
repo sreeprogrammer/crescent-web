@@ -149,21 +149,15 @@ export function HeroDE() {
             ease: [0.16, 1, 0.3, 1],
           }}
 
-          /*
-            IMPORTANT:
-            Moves the complete left content slightly right
-            so the fixed "Courses" tab does not cover the text.
-          */
           className="
             relative
-            left-0
-            lg:left-8
-            xl:left-10
             flex
             min-w-0
             w-full
             flex-col
             justify-center
+            lg:pl-8
+            xl:pl-10
             lg:py-2
           "
         >
@@ -180,7 +174,6 @@ export function HeroDE() {
               min-w-0
               items-center
               gap-2
-              overflow-hidden
               sm:gap-3
             "
           >
@@ -201,9 +194,10 @@ export function HeroDE() {
                 block
                 min-w-0
                 flex-1
-                whitespace-nowrap
+                whitespace-normal
                 text-[13px]
                 font-bold
+                leading-tight
                 uppercase
                 tracking-[0.10em]
                 text-[#0F5C4D]
@@ -219,7 +213,7 @@ export function HeroDE() {
 
           {/* =================================================
               ADMISSIONS OPEN
-          ================================================== */}
+          ================================================== 
 
           <div className="mb-5 flex w-full justify-center">
 
@@ -288,7 +282,7 @@ export function HeroDE() {
 
             </motion.div>
 
-          </div>
+          </div>*/}
 
           {/* =================================================
               MAIN HEADING
@@ -312,14 +306,10 @@ export function HeroDE() {
               Future Through
             </span>{" "}
 
-            <span className="text-[#8f1d1d]">
-              Distance
-            </span>
-
             <br />
 
-            <span className="text-[#8f1d1d]">
-              Education
+            <span className="whitespace-nowrap text-[0.82em] text-[#8f1d1d] sm:text-[1em]">
+              Distance Education
             </span>
           </h1>
 
@@ -433,7 +423,7 @@ export function HeroDE() {
                 h-12
                 rounded-full
                 border-0
-                bg-[#8f1d1d]
+                bg-red-800
                 px-6
                 text-[15px]
                 font-bold
@@ -442,7 +432,7 @@ export function HeroDE() {
                 transition-all
                 duration-300
                 hover:-translate-y-1
-                hover:bg-[#7f181c]
+                hover:bg-red-900
                 hover:shadow-[0_14px_30px_rgba(143,29,29,0.25)]
                 sm:px-7
                 sm:text-base
@@ -516,7 +506,6 @@ export function HeroDE() {
             relative
             min-w-0
             w-full
-            lg:pl-1
           "
         >
 

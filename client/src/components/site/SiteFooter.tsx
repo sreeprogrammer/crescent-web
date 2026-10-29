@@ -7,6 +7,7 @@ import {
   Linkedin,
   Mail,
   MapPin,
+  Phone,
   Youtube,
 } from "lucide-react";
 
@@ -48,11 +49,11 @@ const socialLinks = [
 
 export function SiteFooter() {
   return (
-    <footer className="relative overflow-hidden bg-white text-[#172554]">
+    <footer className="relative overflow-hidden rounded-t-[2rem] bg-white text-[#172554] sm:rounded-t-[2.5rem]">
       {/* =====================================================
           TOP ACCENT LINE
       ====================================================== */}
-      <div className="h-[3px] w-full bg-gradient-to-r from-[#7f1d1d] via-[#d4af37] to-[#172554]" />
+      <div className="h-[3px] w-full bg-gradient-to-r from-[#d4af37] via-[#f2dfab] to-[#d4af37]" />
 
       {/* =====================================================
           VERY SUBTLE BACKGROUND DECORATION
@@ -86,29 +87,31 @@ export function SiteFooter() {
       {/* =====================================================
           MAIN FOOTER
       ====================================================== */}
-      <div className="relative mx-auto max-w-7xl px-5 py-9 sm:px-8 lg:px-10">
+      <div className="relative mx-auto max-w-7xl px-5 py-4 sm:px-7 sm:py-5 lg:px-9">
         <div
           className="
             grid
             grid-cols-1
             items-start
-            gap-8
-            text-center
+            gap-x-6
+            gap-y-5
+            text-left
+            md:grid-cols-2
             lg:grid-cols-3
-            lg:gap-10
+            lg:gap-x-8
           "
         >
           {/* =================================================
               BRAND + CONTACT
           ================================================= */}
-          <div className="flex w-full min-w-0 flex-col items-start text-left">
+          <div className="flex w-full min-w-0 flex-col items-start text-left md:col-span-2 lg:col-span-1">
             {/* Logo */}
             <a href="/" className="inline-flex items-center" aria-label="Crescent Institute Home">
               <img
                 src={logo}
                 alt="B.S. Abdur Rahman Crescent Institute of Science and Technology"
                 className="
-                  h-[88px]
+                  h-[56px]
                   w-auto
                   object-contain
                 "
@@ -116,12 +119,12 @@ export function SiteFooter() {
             </a>
 
             {/* Gold accent */}
-            <div className="mt-3 h-[3px] w-12 rounded-full bg-[#d4af37]" />
+            <div className="mt-1 h-[3px] w-12 rounded-full bg-[#d4af37]" />
 
             {/* Institute name */}
             <p
               className="
-    mt-3
+    mt-1
     max-w-sm
     text-[13px]
     font-semibold
@@ -133,7 +136,7 @@ export function SiteFooter() {
             </p>
 
             {/* Contact Details */}
-            <div className="mt-4 w-full space-y-2.5">
+            <div className="mt-2 w-full space-y-1.5">
               {/* Address */}
               <div className="flex items-start gap-3">
                 <span
@@ -146,7 +149,7 @@ export function SiteFooter() {
                     justify-center
                     rounded-lg
                     bg-[#172554]/[0.05]
-                    text-[#172554]
+                    text-[#a87916]
                     ring-1
                     ring-[#172554]/10
                   "
@@ -169,71 +172,19 @@ export function SiteFooter() {
                   Tamil Nadu, India
                 </p>
               </div>
-
-              {/* Department numbers */}
-              <div className="space-y-1.5 text-left">
-                {college.numbers.map((number) => (
-                  <a
-                    key={number.label}
-                    href={`tel:${number.tel}`}
-                    className="block text-[11px] leading-5 text-[#596273] transition-colors hover:text-[#172554]"
-                  >
-                    <span className="font-semibold text-[#172554]">{number.label}</span> -{" "}
-                    {number.value}
-                  </a>
-                ))}
-              </div>
-
-              {/* Email */}
-              <a
-                href={`mailto:${college.email}`}
-                className="
-                  group
-                  flex
-                  items-center
-                  justify-start
-                  gap-3
-                  text-[12px]
-                  text-[#596273]
-                  transition-colors
-                  hover:text-[#172554]
-                "
-              >
-                <span
-                  className="
-                    flex
-                    size-8
-                    shrink-0
-                    items-center
-                    justify-center
-                    rounded-lg
-                    bg-[#172554]/[0.05]
-                    text-[#172554]
-                    ring-1
-                    ring-[#172554]/10
-                    transition-colors
-                    group-hover:bg-[#7f1d1d]
-                    group-hover:text-white
-                  "
-                >
-                  <Mail className="size-4" />
-                </span>
-
-                <span className="break-all">{college.email}</span>
-              </a>
             </div>
           </div>
 
           {/* =================================================
               QUICK LINKS
           ================================================= */}
-          <div className="flex w-full flex-col items-center">
+          <div className="flex w-full min-w-0 flex-col items-start">
             {/* Heading */}
-            <div className="flex items-center justify-center gap-3">
-              <span className="h-8 w-[3px] rounded-full bg-[#7f1d1d]" />
+            <div className="flex items-center gap-3">
+              <span className="h-8 w-[3px] rounded-full bg-[#d4af37]" />
 
               <div>
-                <p
+                {/* <p
                   className="
                     text-[9px]
                     font-bold
@@ -242,7 +193,7 @@ export function SiteFooter() {
                   "
                 >
                   EXPLORE
-                </p>
+                </p> */}
 
                 <h3
                   className="
@@ -257,7 +208,7 @@ export function SiteFooter() {
               </div>
             </div>
 
-            <ul className="mt-3 w-fit space-y-0.5">
+            <ul className="mt-2 grid w-full grid-cols-2 gap-x-2 gap-y-0">
               {quickLinks.map((item) => (
                 <li key={item.label}>
                   <a
@@ -269,7 +220,7 @@ export function SiteFooter() {
                       justify-start
                       gap-1.5
                       rounded-md
-                      py-1.5
+                      py-1
                       text-[12px]
                       font-medium
                       text-[#596273]
@@ -298,13 +249,13 @@ export function SiteFooter() {
           {/* =================================================
               CONNECT WITH US
           ================================================= */}
-          <div className="flex w-full flex-col items-center">
+          <div className="flex w-full min-w-0 flex-col items-start">
             {/* Heading */}
-            <div className="flex items-center justify-center gap-3">
-              <span className="h-8 w-[3px] rounded-full bg-[#7f1d1d]" />
+            <div className="flex items-center gap-3">
+              <span className="h-8 w-[3px] rounded-full bg-[#d4af37]" />
 
               <div>
-                <p
+                {/* <p
                   className="
                     text-[9px]
                     font-bold
@@ -313,7 +264,7 @@ export function SiteFooter() {
                   "
                 >
                   CONNECT
-                </p>
+                </p> */}
 
                 <h3
                   className="
@@ -330,11 +281,10 @@ export function SiteFooter() {
 
             <p
               className="
-                mt-3
-                mx-auto
+                mt-1
                 max-w-sm
                 text-[12px]
-                leading-5
+                leading-4
                 text-[#596273]
               "
             >
@@ -342,8 +292,33 @@ export function SiteFooter() {
               updates.
             </p>
 
+            {/* Phone numbers and email */}
+            <div className="mt-2 w-full space-y-1">
+              {college.numbers.map((number) => (
+                <a
+                  key={number.label}
+                  href={`tel:${number.tel}`}
+                  className="flex min-w-0 items-start gap-2.5 text-[11px] leading-5 text-[#596273] transition-colors hover:text-[#172554]"
+                >
+                  <Phone className="mt-1 size-3.5 shrink-0 text-[#a87916]" />
+                  <span className="min-w-0">
+                    <span className="font-semibold text-[#172554]">{number.label}</span>
+                    {" - "}
+                    {number.value}
+                  </span>
+                </a>
+              ))}
+              <a
+                href={`mailto:${college.email}`}
+                className="flex min-w-0 items-center gap-2.5 text-[12px] text-[#596273] transition-colors hover:text-[#172554]"
+              >
+                <Mail className="size-3.5 shrink-0 text-[#a87916]" />
+                <span className="break-all">{college.email}</span>
+              </a>
+            </div>
+
             {/* Social Icons */}
-            <div className="mt-4 flex justify-center gap-2">
+            <div className="mt-2 flex gap-1.5">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
 
@@ -354,7 +329,7 @@ export function SiteFooter() {
                     aria-label={social.label}
                     className="
                       flex
-                      size-9
+                      size-8
                       items-center
                       justify-center
                       rounded-full
@@ -382,16 +357,15 @@ export function SiteFooter() {
               href="https://youtu.be/2jvzpjgUOhY?feature=shared"
               className="
                 group
-                mt-4
-                mx-auto
+                mt-2
                 flex
                 w-fit
                 items-center
                 gap-3
                 rounded-xl
                 bg-[#172554]
-                px-5
-                py-2.5
+                px-4
+                py-2
                 text-[12px]
                 font-bold
                 text-white
@@ -430,17 +404,16 @@ export function SiteFooter() {
             <a
               href={`mailto:${college.email}`}
               className="
-                mt-3
-                mx-auto
+                mt-1
                 inline-flex
                 items-center
                 justify-center
                 gap-2
                 text-[11px]
                 font-semibold
-                text-[#172554]
+                text-[#596273]
                 transition-colors
-                hover:text-[#7f1d1d]
+                hover:text-[#172554]
               "
             >
               <span
@@ -471,14 +444,16 @@ export function SiteFooter() {
             flex
             max-w-7xl
             flex-col
-            items-center
-            justify-center
-            gap-2
+            items-start
+            justify-between
+            gap-1
             px-5
-            py-3
-            text-center
-            sm:px-8
-            lg:px-10
+            py-2
+            text-left
+            sm:px-7
+            md:flex-row
+            md:items-center
+            lg:px-9
           "
         >
           <p
@@ -488,7 +463,7 @@ export function SiteFooter() {
               text-[#7b8492]
             "
           >
-            © {new Date().getFullYear()} Center for Distance Online Education BSACIST
+            © {new Date().getFullYear()} Center for Distance and Online Education - BSACIST
           </p>
         </div>
       </div>

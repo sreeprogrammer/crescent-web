@@ -415,7 +415,7 @@ function StudentsCornerPage() {
 
                         <img
                           src={merlinePhoto}
-                          alt="Merlin"
+                          alt="Merline"
                           className="h-full w-full object-cover object-center"
                         />
 
@@ -429,7 +429,7 @@ function StudentsCornerPage() {
                             font-bold
                           "
                         >
-                          Merlin
+                          P. Paul Merlin
                         </p>
 
                         <p

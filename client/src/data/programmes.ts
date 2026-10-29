@@ -65,23 +65,23 @@ const islamicStudiesMission = [
 ];
 
 export const courseInfo: CourseInfo[] = [
-  {
-    slug: "ba-english",
-    listingRoute: "/ba-english",
-    name: "BA English",
-    fullName: "Bachelor of Arts in English",
-    level: "Undergraduate",
-    duration: "3 Years",
-    eligibility: "10+2 in any stream",
-    description:
-      "Study English language, literature and communication through flexible distance learning.",
-    vision: sharedVision,
-    mission: sharedMission,
-    listing: {
-      description: "Literature, language and communication for modern careers.",
-      eligibility: "10+2 in any stream",
-    },
-  },
+  // {
+  //   slug: "ba-english",
+  //   listingRoute: "/ba-english",
+  //   name: "BA English",
+  //   fullName: "Bachelor of Arts in English",
+  //   level: "Undergraduate",
+  //   duration: "3 Years",
+  //   eligibility: "10+2 in any stream",
+  //   description:
+  //     "Study English language, literature and communication through flexible distance learning.",
+  //   vision: sharedVision,
+  //   mission: sharedMission,
+  //   listing: {
+  //     description: "Literature, language and communication for modern careers.",
+  //     eligibility: "10+2 in any stream",
+  //   },
+  // },
   {
     slug: "ba-islamic-studies",
     listingRoute: "/ba-islamic-studies",
@@ -104,39 +104,39 @@ export const courseInfo: CourseInfo[] = [
       eligibility: "10+2 in any stream",
     },
   },
-  {
-    slug: "ba-public-policy",
-    listingRoute: "/ba-public-policy",
-    name: "BA Public Policy",
-    fullName: "Bachelor of Arts in Public Policy",
-    level: "Undergraduate",
-    duration: "3 Years",
-    eligibility: "10+2 in any stream",
-    description: "Build foundations in governance, economics and policy analysis.",
-    vision: sharedVision,
-    mission: sharedMission,
-    listing: {
-      description: "Governance, economics and policy analysis fundamentals.",
-      eligibility: "10+2 in any stream",
-    },
-  },
-  {
-    slug: "ma-islamic-studies",
-    listingRoute: "/ma-islamic-studies",
-    name: "MA Islamic Studies",
-    fullName: "Master of Arts in Islamic Studies",
-    level: "Postgraduate",
-    duration: "2 Years",
-    eligibility: "Bachelor's degree",
-    description:
-      "Pursue advanced study and research in Islamic sciences, civilisation and thought.",
-    vision: islamicStudiesVision,
-    mission: islamicStudiesMission,
-    listing: {
-      description: "Advanced study and research in Islamic sciences, civilisation and thought.",
-      eligibility: "Bachelor's degree",
-    },
-  },
+  // {
+  //   slug: "ba-public-policy",
+  //   listingRoute: "/ba-public-policy",
+  //   name: "BA Public Policy",
+  //   fullName: "Bachelor of Arts in Public Policy",
+  //   level: "Undergraduate",
+  //   duration: "3 Years",
+  //   eligibility: "10+2 in any stream",
+  //   description: "Build foundations in governance, economics and policy analysis.",
+  //   vision: sharedVision,
+  //   mission: sharedMission,
+  //   listing: {
+  //     description: "Governance, economics and policy analysis fundamentals.",
+  //     eligibility: "10+2 in any stream",
+  //   },
+  // },
+  // {
+  //   slug: "ma-islamic-studies",
+  //   listingRoute: "/ma-islamic-studies",
+  //   name: "MA Islamic Studies",
+  //   fullName: "Master of Arts in Islamic Studies",
+  //   level: "Postgraduate",
+  //   duration: "2 Years",
+  //   eligibility: "Bachelor's degree",
+  //   description:
+  //     "Pursue advanced study and research in Islamic sciences, civilisation and thought.",
+  //   vision: islamicStudiesVision,
+  //   mission: islamicStudiesMission,
+  //   listing: {
+  //     description: "Advanced study and research in Islamic sciences, civilisation and thought.",
+  //     eligibility: "Bachelor's degree",
+  //   },
+  // },
   {
     slug: "mca",
     listingRoute: "/mca",
@@ -200,24 +200,24 @@ export const courseInfo: CourseInfo[] = [
       eligibility: "Any Bachelor's degree",
     },
   },
-  {
-    slug: "mobile-application-development",
-    listingRoute: "/mobile-application-development",
-    name: "Mobile Application Development",
-    fullName: "Professional Certification Programme",
-    level: "Certification",
-    duration: "6 Months",
-    eligibility: "12th / Diploma / Degree",
-    description:
-      "Build modern Android and iOS applications using contemporary cross-platform technologies.",
-    vision: sharedVision,
-    mission: sharedMission,
-    listing: {
-      description:
-        "Build modern Android and iOS applications using contemporary cross-platform technologies.",
-      eligibility: "12th / Diploma / Degree",
-    },
-  },
+  // {
+  //   slug: "mobile-application-development",
+  //   listingRoute: "/mobile-application-development",
+  //   name: "Mobile Application Development",
+  //   fullName: "Professional Certification Programme",
+  //   level: "Certification",
+  //   duration: "6 Months",
+  //   eligibility: "12th / Diploma / Degree",
+  //   description:
+  //     "Build modern Android and iOS applications using contemporary cross-platform technologies.",
+  //   vision: sharedVision,
+  //   mission: sharedMission,
+  //   listing: {
+  //     description:
+  //       "Build modern Android and iOS applications using contemporary cross-platform technologies.",
+  //     eligibility: "12th / Diploma / Degree",
+  //   },
+  // },
 ];
 
 export const programmeListings: ProgrammeListing[] = courseInfo.map((course) => ({

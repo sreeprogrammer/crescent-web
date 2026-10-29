@@ -4,7 +4,6 @@ import { getCourseInfo } from "@/data/programmes";
 
 import { Button } from "@/components/ui/button";
 import { certificationCourses, pgProgrammes, ugProgrammes } from "@/data/site";
-import { EnquiryFormDialog } from "@/components/site/EnquiryFormDialog";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
@@ -190,9 +189,6 @@ function ProgrammeExploreLink({
 ========================================================= */
 
 function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
-  const [showBrochureForm, setShowBrochureForm] = useState(false);
-  const [brochureUnlocked, setBrochureUnlocked] = useState(false);
-
   const isPG = type === "pg";
   const isCertification = type === "certification";
 
@@ -201,7 +197,10 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
 
   return (
     <>
-      <Reveal delay={(index % 3) * 0.05} className="h-full">
+      <Reveal
+        delay={(index % 3) * 0.05}
+        className="h-full basis-full md:basis-[calc(50%-0.3125rem)] lg:basis-[calc(33.333%-0.45rem)]"
+      >
         <motion.article
           whileHover={{
             y: -5,
@@ -431,11 +430,10 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
 
                 {/* DOWNLOAD BROCHURE */}
 
-                {!brochureUnlocked ? (
-                  <button
-                    type="button"
-                    onClick={() => setShowBrochureForm(true)}
-                    className="
+                <a
+                  href={programmeBrochure}
+                  download
+                  className="
                     flex
                     w-full
                     items-center
@@ -451,45 +449,15 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
                     font-bold
                     text-[#111111]
                     transition-all
-                    duration-300
-                    hover:border-[#D4AF37]
-                    hover:bg-[#D4AF37]/10
-                  "
-                  >
-                    <Download className="size-3.5 shrink-0 text-[#8F1D1D]" />
+                      duration-300
+                      hover:border-[#D4AF37]
+                      hover:bg-[#D4AF37]/10
+                    "
+                >
+                  <Download className="size-3.5 shrink-0 text-[#8F1D1D]" />
 
-                    <span className="truncate">Download Brochure</span>
-                  </button>
-                ) : (
-                  <a
-                    href={programmeBrochure}
-                    download
-                    onClick={() => setShowBrochureForm(false)}
-                    className="
-                    flex
-                    w-full
-                    items-center
-                    justify-center
-                    gap-1.5
-                    rounded-[0.7rem]
-                    border
-                    border-[#D4AF37]
-                    bg-[#D4AF37]
-                    px-2
-                    py-2
-                    text-[clamp(0.6rem,0.55rem+0.15vw,0.72rem)]
-                    font-bold
-                    text-[#111111]
-                    transition-all
-                    duration-300
-                    hover:bg-[#E2C45A]
-                  "
-                  >
-                    <Download className="size-3.5 shrink-0" />
-
-                    <span className="truncate">Download Brochure</span>
-                  </a>
-                )}
+                  <span className="truncate">Download Brochure</span>
+                </a>
               </div>
             </div>
 
@@ -577,21 +545,6 @@ function ProgrammeCard({ programme, index, type }: ProgrammeCardProps) {
           />
         </motion.article>
       </Reveal>
-
-      {/* =======================================================
-          BROCHURE ENQUIRY MODAL
-      ======================================================= */}
-
-      <EnquiryFormDialog
-        open={showBrochureForm}
-        onOpenChange={setShowBrochureForm}
-        onSubmitted={() => setBrochureUnlocked(true)}
-        title={`Download ${programme.name} brochure`}
-        description="Share your details and an admission counsellor will call you back."
-        downloadHref={programmeBrochure}
-        downloadLabel={`Download ${programme.name} brochure`}
-        idPrefix={`brochure-${programme.slug}`}
-      />
     </>
   );
 }
@@ -662,42 +615,52 @@ function ProgrammeSection({
           >
             {title}
           </h3>
-
         </div>
 
         {/* COUNT */}
 
-        <div
-          className="
-            hidden
-            shrink-0
-            items-center
-            gap-1.5
-            rounded-full
-            bg-[#F4F1E8]
-            px-2.5
-            py-1.5
-            text-[clamp(0.6rem,0.55rem+0.15vw,0.72rem)]
-            font-bold
-            text-[#111111]
-            sm:flex
-          "
-        >
-          <BookOpen className="size-3 shrink-0 text-[#8F1D1D]" />
-          {items.length} Programme
-          {items.length > 1 ? "s" : ""}
-        </div>
+        {items.length > 0 && (
+          <div
+            className="
+              hidden
+              shrink-0
+              items-center
+              gap-1.5
+              rounded-full
+              bg-[#F4F1E8]
+              px-2.5
+              py-1.5
+              text-[clamp(0.6rem,0.55rem+0.15vw,0.72rem)]
+              font-bold
+              text-[#111111]
+              sm:flex
+            "
+          >
+            <BookOpen className="size-3 shrink-0 text-[#8F1D1D]" />
+            {items.length} Programme
+            {items.length > 1 ? "s" : ""}
+          </div>
+        )}
       </div>
 
       {/* ================================================= */}
       {/* CARDS */}
       {/*================================================= */}
 
-      <div className="grid gap-2.5 md:grid-cols-2 lg:grid-cols-3">
-        {items.map((programme, index) => (
-          <ProgrammeCard key={programme.name} programme={programme} index={index} type={type} />
-        ))}
-      </div>
+      {items.length > 0 ? (
+        <div className="flex flex-wrap justify-center gap-2.5">
+          {items.map((programme, index) => (
+            <ProgrammeCard key={programme.name} programme={programme} index={index} type={type} />
+          ))}
+        </div>
+      ) : (
+        <div
+          className="flex min-h-40 items-center justify-center rounded-[1.2rem] border border-dashed border-[#172554]/15 bg-[#F4F1E8]/40 px-6 py-10 text-center"
+          role="status"
+        >
+          <p className="text-sm font-semibold text-[#172554]">Coming Soon</p>
+        </div>
+      )}
     </div>
   );
 }
@@ -780,7 +743,6 @@ export function ProgrammeCards({ withHeading = true }: { withHeading?: boolean }
           />
         </div>
       </div>
-
     </Section>
   );
 }

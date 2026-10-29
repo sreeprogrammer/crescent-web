@@ -1,6 +1,6 @@
 // src/data/collegeKnowledge.ts
 
-import type { FaqEntry } from "../../chat-types/chat";
+import type { FaqEntry } from "../chat-types/chat";
 
 /* =========================================================
    CRESCENT COLLEGE CHATBOT KNOWLEDGE BASE
@@ -8,7 +8,7 @@ import type { FaqEntry } from "../../chat-types/chat";
    English + Tamil + Urdu
    ========================================================= */
 
-export const ADMISSION_LINK = "YOUR_ADMISSION_LINK_HERE";
+export const ADMISSION_LINK = "https://odladmission.crescent-institute.edu.in/login/index.php";
 
 export const DUMMY_ENQUIRY_EMAIL = "yourdummyemail@gmail.com";
 

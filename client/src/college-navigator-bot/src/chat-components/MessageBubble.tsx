@@ -46,6 +46,16 @@ function MessageBubbleBase({ message }: Props) {
           )}
         >
           {message.text}
+          {message.link && (
+            <a
+              href={message.link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex font-semibold text-primary underline-offset-4 hover:underline"
+            >
+              {message.link.label}
+            </a>
+          )}
         </div>
         <span className="px-1 text-[10px] text-muted-foreground">
           {isUser ? "You" : "AI"} · {time}

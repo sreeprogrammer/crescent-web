@@ -520,8 +520,7 @@ function AdmissionOverview() {
                   </span>
                   Registration
                 </h3>
-                <ul className="mt-3 list-disc space-y-2 pl-11 text-sm leading-6 text-[#5E6470]">
-                  <li>
+<ul className="mt-3 list-disc space-y-2 pl-11 text-justify text-sm leading-6 text-[#5E6470]">                  <li>
                     Click <strong>Admission</strong> in the menu and select{" "}
                     <strong>New Registration</strong>.
                   </li>
@@ -587,8 +586,7 @@ function AdmissionOverview() {
                   </span>
                   Payment
                 </h3>
-                <p className="mt-3 pl-11 text-sm leading-6 text-[#5E6470]">
-                  Click <strong>Payment</strong>, then <strong>Pay now</strong> to pay the
+<p className="mt-3 pl-11 text-justify text-sm leading-6 text-[#5E6470]">                  Click <strong>Payment</strong>, then <strong>Pay now</strong> to pay the
                   application fee by credit card, debit card, net banking, or UPI. After successful
                   payment, your application number will be generated. Download the application
                   for your records.

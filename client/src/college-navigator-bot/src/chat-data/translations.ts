@@ -19,6 +19,7 @@ type UIKey =
   | "limitReached"
   | "questionsLeft"
   | "downloadPdf"
+  | "pdfError"
   | "close"
   | "openChat"
   | "enquiryTitle"
@@ -29,6 +30,7 @@ type UIKey =
   | "course"
   | "message"
   | "submit"
+  | "submitting"
   | "submitted"
   | "required"
   | "invalidEmail"
@@ -51,6 +53,7 @@ export const ui: Record<Language, Record<UIKey, string>> = {
       "You have reached the limit of 5 questions. Please fill the enquiry form below and our team will reach out to you.",
     questionsLeft: "questions left",
     downloadPdf: "Download PDF",
+    pdfError: "Could not download the conversation. Please try again.",
     close: "Close chat",
     openChat: "Chat with us",
     enquiryTitle: "Enquiry Form",
@@ -61,6 +64,7 @@ export const ui: Record<Language, Record<UIKey, string>> = {
     course: "Course Interested In",
     message: "Message",
     submit: "Submit & Continue",
+    submitting: "Submitting...",
     submitted: "Thank you! Your enquiry has been recorded. You can continue chatting.",
     required: "This field is required",
     invalidEmail: "Enter a valid email address",
@@ -82,6 +86,7 @@ export const ui: Record<Language, Record<UIKey, string>> = {
       "5 கேள்விகள் வரம்பை அடைந்துவிட்டீர்கள். கீழே உள்ள விசாரணை படிவத்தை நிரப்பவும்.",
     questionsLeft: "கேள்விகள் மீதம்",
     downloadPdf: "PDF பதிவிறக்கம்",
+    pdfError: "உரையாடலைப் பதிவிறக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
     close: "அரட்டையை மூடு",
     openChat: "எங்களுடன் அரட்டை",
     enquiryTitle: "விசாரணை படிவம்",
@@ -92,6 +97,7 @@ export const ui: Record<Language, Record<UIKey, string>> = {
     course: "விருப்ப படிப்பு",
     message: "செய்தி",
     submit: "சமர்ப்பித்து தொடரவும்",
+    submitting: "சமர்ப்பிக்கிறது...",
     submitted: "நன்றி! உங்கள் விசாரணை பதிவு செய்யப்பட்டது. தொடர்ந்து அரட்டையடிக்கலாம்.",
     required: "இந்த புலம் அவசியம்",
     invalidEmail: "சரியான மின்னஞ்சலை உள்ளிடவும்",
@@ -112,6 +118,7 @@ export const ui: Record<Language, Record<UIKey, string>> = {
     limitReached: "آپ نے 5 سوالات کی حد مکمل کر لی ہے۔ براہ کرم نیچے فارم پُر کریں۔",
     questionsLeft: "سوالات باقی",
     downloadPdf: "پی ڈی ایف ڈاؤن لوڈ",
+    pdfError: "گفتگو ڈاؤن لوڈ نہیں ہو سکی۔ دوبارہ کوشش کریں۔",
     close: "چیٹ بند کریں",
     openChat: "ہم سے بات کریں",
     enquiryTitle: "استفسار فارم",
@@ -122,6 +129,7 @@ export const ui: Record<Language, Record<UIKey, string>> = {
     course: "دلچسپی کا کورس",
     message: "پیغام",
     submit: "جمع کریں اور جاری رکھیں",
+    submitting: "جمع ہو رہا ہے...",
     submitted: "شکریہ! آپ کا استفسار محفوظ ہو گیا۔ اب آپ چیٹ جاری رکھ سکتے ہیں۔",
     required: "یہ خانہ ضروری ہے",
     invalidEmail: "درست ای میل درج کریں",

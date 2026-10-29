@@ -356,8 +356,8 @@ export function TopHeader() {
           </a>
 
           {/* APPLY NOW */}
-          <Link
-            to="/admission"
+          <a
+            href="https://odladmission.crescent-institute.edu.in/login/index.php"
             className="
               group
               ml-0.5
@@ -398,7 +398,7 @@ export function TopHeader() {
                 sm:size-[18px]
               "
             />
-          </Link>
+          </a>
         </div>
       </div>
 

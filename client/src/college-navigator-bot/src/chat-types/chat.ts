@@ -7,6 +7,10 @@ export interface Message {
   text: string;
   timestamp: string;
   language: Language;
+  link?: {
+    label: string;
+    url: string;
+  };
 }
 
 export interface FaqEntry {
@@ -15,6 +19,10 @@ export interface FaqEntry {
   keywords: string[];
   question: Record<Language, string>;
   answer: Record<Language, string>;
+  link?: {
+    label: Record<Language, string>;
+    url: string;
+  };
 }
 
 export interface EnquiryData {

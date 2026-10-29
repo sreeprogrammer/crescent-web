@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import faqs from "../chat-data/faq";
 import { ui } from "../chat-data/translations";
 import { findBestMatch } from "../chat-utils/fuzzyMatch";
@@ -23,6 +23,13 @@ export function useChat() {
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const knowledge = useMemo(() => faqs, []);
+
+  useEffect(
+    () => () => {
+      if (timer.current) clearTimeout(timer.current);
+    },
+    [],
+  );
 
   const reset = useCallback((lang: Language = "en") => {
     if (timer.current) clearTimeout(timer.current);
@@ -60,6 +67,7 @@ export function useChat() {
 
       timer.current = setTimeout(
         () => {
+          timer.current = null;
           setIsTyping(false);
           setMessages((prev) => {
             const botMessage: Message = {
@@ -68,6 +76,14 @@ export function useChat() {
               text: answer,
               timestamp: new Date().toISOString(),
               language,
+              ...(entry?.link
+                ? {
+                    link: {
+                      label: entry.link.label[language],
+                      url: entry.link.url,
+                    },
+                  }
+                : {}),
             };
             const list = [...prev, botMessage];
             if (nextCount >= MAX_QUESTIONS) {
